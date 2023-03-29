@@ -73,7 +73,7 @@ class App extends Component {
             <Fragment>
                 <nav className="navbar navbar-expand-md fixed-top navbar-light bg-light">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="/"><img src={'static/assets/img/dib-logo-new.png'} alt="dib logo" width={30} height={25} data-aos="zoom-in" data-aos-delay="100" />
+                        <a className="navbar-brand" href="/"><img src={'/static/assets/img/dib-logo-new.png'} alt="dib logo" width={30} height={25} data-aos="zoom-in" data-aos-delay="100" />
                             &nbsp; N O T I C E - B O A R D
                         </a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -91,9 +91,6 @@ class App extends Component {
                                 {!this.state.authenticated && <li className="nav-item">
                                       <Link className={"nav-link"} to={"/login"}>Login</Link>
                                 </li>}
-                                <li className="nav-item">
-                                    <Link className={"nav-link"} to={"/signup"}>Signup</Link>
-                                </li>
                                 {this.state.authenticated && <li className={"nav-item"}>
                                      <Link className={"nav-link"} onClick={this.handleLogout}>Logout</Link>
                                 </li>}

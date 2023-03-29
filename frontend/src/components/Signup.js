@@ -7,7 +7,8 @@ class Signup extends Component{
         this.state = {
             username: "",
             password: "",
-            email:""
+            email:"",
+            message:""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -19,7 +20,7 @@ class Signup extends Component{
     }
 
    async handleSubmit(event) {
-       alert('A username and password was submitted: ' + this.state.username + " " + this.state.password + " " + this.state.email);
+       //alert('A username and password was submitted: ' + this.state.username + " " + this.state.password + " " + this.state.email);
        event.preventDefault();
        try {
            const response = await axiosInstance.post('/auth/register/', {
@@ -27,7 +28,21 @@ class Signup extends Component{
                email: this.state.email,
                password: this.state.password
            });
-           return response;
+           alert(response.status);
+           if(response.status === 201) {
+               window.location.href = '/login';
+           }
+           else if(response.status === 200){
+              this.setState({
+                  message:'You haven not got invitation for signup'
+              })
+           }
+           else if(response.status === 400){
+              this.setState({
+                  message:'Something went wrong, maybe input data not valid'
+              })
+           }
+
        } catch (error) {
 
        }
@@ -55,6 +70,7 @@ class Signup extends Component{
                         <label htmlFor="password" className="form-label">Password</label>
                         <input name="password" type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} />
                     </div>
+                    {this.state.message}
                     <div className="d-grid gap-2">
                         <input type="submit" className="btn btn-success" value="Register"/>
                     </div>
