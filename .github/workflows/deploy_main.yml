@@ -62,11 +62,11 @@ jobs:
       - name: Upload ftp
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: ${{ env.HOST }}
-          username: ${{ env.FTP_USERNAME }}
+          server: 'ftp.darulihsan-berlin.com'
+          username: 'notice_board@darulihsan-berlin.com'
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './'
-          server-dir: "notice_board/"
+          server-dir: 'notice_board/'
       - name: Run a one-line script
         run: ls -al
       - name: Copy static resource
