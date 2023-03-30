@@ -22,7 +22,7 @@ class SendEmail(object):
         with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
         #with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
-            msg = MIMEMultipart('related')
+            msg = MIMEMultipart()
             msg['Subject'] = 'দারুল ইহসান নোটিশ বোর্ড সাইনআপের আমন্ত্রণ'
             msg['From'] = settings.SMTP_EMAIL_FROM
             msg['To'] = data.email
@@ -44,7 +44,5 @@ class SendEmail(object):
             msg.attach(part2)
             # Send the message via local SMTP server.
             # mailsrv = smtplib.SMTP('localhost')
-            print(msg, data.email)
             server.sendmail(settings.SMTP_EMAIL_FROM, data.email, msg.as_string())
-            print(msg, data.email)
             # mailsrv.quit()
