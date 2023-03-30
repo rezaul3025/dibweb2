@@ -21,8 +21,6 @@ class SendEmail(object):
         print('Email host', settings.SMTP_HOST, settings.SMTP_PORT, settings.SMTP_USER)
         with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
         #with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
-            server.starttls()
-            server.ehlo()
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
             msg = MIMEMultipart('related')
             msg['Subject'] = 'দারুল ইহসান নোটিশ বোর্ড সাইনআপের আমন্ত্রণ'
