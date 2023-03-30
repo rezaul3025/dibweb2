@@ -12,6 +12,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  
+env:
+  HOST: ftp.darulihsan-berlin.com
+  FTP_USERNAME: notice_board@darulihsan-berlin.com
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -58,8 +62,8 @@ jobs:
       - name: Upload ftp
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: ${{ secrets.HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ env.HOST }}
+          username: ${{ env.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './'
           server-dir: "notice_board/"
