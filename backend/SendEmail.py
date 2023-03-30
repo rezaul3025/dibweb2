@@ -18,6 +18,7 @@ class SendEmail(object):
         port = 465  # For SSL
         # Create a secure SSL context
         context = ssl.create_default_context()
+        print(settings.SMTP_HOST, settings.SMTP_USER,settings.SMTP_PASS, settings.SMTP_PORT, settings.SMTP_EMAIL_FROM, data.email)
         with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
         #with smtplib.SMTP(settings.SMTP_HOST, settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
