@@ -22,7 +22,7 @@ class SendEmail(object):
         #print(settings.SMTP_HOST, settings.SMTP_USER,settings.SMTP_PASS, settings.SMTP_PORT, settings.SMTP_EMAIL_FROM, data.email)
         #with smtplib.SMTP_SSL(socket.gethostbyname('smtp.gmail.com'), settings.SMTP_PORT, context=context) as server:
             #print(socket.gethostbyname('smtp.gmail.com')+':465')
-        with smtplib.SMTP(socket.gethostbyname('smtp.gmail.com')+':587') as server:
+        with smtplib.SMTP('smtp.gmail.com:587') as server:
             server.starttls()
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
             msg = MIMEMultipart()
@@ -36,10 +36,10 @@ class SendEmail(object):
                 <body>
                     <h4 style="font-size:15px;">আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহি ওয়া বারাকাতুহ,</h4> 
                     <p>এটি আপনার জন্য দারুল ইহসান নোটিশ বোর্ড সাইন আপ করার জন্য আমন্ত্রণ। সাইন আপ সম্পূর্ণ করার জন্য নীচের লিঙ্কে ক্লিক করুন.</p>
-                    <p><a href={}&email={}>নোটিশ বোর্ড সাইন আপ</a></p>
+                    <p><a href={}>নোটিশ বোর্ড সাইন আপ</a></p>
                     </body>
                 </html>
-            """.format(settings.SIGNUP_URL, data.email)
+            """.format(settings.SIGNUP_URL)
             # Record the MIME types of text/html.
             part2 = MIMEText(html, 'html')
 

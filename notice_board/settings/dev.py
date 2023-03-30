@@ -7,7 +7,7 @@ DATABASES = {
     }
 }
 
-SIGNUP_URL = 'http://127.0.0.1:8000/signup'
+SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
 SMTP_HOST = 'smtp.gmail.com'
 SMTP_PORT = 465
 SMTP_USER = 'dibev.events@gmail.com'
