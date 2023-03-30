@@ -63,12 +63,13 @@ class Signup extends Component{
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input name="email" type="email" className="form-control" id="email" value={this.state.email}
                                aria-describedby="emailHelp" onChange={this.handleChange} />
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.
-                            </div>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input name="password" type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} />
+                        <input name="password" type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange}
+                        aria-describedby="passHelp" />
+                        <div id="passHelp" className="form-text">Minimum password length 8 characters
+                            </div>
                     </div>
                     {this.state.message}
                     <div className="d-grid gap-2">
