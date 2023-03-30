@@ -18,9 +18,9 @@ class SendEmail(object):
         port = 465  # For SSL
         # Create a secure SSL context
         context = ssl.create_default_context()
-        #with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-        with smtplib.SMTP('localhost:2525') as server:
-            #server.login("dibev.events@gmail.com", "Aprdibev198743389")
+        with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
+        #with smtplib.SMTP('localhost:2525') as server:
+            server.login(settings.SMTP_USER,settings.SMTP_PASS)
             msg = MIMEMultipart('related')
             msg['Subject'] = 'দারুল ইহসান নোটিশ বোর্ড সাইনআপের আমন্ত্রণ'
             msg['From'] = 'dibev.events@gmail.com'
