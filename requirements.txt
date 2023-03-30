@@ -16,4 +16,4 @@ setuptools==60.2.0
 sqlparse==0.4.3
 typing-extensions==4.5.0
 wheel==0.37.1
-mysqlclient
+mysqlclient==2.1.0
