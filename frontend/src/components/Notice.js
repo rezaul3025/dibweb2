@@ -8,7 +8,6 @@ import {
 
 function Notice() {
     let {email} =useParams();
-    alert(email)
     const [notice, setNotice] = useState([]);
     const [user, setUser] = useState();
     const [fromDate, setFromDate] = useState();

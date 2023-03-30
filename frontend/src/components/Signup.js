@@ -29,7 +29,6 @@ class Signup extends Component{
                email: this.state.email,
                password: this.state.password
            });
-           alert(response.status);
            if(response.status === 201) {
                window.location.href = '/login';
            }
