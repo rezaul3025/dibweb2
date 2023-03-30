@@ -20,7 +20,7 @@ class SendEmail(object):
         context = ssl.create_default_context()
         #print(settings.SMTP_HOST, settings.SMTP_USER,settings.SMTP_PASS, settings.SMTP_PORT, settings.SMTP_EMAIL_FROM, data.email)
         #with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
-        with smtplib.SMTP('142.250.145.108:587') as server:
+        with smtplib.SMTP('142.250.27.109') as server:
             server.starttls()
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
             msg = MIMEMultipart()
