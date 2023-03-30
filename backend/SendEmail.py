@@ -21,6 +21,7 @@ class SendEmail(object):
         context = ssl.create_default_context()
         #print(settings.SMTP_HOST, settings.SMTP_USER,settings.SMTP_PASS, settings.SMTP_PORT, settings.SMTP_EMAIL_FROM, data.email)
         #with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
+        print(socket.gethostbyname('smtp.gmail.com')+':587')
         with smtplib.SMTP(socket.gethostbyname('smtp.gmail.com')+':587') as server:
             server.starttls()
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
