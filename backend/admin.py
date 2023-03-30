@@ -26,8 +26,8 @@ class InvitationAdmin(admin.ModelAdmin):
         sendEmil = SendEmail()
         try:
             sendEmil.sendEmail(obj)
-        except:
-            print('Somethings went wrong with invitation email sending')
+        except Exception as e:
+            print('Somethings went wrong with invitation email sending', e)
 
 
 admin.site.register(Invitation, InvitationAdmin)
