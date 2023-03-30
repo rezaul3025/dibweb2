@@ -69,14 +69,14 @@ jobs:
           server-dir: 'notice_board/'
       - name: Run a one-line script
         run: ls -al
-      - name: Copy static resource
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ env.HOST }}
-          username: ${{ env.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: './frontend/static/'
-          server-dir: 'public_html/prayer.darulihsan-berlin.com/static/'
+      #- name: Copy static resource
+      #  uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      #  with:
+      #    server: ${{ env.HOST }}
+      #    username: ${{ env.FTP_USERNAME }}
+      #    password: ${{ secrets.FTP_PASSWORD }}
+      #    local-dir: './frontend/static/'
+      #    server-dir: 'public_html/prayer.darulihsan-berlin.com/static/'
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
