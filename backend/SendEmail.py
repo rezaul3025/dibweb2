@@ -44,5 +44,7 @@ class SendEmail(object):
             msg.attach(part2)
             # Send the message via local SMTP server.
             # mailsrv = smtplib.SMTP('localhost')
+            print(msg, data.email)
             server.sendmail(settings.SMTP_EMAIL_FROM, data.email, msg.as_string())
+            print(msg, data.email)
             # mailsrv.quit()
