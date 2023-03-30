@@ -6,8 +6,7 @@ import {
     BrowserRouter,
     Routes,
     Route,
-    Link,
-    Redirect,
+    Link
 } from "react-router-dom";
 import axiosInstance from "../axiosApi";
 
@@ -100,9 +99,9 @@ class App extends Component {
                 </nav>
                 <main className="container">
                     <Routes>
-                        <Route exact path="/login" element={<Login/>}/>
-                        <Route exact path="/signup" element={<Signup/>}/>
-                        <Route path="/" element={<Notice/>}/>
+                        <Route path='/login' element={<Login />}/>
+                        <Route path='/signup' element={<Signup />}/>
+                        <Route path='/' element={<Notice />}/>
                     </Routes>
                 </main>
             </Fragment>

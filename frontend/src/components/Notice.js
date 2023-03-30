@@ -1,9 +1,14 @@
 import React, {useEffect, useState, Fragment} from "react";
 import axiosInstance from "../axiosApi";
 import parse from 'html-react-parser'
-import * as events from "events";
+import {
+
+  useParams
+} from "react-router-dom";
 
 function Notice() {
+    let {email} =useParams();
+    alert(email)
     const [notice, setNotice] = useState([]);
     const [user, setUser] = useState();
     const [fromDate, setFromDate] = useState();
