@@ -18,12 +18,13 @@ class SendEmail(object):
         port = 465  # For SSL
         # Create a secure SSL context
         context = ssl.create_default_context()
+        print('Email host', settings.SMTP_HOST)
         with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT, context=context) as server:
         #with smtplib.SMTP('localhost:2525') as server:
             server.login(settings.SMTP_USER,settings.SMTP_PASS)
             msg = MIMEMultipart('related')
             msg['Subject'] = 'দারুল ইহসান নোটিশ বোর্ড সাইনআপের আমন্ত্রণ'
-            msg['From'] = 'dibev.events@gmail.com'
+            msg['From'] = settings.SMTP_EMAIL_FROM
             msg['To'] = data.email
 
             html = """\
@@ -43,5 +44,5 @@ class SendEmail(object):
             msg.attach(part2)
             # Send the message via local SMTP server.
             # mailsrv = smtplib.SMTP('localhost')
-            server.sendmail('dibev.events@gmail.com', data.email, msg.as_string())
+            server.sendmail(settings.SMTP_EMAIL_FROM, data.email, msg.as_string())
             # mailsrv.quit()

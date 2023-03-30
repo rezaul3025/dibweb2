@@ -24,7 +24,10 @@ class InvitationAdmin(admin.ModelAdmin):
         # obj.notice = request.otice
         super().save_model(request, obj, form, change)
         sendEmil = SendEmail()
-        sendEmil.sendEmail(obj)
+        try:
+            sendEmil.sendEmail(obj)
+        except:
+            print('Somethings went wrong with invitation email sending')
 
 
 admin.site.register(Invitation, InvitationAdmin)
