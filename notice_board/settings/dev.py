@@ -7,9 +7,9 @@ DATABASES = {
     }
 }
 
-SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
+SIGNUP_URL = 'http://127.0.0.1:8000/signup'
 SMTP_HOST = 'smtp.gmail.com'
 SMTP_PORT = 465
 SMTP_USER = 'dibev.events@gmail.com'
-SMTP_PASS = os.environ.get('SMTP_PASS')
-SMTP_EMAIL_FROM = 'info@prayer.darulihsan-berlin.com'
+SMTP_PASS = 'jbckwzopenqhznhk'
+SMTP_EMAIL_FROM = 'dibev.events@gmail.com'
