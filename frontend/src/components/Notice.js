@@ -35,7 +35,7 @@ function Notice() {
 
     useEffect(() => {
         const localUser = localStorage.getItem('user')
-        if(!localUser.includes("object")) {
+        if(localUser != null && !localUser.includes("object")) {
             const user = JSON.parse(localUser);
             setUser(user)
             fetchData(user);
