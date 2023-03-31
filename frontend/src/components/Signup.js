@@ -25,7 +25,7 @@ class Signup extends Component{
        event.preventDefault();
        try {
            const response = await axiosInstance.post('/auth/register/', {
-               username: this.state.username,
+               username: this.state.email,
                email: this.state.email,
                password: this.state.password
            });
@@ -52,13 +52,6 @@ class Signup extends Component{
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="username" className="form-label">User name:</label>
-                        <input name="username" type="email" className="form-control" id="username"
-                               aria-describedby="usernameHelp" onChange={this.handleChange} value={this.state.username} />
-                            <div id="usernameHelp" className="form-text">User name can be your email address.
-                            </div>
-                    </div>
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input name="email" type="email" className="form-control" id="email" value={this.state.email}

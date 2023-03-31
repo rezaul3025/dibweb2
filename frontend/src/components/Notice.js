@@ -34,9 +34,12 @@ function Notice() {
     }
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        setUser(user)
-        fetchData(user);
+        const localUser = localStorage.getItem('user')
+        if(!localUser.includes("object")) {
+            const user = JSON.parse(localUser);
+            setUser(user)
+            fetchData(user);
+        }
     }, [])
 
     const  fromDateChange = function (event){
