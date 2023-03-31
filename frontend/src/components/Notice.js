@@ -63,10 +63,10 @@ crDate.getHours() + ":" + crDate.getMinutes();
         if(localUser == null){
             return false;
         }
-        else if(localUser = 'undefined'){
+        else if(localUser == 'undefined'){
             return false;
         }
-        else if(string.indexOf("object") !== -1){
+        else if(localUser.indexOf("object") !== -1){
             return false;
         }
         else{
@@ -99,7 +99,7 @@ crDate.getHours() + ":" + crDate.getMinutes();
             <div className="row">
                 <div className="col-md-12">
                      {notice && notice.length > 0 && notice.map((noticeObj, index) => (
-                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                     <div class="card mb-3">
                         <div class="card-body">
                             <div key={index} className="alert alert-success" role="alert">
                                 <h4 className="alert-heading">{noticeObj.title}
