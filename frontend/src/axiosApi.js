@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 
-const baseURL = 'http://prayer.darulihsan-berlin.com/api/'
+const baseURL = 'https://prayer.darulihsan-berlin.com/api/'
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
