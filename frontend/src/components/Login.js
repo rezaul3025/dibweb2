@@ -5,7 +5,11 @@ import axiosInstance from "../axiosApi";
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {email: "", password: ""};
+        this.state = {
+            email: "",
+            password: "",
+            message:""
+        };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +35,9 @@ class Login extends Component {
             //console.log(response.data.user);
             window.location.href = '/';
         } catch (error) {
-            throw error;
+            this.setState({
+                message:'Somethings went wrong, maybe login information not valid'
+            });
         }
     }
 
@@ -49,8 +55,14 @@ class Login extends Component {
                         <input name="password" type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} />
                     </div>
                     <div className="d-grid gap-2">
+                        {this.state.message &&
+                            <div className="alert alert-success" role="alert">
+                                {this.state.message}
+                            </div>
+                        }
                         <input type="submit" className="btn btn-success" value="Login"/>
                     </div>
+
                 </form>
             </div>
         )

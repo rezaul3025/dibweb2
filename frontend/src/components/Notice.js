@@ -35,7 +35,7 @@ function Notice() {
 
     useEffect(() => {
         const localUser = localStorage.getItem('user')
-        if(localUser != null && !localUser.includes("object")) {
+        if(isValidLocalUser(localUser)) {
             const user = JSON.parse(localUser);
             setUser(user)
             fetchData(user);
@@ -57,6 +57,21 @@ function Notice() {
         let datestring = crDate.getDate()  + "-" + (crDate.getMonth()+1) + "-" + crDate.getFullYear() + " " +
 crDate.getHours() + ":" + crDate.getMinutes();
         return  'Posted '+days+' days ago on '+datestring;
+    }
+
+    const isValidLocalUser = function(localUser){
+        if(localUser == null){
+            return false;
+        }
+        else if(localUser = 'undefined'){
+            return false;
+        }
+        else if(string.indexOf("object") !== -1){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     return (
@@ -83,13 +98,18 @@ crDate.getHours() + ":" + crDate.getMinutes();
             <br/>
             <div className="row">
                 <div className="col-md-12">
-                     {notice && notice.length > 0 && notice.map((noticeObj, index) => (<div key={index} className="alert alert-success" role="alert">
-                        <h4 className="alert-heading">{noticeObj.title}
-                        </h4>
-                         &nbsp;<small className="blockquote-footer"> {messageAge(noticeObj.creation_date)}</small>
-                         <hr />
-                        {parse(noticeObj.description)}
-                    </div>))}
+                     {notice && notice.length > 0 && notice.map((noticeObj, index) => (
+                     <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                            <div key={index} className="alert alert-success" role="alert">
+                                <h4 className="alert-heading">{noticeObj.title}
+                                </h4>
+                                &nbsp;<small className="blockquote-footer"> {messageAge(noticeObj.creation_date)}</small>
+                            </div>
+                                {parse(noticeObj.description)}
+                        </div>
+                    </div>
+                    ))}
                 </div>
             </div>
         </Fragment>

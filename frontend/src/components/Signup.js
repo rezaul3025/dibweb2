@@ -44,7 +44,9 @@ class Signup extends Component{
            }
 
        } catch (error) {
-
+            this.setState({
+                message:'Somethings went wrong, maybe registration information not valid'
+            });
        }
    }
 
@@ -64,8 +66,12 @@ class Signup extends Component{
                         <div id="passHelp" className="form-text">Minimum password length 8 characters
                             </div>
                     </div>
-                    {this.state.message}
                     <div className="d-grid gap-2">
+                        {this.state.message &&
+                            <div className="alert alert-success" role="alert">
+                                {this.state.message}
+                            </div>
+                        }
                         <input type="submit" className="btn btn-success" value="Register"/>
                     </div>
                 </form>
