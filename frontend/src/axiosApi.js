@@ -21,7 +21,9 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config;
 
         if(error.code === 'ERR_BAD_REQUEST'){
-            window.location.href = '/login/';
+            if(error.config.method === 'get'){
+                window.location.href = '/login/';
+            }
             return Promise.reject(error);
         }
         // Prevent infinite loops early
