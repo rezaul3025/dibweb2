@@ -104,16 +104,16 @@ crDate.getHours() + ":" + crDate.getMinutes();
             <div className="row">
                 <div className="col-md-12">
                      {notice && notice.length > 0 && notice.map((noticeObj, index) => (
-                         <ul className="list-group" key={index}>
-                             <li className="list-group-item">
-                                  <div className="alert alert-success" role="alert">
+                     <div className="card mb-3" key={index}>
+                        <div className="card-body">
+                            <div  className="alert alert-success" role="alert">
                                 <h4 className="alert-heading">{noticeObj.title}
                                 </h4>
                                 &nbsp;<small className="blockquote-footer"> {messageAge(noticeObj.creation_date)}</small>
                             </div>
                                 {parse(noticeObj.description)}
-                             </li>
-                         </ul>
+                        </div>
+                    </div>
                     ))}
                 </div>
             </div>
