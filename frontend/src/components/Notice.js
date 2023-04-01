@@ -2,7 +2,6 @@ import React, {useEffect, useState, Fragment} from "react";
 import axiosInstance from "../axiosApi";
 import parse from 'html-react-parser'
 import {
-
   useParams
 } from "react-router-dom";
 
@@ -40,6 +39,9 @@ function Notice() {
             setUser(user)
             fetchData(user);
         }
+        else{
+            window.location.href = '/login/';
+        }
     }, [])
 
     const  fromDateChange = function (event){
@@ -63,15 +65,10 @@ crDate.getHours() + ":" + crDate.getMinutes();
         if(localUser == null){
             return false;
         }
-        else if(localUser == 'undefined'){
+        else if(localUser === 'undefined'){
             return false;
         }
-        else if(localUser.indexOf("object") !== -1){
-            return false;
-        }
-        else{
-            return true;
-        }
+        else return localUser.indexOf("object") === -1;
     }
 
     return (
