@@ -15,6 +15,7 @@ function Notice() {
     async function fetchData(user) {
         try {
             const response = await axiosInstance.get('/notice/?user_id=' + user.id)
+            checkResponse(response);
             setNotice(response.data)
         } catch (error) {
             console.error(error);
@@ -25,11 +26,18 @@ function Notice() {
         try {
             if(user && fromDate && toDate) {
                 const response = await axiosInstance.get('/notice/?user_id=' + user.id + '&start_date=' + fromDate + '&end_date=' + toDate)
+                checkResponse(response);
                 setNotice(response.data)
             }
         } catch (error) {
             console.error(error);
         }
+    }
+
+    const checkResponse = function (response){
+        if(response.status === 401) {
+               window.location.href = '/login/';
+           }
     }
 
     useEffect(() => {
@@ -96,16 +104,16 @@ crDate.getHours() + ":" + crDate.getMinutes();
             <div className="row">
                 <div className="col-md-12">
                      {notice && notice.length > 0 && notice.map((noticeObj, index) => (
-                     <div className="card mb-3" key={index} >
-                        <div className="card-body">
-                            <div className="alert alert-success" role="alert">
+                         <ul className="list-group" key={index}>
+                             <li className="list-group-item">
+                                  <div className="alert alert-success" role="alert">
                                 <h4 className="alert-heading">{noticeObj.title}
                                 </h4>
                                 &nbsp;<small className="blockquote-footer"> {messageAge(noticeObj.creation_date)}</small>
                             </div>
                                 {parse(noticeObj.description)}
-                        </div>
-                    </div>
+                             </li>
+                         </ul>
                     ))}
                 </div>
             </div>
