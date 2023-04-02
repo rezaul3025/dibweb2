@@ -1,6 +1,6 @@
-import os
-from notice_board.settings.common import  *
+from datetime import timedelta
 
+from notice_board.settings.common import *
 
 #DATABASES = {
 #    'default': {
@@ -28,3 +28,9 @@ SMTP_PORT = 465
 SMTP_USER = 'dibev.events@gmail.com'
 SMTP_PASS = os.environ.get('SMTP_PASS')
 SMTP_EMAIL_FROM = 'dibev.events@gmail.com'
+
+
+SIMPLE_JWT = {
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
+    'ROTATE_REFRESH_TOKENS': True,
+}
