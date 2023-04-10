@@ -2,7 +2,7 @@
 
 import axios from 'axios'
 
-const baseURL = 'http://prayer.darulihsan-berlin.com/api/'
+const baseURL = window.location.host.indexOf("localhost") === -1?'http://127.0.0.1:8000/api/':'http://prayer.darulihsan-berlin.com/api/'
 
 const axiosInstance = axios.create({
     baseURL: baseURL,
