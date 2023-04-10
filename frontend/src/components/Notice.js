@@ -99,12 +99,12 @@ crDate.getHours() + ":" + crDate.getMinutes();
                         <div className="col-auto">
                             <label htmlFor="fromDate" className="visually-hidden">From</label>
                             <Datetime inputProps={{ placeholder: 'From(YYYY-MM-DD)', 'aria-label':'From date', className:'form-control', name:'from_date', id:'fromDate',
-                            title:'Please enter from date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={fromDateChange} />
+                            title:'Please enter from date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={fromDateChange} closeOnSelect={true} />
                         </div>
                         <div className="col-auto">
                             <label htmlFor="toDate" className="visually-hidden">To</label>
                             <Datetime inputProps={{ placeholder: 'To(YYYY-MM-DD)', 'aria-label':'To date', className:'form-control', name:'to_date', id:'toDate',
-                            title:'Please enter to date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={toDateChange} />
+                            title:'Please enter to date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={toDateChange} closeOnSelect={true} />
                         </div>
                         <div className="col-auto">
                             <button className="btn btn-outline-success" type="button" onClick={fetchDataByDates}>Search</button>
