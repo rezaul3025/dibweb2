@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Notice, Invitation
+from backend.models import Notice, Invitation, User
 
 
 class NoticeAdmin(admin.ModelAdmin):
@@ -12,6 +12,15 @@ class NoticeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Notice, NoticeAdmin)
+
+
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'is_active', 'is_staff', 'created','updated',)
+    readonly_fields = list_display
+    fields = list_display
+
+
+admin.site.register(User, UserAdmin)
 
 
 class InvitationAdmin(admin.ModelAdmin):

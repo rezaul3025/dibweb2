@@ -1,15 +1,20 @@
 import React, {useEffect, useState, Fragment} from "react";
 import axiosInstance from "../axiosApi";
 import parse from 'html-react-parser'
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
+
+
 import {
   useParams
 } from "react-router-dom";
+
 
 function Notice() {
     let {email} =useParams();
     const [notice, setNotice] = useState([]);
     const [user, setUser] = useState();
-    const [fromDate, setFromDate] = useState();
+    const [fromDate, setFromDate] = useState(new Date());
     const [toDate, setToDate] = useState();
 
     async function fetchData(user) {
@@ -53,11 +58,12 @@ function Notice() {
     }, [])
 
     const  fromDateChange = function (event){
-        setFromDate(event.target.value)
+        //alert(event._d)
+        setFromDate(event.format('YYYY-MM-DD'))
     }
 
      const  toDateChange = function (event){
-        setToDate(event.target.value)
+        setToDate(event.format('YYYY-MM-DD'))
     }
 
     const messageAge = function (creation_date){
@@ -79,19 +85,31 @@ crDate.getHours() + ":" + crDate.getMinutes();
         else return localUser.indexOf("object") === -1;
     }
 
+    // Let's use the static moment reference in the Datetime component
+    let yesterday = Datetime.moment().subtract( 1, 'day' );
+    let valid = function( current ){
+        return current.isAfter( yesterday );
+    };
+
     return (
         <Fragment>
             <div  className="row">
                 <div className="col-md-12">
-                    <div className="input-group">
-                        <span className="input-group-text">From</span>
-                        <input type="text" aria-label="from date" placeholder="yyyy-mm-dd" className="form-control" name="from_date" aria-describedby="fromDateHelp"
-                        title="Please enter from date as dd-mm-yyyy" onChange={fromDateChange} />
-                        <span className="input-group-text">To</span>
-                        <input type="text" aria-label="To date" placeholder="yyyy-mm-dd" className="form-control" name="to_date" aria-describedby="toDateHelp"
-                        title="Please enter to date as dd-mm-yyyy"  onChange={toDateChange}/>
-                        <button className="btn btn-outline-success" type="button" onClick={fetchDataByDates}>Search</button>
-                    </div>
+                    <form className="row g-3">
+                        <div className="col-auto">
+                            <label htmlFor="fromDate" className="visually-hidden">From</label>
+                            <Datetime inputProps={{ placeholder: 'From(YYYY-MM-DD)', 'aria-label':'From date', className:'form-control', name:'from_date', id:'fromDate',
+                            title:'Please enter from date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={fromDateChange} />
+                        </div>
+                        <div className="col-auto">
+                            <label htmlFor="toDate" className="visually-hidden">To</label>
+                            <Datetime inputProps={{ placeholder: 'To(YYYY-MM-DD)', 'aria-label':'To date', className:'form-control', name:'to_date', id:'toDate',
+                            title:'Please enter to date as YYYY-MM-DD'}} dateFormat="YYYY-MM-DD" timeFormat={false} onChange={toDateChange} />
+                        </div>
+                        <div className="col-auto">
+                            <button className="btn btn-outline-success" type="button" onClick={fetchDataByDates}>Search</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <br/>
