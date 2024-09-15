@@ -1,0 +1,9 @@
+/* Show it is fixed to the top */
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+.bg-green {
+    background-color: #157347 !important;
+}

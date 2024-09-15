@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axiosInstance from "../axiosApi";
 
 
@@ -8,7 +8,7 @@ class Login extends Component {
         this.state = {
             email: "",
             password: "",
-            message:""
+            message: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,7 +36,7 @@ class Login extends Component {
             window.location.href = '/';
         } catch (error) {
             this.setState({
-                message:'Somethings went wrong, maybe login information not valid'
+                message: 'Somethings went wrong, maybe login information not valid'
             });
         }
     }
@@ -48,11 +48,12 @@ class Login extends Component {
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">Email:</label>
                         <input name="email" type="email" className="form-control" id="email" value={this.state.email}
-                               aria-describedby="emailHelp" onChange={this.handleChange} />
+                               aria-describedby="emailHelp" onChange={this.handleChange}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input name="password" type="password" className="form-control" id="password" value={this.state.password} onChange={this.handleChange} />
+                        <input name="password" type="password" className="form-control" id="password"
+                               value={this.state.password} onChange={this.handleChange}/>
                     </div>
                     <div className="d-grid gap-2">
                         {this.state.message &&
@@ -68,4 +69,5 @@ class Login extends Component {
         )
     }
 }
+
 export default Login;

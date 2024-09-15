@@ -15,7 +15,7 @@ admin.site.register(Notice, NoticeAdmin)
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'is_active', 'is_staff', 'created','updated',)
+    list_display = ('username', 'email', 'is_active', 'is_staff', 'created', 'updated',)
     readonly_fields = list_display
     fields = list_display
 

@@ -1,14 +1,22 @@
 import React, {Component, Fragment} from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import Notice from "./Notice";
 import {
-    BrowserRouter,
     Routes,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import axiosInstance from "../axiosApi";
+import Spinner from "./nav/Spinner";
+import TopBar from "./nav/TopBar";
+import Home from "./Home";
+import Notice from "./Notice";
+import Navbar from "./nav/Navbar";
+import AboutPage from "./pages/AboutPage";
+import Activities from "./Activities";
+import ActivitiesPage from "./pages/ActivitiesPage";
+import PrayerTimePage from "./pages/PrayerTimePage";
+import Footer from "./Footer";
+import DonationPage from "./pages/DonationPage";
 
 class App extends Component {
 
@@ -70,40 +78,14 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <nav className="navbar navbar-expand-md fixed-top navbar-light bg-light">
-                    <div className="container-fluid">
-                        <a className="navbar-brand" href="/"><img src={'/static/assets/images/dib-logo-new.png'} alt="dib logo" width={30} height={25} data-aos="zoom-in" data-aos-delay="100" />
-                            &nbsp; N O T I C E&nbsp;&nbsp;&nbsp;B O A R D
-                        </a>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarCollapse">
-                            <ul className="navbar-nav me-auto mb-2 mb-md-0">
-                                <li className="nav-item">
-                                    <Link className={"nav-link active"} aria-current="page"  to={"/"}></Link>
-                                </li>
-                            </ul>
-                            <ul className="navbar-nav ms-auto mb-2 mb-md-0">
-                                {!this.state.authenticated && <li className="nav-item">
-                                      <Link className={"nav-link"} to={"/login"}>Login</Link>
-                                </li>}
-                                {this.state.authenticated && <li className={"nav-item"}>
-                                     <Link className={"nav-link"} onClick={this.handleLogout}>Logout</Link>
-                                </li>}
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <main className="container">
-                    <Routes>
-                        <Route path='/login' element={<Login />}/>
-                        <Route path='/signup' element={<Signup />}/>
-                        <Route path='/' element={<Notice />}/>
-                    </Routes>
-                </main>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/about' element={<AboutPage/>} />
+                    <Route path='/activities' element={<ActivitiesPage/>} />
+                    <Route path='/prayer-time' element={<PrayerTimePage />} />
+                    <Route path='/donation' element={<DonationPage/>} />
+                </Routes>
+                <Footer/>
             </Fragment>
         );
     }
