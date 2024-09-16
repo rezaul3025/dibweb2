@@ -11,5 +11,5 @@ SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
 SMTP_HOST = 'smtp.gmail.com'
 SMTP_PORT = 465
 SMTP_USER = 'dibev.events@gmail.com'
-SMTP_PASS = 'jbckwzopenqhznhk'
+SMTP_PASS = '<>'
 SMTP_EMAIL_FROM = 'dibev.events@gmail.com'
