@@ -38,11 +38,11 @@ export default function Footer(){
                         <div className="col-md-6 col-lg-6 col-xl-2">
                             <div className="footer-item">
                                 <h4 className="text-white mb-4">Quick Links</h4>
-                                <Link to={"/about"}><i className="fas fa-angle-right me-2"></i> About Us</Link>
-                                <Link to={"/activities"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
-                                <Link to={"/donation"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
-                                <Link to={"/prayer-time"} ><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
-                                <Link to={"/contact"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
+                                <Link to={"/about/"}><i className="fas fa-angle-right me-2"></i> About Us</Link>
+                                <Link to={"/activities/"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
+                                <Link to={"/donation/"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
+                                <Link to={"/prayer-time/"} ><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
+                                <Link to={"/contact/"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
