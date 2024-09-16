@@ -10,7 +10,7 @@ export default function Footer(){
                         <div class="col-md-6 col-lg-6 col-xl-4">
                             <div class="footer-item">
                                 <a href="index.html" class="p-0">
-                                    <h4 class="text-white"><img width="50" height="50" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> Darul Ihsan Berlin e.V</h4>
+                                    <h4 class="text-white"> Darul Ihsan Berlin e.V</h4>
                                 </a>
                                 <p class="mb-4">
                                     KT Bank AG <br/>

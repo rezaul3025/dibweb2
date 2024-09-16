@@ -17,6 +17,7 @@ import ActivitiesPage from "./pages/ActivitiesPage";
 import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
 import DonationPage from "./pages/DonationPage";
+import ContactUs from "./contact/ContactUs";
 
 class App extends Component {
 
@@ -84,6 +85,7 @@ class App extends Component {
                     <Route path='/activities' element={<ActivitiesPage/>} />
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
                     <Route path='/donation' element={<DonationPage/>} />
+                    <Route path='/contact' element={<ContactUs/>} />
                 </Routes>
                 <Footer/>
             </Fragment>

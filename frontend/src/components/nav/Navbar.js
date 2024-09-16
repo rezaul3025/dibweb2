@@ -23,7 +23,7 @@ export default function Navbar(){
                             <a href={"/donation"} className="nav-item nav-link">Donation</a>
                             <a href={"/prayer-time"} className="nav-item nav-link">Prayer Time</a>
                             <Language/>
-                            <a href="contact.html" className="nav-item nav-link">{t('ContactUs.text')}</a>
+                            <a href={"/contact"} className="nav-item nav-link">{t('ContactUs.text')}</a>
                         </div>
                     </div>
                 </nav>

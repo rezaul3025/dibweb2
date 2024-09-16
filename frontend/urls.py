@@ -9,4 +9,5 @@ urlpatterns = [
     path('activities/', index),
     path('prayer-time/', index),
     path('donation/', index),
+    path('contact/', index),
 ]
