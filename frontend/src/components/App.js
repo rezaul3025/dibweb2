@@ -3,7 +3,6 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import axiosInstance from "../axiosApi";
 import Home from "./Home";
 import AboutPage from "./pages/AboutPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
@@ -53,7 +52,6 @@ class App extends Component {
         try {
             localStorage.removeItem('access_token');
             localStorage.removeItem('refresh_token');
-            axiosInstance.defaults.headers['Authorization'] = null;
             this.setState({
                     authenticated: false
                 }
