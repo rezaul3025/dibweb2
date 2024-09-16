@@ -1,18 +1,11 @@
 import React, {Component, Fragment} from "react";
-import Login from "./Login";
-import Signup from "./Signup";
 import {
     Routes,
     Route
 } from "react-router-dom";
 import axiosInstance from "../axiosApi";
-import Spinner from "./nav/Spinner";
-import TopBar from "./nav/TopBar";
 import Home from "./Home";
-import Notice from "./Notice";
-import Navbar from "./nav/Navbar";
 import AboutPage from "./pages/AboutPage";
-import Activities from "./Activities";
 import ActivitiesPage from "./pages/ActivitiesPage";
 import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
