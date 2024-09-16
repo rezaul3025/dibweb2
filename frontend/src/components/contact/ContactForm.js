@@ -4,7 +4,7 @@ export default function ContactForm(){
     return(
         <Fragment>
             <h4 className="text-primary">Send Your Message</h4>
-            <p className="mb-4">Do you have query, please leave us message </p>
+            <p className="mb-4">Do you have question(s)? please leave us message </p>
             <form>
                 <div className="row g-4">
                     <div className="col-lg-12 col-xl-6">

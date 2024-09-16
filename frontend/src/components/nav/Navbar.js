@@ -18,11 +18,11 @@ export default function Navbar(){
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <div className="navbar-nav ms-auto py-0">
                             <a href={'/'} className={"nav-item nav-link active"}>{t('Home.text')}</a>
-                            <a href={"/about"} className={"nav-item nav-link"}>{t('AboutUs.text')}</a>
-                            <a href={"/activities"} className="nav-item nav-link">{t('Activities.text')}</a>
-                            <a href={"/donation"} className="nav-item nav-link">Donation</a>
-                            <a href={"/prayer-time"} className="nav-item nav-link">Prayer Time</a>
-                            <a href={"/contact"} className="nav-item nav-link">{t('ContactUs.text')}</a>
+                            <Link to={"/about"} className={"nav-item nav-link"}>{t('AboutUs.text')}</Link>
+                            <Link to={"/activities"} className="nav-item nav-link">{t('Activities.text')}</Link>
+                            <Link to={"/donation"} className="nav-item nav-link">Donation</Link>
+                            <Link to={"/prayer-time"} className="nav-item nav-link">Prayer Time</Link>
+                            <Link to={"/contact"} className="nav-item nav-link">{t('ContactUs.text')}</Link>
                             <Language/>
                         </div>
                     </div>

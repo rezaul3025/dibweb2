@@ -1,4 +1,5 @@
 import React,{Fragment} from "react";
+import {Link} from "react-router-dom";
 
 export default function Footer(){
     return(
@@ -34,37 +35,37 @@ export default function Footer(){
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-xl-2">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">Quick Links</h4>
-                                <a href={"/about"}><i class="fas fa-angle-right me-2"></i> About Us</a>
-                                <a href={"/activities"}><i class="fas fa-angle-right me-2"></i> Activities </a>
-                                <a href={"/donation"}><i class="fas fa-angle-right me-2"></i> Donation</a>
-                                <a href={"/prayer-time"} ><i class="fas fa-angle-right me-2"></i> Prayer Time</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                        <div className="col-md-6 col-lg-6 col-xl-2">
+                            <div className="footer-item">
+                                <h4 className="text-white mb-4">Quick Links</h4>
+                                <Link to={"/about"}><i className="fas fa-angle-right me-2"></i> About Us</Link>
+                                <Link to={"/activities"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
+                                <Link to={"/donation"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
+                                <Link to={"/prayer-time"} ><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
+                                <Link to={"/contact"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-xl-3">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">Support</h4>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Terms & Conditions</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Disclaimer</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Support</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> FAQ</a>
-                                <a href="#"><i class="fas fa-angle-right me-2"></i> Help</a>
+                        <div className="col-md-6 col-lg-6 col-xl-3">
+                            <div className="footer-item">
+                                <h4 className="text-white mb-4">Support</h4>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> Privacy Policy</a>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> Terms & Conditions</a>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> Disclaimer</a>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> Support</a>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> FAQ</a>
+                                <a href="#"><i className="fas fa-angle-right me-2"></i> Help</a>
                             </div>
                         </div>
-                        <div class="col-md-6 col-lg-6 col-xl-3">
-                            <div class="footer-item">
-                                <h4 class="text-white mb-4">Contact Info</h4>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-map-marker-alt text-primary me-3"></i>
-                                    <p class="text-white mb-0">Brunnenstraße 122, 13355 Berlin</p>
+                        <div className="col-md-6 col-lg-6 col-xl-3">
+                            <div className="footer-item">
+                                <h4 className="text-white mb-4">Contact Info</h4>
+                                <div className="d-flex align-items-center">
+                                    <i className="fas fa-map-marker-alt text-primary me-3"></i>
+                                    <p className="text-white mb-0">Brunnenstraße 122, 13355 Berlin</p>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-envelope text-primary me-3"></i>
-                                    <p class="text-white mb-0">info@daurlihsan-berlin.de</p>
+                                <div className="d-flex align-items-center">
+                                    <i className="fas fa-envelope text-primary me-3"></i>
+                                    <p className="text-white mb-0">info@daurlihsan-berlin.de</p>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-phone-alt text-primary me-3"></i>
