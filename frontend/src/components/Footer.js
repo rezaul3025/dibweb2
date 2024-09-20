@@ -5,31 +5,31 @@ export default function Footer(){
     return(
         <Fragment>
             {/*<!-- Footer Start -->*/}
-            <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
-                <div class="container py-5 border-start-0 border-end-0" style={{border: '1px solid', borderColor: 'rgb(255, 255, 255, 0.08)'}}>
-                    <div class="row g-5">
-                        <div class="col-md-6 col-lg-6 col-xl-4">
-                            <div class="footer-item">
-                                <a href="index.html" class="p-0">
-                                    <h4 class="text-white"> Darul Ihsan Berlin e.V</h4>
+            <div className="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+                <div className="container py-5 border-start-0 border-end-0" style={{border: '1px solid', borderColor: 'rgb(255, 255, 255, 0.08)'}}>
+                    <div className="row g-5">
+                        <div className="col-md-6 col-lg-6 col-xl-4">
+                            <div className="footer-item">
+                                <a href="index.html" className="p-0">
+                                    <h4 className="text-white"> Darul Ihsan Berlin e.V</h4>
                                 </a>
-                                <p class="mb-4">
+                                <p className="mb-4">
                                     KT Bank AG <br/>
                                     IBAN: DE5250xxxx00015534xxxx
                                 </p>
-                                <div class="d-flex">
-                                    <a href="#" class="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
-                                        <i class="fas fa-apple-alt text-white"></i>
-                                        <div class="ms-3">
-                                            <small class="text-white">Download on the</small>
-                                            <h6 class="text-white">App Store</h6>
+                                <div className="d-flex">
+                                    <a href="#" className="bg-primary d-flex rounded align-items-center py-2 px-3 me-2">
+                                        <i className="fas fa-apple-alt text-white"></i>
+                                        <div className="ms-3">
+                                            <small className="text-white">Download on the</small>
+                                            <h6 className="text-white">App Store</h6>
                                         </div>
                                     </a>
-                                    <a href="#" class="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
-                                        <i class="fas fa-play text-primary"></i>
-                                        <div class="ms-3">
-                                            <small class="text-white">Get it on</small>
-                                            <h6 class="text-white">Google Play</h6>
+                                    <a href="#" className="bg-dark d-flex rounded align-items-center py-2 px-3 ms-2">
+                                        <i className="fas fa-play text-primary"></i>
+                                        <div className="ms-3">
+                                            <small className="text-white">Get it on</small>
+                                            <h6 className="text-white">Google Play</h6>
                                         </div>
                                     </a>
                                 </div>
@@ -67,19 +67,19 @@ export default function Footer(){
                                     <i className="fas fa-envelope text-primary me-3"></i>
                                     <p className="text-white mb-0">info@daurlihsan-berlin.de</p>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <i class="fa fa-phone-alt text-primary me-3"></i>
-                                    <p class="text-white mb-0">(030) 3456 7890</p>
+                                <div className="d-flex align-items-center">
+                                    <i className="fa fa-phone-alt text-primary me-3"></i>
+                                    <p className="text-white mb-0">(030) 3456 7890</p>
                                 </div>
-                                <div class="d-flex align-items-center mb-4">
-                                    <i class="fab fa-firefox-browser text-primary me-3"></i>
-                                    <p class="text-white mb-0">www.darulihsan-berlin.com</p>
+                                <div className="d-flex align-items-center mb-4">
+                                    <i className="fab fa-firefox-browser text-primary me-3"></i>
+                                    <p className="text-white mb-0">www.darulihsan-berlin.com</p>
                                 </div>
-                                <div class="d-flex">
-                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f text-white"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-twitter text-white"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i class="fab fa-instagram text-white"></i></a>
-                                    <a class="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i class="fab fa-linkedin-in text-white"></i></a>
+                                <div className="d-flex">
+                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i className="fab fa-facebook-f text-white"></i></a>
+                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i className="fab fa-twitter text-white"></i></a>
+                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i className="fab fa-instagram text-white"></i></a>
+                                    <a className="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i className="fab fa-linkedin-in text-white"></i></a>
                                 </div>
                             </div>
                         </div>

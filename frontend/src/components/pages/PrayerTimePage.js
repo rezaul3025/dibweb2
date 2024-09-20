@@ -22,18 +22,23 @@ export default function PrayerTimePage(){
             <div className="container-fluid about py-5">
                 <div className="container py-5">
                     <div className="row g-5 align-items-center">
-                        <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div className="mx-auto wow fadeInLeft" data-wow-delay="0.2s">
                             <h4 className="text-primary">Prayer Time</h4>
-                            <div className="row g-4 py-5">
-                                <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                                    <iframe className="widget"
-                                            src="https://mawaqit.net/en/w/darul-ihsan-berlin?showOnly5PrayerTimes=0"
-                                            style={{width: '1366px', height: '768px'}} frameBorder="0"
-                                            scrolling="no"></iframe>
+                            <div className="row g-4 py-2">
+                                <div className="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
+                                    <div className="rounded h-100">
+                                        <iframe className="widget w-100"
+                                                style={{height: '700px'}}
+                                                src="https://mawaqit.net/en/w/darul-ihsan-berlin?showOnly5PrayerTimes=0"
+                                                allowFullScreen=""
+                                                loading="lazy"
+                                                referrerPolicy="no-referrer-when-downgrade"
+                                        ></iframe>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </Fragment>

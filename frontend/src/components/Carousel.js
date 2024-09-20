@@ -10,21 +10,6 @@ export default function Carousel(){
             {/* Carousel Start */}
             <div className="header-carousel owl-carousel">
                 <div className="header-carousel-item">
-                    <img src={'/static/assets/img/mecca.jpg'} className="img-fluid w-100" alt="Masjid al-Haram"/>
-                    <div className="carousel-caption">
-                        <div className="container">
-                            <div className="row gy-0 gx-5">
-                                <div className="col-lg-0 col-xl-5"></div>
-                                <div className="col-xl-7 animated fadeInLeft">
-                                    <div className="text-sm-center text-md-end">
-                                        <PrayerTime/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="header-carousel-item">
                     <img src={'/static/assets/img/nabawi-mosque.jpg'} className="img-fluid w-100"
                          alt="Al Masjid an Nabawi"/>
                     <div className="carousel-caption">
@@ -72,6 +57,21 @@ export default function Carousel(){
                                                 donate</a>
                                         </div>
                                         <SocialMediaLink/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="header-carousel-item">
+                    <img src={'/static/assets/img/mecca.jpg'} className="img-fluid w-100" alt="Masjid al-Haram"/>
+                    <div className="carousel-caption">
+                        <div className="container">
+                            <div className="row gy-0 gx-5">
+                                <div className="col-lg-0 col-xl-5"></div>
+                                <div className="col-xl-7 animated fadeInLeft">
+                                    <div className="text-sm-center text-md-end">
+                                        <PrayerTime/>
                                     </div>
                                 </div>
                             </div>
