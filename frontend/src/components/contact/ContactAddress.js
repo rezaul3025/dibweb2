@@ -12,7 +12,7 @@ export default function ContactAddress(){
                         </div>
                         <div>
                             <h4>Address</h4>
-                            <p className="mb-0">Brunnenstraße 122, 13355 Berlin</p>
+                            <p className="mb-0" style={{cursor:'pointer'}} title="Click to copy address">Brunnenstraße 122, 13355 Berlin </p>
                         </div>
                     </div>
                 </div>
