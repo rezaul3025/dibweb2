@@ -1,11 +1,13 @@
-import React from 'react'
-import {render} from 'react-dom'
-import {BrowserRouter} from 'react-router-dom'
+import './i18n'; 
+import React from 'react';
+import ReactDOM from 'react-dom/client'; // for React 18
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
-import  './i18n';
 
-render((
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>
-), document.getElementById('app'));
+const root = ReactDOM.createRoot(document.getElementById('app'));
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+

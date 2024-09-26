@@ -5,6 +5,7 @@ export default function Language(){
     const languages = [
         { code: 'en', nativeName: 'English' },
         { code: 'de', nativeName: 'Deutsch' },
+        { code: 'bn', nativeName: 'বাংলা' }
     ];
 
     return(

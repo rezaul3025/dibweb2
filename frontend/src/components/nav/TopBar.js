@@ -3,6 +3,7 @@ import React, {Fragment} from "react";
 export default function TopBar(){
     return(
             <Fragment>
+                     {/* not used */}
                 {/* Topbar Start */}
                 <div className="container-fluid topbar bg-light px-5 d-none d-lg-block">
                     <div className="row gx-0 align-items-center">

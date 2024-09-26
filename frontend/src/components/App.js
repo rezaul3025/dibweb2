@@ -10,6 +10,9 @@ import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
 import DonationPage from "./pages/DonationPage";
 import ContactUs from "./contact/ContactUs";
+import GoalsAndObjective from "./pages/GoalsObjectivePage";
+import IdealsAndValues from "./pages/IdealsValuesPage";
+import OurHistory from "./pages/OurHistoryPage";
 
 class App extends Component {
 
@@ -66,8 +69,9 @@ class App extends Component {
         this.isAuthenticated()
     }
 
-
     render() {
+    console.log("App is rendering");
+
         return (
             <Fragment>
                 <Routes>
@@ -77,6 +81,9 @@ class App extends Component {
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
                     <Route path='/donation' element={<DonationPage/>} />
                     <Route path='/contact' element={<ContactUs/>} />
+                    <Route path='/goalsobjective' element={<GoalsAndObjective/>} /> 
+                    <Route path='/idealsvalue' element={<IdealsAndValues/>} /> 
+                    <Route path='/history' element={<OurHistory/>} />
                 </Routes>
                 <Footer/>
             </Fragment>

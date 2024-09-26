@@ -1,16 +1,17 @@
+
 import React, {Fragment} from "react";
-import About from "../About";
+import GoalsAndObjective from "../GoalsAndObjective";
 import Navbar from "../nav/Navbar";
 
 
-export default function AboutPage(){
+export default function GoalsObjectivePage(){
     return(
         <Fragment>
             <div className="container-fluid position-relative p-0">
-                <Navbar />
+                <Navbar/>
                 {/*<!-- Header Start -->*/}
                 <div className="container-fluid bg-breadcrumb">
-                    <div className="container text-center py-5" style={{ maxWidth: '900px' }}>
+                    <div className="container text-center py-5" style={{maxWidth: '900px'}}>
                         <h4 className="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
                         <ol className="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
                             <li className="breadcrumb-item"><a href="/">Home</a></li>
@@ -20,7 +21,14 @@ export default function AboutPage(){
                 </div>
                 {/*<!-- Header End -->*/}
             </div>
-            <About /> 
+            <div>
+            <GoalsAndObjective /> {/* Use the imported component */}
+        </div>
         </Fragment>
+
+
+
+
 );
 };
+
