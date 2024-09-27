@@ -23,7 +23,8 @@ export default function Navbar(){
                         <div className="navbar-nav ms-auto py-0">
                             <a href={'/'} className={"nav-item nav-link active"}>{t('Home.text')}</a>
                             {/* <Link to={"/about"} className={"nav-item nav-link"}>{t('AboutUs.text')}</Link> */}
-                            <AboutPage/>
+                            {/* <AboutPage/> */}
+                            <About/>
                             <Link to={"/activities/"} className="nav-item nav-link">{t('Activities.text')}</Link>
                             <Link to={"/donation/"} className="nav-item nav-link">{t('Donation.text')}</Link>
                             <Link to={"/prayer-time/"} className="nav-item nav-link">{t('PrayerTime.text')}</Link>

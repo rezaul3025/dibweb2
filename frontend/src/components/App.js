@@ -10,9 +10,9 @@ import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
 import DonationPage from "./pages/DonationPage";
 import ContactUs from "./contact/ContactUs";
-import GoalsAndObjective from "./pages/GoalsObjectivePage";
-import IdealsAndValues from "./pages/IdealsValuesPage";
-import OurHistory from "./pages/OurHistoryPage";
+import GoalsAndObjectivePage from "./pages/GoalsObjectivePage";
+import IdealsAndValuesPage from "./pages/IdealsValuesPage";
+import OurHistoryPage from "./pages/OurHistoryPage";
 
 class App extends Component {
 
@@ -81,9 +81,9 @@ class App extends Component {
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
                     <Route path='/donation' element={<DonationPage/>} />
                     <Route path='/contact' element={<ContactUs/>} />
-                    <Route path='/goalsobjective' element={<GoalsAndObjective/>} /> 
-                    <Route path='/idealsvalue' element={<IdealsAndValues/>} /> 
-                    <Route path='/history' element={<OurHistory/>} />
+                    <Route path='/goalsobjective' element={<GoalsAndObjectivePage/>} /> 
+                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>} /> 
+                    <Route path='/history' element={<OurHistoryPage/>} />
                 </Routes>
                 <Footer/>
             </Fragment>

@@ -8,4 +8,10 @@ urlpatterns = [
     path('prayer-time/', index),
     path('donation/', index),
     path('contact/', index),
+    path('about/', index),  
+    path('idealsvalue/', index),  
+    path('goalsobjective/', index),  
+    path('history/', index),  
+   
+
 ]
