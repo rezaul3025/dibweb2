@@ -1,156 +1,78 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
+import { useTranslation } from 'react-i18next';
 
-export default function Activities(){
-    return(
+export default function Activities() {
+    const { t } = useTranslation();
+    
+    const activities = [
+        { title: 'ActivityOneTitle.text', content: 'ActivityOne.text' },
+        { title: 'ActivityTwoTitle.text', content: 'ActivityTwo.text' },
+        { title: 'ActivityThreeTitle.text', content: 'ActivityThree.text' },
+        { title: 'ActivityFourTitle.text', content: 'ActivityFour.text' },
+        { title: 'ActivityFiveTitle.text', content: 'ActivityFive.text' },
+        { title: 'ActivitySixTitle.text', content: 'ActivitySix.text' },
+        { title: 'ActivitySevenTitle.text', content: 'ActivitySeven.text' },
+        { title: 'ActivityEightTitle.text', content: 'ActivityEight.text' },
+        { title: 'ActivityNineTitle.text', content: 'ActivityNine.text' },
+        { title: 'ActivityTenTitle.text', content: 'ActivityTen.text' },
+        { title: 'ActivityElevenTitle.text', content: 'ActivityEleven.text' },
+    ];
+
+    return (
         <Fragment>
-            {/* Activities Start */}
-            <div className="container-fluid service pb-5 py-5">
-                <div className="container pb-5">
-                    <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style={{maxWidth: '800px'}}>
-                        <h4 className="text-primary">Our Activities</h4>
-                        <h1 className="display-5 mb-4">দারুল ইহসানের বর্তমান কার্যক্রম</h1>
-                        <p className="mb-0">Darul Ihsan Berlin e.V.</p>
+            <div className="container-fluid faq-section pb-5">
+                <div className="container pb-5 overflow-hidden">
+                    <div
+                        className="text-center mx-auto pb-5 wow fadeInUp"
+                        data-wow-delay="0.2s"
+                        style={{ maxWidth: "800px" }}
+                    >
+                        <h4 className="text-primary"> Our Activities </h4>
+                        <h1 className="display-5 mb-4"></h1>
+                        <p className="mb-0">
+                            {t('OurActivities.text')}
+                        </p>
+                        <p className="mb-0">
+                       
+
+                        </p>
+                    
                     </div>
-                    <div className="row g-4">
-                        <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
-                            <div className="service-item">
-                                <div className="service-img">
-                                    <img width={600} height={400} src={'/static/assets/img/study_brother.png'} className="img-fluid rounded-top w-100" alt="DIB logo"/>
-                                </div>
-                                <div className="rounded-bottom p-4">
-                                    <a href="#" className="h4 d-inline-block mb-4">For Brothers</a>
-                                    <p className="mb-4">
-                                        Every Friday 8:00 pm – 10:30 pm
-                                    </p>
-                                    <p className="mb-4 fw-bold">
-                                        ভাইদের জন্য শিক্ষা কার্যক্রম:
-                                    </p>
-                                    <div className="d-flex flex-column">
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>কোরআন তাজউয়ীদ শিক্ষা
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i>  </span>কোরআন তাফসীর
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সূরা মুখস্ত
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সীরাহ – হাদীছ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span> আত্ম উন্নয়ণ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সামাজিক কর্মকান্ড
-                                        </li>
+                    <div className="row g-5 align-items-center">
+                        {activities.map((activity, index) => (
+                            <div className="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s" key={index}>
+                                <div className="accordion accordion-flush bg-light rounded p-5" id={`accordionFlushSection${index}`}>
+                                    <div className="accordion-item rounded-top">
+                                        <h1 className="accordion-header" id={`flush-heading${index}`}>
+                                            <button
+                                                className="accordion-button collapsed rounded-top"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target={`#flush-collapse${index}`}
+                                                aria-expanded="false"
+                                                aria-controls={`flush-collapse${index}`}
+                                            >
+                                                {t(activity.title)}
+                                            </button>
+                                        </h1>
+                                        <div
+                                            id={`flush-collapse${index}`}
+                                            className="accordion-collapse collapse"
+                                            aria-labelledby={`flush-heading${index}`}
+                                            data-bs-parent={`#accordionFlushSection${index}`}
+                                        >
+                                            <div className="accordion-body">
+                                                {t(activity.content)}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <br/>
-                                    <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                            <div className="service-item">
-                                <div className="service-img">
-                                    <img src={'/static/assets/img/study_sister.png'}
-                                         className="img-fluid rounded-top w-100" alt="Image"/>
-                                </div>
-                                <div className="rounded-bottom p-4">
-                                    <a href="#" className="h4 d-inline-block mb-4">For Sisters</a>
-                                    <p className="mb-4">Every Sunday 9:00 am – 10:30 am</p>
-                                    <p className="mb-4 fw-bold">
-                                        বোনদের জন্য শিক্ষা কার্যক্রম:
-                                    </p>
-                                    <div className="d-flex flex-column">
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>কোরআন তাজউয়ীদ শিক্ষা
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i>  </span>কোরআন তাফসীর
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সূরা মুখস্ত
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সীরাহ – হাদীছ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span> আত্ম উন্নয়ণ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সামাজিক কর্মকান্ড
-                                        </li>
-                                    </div>
-                                    <br/>
-                                    <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                            <div className="service-item">
-                                <div className="service-img">
-                                    <img src={'/static/assets/img/study_children.png'} className="img-fluid rounded-top w-100"
-                                         alt="Image"/>
-                                </div>
-                                <div className="rounded-bottom p-4">
-                                    <a href="#" className="h4 d-inline-block mb-4">For Children</a>
-                                    <p className="mb-4">Weekend (Teacher: Mustafijur Rahman) </p>
-                                    <p className="mb-4 fw-bold">
-                                        ছোটদের জন্য শিক্ষা কার্যক্রম:
-                                    </p>
-                                    <div className="d-flex flex-column">
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>কোরআন
-                                            তাজউয়ীদ শিক্ষা
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i>  </span>কোরআন তাফসীর
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সূরা মুখস্ত
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>সীরাহ – হাদীছ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span> আত্ম উন্নয়ণ
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>রচনা লেখা
-                                        </li>
-                                        <li className="d-flex align-items-center py-1">
-                                            <span className="me-3"><i
-                                                className="fas text-primary fa-solid fa-check"></i> </span>কোরআন প্রতিযোগিতা
-                                        </li>
-                                    </div>
-                                    <br/>
-                                    <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
+                    
                 </div>
             </div>
-            {/* Activities End */}
         </Fragment>
     );
-};
+}

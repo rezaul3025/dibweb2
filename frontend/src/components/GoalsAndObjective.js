@@ -1,37 +1,78 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import { useTranslation } from 'react-i18next';
 
-export default function GoalsAndObjective(){
+export default function GoalsAndObjective() {
     const { t } = useTranslation();
-    return(
+    console.log("Rendering component")
+    return (
+       
+
         <Fragment>
-
-            {/* <div className="container-fluid position-relative p-0"> */}
-                {/* <Navbar/> */}
-                {/*<!-- Header Start -->*/}
-                {/* <div className="container-fluid bg-breadcrumb">
-                    <div className="container text-center py-5" style={{maxWidth: '900px'}}>
-                        <h4 className="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
-                        <ol className="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                            <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item active text-primary">About</li>
-                        </ol>
+            <div className="container-fluid offer-section pb-5">
+                <div className="container pb-5">
+                    <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style={{ maxWidth: '800px' }}>
+                        <h4 className="text-primary">{t('GoalsAndObjectives.text')}</h4>
+                        <p className="mb-0">{t('GoalsAndObjectivesDecOne.text')}</p>
                     </div>
-                </div> */}
-                {/*<!-- Header End -->*/}
-            {/* </div> */}
-            
-   
-                <h1>
-                {t('GoalsAndObjectives.text')}
-                </h1>
-                <p>
-                {t('GoalsAndObjectivesDec.text')}
-                </p>
+                    <div className="row g-5 align-items-center">
+                        <div className="col-xl-5 wow fadeInLeft" data-wow-delay="0.2s">
+                            <div className="nav nav-pills bg-light rounded p-5">
+                                <a className="accordion-link p-4 active mb-4" data-bs-toggle="pill" href="#collapseOne">
+                                    <h5 className="mb-0">{t('GoalsAndObjectivesDecTwoTitle.text')}</h5>
+                                </a>
+                                <a className="accordion-link p-4 mb-4" data-bs-toggle="pill" href="#collapseTwo">
+                                    <h5 className="mb-0">{t('GoalsAndObjectivesDecThreeTitle.text')}</h5>
+                                </a>
+                                <a className="accordion-link p-4 mb-4" data-bs-toggle="pill" href="#collapseThree">
+                                    <h5 className="mb-0">{t('GoalsAndObjectivesDecFourTitle.text')}</h5>
+                                </a>
+                                <a className="accordion-link p-4 mb-4" data-bs-toggle="pill" href="#collapseThree">
+                                    <h5 className="mb-0">{t('GoalsAndObjectivesDecFiveTitle.text')}</h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-7 wow fadeInRight" data-wow-delay="0.4s">
+                        <div class="tab-content">
+                            <div id="collapseOne" class="tab-pane fade show p-0 active">
+                                <div class="row g-4">
+                                    <div class="col-md-10">
+                                        <p class="mb-4"> {t('GoalsAndObjectivesDecTwo.text')}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseTwo" class="tab-pane fade show p-0">
+                                <div class="row g-4">
+                                    <div class="col-md-10">
+                                        <p class="mb-4"> {t('GoalsAndObjectivesDecThree.text')}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseThree" class="tab-pane fade show p-0">
+                                <div class="row g-4">
+                                    <div class="col-md-10">
+                                        <p class="mb-4">{t('GoalsAndObjectivesDecFour.text')}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapseFour" class="tab-pane fade show p-0">
+                                <div class="row g-4">
+                                    <div class="col-md-10">
+                                        <p class="mb-4">{t('GoalsAndObjectivesDecFive.text')}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-        
-        
+                    </div>
+                </div>
+            </div>
         </Fragment>
-);
-};
+    );
+}
