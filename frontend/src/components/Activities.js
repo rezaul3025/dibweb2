@@ -20,7 +20,7 @@ export default function Activities() {
 
     return (
         <Fragment>
-            <div className="container-fluid faq-section pb-5">
+            <div className="container-fluid faq-section pb-5  py-5">
                 <div className="container pb-5 overflow-hidden">
                     <div
                         className="text-center mx-auto pb-5 wow fadeInUp"
@@ -32,29 +32,24 @@ export default function Activities() {
                         <p className="mb-0">
                             {t('OurActivities.text')}
                         </p>
-                        <p className="mb-0">
-                       
-
-                        </p>
-                    
                     </div>
                     <div className="row g-5 align-items-center">
-                        {activities.map((activity, index) => (
+                    {activities.map((activity, index) => (
                             <div className="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s" key={index}>
-                                <div className="accordion accordion-flush bg-light rounded p-5" id={`accordionFlushSection${index}`}>
+                                <div className="accordion p-5" id={`accordionFlushSection${index}`}>
                                     <div className="accordion-item rounded-top">
-                                        <h1 className="accordion-header" id={`flush-heading${index}`}>
+                                        <h2 className="accordion-header" id={`flush-heading${index}`}>
                                             <button
-                                                className="accordion-button collapsed rounded-top"
+                                                className="accordion-button collapsed rounded-top text-primary"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target={`#flush-collapse${index}`}
                                                 aria-expanded="false"
                                                 aria-controls={`flush-collapse${index}`}
                                             >
-                                                {t(activity.title)}
+                                                 {t(activity.title)}
                                             </button>
-                                        </h1>
+                                        </h2>
                                         <div
                                             id={`flush-collapse${index}`}
                                             className="accordion-collapse collapse"

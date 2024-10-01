@@ -8,7 +8,7 @@ export default function GoalsAndObjective() {
        
 
         <Fragment>
-            <div className="container-fluid offer-section pb-5">
+            <div className="container-fluid offer-section pb-5 py-5">
                 <div className="container pb-5">
                     <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style={{ maxWidth: '800px' }}>
                         <h4 className="text-primary">{t('GoalsAndObjectives.text')}</h4>

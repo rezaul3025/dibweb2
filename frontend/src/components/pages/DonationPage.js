@@ -1,6 +1,6 @@
 import React,{Fragment} from "react";
 import Navbar from "../nav/Navbar";
-import About from "../About";
+import About from "../nav/About";
 import Donation from "../Donation";
 
 export default function DonationPage(){

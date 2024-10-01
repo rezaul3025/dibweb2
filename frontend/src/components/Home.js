@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import Navbar from "./nav/Navbar";
 import Carousel from "./Carousel";
-import About from "./About";
+import About from "./nav/About";
 import Activities from "./Activities";
 import Donation from "./Donation";
 
@@ -10,11 +10,10 @@ export default function Home(){
         <Fragment>
             <div className="container-fluid position-relative p-0">
                 <Navbar />
-                <Carousel/>
+                <Carousel />
             </div>
-            <About />
-            <Activities/>
-            <Donation/>
+            <Activities />
+            <Donation />
         </Fragment>
     );
 }

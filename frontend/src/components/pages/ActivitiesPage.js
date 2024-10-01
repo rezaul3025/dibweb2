@@ -1,6 +1,6 @@
 import React,{Fragment} from "react";
 import Navbar from "../nav/Navbar";
-import About from "../About";
+import About from "../nav/About";
 import Activities from "../Activities";
 
 export default function ActivitiesPage(){

@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import About from "../About";
+import About from "../nav/About";
 import Navbar from "../nav/Navbar";
 
 
