@@ -13,6 +13,8 @@ import ContactUs from "./contact/ContactUs";
 import IdealsAndValuesPage from "./pages/IdealsValuesPage";
 import OurHistoryPage from "./pages/OurHistoryPage";
 import GoalsObjectivePage from "./pages/GoalsObjectivePage";
+import EventPage from "./event/EventPage";
+import RegistrationPage from "./registration/RegistrationPage";
 
 class App extends Component {
 
@@ -82,6 +84,8 @@ class App extends Component {
                     <Route path='/goalsobjective' element={<GoalsObjectivePage/>} />
                     <Route path='/idealsvalue' element={<IdealsAndValuesPage/>} />
                     <Route path='/history' element={<OurHistoryPage/>} />
+                     <Route path='/event' element={<EventPage/>} />
+                     <Route path='/registration' element={<RegistrationPage/>} />
                 </Routes>
                 <Footer/>
             </BrowserRouter>

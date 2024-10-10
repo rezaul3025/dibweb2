@@ -19,7 +19,7 @@ export default function ContactUs(){
                                     <ContactAddress />
                                 </div>
                                 <div className="bg-light p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
-                                    <ContactForm />
+                                    <ContactForm title="Send Your Message" subtitle="Do you have question(s)? please leave us message"/>
                                 </div>
                             </div>
                         </div>

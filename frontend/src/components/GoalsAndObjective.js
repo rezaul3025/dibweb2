@@ -6,8 +6,6 @@ export default function GoalsAndObjective() {
     const { t } = useTranslation();
     console.log("Rendering component")
     return (
-       
-
         <Fragment>
             <div className="container-fluid offer-section pb-5 py-5">
                 <div className="container pb-5">

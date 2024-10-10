@@ -11,4 +11,6 @@ urlpatterns = [
     path('idealsvalue/', index),
     path('goalsobjective/', index),
     path('history/', index),
+    path('registration/', index),
+    path('event/', index),
 ]

@@ -1,10 +1,10 @@
 import React,{Fragment} from "react";
 
-export default function ContactForm(){
+export default function ContactForm(props){
     return(
         <Fragment>
-            <h4 className="text-primary">Send Your Message</h4>
-            <p className="mb-4">Do you have question(s)? please leave us message </p>
+            <h4 className="text-primary">{props.title}</h4>
+            <p className="mb-4">{props.subtitle}</p>
             <form>
                 <div className="row g-4">
                     <div className="col-lg-12 col-xl-6">
