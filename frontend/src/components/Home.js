@@ -12,7 +12,6 @@ export default function Home(){
                 <Navbar />
                 <Carousel/>
             </div>
-            <About />
             <Activities/>
             <Donation/>
         </Fragment>

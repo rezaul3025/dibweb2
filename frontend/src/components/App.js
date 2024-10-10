@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from "react";
 import {
     Routes,
-    Route
+    Route, BrowserRouter
 } from "react-router-dom";
 import Home from "./Home";
 import AboutPage from "./pages/AboutPage";
@@ -10,6 +10,9 @@ import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
 import DonationPage from "./pages/DonationPage";
 import ContactUs from "./contact/ContactUs";
+import IdealsAndValuesPage from "./pages/IdealsValuesPage";
+import OurHistoryPage from "./pages/OurHistoryPage";
+import GoalsObjectivePage from "./pages/GoalsObjectivePage";
 
 class App extends Component {
 
@@ -69,17 +72,20 @@ class App extends Component {
 
     render() {
         return (
-            <Fragment>
+            <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/about' element={<AboutPage/>} />
                     <Route path='/activities' element={<ActivitiesPage/>} />
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
                     <Route path='/donation' element={<DonationPage/>} />
                     <Route path='/contact' element={<ContactUs/>} />
+                    <Route path='/goalsobjective' element={<GoalsObjectivePage/>} />
+                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>} />
+                    <Route path='/history' element={<OurHistoryPage/>} />
                 </Routes>
                 <Footer/>
-            </Fragment>
+            </BrowserRouter>
+
         );
     }
 }

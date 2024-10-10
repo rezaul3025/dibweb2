@@ -5,7 +5,5 @@ import App from './components/App';
 import  './i18n';
 
 render((
-    <BrowserRouter>
-        <App/>
-    </BrowserRouter>
+    <App/>
 ), document.getElementById('app'));
