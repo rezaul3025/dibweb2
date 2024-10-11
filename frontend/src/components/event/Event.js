@@ -25,7 +25,7 @@ export default function Event(){
                                     </p>
                                 </div>
                                 <div className="align-bottom p-4">
-                                    <Link to="/registration/" className="btn btn-primary align-bottom">Register >></Link>
+                                    <Link to={"/registration/"} className="btn btn-primary align-bottom">Register >></Link>
                                 </div>
                             </div>
                         </div>
