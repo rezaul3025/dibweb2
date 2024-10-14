@@ -19,9 +19,10 @@ export default function Navbar(){
                     </button>
                     <div className="collapse navbar-collapse" id="navbarCollapse">
                         <div className="navbar-nav ms-auto py-0">
-                            <a href='/' className={"nav-item nav-link active"}>{t('Home.text')}</a>
+                            <a href={'/'} className={"nav-item nav-link active"}>{t('Home.text')}</a>
                             <About/>
                             <Link to={"/activities/"} className="nav-item nav-link">{t('Activities.text')}</Link>
+                            <Link to={"/dibvision/"} className="nav-item nav-link">{t('DIBVision.text')}</Link>
                             <Link to={"/donation/"} className="nav-item nav-link">{t('Donation.text')}</Link>
                             <Link to={"/prayer-time/"} className="nav-item nav-link">{t('PrayerTime.text')}</Link>
                             <Link to={"/contact/"} className="nav-item nav-link">{t('ContactUs.text')}</Link>

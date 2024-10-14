@@ -13,6 +13,7 @@ import ContactUs from "./contact/ContactUs";
 import GoalsAndObjectivePage from "./pages/GoalsObjectivePage";
 import IdealsAndValuesPage from "./pages/IdealsValuesPage";
 import OurHistoryPage from "./pages/OurHistoryPage";
+import DIBVisionPage from "./pages/DIBVisionPage"
 
 class App extends Component {
 
@@ -79,6 +80,7 @@ class App extends Component {
                     <Route path='/about' element={<AboutPage/>} />
                     <Route path='/activities' element={<ActivitiesPage/>} />
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
+                    <Route path='/dibvision' element={<DIBVisionPage />} />
                     <Route path='/donation' element={<DonationPage/>} />
                     <Route path='/contact' element={<ContactUs/>} />
                     <Route path='/goalsobjective' element={<GoalsAndObjectivePage/>} /> 
