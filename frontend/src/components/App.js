@@ -15,6 +15,7 @@ import OurHistoryPage from "./pages/OurHistoryPage";
 import GoalsObjectivePage from "./pages/GoalsObjectivePage";
 import EventPage from "./event/EventPage";
 import RegistrationPage from "./registration/RegistrationPage";
+import DIBVisionPage from "./pages/DIBVisionPage";
 
 class App extends Component {
 
@@ -78,6 +79,7 @@ class App extends Component {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/activities' element={<ActivitiesPage/>} />
+                    <Route path='/dibvision' element={<DIBVisionPage />} />
                     <Route path='/prayer-time' element={<PrayerTimePage />} />
                     <Route path='/donation' element={<DonationPage/>} />
                     <Route path='/contact' element={<ContactUs/>} />

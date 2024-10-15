@@ -188,6 +188,30 @@ i18n
           ActivityTwelve:{
             text:''
           },
+          DIBVision:{
+            text:'DIB Vision'
+          },
+
+          DIBVisionDecOne:{
+            text:'Since the establishment of Darul Ihsan Berlin (DIB), we have dreamed of creating a healthy and progressive environment' +
+             'for Muslims residing in Berlin. Although our current mosque, with an area of 140 square metres, accommodates 200 worshippers' +
+              'at a time, our needs and aspirations are much greater. Darul Ihsan Berlin envisions establishing a larger Islamic centre where' +
+               'we can expand our activities and undertake new initiatives.'
+          },
+          DIBVisionDecTwo:{
+            text:'We dream of establishing a full-time madrasa that ensures a high standard of Islamic education for children and youth. Our'+
+             'goal is to build an Islamic centre for families, where various Islamic activities, Quran lessons, Tafsir sessions, and Seerah'+
+              'teachings will be available.'
+          },
+          DIBVisionDecThree:{
+            text:'We aim to provide modern education for children with dedicated prayer spaces and classrooms, ensuring they can acquire' +
+            'both Islamic education and contemporary knowledge under close supervision.'
+          },
+          DIBVisionDecFour:{
+            text:'Our vision is to build a strong and organised Muslim community, where our members can follow the core principles' +
+            'of Islam in every aspect of life. We believe that through this initiative, we will be able to further strengthen and' +
+            'cultivate a thoughtful Bangladeshi Muslim community in Berlin.'
+              },
 
 
         },
@@ -323,6 +347,21 @@ i18n
           ActivityTwelve:{
             text:''
           },
+          DIBVision:{
+            text:''
+          },
+          DIBVisionDecOne:{
+            text:''
+          },
+          DIBVisionDecTwo:{
+            text:''
+          },
+          DIBVisionDecThree:{
+            text:''
+          },
+          DIBVisionDecFour:{
+            text:''
+              },
 
 
         },
@@ -458,6 +497,21 @@ i18n
           ActivityTwelve:{
             text:''
           },
+          DIBVision:{
+            text:''
+          },
+          DIBVisionDecOne:{
+            text:''
+          },
+          DIBVisionDecTwo:{
+            text:''
+          },
+          DIBVisionDecThree:{
+            text:''
+          },
+          DIBVisionDecFour:{
+            text:''
+              },
 
         },
       },

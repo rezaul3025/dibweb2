@@ -24,6 +24,7 @@ export default function Navbar(){
                             </a>
                             <About/>
                             <Link to={"/activities/"} className={`nav-item nav-link ${location.pathname === "/activities/" ? "active" : ""}`}>{t('Activities.text')}</Link>
+                             <Link to={"/dibvision/"} className={`nav-item nav-link ${location.pathname === "/dibvision/" ? "active" : ""}`}>{t('DIBVision.text')}</Link>
                             <Link to={"/donation/"} className={`nav-item nav-link ${location.pathname === "/donation/" ? "active" : ""}`}>{t('Donation.text')}</Link>
                             <Link to={"/prayer-time/"} className={`nav-item nav-link ${location.pathname === "/prayer-time/" ? "active" : ""}`}>{t('PrayerTime.text')}</Link>
                             <Link to={"/event/"} className={`nav-item nav-link ${location.pathname === "/event/" ? "active" : ""}`}>Event</Link>

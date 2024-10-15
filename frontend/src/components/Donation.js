@@ -5,51 +5,70 @@ export default function Donation(){
         <Fragment>
             <div className="container-fluid feature pb-5 py-5">
                 <div className="container pb-5">
-                    <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style={{maxWidth: '800px'}}>
+                    <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
+                         style={{maxWidth: '800px'}}>
                         <h4 className="text-primary">Donation</h4>
-                        <h1 className="display-5 mb-4">“Whoever builds a mosque for Allah, Allah will build for him a house like it in
-                                            Paradise.”</h1>
+                        <h1 className="display-5 mb-4">“Whoever builds a mosque for Allah, Allah will build for him a
+                            house like it in
+                            Paradise.”</h1>
                         <p className="mb-0">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533.</p>
                     </div>
-                    <div className="row g-4">
-                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                            <div className="feature-item p-4">
-                                <div className="p-4 mb-4">
-                                    <h1 className="display-5 text-primary"> 10 <i
-                                        className="fas fa-solid fa-euro-sign text-primary"></i></h1>
-                                </div>
-                                <br/>
-                                <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Donate</a>
+                    <div className="p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
+                        <div className="row g-4 p-2">
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 10
+                                </button>
+                            </div>
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 20
+                                </button>
+                            </div>
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 30
+                                </button>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                            <div className="feature-item p-4">
-                                <div className="p-4 mb-4">
-                                    <h1 className="display-5 text-primary"> 20 <i
-                                        className="fas fa-solid fa-euro-sign text-primary"></i></h1>
-                                </div>
-                                <br/>
-                                <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Donate</a>
+                        <div className="row g-4 p-2">
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 40
+                                </button>
+                            </div>
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 50
+                                </button>
+                            </div>
+                            <div className="col-lg-12 col-xl-4">
+                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                    className="fas fa-solid fa-euro-sign"></i> 60
+                                </button>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                            <div className="feature-item p-4">
-                                <div className="p-4 mb-4">
-                                    <h1 className="display-5 text-primary"> 30 <i
-                                        className="fas fa-solid fa-euro-sign text-primary"></i></h1>
+                        <div className="row g-4 p-2">
+                            <div className="col-12 col-xl-6">
+                                <div className="form-floating">
+                                    <input type="number" className="form-control border-1" id="phone" value={100}
+                                           placeholder="Other amount"/>
+                                    <label htmlFor="phone">Other amount</label>
                                 </div>
-                                <br/>
-                                <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Donate</a>
+                            </div>
+                            <div className="col-12 col-xl-6">
+                                <div className="form-floating">
+                                    <input type="text" className="form-control border-1" id="comments"
+                                           placeholder="Comments"/>
+                                    <label htmlFor="phone">Comments</label>
+                                </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                            <div className="feature-item p-4">
-                                <div className="p-4 mb-4">
-                                    <h1 className="display-5 text-primary"> 40 <i
-                                        className="fas fa-solid fa-euro-sign text-primary"></i></h1>
-                                </div>
-                                <br/>
-                                <a className="btn btn-primary rounded-pill py-2 px-4" href="#">Donate</a>
+                        <div className="row g-4 p-2">
+                            <div className="col-12">
+                                <button type="button" className="btn btn-primary w-100 btn-lg">
+                                    Donate now
+                                </button>
                             </div>
                         </div>
                     </div>
