@@ -12,7 +12,7 @@ export default function OurHistory() {
                         <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                             <div>
                                 <h4 className="text-primary">{t('OurHistory.text')}</h4>
-                                <h1 className="display-5 mb-4">From a Humble Dream to a Grand Vision: Growing Together by the Grace of Allah</h1>
+                                <h1 className="display-5 mb-4"> {t('OurHistorySubheader.text')}</h1>
                                 
                                 {/* Row for Each Section */}
                                 <div className="row g-0"> {/* Use g-0 here too */}
