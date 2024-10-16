@@ -16,6 +16,7 @@ import GoalsObjectivePage from "./pages/GoalsObjectivePage";
 import EventPage from "./event/EventPage";
 import RegistrationPage from "./registration/RegistrationPage";
 import DIBVisionPage from "./pages/DIBVisionPage";
+import PaymentPage from "./payment/PaymentPage";
 
 class App extends Component {
 
@@ -88,6 +89,7 @@ class App extends Component {
                     <Route path='/history' element={<OurHistoryPage/>} />
                      <Route path='/event' element={<EventPage/>} />
                      <Route path='/registration' element={<RegistrationPage/>} />
+                     <Route path='/payment' element={<PaymentPage/>} />
                 </Routes>
                 <Footer/>
             </BrowserRouter>

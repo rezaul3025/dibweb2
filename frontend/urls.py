@@ -13,4 +13,5 @@ urlpatterns = [
     path('history/', index),
     path('registration/', index),
     path('event/', index),
+    path('payment/', index),
 ]

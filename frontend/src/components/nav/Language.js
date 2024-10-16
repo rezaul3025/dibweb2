@@ -1,7 +1,10 @@
 import React, {Fragment} from "react";
 import i18n from 'i18next';
+import {useTranslation} from "react-i18next";
 
 export default function Language(){
+    const { t } = useTranslation();
+
     const languages = [
         { code: 'en', nativeName: 'English' },
         { code: 'de', nativeName: 'Deutsch' },
@@ -12,7 +15,7 @@ export default function Language(){
         <Fragment>
             <div className="nav-item dropdown">
                 <a href="#" className="nav-link" data-bs-toggle="dropdown">
-                    <span className="dropdown-toggle">Language</span>
+                    <span className="dropdown-toggle">{t('Language.text')}</span>
                 </a>
                 <div className="dropdown-menu m-0">
                     {languages.map((lng) => {

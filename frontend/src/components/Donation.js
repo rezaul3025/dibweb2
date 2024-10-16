@@ -1,10 +1,21 @@
-import React,{Fragment} from "react";
+import React,{Fragment, useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function Donation(){
+    const [amount, setAmount] = useState();
+    const [otherAmount, setOtherAmount] = useState(0)
+    const donationInfo = {
+        amount:otherAmount===0?amount:otherAmount,
+        type:'Donation'
+    };
+    const onChangeHandler = event => {
+        setOtherAmount(event.target.value);
+    };
+
     return(
         <Fragment>
             <div className="container-fluid feature pb-5 py-5">
-                <div className="container pb-5">
+                <div id="donation" className="container pb-5">
                     <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s"
                          style={{maxWidth: '800px'}}>
                         <h4 className="text-primary">Donation</h4>
@@ -16,34 +27,34 @@ export default function Donation(){
                     <div className="p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
                         <div className="row g-4 p-2">
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(10)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 10
                                 </button>
                             </div>
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(20)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 20
                                 </button>
                             </div>
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(30)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 30
                                 </button>
                             </div>
                         </div>
                         <div className="row g-4 p-2">
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(40)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 40
                                 </button>
                             </div>
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(50)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 50
                                 </button>
                             </div>
                             <div className="col-lg-12 col-xl-4">
-                                <button type="button" className="btn btn-outline-primary w-100"><i
+                                <button type="button" className="btn btn-outline-primary w-100" onClick={()=>setAmount(60)}><i
                                     className="fas fa-solid fa-euro-sign"></i> 60
                                 </button>
                             </div>
@@ -51,7 +62,7 @@ export default function Donation(){
                         <div className="row g-4 p-2">
                             <div className="col-12 col-xl-6">
                                 <div className="form-floating">
-                                    <input type="number" className="form-control border-1" id="phone" value={100}
+                                    <input type="number" className="form-control border-1" id="phone" value={otherAmount} onChange={onChangeHandler}
                                            placeholder="Other amount"/>
                                     <label htmlFor="phone">Other amount</label>
                                 </div>
@@ -66,9 +77,9 @@ export default function Donation(){
                         </div>
                         <div className="row g-4 p-2">
                             <div className="col-12">
-                                <button type="button" className="btn btn-primary w-100 btn-lg">
+                                <Link state={donationInfo} to={"/payment/"} type="button" className="btn btn-primary w-100 btn-lg">
                                     Donate now
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

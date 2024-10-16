@@ -36,7 +36,7 @@ export default function Activities() {
                     <div className="row g-5 align-items-center">
                     {activities.map((activity, index) => (
                             <div className="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s" key={index}>
-                                <div className="accordion p-5" id={`accordionFlushSection${index}`}>
+                                <div className="accordion p-2" id={`accordionFlushSection${index}`}>
                                     <div className="accordion-item rounded-top">
                                         <h2 className="accordion-header" id={`flush-heading${index}`}>
                                             <button

@@ -2,6 +2,7 @@ import React, {Fragment} from "react";
 import {PrayerTime} from "./PrayerTime";
 import {useTranslation} from "react-i18next";
 import SocialMediaLink from "./SocialMediaLink";
+import {Link} from "react-router-dom";
 
 export default function Carousel(){
      const { t } = useTranslation();
@@ -26,8 +27,8 @@ export default function Carousel(){
                                         <div className="d-flex justify-content-center flex-shrink-0 mb-4">
                                             <a className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
                                                 className="fas fa-play-circle me-2"></i> Watch Video</a>
-                                            <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Please
-                                                donate</a>
+                                            <Link to={"/donation/"} className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Please
+                                                donate</Link>
                                         </div>
                                         <SocialMediaLink/>
                                     </div>
@@ -53,8 +54,8 @@ export default function Carousel(){
                                         <div className="d-flex justify-content-center flex-shrink-0 mb-4">
                                             <a className="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i
                                                 className="fas fa-play-circle me-2"></i> Watch Video</a>
-                                            <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Please
-                                                donate</a>
+                                            <Link to={"/donation/"} className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Please
+                                                donate</Link>
                                         </div>
                                         <SocialMediaLink/>
                                     </div>
