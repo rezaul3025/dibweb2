@@ -22,7 +22,6 @@ export default function PaymentPage(){
                             <li className="breadcrumb-item active text-primary">Payment</li>
                         </ol>
                     </div>
-                    {amount} - {type}
                 </div>
                 {/*<!-- Header End -->*/}
             </div>
