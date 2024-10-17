@@ -1,6 +1,35 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 
 export default function BankDetailsPopUp() {
+    const [name, setName] = useState("Darul Ihsan Berlin e.V.")
+    const [iban, setIban] = useState("DE52 5023 4500 0155 3400 01")
+    const [bic, setBic] = useState("KTAGDEFFXXX")
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleCopy = (e) => {
+        e.preventDefault()
+
+        if (e.target.id === 'name') {
+            navigator.clipboard.writeText(name);
+            handleShowHideCopiedMsg();
+        } else if (e.target.id === 'iban') {
+            navigator.clipboard.writeText(iban);
+            handleShowHideCopiedMsg();
+        } else if (e.target.id === 'bic') {
+            navigator.clipboard.writeText(bic);
+            handleShowHideCopiedMsg();
+        } else if (e.target.id === 'copyall') {
+            navigator.clipboard.writeText(name + '\n' + iban + '\n' + bic);
+            handleShowHideCopiedMsg();
+        }
+    };
+
+    const handleShowHideCopiedMsg = () => {
+        setIsCopied(true);
+        setTimeout(() => {
+            setIsCopied(false);
+        }, 600);
+    };
 
     return (
         <Fragment>
@@ -16,22 +45,33 @@ export default function BankDetailsPopUp() {
                         </div>
                         <div className="modal-body">
                             <div className="row">
-                                <div className="col-md-6 col-lg-6 col-xl-7 align-self-center">
-                                    <p className="mb-2">Darul Ihsan Berlin e.V.  <i
-                                        className="fa-duotone fa-solid fa-copy"></i></p>
-                                    <p className="mb-2">DE52 5023 4500 0155 3400 01  <i
-                                        className="fa-duotone fa-solid fa-copy"></i></p>
+                                <div className="col-md-6 col-lg-6 col-xl-8 align-self-center">
+                                    <span>Name</span>
+                                    <h6 className="mb-2">{name} <i role="button" id="name" onClick={handleCopy}
+                                                                   className="fa-duotone fa-solid fa-copy text-primary"></i>
+                                    </h6>
+                                    <span>IBAN</span>
+                                    <h6 className="mb-2">{iban} <i role="button" id="iban" onClick={handleCopy}
+                                                                   className="fa-duotone fa-solid fa-copy text-primary"></i>
+                                    </h6>
+                                    <span>BIC</span>
+                                    <h6 className="mb-2">{bic} <i role="button" id="bic" onClick={handleCopy}
+                                                                  className="fa-duotone fa-solid fa-copy text-primary"></i>
+                                    </h6>
                                 </div>
-                                <div className="col-md-6 col-lg-6 col-xl-5">
-                                    <img width={150} height={150} src={'/static/assets/images/bank_transfer_qrc.png'}
+                                <div className="col-md-6 col-lg-6 col-xl-4">
+                                    <img width={140} height={140} src={'/static/assets/images/bank_transfer_qrc.png'}
                                          alt="Bank transfer QR code"/>
                                 </div>
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"> <i className="fa-sharp fa-solid fa-xmark"></i> Close
+                            {isCopied && <span className="text-primary"><i className="fa-solid fa-circle-check"></i> Copied</span>}
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"><i
+                                className="fa-sharp fa-solid fa-xmark"></i> Close
                             </button>
-                            <button type="button" className="btn btn-primary"><i className="fa-duotone fa-solid fa-copy"></i> Copy
+                            <button type="button" className="btn btn-primary" id="copyall" onClick={handleCopy}><i
+                                className="fa-duotone fa-solid fa-copy"></i> Copy
                             </button>
                         </div>
                     </div>
