@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import BankDetailsPopUp from "./BankDetailsPopUp";
+import PaypalDetailsPopUp from "./PaypalDetailsPopUp";
 
 export default function Payment(props) {
     return (
@@ -25,10 +26,10 @@ export default function Payment(props) {
                                         <h4></h4>
                                         <p className="mb-4">
                                         </p>
-                                        <button className="btn btn-primary p-2"> <i className="fa-brands fa-paypal"> </i> PayPal
+                                        <button className="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#paypalDetailsPopUp"> <i className="fa-brands fa-paypal"> </i> PayPal
                                         </button>
                                         &nbsp;&nbsp;
-                                        <button className="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i
+                                        <button className="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#bankDetailsPopUp" ><i
                                             className="fas fa-thin fa-money-bill-transfer"> </i> Bank Transfer
                                         </button>
                                     </div>
@@ -40,6 +41,7 @@ export default function Payment(props) {
                 </div>
             </div>
             <BankDetailsPopUp />
+            <PaypalDetailsPopUp amount={props.amount}/>
         </Fragment>
     );
 };

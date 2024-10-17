@@ -33,7 +33,7 @@ export default function BankDetailsPopUp() {
 
     return (
         <Fragment>
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+            <div className="modal fade" id="bankDetailsPopUp" data-bs-backdrop="static" data-bs-keyboard="false"
                  tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">

@@ -21,6 +21,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@paypal/react-paypal-js": "^8.7.0",
     "axios": "^1.3.4",
     "babel-loader": "^8.2.3",
     "bootstrap": "^5.3.3",
