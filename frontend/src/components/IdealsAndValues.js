@@ -9,7 +9,7 @@ export default function IdealsAndValues(){
             <div className="container-fluid feature pb-5 py-5">
                 <div className="container pb-5">
                     <div className="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style={{maxWidth: '800px'}}>
-                        <h3 className="text-primary"> {t('IdealsAndValues.text')}</h3>
+                        <h4 className="text-primary"> {t('IdealsAndValues.text')}</h4>
                     </div>
                     <div className="row g-4">
                         <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch" data-wow-delay="0.2s">

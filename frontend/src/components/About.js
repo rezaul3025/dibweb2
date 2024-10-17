@@ -6,7 +6,7 @@ export default function About(){
     return(
       <Fragment>
           {/* Abvout Start */}
-            <div className="container-fluid about py-5">
+            <div className="container-fluid about">
                 <div className="container py-5">
                     <div className="row g-5 align-items-center">
                         <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">

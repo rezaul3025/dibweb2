@@ -19,7 +19,6 @@ export default function GoalsAndObjective() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecTwoTitle.text')}</h5>
-                                    <hr/>
                                     <p className="card-text ">{t('GoalsAndObjectivesDecTwo.text')}</p>
                                 </div>
                                 <div className="align-bottom p-4">
@@ -32,7 +31,6 @@ export default function GoalsAndObjective() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecThreeTitle.text')} </h5>
-                                    <hr/>
                                     <p className="card-text">{t('GoalsAndObjectivesDecThree.text')}</p>
                                 </div>
                                 <div className="align-bottom p-4">
@@ -45,7 +43,6 @@ export default function GoalsAndObjective() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecFourTitle.text')} </h5>
-                                    <hr/>
                                     <p className="card-text">{t('GoalsAndObjectivesDecFour.text')}</p>
                                 </div>
                                 <div className="align-bottom p-4">
@@ -58,7 +55,6 @@ export default function GoalsAndObjective() {
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecFiveTitle.text')} </h5>
-                                    <hr/>
                                     <p className="card-text">{t('GoalsAndObjectivesDecFive.text')}</p>
                                 </div>
                                 <div className="align-bottom p-4">

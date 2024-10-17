@@ -19,8 +19,8 @@ export default function PrayerTimePage(){
                 </div>
                 {/*<!-- Header End -->*/}
             </div>
-            <div className="container-fluid about py-5">
-                <div className="container py-5">
+            <div className="container-fluid about">
+                <div className="container py-4">
                     <div className="row g-5 align-items-center">
                         <div className="mx-auto wow fadeInLeft" data-wow-delay="0.2s">
                             <h4 className="text-primary">Prayer Time</h4>

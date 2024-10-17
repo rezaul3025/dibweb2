@@ -7,7 +7,7 @@ export default function OurHistory() {
     return (
         <Fragment>
             <div className="container-fluid about py-5" style={{ overflow: 'hidden', padding: 0 }}>
-                <div className="container py-5">
+                <div className="container">
                     <div className="row g-0 align-items-center"> {/* Use g-0 to remove gutters */}
                         <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
                             <div>

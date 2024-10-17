@@ -1,46 +1,49 @@
-import React, { Fragment } from "react";
-import { useTranslation } from 'react-i18next';
+import React, {Fragment} from "react";
+import {useTranslation} from 'react-i18next';
+
 export default function DIBVision() {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     return (
         <Fragment>
-            <div className="container-fluid about py-5" style={{ overflow: 'hidden', padding: 0 }}>
+            <div className="container-fluid about" style={{overflow: 'hidden', padding: 0}}>
                 <div className="container py-5">
                     <div className="row g-0 align-items-center"> {/* Use g-0 to remove gutters */}
-                        <div className="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div className="col-xl-12 wow fadeInLeft" data-wow-delay="0.2s">
                             <div>
-                                <h4 className="text-primary">{t('DIBVision.text')}</h4>
-
+                                <div className="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.2s"
+                                     style={{maxWidth: '800px'}}>
+                                    <h4 className="text-primary"> {t('DIBVision.text')}</h4>
+                                </div>
                                 {/* Row for Each Section */}
                                 <div className="row g-0"> {/* Use g-0 here too */}
                                     <div className="col-12">
                                         <div className="d-flex align-items-start">
-                                            <i className="bi bi-bookmark-star-fill fa-3x text-primary"></i>
-                                            <h5 className="ms-4">{t('DIBVisionDecOne.text')}</h5>
+                                            <i className="fa-regular fa-circle-check fa-2x text-primary"></i>
+                                            <p className="ms-4 lead">{t('DIBVisionDecOne.text')}</p>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="d-flex align-items-start">
-                                            <i className="bi bi-bookmark-star-fill fa-3x text-primary"></i>
-                                            <h5 className="ms-4">{t('DIBVisionDecTwo.text')}</h5>
+                                            <i className="fa-regular fa-circle-check fa-2x text-primary"></i>
+                                            <p className="ms-4 lead">{t('DIBVisionDecTwo.text')}</p>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="d-flex align-items-start">
-                                            <i className="bi bi-bookmark-star-fill fa-3x text-primary"></i>
-                                            <h5 className="ms-4">{t('DIBVisionDecThree.text')}</h5>
+                                            <i className="fa-regular fa-circle-check fa-2x text-primary"></i>
+                                            <p className="ms-4 lead">{t('DIBVisionDecThree.text')}</p>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="d-flex align-items-start">
-                                            <i className="bi bi-bookmark-star-fill fa-3x text-primary"></i>
-                                            <h5 className="ms-4">{t('DIBVisionDecFour.text')}</h5>
+                                            <i className="fa-regular fa-circle-check fa-2x text-primary"></i>
+                                            <p className="ms-4 lead">{t('DIBVisionDecFour.text')}</p>
                                         </div>
                                     </div>
                                     <div className="col-12">
                                         <div className="d-flex align-items-start">
-                                            <i className="bi bi-bookmark-star-fill fa-3x text-primary"></i>
-                                            <h5 className="ms-4">Some more texts needed .........</h5>
+                                            <i className="fa-regular fa-circle-check fa-2x text-primary"></i>
+                                            <p className="ms-4 lead">Some more texts needed .........</p>
                                         </div>
                                     </div>
                                 </div>

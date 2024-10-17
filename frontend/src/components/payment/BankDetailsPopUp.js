@@ -10,19 +10,27 @@ export default function BankDetailsPopUp() {
         e.preventDefault()
 
         if (e.target.id === 'name') {
-            navigator.clipboard.writeText(name);
+            writeClipboardText(name);
             handleShowHideCopiedMsg();
         } else if (e.target.id === 'iban') {
-            navigator.clipboard.writeText(iban);
+            writeClipboardText(iban);
             handleShowHideCopiedMsg();
         } else if (e.target.id === 'bic') {
-            navigator.clipboard.writeText(bic);
+            writeClipboardText(bic);
             handleShowHideCopiedMsg();
         } else if (e.target.id === 'copyall') {
-            navigator.clipboard.writeText(name + '\n' + iban + '\n' + bic);
+            writeClipboardText(name + '\n' + iban + '\n' + bic);
             handleShowHideCopiedMsg();
         }
     };
+
+    async function writeClipboardText(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
 
     const handleShowHideCopiedMsg = () => {
         setIsCopied(true);

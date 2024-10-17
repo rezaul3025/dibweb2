@@ -11,7 +11,7 @@ export default function ContactUs(){
             <Navbar />
             <ContactBreadcrumb />
             <div className="container-fluid contact py-5">
-                <div className="container py-5">
+                <div className="container">
                     <div className="row g-5">
                         <div className="col-xl-6">
                             <div className="wow fadeInUp" data-wow-delay="0.2s">

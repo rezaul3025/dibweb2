@@ -382,7 +382,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 140px 0 60px 0;
+    padding: 70px 0 2px 0 !important;
     transition: 0.5s;
 }
 
