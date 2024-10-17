@@ -13,7 +13,7 @@ export default function Navbar(){
                 {/* Navbar & Hero Start */}
                 <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                     <a href={'/'} className="navbar-brand p-0">
-                        <h2 className="text-primary">  <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> &nbsp;Darul Ihsan Berlin e.V</h2>
+                        <h2 className="text-primary">  <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/></h2>
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="fa fa-bars"></span>
