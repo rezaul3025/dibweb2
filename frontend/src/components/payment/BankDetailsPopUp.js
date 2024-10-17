@@ -67,7 +67,7 @@ export default function BankDetailsPopUp() {
                         </div>
                         <div className="modal-footer">
                             {isCopied && <span className="text-primary"><i className="fa-solid fa-circle-check"></i> Copied</span>}
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"><i
+                            <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal"><i
                                 className="fa-sharp fa-solid fa-xmark"></i> Close
                             </button>
                             <button type="button" className="btn btn-primary" id="copyall" onClick={handleCopy}><i
