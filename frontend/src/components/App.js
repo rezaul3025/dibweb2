@@ -1,10 +1,9 @@
-import React, {Component, Fragment} from "react";
+import React, {Component} from "react";
 import {
     Routes,
     Route, BrowserRouter
 } from "react-router-dom";
 import Home from "./Home";
-import AboutPage from "./pages/AboutPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
 import PrayerTimePage from "./pages/PrayerTimePage";
 import Footer from "./Footer";
@@ -17,6 +16,7 @@ import EventPage from "./event/EventPage";
 import RegistrationPage from "./registration/RegistrationPage";
 import DIBVisionPage from "./pages/DIBVisionPage";
 import PaymentPage from "./payment/PaymentPage";
+import ScrollToTop from "./utils/ScrollToTop";
 
 class App extends Component {
 
@@ -77,23 +77,23 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
+                <ScrollToTop/>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path='/activities' element={<ActivitiesPage/>} />
-                    <Route path='/dibvision' element={<DIBVisionPage />} />
-                    <Route path='/prayer-time' element={<PrayerTimePage />} />
-                    <Route path='/donation' element={<DonationPage/>} />
-                    <Route path='/contact' element={<ContactUs/>} />
-                    <Route path='/goalsobjective' element={<GoalsObjectivePage/>} />
-                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>} />
-                    <Route path='/history' element={<OurHistoryPage/>} />
-                     <Route path='/event' element={<EventPage/>} />
-                     <Route path='/registration' element={<RegistrationPage/>} />
-                     <Route path='/payment' element={<PaymentPage/>} />
+                    <Route path='/activities' element={<ActivitiesPage/>}/>
+                    <Route path='/dibvision' element={<DIBVisionPage/>}/>
+                    <Route path='/prayer-time' element={<PrayerTimePage/>}/>
+                    <Route path='/donation' element={<DonationPage/>}/>
+                    <Route path='/contact' element={<ContactUs/>}/>
+                    <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
+                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
+                    <Route path='/history' element={<OurHistoryPage/>}/>
+                    <Route path='/event' element={<EventPage/>}/>
+                    <Route path='/registration' element={<RegistrationPage/>}/>
+                    <Route path='/payment' element={<PaymentPage/>}/>
                 </Routes>
                 <Footer/>
             </BrowserRouter>
-
         );
     }
 }
