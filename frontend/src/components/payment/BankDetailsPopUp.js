@@ -53,7 +53,7 @@ export default function BankDetailsPopUp() {
                         </div>
                         <div className="modal-body">
                             <div className="row">
-                                <div className="col-md-6 col-lg-6 col-xl-8 align-self-center">
+                                <div className="col-md-12 col-lg-12 col-xl-8 align-self-center">
                                     <span>Name</span>
                                     <h6 className="mb-2">{name} <i role="button" id="name" onClick={handleCopy}
                                                                    className="fa-duotone fa-solid fa-copy text-primary"></i>
@@ -67,7 +67,7 @@ export default function BankDetailsPopUp() {
                                                                   className="fa-duotone fa-solid fa-copy text-primary"></i>
                                     </h6>
                                 </div>
-                                <div className="col-md-6 col-lg-6 col-xl-4">
+                                <div className="col-md-12 col-lg-12 col-xl-4">
                                     <img width={140} height={140} src={'/static/assets/images/bank_transfer_qrc.png'}
                                          alt="Bank transfer QR code"/>
                                 </div>

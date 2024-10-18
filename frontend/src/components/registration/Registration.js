@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import ContactForm from "../contact/ContactForm";
+import RegistrationForm from "./RegistrationForm";
 
 export default function Registration(){
     return(
@@ -8,7 +8,7 @@ export default function Registration(){
                 <div className="container pb-5">
                     <div className="row g-4">
                         <div className="bg-light p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
-                             <ContactForm title="Registration" subtitle="Plesse register for the event"/>
+                             <RegistrationForm title="Registration" subtitle="Register for event of Sheikh Ahmadullah's Europe tour hosted by 'Darul Ihsan Berlin e.V'"/>
                         </div>
                     </div>
                 </div>
