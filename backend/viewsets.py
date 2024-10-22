@@ -22,9 +22,9 @@ class AttendeeViewSet(APIView):
     def post(self, request, format=None):
         serializer = AttendeeSerializer(data=request.data)
         print(serializer.is_valid())
-        if Attendee.objects.filter(email=request.data['email']).first():
-            content = {'error': 'duplicate_error'}
-            return Response(content, status=status.HTTP_409_CONFLICT)
+        #if Attendee.objects.filter(email=request.data['email']).first():
+        #    content = {'error': 'duplicate_error'}
+        #    return Response(content, status=status.HTTP_409_CONFLICT)
         if serializer.is_valid():
             email = SendEmail()
             email.sendEmail(request.data)
