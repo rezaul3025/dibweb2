@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from backend.SendEmail import SendEmail
 from backend.serializers import AttendeeSerializer
 from backend.models import Attendee
 
@@ -25,6 +26,8 @@ class AttendeeViewSet(APIView):
             content = {'error': 'duplicate_error'}
             return Response(content, status=status.HTTP_409_CONFLICT)
         if serializer.is_valid():
+            email = SendEmail()
+            email.sendEmail(request.data)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
