@@ -1,5 +1,6 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment, useState, useEffect,useRef} from "react";
 import { useParams } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function RegistrationForm(props) {
     const [name, setName] = useState("");
@@ -7,10 +8,19 @@ export default function RegistrationForm(props) {
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
     const [event, setEvent] = useState(null);
+    const [submitting, setSubmitting] = useState(false)
     let {eventId} = useParams();
+    const recaptcha = useRef()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const token = await recaptcha.current.executeAsync();
+        setSubmitting(true);
+        if(!token){
+            setMessage("Captcha Not Resolved ");
+            setSubmitting(false);
+            return;
+        }
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
         try {
@@ -21,7 +31,8 @@ export default function RegistrationForm(props) {
                     'name': name,
                     'email': email,
                     'phone': mobile,
-                    'event': event.id
+                    'event': event.id,
+                    'recap_token': token,
                 }),
             });
             const resJson = await res.json();
@@ -30,10 +41,17 @@ export default function RegistrationForm(props) {
                 setEmail("");
                 setMobile("")
                 setMessage("User created successfully");
+                recaptcha.current.reset();
+                setSubmitting(false)
+
             } else {
+                recaptcha.current.reset();
                 setMessage("Some error occured");
+                setSubmitting(false)
             }
         } catch (err) {
+            recaptcha.current.reset();
+            setSubmitting(false)
             console.log(err);
         }
     };
@@ -61,7 +79,7 @@ export default function RegistrationForm(props) {
                     <div className="col-lg-12 col-xl-6">
                         <div className="form-floating">
                             <input type="email" className="form-control border-0" id="email" value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                   onChange={(e) => setEmail(e.target.value)}
                                    placeholder="Your Email"/>
                             <label htmlFor="email">Your Email</label>
                         </div>
@@ -75,10 +93,20 @@ export default function RegistrationForm(props) {
                         </div>
                     </div>
                     <div className="col-12">
-                        {message}
-                        <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
+                        <ReCAPTCHA
+                            ref={recaptcha}
+                            size="invisible"
+                            sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
+                        />
                     </div>
-                </div>
+                    { submitting && <div className="col-12">
+                        <img width={50} src={'/static/assets/images/Loading_icon2.gif'} alt="Submitting .. "/>
+                    </div>}
+                    <div className="col-12">
+                    {message}
+                            <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
+                        </div>
+                    </div>
             </form>
         </Fragment>
     )
