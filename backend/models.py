@@ -1,6 +1,4 @@
-import os
 from datetime import datetime
-from pathlib import Path
 
 from ckeditor.fields import RichTextField
 from django.db import models
@@ -20,11 +18,18 @@ def get_img_upload_path(instance, filename):
         return settings.UPLOAD_PATH
 
 class Attendee(models.Model):
+    PAYMENT_TYPE_CHOICES = (
+        ("None", "None"),
+        ("PP", "PayPal"),
+        ("BT", "Bank Transfer"),
+    )
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     creation_date = models.DateTimeField(default=datetime.now)
     is_email_send = models.BooleanField(default=False)
+    payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES, default="None")
+    is_payment_confirm = models.BooleanField(default=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self):
