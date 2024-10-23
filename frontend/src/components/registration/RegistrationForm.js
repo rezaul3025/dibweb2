@@ -6,7 +6,7 @@ export default function RegistrationForm(props) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
-    const [message, setMessage] = useState("");
+    const [message, setMessage] = useState(null);
     const [event, setEvent] = useState(null);
     const [submitting, setSubmitting] = useState(false)
     let {eventId} = useParams();
@@ -40,18 +40,19 @@ export default function RegistrationForm(props) {
                 setName("");
                 setEmail("");
                 setMobile("")
-                setMessage("User created successfully");
+                setMessage("Registration successful");
                 recaptcha.current.reset();
                 setSubmitting(false)
 
             } else {
                 recaptcha.current.reset();
-                setMessage("Some error occured");
+                setMessage("Some error occurred");
                 setSubmitting(false)
             }
         } catch (err) {
             recaptcha.current.reset();
             setSubmitting(false)
+            setMessage("Some error occurred");
             console.log(err);
         }
     };
@@ -103,10 +104,10 @@ export default function RegistrationForm(props) {
                         <img width={50} src={'/static/assets/images/Loading_icon2.gif'} alt="Submitting .. "/>
                     </div>}
                     <div className="col-12">
-                    {message}
-                            <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
-                        </div>
+                        {message && <p className="text-primary">{message}</p>}
+                        <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
                     </div>
+                </div>
             </form>
         </Fragment>
     )
