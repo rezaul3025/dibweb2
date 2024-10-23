@@ -21,7 +21,7 @@ class SendEmail(object):
         with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER, settings.SMTP_PASS)
             msg = MIMEMultipart()
-            msg['Subject'] = 'দারুল ইহসান নোটিশ বোর্ড সাইনআপের আমন্ত্রণ'
+            msg['Subject'] = 'Your registration on Sheikh Ahmadullah talk at Darul Ihsan Berlin e.V'
             msg['From'] = settings.SMTP_EMAIL_FROM
             msg['To'] = data['email']
 
@@ -31,8 +31,9 @@ class SendEmail(object):
                 <body>
                     <h4 style="font-size:15px;">Dear {},</h4> 
                     <p>Your DIB event details:</p>
-                    <hr/>
-                    <p>Event name & date</p>
+                    <p>Sheikh Ahmadullah talk at Darul Ihsan Berlin e.V</p>
+                    <p>10 November 2024</p>
+                    <a href='https://goo.gl/maps/9dktuCs7rHC7yf6h7'>Brunnenstraße 122, 13355 Berlin</a>
                     <img src="cid:image1" alt="Logo" style="width:518px;height:518px;"><br>
                     <p><h4 style="font-size:15px;">QR Code</h4></p>  
                     <h3>Location</h3>
