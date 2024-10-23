@@ -22,7 +22,7 @@ export default function Event(){
                     </div>
                     <div className="row g-4">
                          { events != null && events.map((event) => (
-                            <div className="col-md-12 col-lg-12 col-xl-3 wow fadeInUp d-flex align-items-stretch"
+                            <div className="col-md-12 col-lg-12 col-xl-4 wow fadeInUp d-flex align-items-stretch"
                                  data-wow-delay="0.2s">
                                 <div className="card">
                                     <img src={'/static/assets/'+event.poster_image} className="card-img-top" alt={event.poster_image}/>
