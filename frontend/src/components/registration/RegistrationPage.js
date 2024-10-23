@@ -1,6 +1,7 @@
 import React,{Fragment} from "react";
 import Navbar from "../nav/Navbar";
 import Registration from "./Registration";
+import {Link} from "react-router-dom";
 
 export default function RegistrationPage(){
     return(
@@ -14,7 +15,7 @@ export default function RegistrationPage(){
                         <ol className="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown"
                             data-wow-delay="0.3s">
                             <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item"><a href="/event">Event</a></li>
+                            <li className="breadcrumb-item"><Link to={'/event/'}>Event</Link></li>
                             <li className="breadcrumb-item active text-primary">Registration</li>
                         </ol>
                     </div>

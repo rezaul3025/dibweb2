@@ -11,7 +11,7 @@ urlpatterns = [
     path('idealsvalue/', index),
     path('goalsobjective/', index),
     path('history/', index),
-    path('registration/', index),
+    path('registration/<int:num>/', index),
     path('event/', index),
     path('payment/', index),
     path('dibvision/', index),

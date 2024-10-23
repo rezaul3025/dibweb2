@@ -89,7 +89,7 @@ class App extends Component {
                     <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
                     <Route path='/history' element={<OurHistoryPage/>}/>
                     <Route path='/event' element={<EventPage/>}/>
-                    <Route path='/registration' element={<RegistrationPage/>}/>
+                    <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
                     <Route path='/payment' element={<PaymentPage/>}/>
                 </Routes>
                 <Footer/>

@@ -1,7 +1,16 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
+import moment from "moment"
 
 export default function Event(){
+    const [events, setEvents] = useState(null);
+
+     useEffect(() => {
+         fetch('/api/v1/events/')
+            .then(response => response.json())
+            .then(data => setEvents(data));
+    }, []);
+
     return(
         <Fragment>
             <div className="container-fluid offer-section pb-5 py-5">
@@ -12,23 +21,31 @@ export default function Event(){
                         <p className="mb-0">All up coming event(s)</p>
                     </div>
                     <div className="row g-4">
-                        <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch"
-                             data-wow-delay="0.2s">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sheikh Ahmadullah's Europe tour</h5>
-                                    <p className="card-text ">Sheikh Ahmadullah's Europe tour hosted by "Darul Ihsan Berlin e.V"
-                                    <hr/>
-                                        Ahmadullah, better known as Sheikh Ahmadullah (Bengali: শায়খ আহমদুল্লাহ),
-                                        is a Bangladeshi Islamic figure,[1] negotiator and social activist.
-                                        He founded and serves as chairman of the As Sunnah Foundation.
-                                    </p>
-                                </div>
-                                <div className="align-bottom p-4">
-                                    <Link to={"/registration/"} className="btn btn-primary align-bottom">Register >></Link>
+                         { events != null && events.map((event) => (
+                            <div className="col-md-12 col-lg-12 col-xl-3 wow fadeInUp d-flex align-items-stretch"
+                                 data-wow-delay="0.2s">
+                                <div className="card">
+                                    <img src={'/static/assets/'+event.poster_image} className="card-img-top" alt={event.poster_image}/>
+                                    <div className="card-body">
+                                        <h5 className="card-title">{event.title}</h5>
+                                        <p className="card-text ">
+                                            {event.description}
+                                        </p>
+                                        <h6><i className="fas fa-map-marker-alt text-primary me-2"></i>{event.address}
+                                        </h6>
+                                        <h6><i className="fas fa-regular fa-clock text-primary me-2"></i> {moment(event.event_datetime).format("LLL")}
+                                        </h6>
+
+                                        <a href={event.map_location} target="_blank"><i className="fa-solid fa-map-location text-primary me-2"></i> Google Map
+                                        </a>
+                                    </div>
+                                    <div className="align-bottom p-4">
+                                        <Link to={"/registration/"+event.id+"/"} className="btn btn-primary align-bottom">Register
+                                            >></Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                         ))}
                     </div>
                 </div>
             </div>

@@ -1,10 +1,13 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
+import { useParams } from 'react-router-dom';
 
 export default function RegistrationForm(props) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState("");
+    const [event, setEvent] = useState(null);
+    let {eventId} = useParams();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,6 +21,7 @@ export default function RegistrationForm(props) {
                     'name': name,
                     'email': email,
                     'phone': mobile,
+                    'event': event.id
                 }),
             });
             const resJson = await res.json();
@@ -34,10 +38,16 @@ export default function RegistrationForm(props) {
         }
     };
 
+    useEffect(() => {
+         fetch('/api/v1/events/'+eventId+'/')
+            .then(response => response.json())
+            .then(data => setEvent(data));
+    }, []);
+
     return (
         <Fragment>
-            <h4 className="text-primary">{props.title}</h4>
-            <p className="mb-4">{props.subtitle}</p>
+            <h4 className="text-primary">{event && event.title}</h4>
+            <p className="mb-4">{event && event.description}</p>
             <form onSubmit={handleSubmit}>
                 <div className="row g-4">
                     <div className="col-lg-12 col-xl-6">

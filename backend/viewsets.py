@@ -7,8 +7,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from backend.SendEmail import SendEmail
-from backend.serializers import AttendeeSerializer
-from backend.models import Attendee
+from backend.serializers import AttendeeSerializer, EventSerializer
+from backend.models import Attendee, Event
 
 
 class AttendeeViewSet(APIView):
@@ -43,3 +43,22 @@ class AttendeeViewSet(APIView):
         serializer = AttendeeSerializer(attendee)
         return Response(serializer.data)
 
+
+class EventViewSet(APIView):
+    event_serializer = EventSerializer
+
+    def get(self, request, format=None):
+        events = Event.objects.all()
+        serializer = EventSerializer(events, many=True)
+        return Response(serializer.data)
+
+    def get_object(self, id):
+        try:
+            return Event.objects.get(id=id)
+        except Attendee.DoesNotExist:
+            raise Http404
+
+    def get(self, request, id, format=None):
+        event = self.get_object(id)
+        serializer = self.event_serializer(event)
+        return Response(serializer.data)

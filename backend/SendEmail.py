@@ -4,20 +4,14 @@ import ssl
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from pathlib import Path
 
 import qrcode
 from django.conf import settings
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-port = 465  # For SSL
-
-# Create a secure SSL context
-context = ssl.create_default_context()
-
-
 class SendEmail(object):
     def sendEmail(self, data):
+        print('base', Path(settings.BASE_DIR).parents[0])
         with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER, settings.SMTP_PASS)
             msg = MIMEMultipart()
