@@ -105,7 +105,7 @@ export default function RegistrationForm(props) {
                     </div>}
                     <div className="col-12">
                         {message && <p className="text-primary">{message}</p>}
-                        <button className="btn btn-primary w-100 py-3" type="submit">Register</button>
+                        <button className={name && email && mobile?'btn btn-primary w-100 py-3':'disabled btn btn-primary w-100 py-3'} type="submit">Register</button>
                     </div>
                 </div>
             </form>
