@@ -21,9 +21,6 @@ export default function GoalsAndObjective() {
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecTwoTitle.text')}</h5>
                                     <p className="card-text ">{t('GoalsAndObjectivesDecTwo.text')}</p>
                                 </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
-                                </div>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch"
@@ -32,9 +29,6 @@ export default function GoalsAndObjective() {
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecThreeTitle.text')} </h5>
                                     <p className="card-text">{t('GoalsAndObjectivesDecThree.text')}</p>
-                                </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
                                 </div>
                             </div>
                         </div>
@@ -45,9 +39,6 @@ export default function GoalsAndObjective() {
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecFourTitle.text')} </h5>
                                     <p className="card-text">{t('GoalsAndObjectivesDecFour.text')}</p>
                                 </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
-                                </div>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch"
@@ -56,9 +47,6 @@ export default function GoalsAndObjective() {
                                 <div className="card-body">
                                     <h5 className="card-title">{t('GoalsAndObjectivesDecFiveTitle.text')} </h5>
                                     <p className="card-text">{t('GoalsAndObjectivesDecFive.text')}</p>
-                                </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
                                 </div>
                             </div>
                         </div>

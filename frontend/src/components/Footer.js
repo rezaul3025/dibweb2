@@ -65,14 +65,8 @@ export default function Footer() {
                                     <p className="text-white mb-0">www.darulihsan-berlin.com</p>
                                 </div>
                                 <div className="d-flex">
-                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
+                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="https://www.facebook.com/profile.php?id=100068090377582"><i
                                         className="fab fa-facebook-f text-white"></i></a>
-                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                        className="fab fa-twitter text-white"></i></a>
-                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="#"><i
-                                        className="fab fa-instagram text-white"></i></a>
-                                    <a className="btn btn-primary btn-sm-square rounded-circle me-0" href="#"><i
-                                        className="fab fa-linkedin-in text-white"></i></a>
                                 </div>
                             </div>
                         </div>

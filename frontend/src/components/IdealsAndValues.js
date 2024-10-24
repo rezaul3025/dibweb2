@@ -18,9 +18,6 @@ export default function IdealsAndValues(){
                                     <h5 className="card-title">{t('IdealsAndValuesDecOneTitle.text')}</h5>
                                     <p className="card-text">{t('IdealsAndValuesDecOne.text')}</p>
                                 </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
-                                </div>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch"
@@ -29,9 +26,6 @@ export default function IdealsAndValues(){
                                 <div className="card-body">
                                     <h5 className="card-title">{t('IdealsAndValuesDecTwoTitle.text')} </h5>
                                     <p className="card-text">{t('IdealsAndValuesDecTwo.text')}</p>
-                                </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
                                 </div>
                             </div>
                         </div>
@@ -42,9 +36,6 @@ export default function IdealsAndValues(){
                                     <h5 className="card-title">{t('IdealsAndValuesDecThreeTitle.text')} </h5>
                                     <p className="card-text">{t('IdealsAndValuesDecThree.text')}</p>
                                 </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
-                                </div>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3 wow fadeInUp d-flex align-items-stretch"
@@ -53,9 +44,6 @@ export default function IdealsAndValues(){
                                 <div className="card-body">
                                     <h5 className="card-title">{t('IdealsAndValuesDecFourTitle.text')} </h5>
                                     <p className="card-text">{t('IdealsAndValuesDecFour.text')}</p>
-                                </div>
-                                <div className="align-bottom p-4">
-                                    <a href="#" className="btn btn-primary align-bottom">More >></a>
                                 </div>
                             </div>
                         </div>
