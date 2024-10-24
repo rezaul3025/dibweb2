@@ -25,7 +25,7 @@ export default function Event(){
                             <div className="col-md-12 col-lg-12 col-xl-4 wow fadeInUp d-flex align-items-stretch"
                                  data-wow-delay="0.2s">
                                 <div className="card">
-                                    <img src={'/static/assets/'+event.poster_image+'/'} className="card-img-top" alt={event.poster_image}/>
+                                    <img src={'/static/assets'+event.poster_image} className="card-img-top" alt={event.poster_image}/>
                                     <div className="card-body">
                                         <h5 className="card-title">{event.title}</h5>
                                         <p className="card-text ">
