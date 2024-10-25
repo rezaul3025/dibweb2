@@ -49,7 +49,7 @@ export default function DIBVision() {
                                 </div>
                                 {/* Add the Please Donate Button */}
                                 <div className="d-flex justify-content-center mt-5">
-                                    <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="/donation">
+                                    <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="/donation/">
                                         Please donate
                                     </a>
                                 </div>

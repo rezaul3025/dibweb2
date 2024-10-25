@@ -11,6 +11,11 @@ export default function Language(){
         { code: 'bn', nativeName: 'বাংলা' },
     ];
 
+    const changeLanguage = (code) =>{
+        i18n.changeLanguage(code);
+        localStorage.setItem("languageCode", code);
+    }
+
     return(
         <Fragment>
             <div className="nav-item dropdown">
@@ -24,7 +29,7 @@ export default function Language(){
                                 className="dropdown-item"
                                 key={lng.code}
                                 type="submit"
-                                onClick={() => i18n.changeLanguage(lng.code)}
+                                onClick={() => changeLanguage(lng.code)}
                             >
                                 {lng.nativeName}
                             </a>

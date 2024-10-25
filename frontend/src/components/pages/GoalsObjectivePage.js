@@ -1,4 +1,3 @@
-
 import React, {Fragment} from "react";
 import GoalsAndObjective from "../GoalsAndObjective";
 import Navbar from "../nav/Navbar";
@@ -27,4 +26,3 @@ export default function GoalsObjectivePage(){
         </Fragment>
 );
 };
-

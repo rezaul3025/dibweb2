@@ -4,6 +4,8 @@ import Carousel from "./Carousel";
 import About from "./About";
 import Activities from "./Activities";
 import Donation from "./Donation";
+import OurHistory from "./OurHistory";
+
 
 export default function Home(){
     return(
@@ -12,8 +14,9 @@ export default function Home(){
                 <Navbar />
                 <Carousel/>
             </div>
-            <Activities/>
+            <OurHistory/>
             <Donation/>
+            <Activities/>
         </Fragment>
     );
 }
