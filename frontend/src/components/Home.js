@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 import Navbar from "./nav/Navbar";
-import Carousel from "./Carousel";
+import Carousel from "./carousel/Carousel";
 import About from "./About";
 import Activities from "./Activities";
 import Donation from "./Donation";

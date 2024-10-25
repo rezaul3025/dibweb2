@@ -1,14 +1,22 @@
 import React, {Fragment, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import moment from "moment"
+import Spinner from "../nav/Spinner";
 
 export default function Event(){
     const [events, setEvents] = useState(null);
+    const [loading, setLoading] = useState(false)
 
      useEffect(() => {
+         setLoading(true);
          fetch('/api/v1/events/')
             .then(response => response.json())
-            .then(data => setEvents(data));
+            .then(data => {
+                setEvents(data)
+                setLoading(false);
+            }).catch(error => {
+                setLoading(false);
+         });
     }, []);
 
     return(
@@ -21,8 +29,9 @@ export default function Event(){
                         <p className="mb-0">All up coming event(s)</p>
                     </div>
                     <div className="row g-4">
+                        {loading && <Spinner width="6rem" height="6rem"/> }
                          { events != null && events.map((event) => (
-                            <div className="col-md-12 col-lg-12 col-xl-4 wow fadeInUp d-flex align-items-stretch"
+                            <div className="col-md-12 col-lg-12 col-xl-4 wow fadeInUp d-flex align-items-stretch" key={event.id}
                                  data-wow-delay="0.2s">
                                 <div className="card">
                                     <img src={'/static/assets'+event.poster_image} className="card-img-top" alt={event.poster_image}/>

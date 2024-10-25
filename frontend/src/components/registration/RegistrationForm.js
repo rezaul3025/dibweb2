@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect,useRef} from "react";
 import { useParams } from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
+import Spinner from "../nav/Spinner";
 
 export default function RegistrationForm(props) {
     const [name, setName] = useState("");
@@ -100,12 +101,12 @@ export default function RegistrationForm(props) {
                             sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
                         />
                     </div>
-                    { submitting && <div className="col-12">
-                        <img width={50} src={'/static/assets/images/Loading_icon2.gif'} alt="Submitting .. "/>
-                    </div>}
+
                     <div className="col-12">
                         {message && <p className="text-primary">{message}</p>}
-                        <button className={name && email && mobile?'btn btn-primary w-100 py-3':'disabled btn btn-primary w-100 py-3'} type="submit">Register</button>
+                        <button className={name && email && mobile?'btn btn-primary w-100 py-3':'disabled btn btn-primary w-100 py-3'} type="submit">
+                          { submitting && <Spinner width="2rem" height="2rem"/> }   Register
+                        </button>
                     </div>
                 </div>
             </form>
