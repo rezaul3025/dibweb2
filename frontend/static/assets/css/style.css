@@ -1,3 +1,7 @@
+/***hide slider nav ***/
+.owl-nav{
+    display: none;
+}
 
 /*** Spinner Start ***/
 /*** Spinner ***/
