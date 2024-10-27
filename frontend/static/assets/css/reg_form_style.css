@@ -1,0 +1,44 @@
+.details__wrapper {
+  max-width: 400px;
+  margin: 2em auto;
+}
+.form__item {
+  margin-bottom: 1.6em;
+}
+label,
+input {
+  display: block;
+  width: 100%;
+}
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.input__error input {
+  border-color: red;
+}
+.error__feedback {
+  color: red;
+}
+
+:where(.css-dev-only-do-not-override-ni1kz0).ant-steps .ant-steps-item-process .ant-steps-item-icon{
+    color:#00d084 !important;
+    background-color: #00d084;
+    border-color: #00d084;
+}
+
+:where(.css-dev-only-do-not-override-ni1kz0).ant-steps .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after {
+  background-color: #00d084;
+}
+
+.ant-steps-finish-icon svg{
+     fill: #00d084;
+    height: 2em;
+}
