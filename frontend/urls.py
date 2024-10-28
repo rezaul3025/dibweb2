@@ -14,6 +14,8 @@ urlpatterns = [
     path('registration/<int:num>/', index),
     path('event/', index),
     path('payment/<int:num>/', index),
+    path('payment/<int:num>/', index),
     path('dibvision/', index),
+    path('verify/<int:num>/', index),
 
 ]

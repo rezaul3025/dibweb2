@@ -92,7 +92,7 @@ class App extends Component {
                     <Route path='/event' element={<EventPage/>}/>
                     <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
                     <Route path='/payment/:payId' element={<PaymentPage/>}/>
-                    <Route path='/verify/:attendee_id' element={<QrCodeVerification/>}/>
+                    <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
                 </Routes>
                 <Footer/>
             </BrowserRouter>
