@@ -49,7 +49,7 @@ export default function Event(){
                                         </a>
                                     </div>
                                     <div className="align-bottom p-4">
-                                        <Link to={"/registration/"+event.id+"/"} className="btn btn-primary align-bottom">Register
+                                        <Link to={"/registration/"+event.id+"/"} className="btn btn-primary align-bottom">Buy Ticket
                                             >></Link>
                                     </div>
                                 </div>
