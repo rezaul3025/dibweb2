@@ -35,10 +35,12 @@ export default function QrCodeVerification() {
                             <h4 className="text-primary">QR Code verification</h4>
                             <div className="row g-4 py-2">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
-                                    <h4 className="text-primary"> Ticket Details</h4>
-                                    <hr/>
-                                    <p>Name: {attendee.name}</p>
-                                    <p>Ticket : {attendee.ticket_info}</p>
+                                    {attendee && <Fragment>
+                                        <h4 className="text-primary"> Ticket Details</h4>
+                                        <hr/>
+                                        <p>Name: {attendee.name}</p>
+                                        <p>Ticket : {attendee.ticket_info}</p>
+                                    </Fragment>}
                                 </div>
                             </div>
                         </div>
