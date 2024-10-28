@@ -1,13 +1,6 @@
 import React, {Fragment, useState} from "react";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function PaypalDetailsPopUp(props) {
-
-    const initialOptions = {
-    clientId: "test",
-    currency: "EUR",
-    intent: "capture",
-    };
 
     return (
         <Fragment>
@@ -22,11 +15,6 @@ export default function PaypalDetailsPopUp(props) {
                         </div>
                         <div className="modal-body">
                             <div className="row">
-                                <div className="col-md-6 col-lg-6 col-xl-8 align-self-center">
-                                    <PayPalScriptProvider  options={initialOptions}>
-                                        <PayPalButtons amount={props.amount} style={{ layout: "horizontal" }} />
-                                    </PayPalScriptProvider>
-                                </div>
                                 <div className="col-md-6 col-lg-6 col-xl-4">
                                     <img width={140} height={140} src={'/static/assets/images/bank_transfer_qrc.png'}
                                          alt="Bank transfer QR code"/>

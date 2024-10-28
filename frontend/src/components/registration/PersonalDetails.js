@@ -3,21 +3,15 @@ import {Formik} from "formik";
 import {Button} from "antd";
 import {Input} from "formik-antd";
 import MultiStepFormContext from "./MultiStepFormContext";
-import Checkout from "../payment/Checkout";
-import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 
 const PersonalDetails = () => {
     const {personalDetails, setPersonalDetails, next} = useContext(MultiStepFormContext);
 
-    const initialOptions = {
-        "client-id": process.env.P_CLIENT_ID,
-        currency: "EUR",
-        intent: "capture",
-    };
     return (
         <Formik
             initialValues={personalDetails}
             onSubmit={(values) => {
+                console.log(values)
                 setPersonalDetails(values);
                 next();
             }}
@@ -29,11 +23,12 @@ const PersonalDetails = () => {
                 if (!emailPattern.test(values.email)) errors.email = "No a valid email id";
                 if (!values.phone) errors.phone = "Phone number is required";
                 if (/^[0-9]+$/.test(values.phone))
-                    errors.profession = "Not a valid phone number";
+                    errors.phone = "Not a valid phone number";
                 return errors;
             }}
         >
             {({handleSubmit, errors}) => {
+                console.log(errors)
                 return (
                     <div className={"details__wrapper"}>
                         <div className={`form__item ${errors.name && "input__error"}`}>
@@ -42,26 +37,23 @@ const PersonalDetails = () => {
                             <p className={"error__feedback"}>{errors.name}</p>
                         </div>
                         <div className={`form__item ${errors.email && "input__error"}`}>
-                            <label>Email *</label>
-                            <Input name={"email"} />
+                            <label>Email(e.g. info@example.com) *</label>
+                            <Input name={"email"}/>
                             <p className={"error__feedback"}>{errors.email}</p>
                         </div>
                         <div
                             className={`form__item ${errors.phone && "input__error"}`}
                         >
-                            <label>Phone *</label>
+                            <label>Phone(e.g. 01765 8788334) *</label>
                             <Input name={"phone"}/>
                             <p className={"error__feedback"}>{errors.phone}</p>
                         </div>
                         <div
                             className={"form__item button__items d-flex justify-content-end"}
                         >
-                            <Button className="btn-primary"  onClick={handleSubmit}>
+                            <Button className="btn-primary" onClick={handleSubmit}>
                                 Next
                             </Button>
-                            <PayPalScriptProvider options={initialOptions}>
-                        <Checkout amount={1.90} />
-                    </PayPalScriptProvider>
                         </div>
                     </div>
                 );

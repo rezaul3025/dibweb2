@@ -17,6 +17,7 @@ import RegistrationPage from "./registration/RegistrationPage";
 import DIBVisionPage from "./pages/DIBVisionPage";
 import PaymentPage from "./payment/PaymentPage";
 import ScrollToTop from "./utils/ScrollToTop";
+import QrCodeVerification from "./pages/QrCodeVerification";
 
 class App extends Component {
 
@@ -90,7 +91,8 @@ class App extends Component {
                     <Route path='/history' element={<OurHistoryPage/>}/>
                     <Route path='/event' element={<EventPage/>}/>
                     <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
-                    <Route path='/payment' element={<PaymentPage/>}/>
+                    <Route path='/payment/:payId' element={<PaymentPage/>}/>
+                    <Route path='/verify/:attendee_id' element={<QrCodeVerification/>}/>
                 </Routes>
                 <Footer/>
             </BrowserRouter>

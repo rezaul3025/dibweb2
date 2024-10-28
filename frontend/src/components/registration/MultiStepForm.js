@@ -4,13 +4,15 @@ import { Provider } from "./MultiStepFormContext";
 import PersonalDetails from "./PersonalDetails";
 import NumberOfAttendee from "./NumberOfAttendee";
 import Review from "./Review";
+import {useParams} from "react-router-dom";
 
 const { Step } = Steps;
 
 const detailsInitialState = {
   name: "",
   email: "",
-  phone: ""
+  phone: "",
+  eventId:""
 };
 
 const addressInitialState = {
@@ -19,20 +21,20 @@ const addressInitialState = {
   city: ""
 };
 
-const renderStep = (step) => {
+const renderStep = (step, eventId) => {
   switch (step) {
     case 0:
       return <PersonalDetails />;
     case 1:
       return <NumberOfAttendee />;
     case 2:
-      return <Review />;
+      return <Review eventId={eventId}/>;
     default:
       return null;
   }
 };
 
-const MultiStepForm = () => {
+const MultiStepForm = (props) => {
   const [personalDetails, setPersonalDetails] = useState(detailsInitialState);
   const [numberOfAttendee, setNumberOfAttendee] = useState(addressInitialState);
   const [currentStep, setCurrentStep] = useState(0);
@@ -54,7 +56,7 @@ const MultiStepForm = () => {
         <Step title={"Select ticket"} />
         <Step title={"Review and Payment"} />
       </Steps>
-      <main>{renderStep(currentStep)}</main>
+      <main>{renderStep(currentStep, props.eventId)}</main>
     </Provider>
   );
 };

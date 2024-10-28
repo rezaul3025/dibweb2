@@ -10,6 +10,7 @@ DATABASES = {
 MEDIA_ROOT = os.path.join(Path(BASE_DIR).parents[0], 'frontend', 'static','assets')
 
 SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
+HOST_URL='http://127.0.0.1:8000'
 SMTP_HOST = 'darulihsan-berlin.com'
 SMTP_PORT = 465
 SMTP_USER = 'info@darulihsan-berlin.com'

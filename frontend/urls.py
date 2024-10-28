@@ -13,7 +13,7 @@ urlpatterns = [
     path('history/', index),
     path('registration/<int:num>/', index),
     path('event/', index),
-    path('payment/', index),
+    path('payment/<int:num>/', index),
     path('dibvision/', index),
 
 ]

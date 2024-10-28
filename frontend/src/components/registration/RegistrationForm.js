@@ -9,7 +9,7 @@ export default function RegistrationForm(props) {
     const [mobile, setMobile] = useState("");
     const [message, setMessage] = useState(null);
     const [event, setEvent] = useState(null);
-     const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
     const [submitting, setSubmitting] = useState(false)
     let {eventId} = useParams();
     const recaptcha = useRef()
@@ -268,6 +268,7 @@ export default function RegistrationForm(props) {
                             sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
                         />
                     </div>
+
 
                     <div className="col-12">
                         {message && <p className="text-primary">{message}</p>}

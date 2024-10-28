@@ -21,15 +21,20 @@ class Attendee(models.Model):
     PAYMENT_TYPE_CHOICES = (
         ("None", "None"),
         ("PP", "PayPal"),
+        ("CR", "Credit Card"),
         ("BT", "Bank Transfer"),
     )
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
+    ticket_info = models.CharField(max_length=255,blank=True)
+    payment_reference = models.CharField(max_length=255, blank=True)
+    price = models.CharField(max_length=10)
     creation_date = models.DateTimeField(default=datetime.now)
     is_email_send = models.BooleanField(default=False)
     payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES, default="None")
     is_payment_confirm = models.BooleanField(default=False)
+    data_privacy_st_confirm = models.BooleanField(default=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
     def __str__(self):

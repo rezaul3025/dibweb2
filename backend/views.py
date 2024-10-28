@@ -1,4 +1,5 @@
 import json
+import os
 import urllib
 
 from rest_framework import status
@@ -6,7 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event
+from backend.models import Event, Attendee
 from backend.serializers import AttendeeSerializer, EventSerializer
 
 
@@ -18,11 +19,42 @@ def attendee_save(request):
     #    content = {'error': 'duplicate_error'}
     #    return Response(content, status=status.HTTP_409_CONFLICT)
     if serializer.is_valid() and is_recaptcha_valid(request.data):
-        email = SendEmail()
-        email.sendEmail(request.data)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def attendee_update_after_success(request, attendee_id, payment_reference, event_id):
+    event=Event.objects.get(id=event_id)
+    attendee = Attendee.objects.get(id=attendee_id)
+    email = SendEmail()
+    email.sendEmail(attendee,event)
+
+    attendee.payment_reference=payment_reference
+    attendee.is_payment_confirm=True
+    attendee.is_email_send=True
+    attendee.payment_type='PP'
+
+    attendee.save()
+
+    if not attendee:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    return Response(AttendeeSerializer(attendee).data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def attendee_attendee_verification(request, attendee_id, payment_reference):
+    attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference)
+    if not attendee:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    return Response(AttendeeSerializer(attendee).data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def attendee_by_id(request, attendee_id):
+    attendee = Attendee.objects.get(id=attendee_id)
+    serializer = AttendeeSerializer(attendee)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def events(request):
@@ -36,10 +68,14 @@ def event_by_id(request, event_id):
     serializer = EventSerializer(event)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def find_sec(request):
+    return Response({'P_CLIENT_ID': os.environ['P_CLIENT_ID'],'P_SECRET':os.environ['P_SECRET']},status.HTTP_200_OK)
+
+
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''
     recaptcha_response = request_data['recap_token']
-    print('recaptcha_response', recaptcha_response)
     url = 'https://www.google.com/recaptcha/api/siteverify'
     values = {
         'secret': '6Ldjm20aAAAAAEiOtGssFr9w7JCefe2UVkPIK5Uy',

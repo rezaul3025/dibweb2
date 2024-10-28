@@ -47,11 +47,7 @@ const NumberOfAttendee = () => {
                         </Fragment>
                         }
 
-                        <div
-                            className={
-                                "form__item button__items d-flex justify-content-between"
-                            }
-                        >
+                        <div className="form__item button__items d-flex justify-content-between">
                             <Button type={"default"} onClick={prev}>
                                 Back
                             </Button>
