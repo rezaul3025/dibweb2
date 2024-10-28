@@ -9,7 +9,7 @@ export default function Registration(){
                 <div className="container pb-5">
                     <div className="row g-4">
                         <div className="bg-light p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
-                             <MultiStepForm />
+                             <RegistrationForm />
                         </div>
                     </div>
                 </div>

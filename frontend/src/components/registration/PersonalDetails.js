@@ -3,9 +3,17 @@ import {Formik} from "formik";
 import {Button} from "antd";
 import {Input} from "formik-antd";
 import MultiStepFormContext from "./MultiStepFormContext";
+import Checkout from "../payment/Checkout";
+import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 
 const PersonalDetails = () => {
     const {personalDetails, setPersonalDetails, next} = useContext(MultiStepFormContext);
+
+    const initialOptions = {
+        "client-id": process.env.P_CLIENT_ID,
+        currency: "EUR",
+        intent: "capture",
+    };
     return (
         <Formik
             initialValues={personalDetails}
@@ -51,6 +59,9 @@ const PersonalDetails = () => {
                             <Button className="btn-primary"  onClick={handleSubmit}>
                                 Next
                             </Button>
+                            <PayPalScriptProvider options={initialOptions}>
+                        <Checkout amount={1.90} />
+                    </PayPalScriptProvider>
                         </div>
                     </div>
                 );
