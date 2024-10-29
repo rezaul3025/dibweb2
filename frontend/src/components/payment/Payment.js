@@ -4,7 +4,7 @@ import Checkout from "./Checkout";
 import {PayPalScriptProvider} from "@paypal/react-paypal-js";
 
 export default function Payment(props) {
-    let {payId} = useParams();
+    const {payId} = useParams();
     const [attendee, setAttendee] = useState(null);
     const [sec, setSec] = useState(null);
     const initialOptions = {
@@ -40,7 +40,8 @@ export default function Payment(props) {
                     <div className="rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
                         <div className="row g-4">
                             <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
-                                {attendee && sec && <h5 className="text-dark"> {attendee.ticket_info}
+                                {attendee && sec && <h5 className="text-dark">Payment due <i
+                                    className="fas fa-solid fa-euro-sign text-primary"> {attendee.price}</i>
                                 </h5>}
                             </div>
                             <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp" data-wow-delay="0.2s">

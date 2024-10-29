@@ -16,9 +16,6 @@ export default function CarouselItem(props){
                                 <h4 className="text-primary text-uppercase fw-bold mb-4">
                                     بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
                                 </h4>
-                                <h4 className="text-primary fw-bold mb-4">
-                                    {t('WelcomeToDarulIhsan.text')}
-                                </h4>
                                 <h4 className="display-4 text-white mb-4">
                                     “{props.headline}”
                                 </h4>

@@ -44,7 +44,7 @@ const PersonalDetails = () => {
                         <div
                             className={`form__item ${errors.phone && "input__error"}`}
                         >
-                            <label>Phone(e.g. 01765 8788334) *</label>
+                            <label>Phone(e.g. +491765 8788334) *</label>
                             <Input name={"phone"}/>
                             <p className={"error__feedback"}>{errors.phone}</p>
                         </div>

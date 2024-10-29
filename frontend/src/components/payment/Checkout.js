@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import React, {useState} from 'react';
+import {PayPalButtons, usePayPalScriptReducer} from "@paypal/react-paypal-js";
+import Spinner from "../nav/Spinner";
+import {useNavigate} from "react-router-dom";
 
 const Checkout = (props) => {
-    const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    const [{options, isPending}, dispatch] = usePayPalScriptReducer();
     const [message, setMessage] = useState(null)
+    const [waitingToUpdate, setWaitingToUpdate] = useState(false)
+    const navigate = useNavigate();
 
-    const onCreateOrder = (data,actions) => {
+    const onCreateOrder = (data, actions) => {
         return actions.order.create({
             purchase_units: [
                 {
@@ -17,32 +21,35 @@ const Checkout = (props) => {
         });
     }
 
-    const onApproveOrder = (data,actions) => {
+    const onApproveOrder = (data, actions) => {
         return actions.order.capture().then((details) => {
             const name = details.payer.name.given_name;
-            //alert(`Transaction completed by ${name}`);
-            fetch('/api/v1/attendees/' + props.attendee_id+ '/'+data.orderID+"/"+props.event_id+'/')
-            .then(response => response.json())
-            .then(data =>
-                {
-                    setMessage('Thanks, your payment successfully, you will get a email about your ticket, order Id: '+data.orderID);
-                });
+            setWaitingToUpdate(true)
+            fetch('/api/v1/attendees/' + props.attendee_id + '/' + data.orderID + "/" + props.event_id + '/')
+                .then(response => response.json())
+                .then(attendeeData => {
+                    setWaitingToUpdate(false)
+                    navigate('/payment-success/'+data.orderID+'/',{ replace: true });
+                }).catch(error=>{
+                    setMessage("Error while transaction")
+                    setWaitingToUpdate(false);
+            });
         });
     }
 
-    const onCancelOrder = (data,actions) => {
-        console.log(data);
+    const onCancelOrder = (data, actions) => {
         console.log(actions);
-        alert('cancel');
+        setMessage('You have canceled the transaction');
     }
 
     return (
         <div className="checkout">
-            {message && <h2 className='text-primary'>{message}</h2>}
+            {message && <h2 className='text-warning'>{message}</h2>}
+            {waitingToUpdate && <span className="text-primary">Please wait .. <Spinner width="3rem" height="3rem" /> </span>}
             {isPending ? <p>LOADING...</p> : (
                 <>
                     <PayPalButtons
-                        style={{ layout: "vertical" }}
+                        style={{layout: "vertical"}}
                         createOrder={(data, actions) => onCreateOrder(data, actions)}
                         onApprove={(data, actions) => onApproveOrder(data, actions)}
                         onCancel={(data, actions) => onCancelOrder(data, actions)}

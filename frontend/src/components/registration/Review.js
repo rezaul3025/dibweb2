@@ -56,7 +56,7 @@ const Review = (props) => {
                 setMessage("Registration successful");
                 recaptcha.current.reset();
                 setSubmitting(false);
-                navigate('/payment/'+resJson.id+'/');
+                navigate('/payment/'+resJson.id+'/',{ replace: true });
 
             } else {
                 recaptcha.current.reset();
@@ -80,7 +80,6 @@ const Review = (props) => {
                     <p>Full Name: {personalDetails.name}</p>
                     <p>Email: {personalDetails.email}</p>
                     <p>Phone: {personalDetails.phone}</p>
-                    <p>Phone: {props.eventId}</p>
                 </Col>
                 <Col span={30}>
                 <h4>Total ticket cost</h4>
