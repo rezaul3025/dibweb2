@@ -28,8 +28,9 @@ SECRET_KEY = 'django-insecure-l3b$l)*9jif)l_6s1j__3rs6$=_$*r6loh155jl4zv=hscs4kz
 DEBUG = True
 
 CORS_ORIGIN_ALLOW_ALL = True
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com', 'master', 'http://0.0.0.0:8089/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com','darulihsan-berlin.com', 'master', 'http://0.0.0.0:8089/']
 
 # Application definition
 
