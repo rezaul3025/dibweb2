@@ -10,9 +10,11 @@ class Event(models.Model):
     title = models.CharField(max_length=255)
     description = RichTextField()
     poster_image = models.FileField(upload_to='uploads', blank = True)
+    place=models.CharField(max_length=255, blank = True)
     address = models.CharField(max_length=255)
     map_location = models.CharField(max_length=255)
     event_datetime = models.DateTimeField()
+    enabled = models.BooleanField(default=True)
 
 def get_img_upload_path(instance, filename):
         return settings.UPLOAD_PATH

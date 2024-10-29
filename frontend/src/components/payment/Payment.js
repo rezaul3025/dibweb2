@@ -41,13 +41,13 @@ export default function Payment(props) {
                         <div className="row g-4">
                             <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
                                 {attendee && sec && <h5 className="text-dark">Payment due <i
-                                    className="fas fa-solid fa-euro-sign text-primary"> {attendee.price}</i>
+                                    className="fas fa-solid fa-euro-sign text-primary"> {attendee.price?attendee.price:props.amount}</i>
                                 </h5>}
                             </div>
                             <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp" data-wow-delay="0.2s">
                                 {attendee && sec &&
                                     <PayPalScriptProvider options={initialPPOptions}>
-                                        <Checkout amount={attendee.price} attendee_id={attendee.id} event_id={attendee.event}/>
+                                        <Checkout amount={attendee.price?attendee.price:props.amount} attendee_id={attendee.id} event_id={attendee.event}/>
                                     </PayPalScriptProvider>}
                             </div>
                         </div>

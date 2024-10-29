@@ -2,10 +2,10 @@ import React,{Fragment, useState} from "react";
 import {Link} from "react-router-dom";
 
 export default function Donation(){
-    const [amount, setAmount] = useState();
+    const [amount, setAmount] = useState(0);
     const donationInfo = {
         amount:amount,
-        type:'Donation'
+        type:'donation'
     };
     const onChangeHandler = event => {
         setAmount(event.target.value);
@@ -77,7 +77,7 @@ export default function Donation(){
                         <div className="row g-4 py-2">
                             <div className="col-12">
                                 { amount && amount > 0?
-                                <Link state={donationInfo} to={"/payment/"} type="button" className="btn btn-primary w-100 btn-lg" >
+                                <Link state={donationInfo} to={"/payment/0/"} type="button" className="btn btn-primary w-100 btn-lg" >
                                     <i className="fa-solid fa-circle-dollar-to-slot"></i> Donate now
                                 </Link>: <Link to="/" className="disabled btn btn-primary w-100 btn-lg" onClick={ (event) => event.preventDefault() }>
                                          <i className="fa-solid fa-circle-dollar-to-slot"></i> Donate now</Link>

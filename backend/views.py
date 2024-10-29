@@ -52,7 +52,10 @@ def attendee_attendee_verification(request, attendee_id, payment_reference):
 
 @api_view(['GET'])
 def attendee_by_id(request, attendee_id):
-    attendee = Attendee.objects.get(id=attendee_id)
+    try:
+        attendee = Attendee.objects.get(id=attendee_id)
+    except Attendee.DoesNotExist:
+        return Response(Attendee.objects.none(),status=status.HTTP_404_NOT_FOUND)
     serializer = AttendeeSerializer(attendee)
     return Response(serializer.data)
 

@@ -22,7 +22,7 @@ const PersonalDetails = () => {
                 if (!values.email) errors.email = "Email is required";
                 if (!emailPattern.test(values.email)) errors.email = "No a valid email id";
                 if (!values.phone) errors.phone = "Phone number is required";
-                if (/^[0-9]+$/.test(values.phone))
+                if (!/^\+49|0049|0[1-9][0-9]{1,14}$/.test(values.phone))
                     errors.phone = "Not a valid phone number";
                 return errors;
             }}
@@ -44,7 +44,7 @@ const PersonalDetails = () => {
                         <div
                             className={`form__item ${errors.phone && "input__error"}`}
                         >
-                            <label>Phone(e.g. +491765 8788334) *</label>
+                            <label>Phone(e.g. 017658788334) *</label>
                             <Input name={"phone"}/>
                             <p className={"error__feedback"}>{errors.phone}</p>
                         </div>

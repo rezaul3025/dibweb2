@@ -3,7 +3,8 @@ import Navbar from "../nav/Navbar";
 import {useParams} from "react-router-dom";
 
 export default function PaymentSuccess(){
-     const {orderId} = useParams();
+     const {orderId, payType} = useParams();
+
     return(
       <Fragment>
             <div className="container-fluid position-relative p-0">
@@ -28,15 +29,19 @@ export default function PaymentSuccess(){
                             <h4 className="text-primary">Payment Success</h4>
                             <div className="row g-4 py-5">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp h-25" data-wow-delay="0.2s">
-                                    <h4 className="text-primary">
-                                        {'Thanks, your payment successfully, you will get a email about your ticket, order Id: ' + orderId}
-                                    </h4>
+                                    <p className="text-primary">
+                                        {'Thanks! Your '+payType+' payment successful.'}
+                                    </p>
+                                    {payType !=='Donation' && <p className="text-primary py-2">
+                                        You will get a email about your ticket.
+                                    </p>}
+                                    <h4>Order Id: <span className="text-primary py-2">{orderId}</span></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </Fragment>
+      </Fragment>
     )
 }

@@ -41,7 +41,7 @@ const NumberOfAttendee = () => {
 
                             <div className={`form__item ${errors.numberOfChild && "input__error"}`}>
                                 <label>Number of Child [7-18 years of age]</label>
-                                <InputNumber name={"numberOfChild"} min={1} max={10}/>
+                                <InputNumber name={"numberOfChild"} min={0} max={10}/>
                                 <p className={"error__feedback"}>{errors.numberOfChild}</p>
                             </div>
                         </Fragment>
