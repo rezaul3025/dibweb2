@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {
     Routes,
     Route, BrowserRouter
@@ -20,86 +20,31 @@ import ScrollToTop from "./utils/ScrollToTop";
 import QrCodeVerification from "./pages/QrCodeVerification";
 import PaymentSuccess from "./payment/PaymentSuccess";
 
-class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            authenticated: true,
-        };
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-    }
-
-    isAuthenticated() {
-        const refreshToken = localStorage.getItem('refresh_token');
-        if (refreshToken !== 'undefined' && refreshToken != null) {
-            const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
-            // exp date in token is expressed in seconds, while now() returns milliseconds:
-            const now = Math.ceil(Date.now() / 1000);
-            if (tokenParts.exp < now) {
-                this.setState({
-                        authenticated: false
-                    }
-                )
-            } else {
-                this.setState({
-                        authenticated: true
-                    }
-                )
-            }
-        } else {
-            this.setState({
-                    authenticated: false
-                }
-            )
-        }
+export default function () {
+    if (typeof window !== 'undefined') { // Check if we're running in the browser.
+        // ✅ Only runs once per app load
 
     }
-
-    handleLogout() {
-        try {
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            this.setState({
-                    authenticated: false
-                }
-            )
-        } catch (e) {
-            console.log(e);
-        }
-
-    };
-
-    componentDidMount() {
-        this.isAuthenticated()
-    }
-
-
-    render() {
-        return (
-            <BrowserRouter>
-                <ScrollToTop/>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/activities' element={<ActivitiesPage/>}/>
-                    <Route path='/dibvision' element={<DIBVisionPage/>}/>
-                    <Route path='/prayer-time' element={<PrayerTimePage/>}/>
-                    <Route path='/donation' element={<DonationPage/>}/>
-                    <Route path='/contact' element={<ContactUs/>}/>
-                    <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
-                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
-                    <Route path='/history' element={<OurHistoryPage/>}/>
-                    <Route path='/event' element={<EventPage/>}/>
-                    <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
-                    <Route path='/payment/:payId' element={<PaymentPage/>}/>
-                    <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
-                    <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
-                </Routes>
-                <Footer/>
-            </BrowserRouter>
-        );
-    }
+    return (
+        <BrowserRouter>
+            <ScrollToTop/>
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/activities' element={<ActivitiesPage/>}/>
+                <Route path='/dibvision' element={<DIBVisionPage/>}/>
+                <Route path='/prayer-time' element={<PrayerTimePage/>}/>
+                <Route path='/donation' element={<DonationPage/>}/>
+                <Route path='/contact' element={<ContactUs/>}/>
+                <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
+                <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
+                <Route path='/history' element={<OurHistoryPage/>}/>
+                <Route path='/event' element={<EventPage/>}/>
+                <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
+                <Route path='/payment/:payId' element={<PaymentPage/>}/>
+                <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
+                <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
+            </Routes>
+            <Footer/>
+        </BrowserRouter>
+    );
 }
-
-export default App;
