@@ -4,7 +4,6 @@ import { Provider } from "./MultiStepFormContext";
 import PersonalDetails from "./PersonalDetails";
 import NumberOfAttendee from "./NumberOfAttendee";
 import Review from "./Review";
-import {useParams} from "react-router-dom";
 
 const { Step } = Steps;
 
@@ -17,8 +16,10 @@ const detailsInitialState = {
 
 const addressInitialState = {
   family_ticket: false,
-  address2: "",
-  city: ""
+  numberOfAdults: 1,
+  numberOfChild: 0,
+  adultTicket:20,
+  childTicket:10
 };
 
 const renderStep = (step, eventId) => {

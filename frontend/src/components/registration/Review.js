@@ -16,9 +16,11 @@ const Review = (props) => {
     const numberOfAdult = numberOfAttendee.family_ticket ? 2 : numberOfAttendee.numberOfAdults;
     const numberOfChild = numberOfAttendee.family_ticket ? 3 : numberOfAttendee.numberOfChild;
     const ticketPrice = numberOfAttendee.family_ticket ? 50 : numberOfAdult * 20 + numberOfChild * 10;
+    const adultTicketInfo = numberOfAdult + ' Adult x 20 Eur';
+    const childTicketInfo = numberOfChild && numberOfChild !== 0?numberOfChild + ' Children x 10 Eur':'';
     const ticketInfo = numberOfAttendee.family_ticket ?
         'Family Ticket(2 Adults and 3 Children) 50 Eur'
-        :numberOfAdult + ' Adult x 20 Eur + ' + numberOfChild + ' Children x 10 Eur  = ' + ticketPrice + ' Eur'
+        :adultTicketInfo+' '+childTicketInfo+' = ' + ticketPrice + ' Eur'
 
     const onSubmit = async () => {
          setSubmitting(true)
