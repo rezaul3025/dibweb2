@@ -71,10 +71,6 @@ def event_by_id(request, event_id):
     serializer = EventSerializer(event)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def find_sec(request):
-    return Response({'P_CLIENT_ID': os.environ['P_CLIENT_ID'],'P_SECRET':os.environ['P_SECRET']},status.HTTP_200_OK)
-
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''
