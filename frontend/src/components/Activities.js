@@ -27,17 +27,17 @@ export default function Activities() {
                         data-wow-delay="0.2s"
                         style={{ maxWidth: "800px" }}
                     >
-                        <h4 className="text-primary"> Our Activities </h4>
+                        <h4 className="text-primary"> {t('Activities.text')} </h4>
                         <h1 className="display-5 mb-4"></h1>
                         <p className="mb-0 text-break">
                             {t('OurActivities.text')}
                         </p>
                     </div>
-                    <div className="row g-5 align-items-center">
-                    {activities.map((activity, index) => (
+                    <div className="row g-2 align-items-center">
+                        {activities.map((activity, index) => (
                             <div className="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s" key={index}>
                                 <div className="accordion p-2" id={`accordionFlushSection${index}`}>
-                                    <div className="accordion-item rounded-top">
+                                    <div className="accordion-item rounded-top" style={{ marginBottom: '5px' }}>
                                         <h2 className="accordion-header" id={`flush-heading${index}`}>
                                             <button
                                                 className="accordion-button collapsed rounded-top text-primary"
@@ -46,8 +46,9 @@ export default function Activities() {
                                                 data-bs-target={`#flush-collapse${index}`}
                                                 aria-expanded="false"
                                                 aria-controls={`flush-collapse${index}`}
+                                                style={{ padding: '8px 16px' }}
                                             >
-                                                 {t(activity.title)}
+                                               <span style={{ fontSize: '1.2rem' }}>{t(activity.title)}</span>
                                             </button>
                                         </h2>
                                         <div
@@ -56,7 +57,7 @@ export default function Activities() {
                                             aria-labelledby={`flush-heading${index}`}
                                             data-bs-parent={`#accordionFlushSection${index}`}
                                         >
-                                            <div className="accordion-body">
+                                            <div className="accordion-body" style={{ padding: '8px 16px' }}>
                                                 {t(activity.content)}
                                             </div>
                                         </div>
@@ -65,6 +66,7 @@ export default function Activities() {
                             </div>
                         ))}
                     </div>
+
 
                 </div>
             </div>

@@ -16,6 +16,7 @@ i18n
           Home: { text: 'Home' },
           Activities: { text: 'Activities' },
           Donation: { text: 'Donation' },
+          Membership:{text: 'Membeship'},
           PrayerTime: { text: 'Prayer Time' },
           Event: {text: 'Event'},
           Language: { text: 'Language' },
@@ -114,7 +115,7 @@ i18n
           },
           ActivityOne:{
             text:'We organise waaz mahfils by inviting distinguished scholars from the contemporary'+
-             'Muslim community to expand Islamic knowledge and provide proper guidance to society.'
+             ' Muslim community to expand Islamic knowledge and provide proper guidance to society.'
           },
           ActivityTwoTitle:{
             text:'Quran Education'
@@ -134,30 +135,30 @@ i18n
             text:'Seerah Lessons'
           },
           ActivityFour:{
-            text:'Efforts are made to learn and apply lessons from the life of Prophet'+
+            text:'Efforts are made to learn and apply lessons from the life of Prophet '+
              'Muhammad (PBUH) in real life. Weekly Seerah classes are conducted for children' +
              'and youth, where they read the biographies of all Prophets and learn from their lives.'
           },
           ActivityFiveTitle:{
-            text:'Biweekly Public Session'
+            text:'Biweekly Darsul Quran'
           },
           ActivityFive:{
             text:'Topic-based discussions are held in the light of the Quran. These sessions'+
-             'are conducted in Bangla.'
+             ' are conducted in Bangla.'
           },
           ActivitySixTitle:{
             text:'Weekly Quran Study Circle'
           },
           ActivitySix:{
             text:'A weekly Quran study circle is held for members,'+
-            'where Quran recitation and Tafsir are discussed.'
+            'where Quran recitation, Tafsir and Hadiths are studied.'
           },
           ActivitySevenTitle:{
             text:'Mubasshira: Weekly Online Halaka (Sisters Only)'
           },
           ActivitySeven:{
             text:'A special online Halaka is organized for women, focusing on topic-based discussions, the'+
-             'biographies of the Prophets, lessons from the lives of the Mothers of the Believers, Asmaul Husna, and more.'
+             ' biographies of the Prophets, lessons from the lives of the Mothers of the Believers, Asmaul Husna, and more.'
           },
           ActivityEightTitle:{
             text:'Personal Development Groups'
@@ -193,7 +194,7 @@ i18n
             text:''
           },
           DIBVision:{
-            text:'DIB Vision'
+            text:'Vision'
           },
 
           DIBVisionDecOne:{
@@ -227,6 +228,7 @@ i18n
           Home: { text: 'Home' },
           Activities: { text: 'Aktivitäten' },
           Donation: { text: 'Spende' },
+          Membership:{text: 'Mitglied'},
           PrayerTime: { text: 'Gebetszeit' },
           Language: { text: 'Sprache' },
           Event: {text: 'Veranstaltung'},
@@ -378,13 +380,14 @@ i18n
           Home: { text: 'হোম' },
           Activities: { text: 'আমাদের কার্যক্রম' },
           Donation: { text: 'ডোনেশন' },
+          Membership:{text: 'সদস্য হউন '},
           PrayerTime: { text: 'নামাজের সময়সূচী' },
           Event: {text: 'ইভেন্ট'},
           Language: { text: 'ভাষা' },
           PreyerTimeMessage: { text: '' },
           OurHistory: { text: 'দারুল ইহসান বার্লিনের ইতিহাস' },
           OurHistorySubheader: {
-            text: 'ছোট স্বপ্ন থেকে বৃহৎ সাফল্যের পথে: আল্লাহর রহমতে আমাদের ঐক্যবদ্ধ পথচলা'
+            text:'ছোট স্বপ্ন থেকে বৃহৎ সাফল্যের পথে: আল্লাহর রহমতে আমাদের ঐক্যবদ্ধ পথচলা ' 
           },
           CreationOfOurGroup: { text: '' },
           OurHistoryDecOne: {
@@ -478,7 +481,7 @@ i18n
           },
           ActivityTwo:{
             text:'সঠিক তারতিল ও তাজবীদ এর সাথে কোরান পড়া শেখানো হয় । ভাই-বোন ও শিশুদের জন্য আলাদা' +
-            'ক্লাসের ব্যবস্থা আছে।'
+            ' ক্লাসের ব্যবস্থা আছে।'
           },
           ActivityThreeTitle:{
             text:'কুরআনের তাফসীর ও প্রয়োগ'
@@ -491,7 +494,7 @@ i18n
             text:'সীরাহ পাঠ'
           },
           ActivityFour:{
-            text:'রাসূল মুহাম্মদ (সা.) এর জীবন থেকে শিক্ষা নিয়ে বাস্তব জীবনে প্রয়োগ করার চেষ্টা করা হয়।শিশু-কিশোরদের' +
+            text:'রাসূল মুহাম্মদ (সা.) এর জীবন থেকে শিক্ষা নিয়ে বাস্তব জীবনে প্রয়োগ করার চেষ্টা করা হয়। শিশু-কিশোরদের' +
             ' জন্য সাপ্তাহিক সীরাহ ক্লাস নেয়া হয় যেখানে তারা সকল নবী-রাসূলদের জীবনী পড়া এবং সেখান থেকে শিক্ষা গ্রহণ করতে পারে।'
           },
           ActivityFiveTitle:{
@@ -543,7 +546,7 @@ i18n
             text:''
           },
           DIBVision:{
-            text:'DIB ভিশন'
+            text:'ভিশন'
           },
           DIBVisionDecOne:{
             text:'দারুল ইহসান বার্লিন (DIB) প্রতিষ্ঠার পর থেকে আমরা আমাদের বার্লিনে অবস্থারত মুসলিমদের  জন্য একটি সুষ্ঠ এবং' +

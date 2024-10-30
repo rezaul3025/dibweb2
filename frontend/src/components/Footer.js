@@ -18,9 +18,12 @@ export default function Footer() {
                                     KT Bank AG <br/>
                                     IBAN: DE52 5023 4500 0155 3400 01
                                 </p>
-                                <div className="d-flex">
-                                    <img width={100} height={100} src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+
+                            <a href={'/'} className="d-flex">
+                                <div style={{ backgroundColor: 'white', borderRadius: '1px', display: 'inline-block' }}>
+                                    <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo" style={{ width: '60px', height: '50px' }} />
                                 </div>
+                            </a>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-2">
@@ -58,7 +61,7 @@ export default function Footer() {
                                 </div>
                                 <div className="d-flex align-items-center">
                                     <i className="fa fa-phone-alt text-primary me-3"></i>
-                                    <p className="text-white mb-0">(030) 3456 7890</p>
+                                    <p className="text-white mb-0">+49 176 5779 1221 (9:00 - 18:00)</p>
                                 </div>
                                 <div className="d-flex align-items-center mb-4">
                                     <i className="fab fa-firefox-browser text-primary me-3"></i>

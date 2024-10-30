@@ -34,7 +34,7 @@ export default function ContactAddress(){
                         </div>
                         <div>
                             <h4>Telephone</h4>
-                            <p className="mb-0">(030) 3456 7890</p>
+                            <p className="mb-0">+49 176 5779 1221 (9:00 - 18:00)</p>
                         </div>
                     </div>
                 </div>
