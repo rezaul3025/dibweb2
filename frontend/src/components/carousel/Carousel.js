@@ -27,7 +27,6 @@ export default function Carousel() {
                                    key={ci.imageName}>
                     </CarouselItem>
                 ))}
-                {process.env.REACT_APP_P_CLIENT_ID}=test3
             </div>
             {/* Carousel End */}
         </Fragment>
