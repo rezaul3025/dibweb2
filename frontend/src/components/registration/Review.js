@@ -92,7 +92,7 @@ const Review = (props) => {
                         <ReCAPTCHA
                             ref={recaptcha}
                             size="invisible"
-                            sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
+                            sitekey={process.env.REACT_APP_G_ReCAPTCHA_S_KEY}
                         />
                         <p className="text-primary">{message}</p>
                         <Button type={"default"} onClick={prev}>
