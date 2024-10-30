@@ -48,10 +48,10 @@ export default function Event(){
                                         <a href={event.map_location} target="_blank"><i className="fa-solid fa-map-location text-primary me-2"></i> Google Map
                                         </a>
                                     </div>
-                                    <div className="align-bottom p-4">
+                                    {event.enabled && <div className="align-bottom p-4">
                                         <Link to={"/registration/"+event.id+"/"} className="btn btn-primary align-bottom">Buy Ticket
                                             >></Link>
-                                    </div>
+                                    </div>}
                                 </div>
                             </div>
                          ))}

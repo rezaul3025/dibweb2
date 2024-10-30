@@ -13,4 +13,4 @@ class AttendeeSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "event_datetime"]
+        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime"]
