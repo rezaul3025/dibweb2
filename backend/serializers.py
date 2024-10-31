@@ -1,7 +1,7 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event
+from backend.models import Attendee, Event, ContactUs
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -14,3 +14,8 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime"]
+
+class ContactUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactUs
+        fields = ['name', 'email', 'phone','subject', 'message']

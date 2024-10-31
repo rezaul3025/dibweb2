@@ -19,5 +19,4 @@ urlpatterns = [
     path('dibvision/', index),
     path('terms-condition/', index),
     path('verify/<int:num>/', index),
-
 ]

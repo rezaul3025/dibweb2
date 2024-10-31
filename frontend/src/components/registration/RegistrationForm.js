@@ -1,5 +1,5 @@
-import React, {Fragment, useState, useEffect,useRef} from "react";
-import { useParams } from 'react-router-dom';
+import React, {Fragment, useState, useEffect, useRef} from "react";
+import {useParams} from 'react-router-dom';
 import ReCAPTCHA from "react-google-recaptcha";
 import Spinner from "../nav/Spinner";
 
@@ -18,15 +18,15 @@ export default function RegistrationForm(props) {
         name: '',
         email: '',
         phone: '',
-        isFamilyTicket:false,
-        numberOfAdult:0,
-        numberOfChild:0
+        isFamilyTicket: false,
+        numberOfAdult: 0,
+        numberOfChild: 0
     });
 
     const handleChange = (e) => {
-        let { name, value } = e.target;
+        let {name, value} = e.target;
 
-        if(name === 'isFamilyTicket'){
+        if (name === 'isFamilyTicket') {
             value = e.target.checked
         }
         console.log(value)
@@ -38,7 +38,7 @@ export default function RegistrationForm(props) {
         setErrors(newErrors);
     };
 
-    const handleOnblur=()=>{
+    const handleOnblur = () => {
         const newErrors = validateForm(formData);
         setErrors(newErrors);
     }
@@ -59,7 +59,7 @@ export default function RegistrationForm(props) {
             errors.email = 'Email is required';
             return errors
         }
-        if(!/\S+@\S+\.\S+/.test(data.email)) {
+        if (!/\S+@\S+\.\S+/.test(data.email)) {
             errors.email = 'Email is invalid';
             return errors
         }
@@ -73,16 +73,16 @@ export default function RegistrationForm(props) {
             errors.phone = 'Phone number not in valid length';
             return errors;
         }
-        if(!/^\d+$/.test(data.phone.length)){
+        if (!/^\d+$/.test(data.phone.length)) {
             errors.phone = 'Not a valid phone number';
             return errors;
         }
 
-        if (!data.isFamilyTicket && data.numberOfAdult<=0) {
+        if (!data.isFamilyTicket && data.numberOfAdult <= 0) {
             errors.numberOfAdult = 'At least one adult ticket required to buy';
             return errors;
         }
-        if(!data.isFamilyTicket && (data.numberOfAdult < 1 || data.numberOfAdult > 9)) {
+        if (!data.isFamilyTicket && (data.numberOfAdult < 1 || data.numberOfAdult > 9)) {
             errors.numberOfAdult = 'Minimum 1 and maximum 8 adult ticket can be buy at a time';
             return errors
         }
@@ -94,19 +94,18 @@ export default function RegistrationForm(props) {
     };
 
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newErrors = validateForm(formData);
         setErrors(newErrors);
-         if (Object.keys(newErrors).length >= 0) {
-             setMessage("Cannot continue due to validation errors.");
-             return;
-         }
+        if (Object.keys(newErrors).length >= 0) {
+            setMessage("Cannot continue due to validation errors.");
+            return;
+        }
 
         const token = await recaptcha.current.executeAsync();
         setSubmitting(true);
-        if(!token){
+        if (!token) {
             setMessage("Captcha Not Resolved ");
             setSubmitting(false);
             return;
@@ -148,7 +147,7 @@ export default function RegistrationForm(props) {
     };
 
     useEffect(() => {
-         fetch('/api/v1/events/'+eventId+'/')
+        fetch('/api/v1/events/' + eventId + '/')
             .then(response => response.json())
             .then(data => setEvent(data));
     }, []);
@@ -166,7 +165,7 @@ export default function RegistrationForm(props) {
                                    name="name"
                                    onChange={handleChange}
                                    onBlur={handleOnblur}
-                                   placeholder="Your Full Name" />
+                                   placeholder="Your Full Name"/>
                             <label htmlFor="name">Your Name</label>
                             {errors && errors.name && (
                                 <span className="error-message">
@@ -198,7 +197,7 @@ export default function RegistrationForm(props) {
                                    name="phone"
                                    value={formData.phone}
                                    onChange={handleChange}
-                                    onBlur={handleOnblur}
+                                   onBlur={handleOnblur}
                                    placeholder="Phone"/>
                             <label htmlFor="phone">Your Phone</label>
                             {errors && errors.phone && (
@@ -215,8 +214,8 @@ export default function RegistrationForm(props) {
                                    name="isFamilyTicket"
                                    checked={formData.isFamilyTicket}
                                    onChange={handleChange}
-                                    onBlur={handleOnblur}
-                                  />
+                                   onBlur={handleOnblur}
+                            />
                             <label className="form-check-label" htmlFor="isFamilyTicket">Family ticket(2 adults, 3
                                 Children[7-18 age])</label>
                             {errors && errors.isFamilyTicket && (
@@ -226,7 +225,7 @@ export default function RegistrationForm(props) {
                             )}
                         </div>
                     </div>
-                    { !formData.isFamilyTicket && <Fragment>
+                    {!formData.isFamilyTicket && <Fragment>
                         <div className="col-12 col-xl-6">
                             <div className="form-floating">
                                 <input type="number" className="form-control border-0"
@@ -240,10 +239,10 @@ export default function RegistrationForm(props) {
                                        placeholder="Phone"/>
                                 <label htmlFor="numberOfAdult">Number of Adults </label>
                                 {errors && errors.numberOfAdult && (
-                                <span className="error-message">
+                                    <span className="error-message">
                                     {errors.numberOfAdult}
                                 </span>
-                            )}
+                                )}
                             </div>
                         </div>
                         <div className="col-12 col-xl-6">
@@ -254,7 +253,7 @@ export default function RegistrationForm(props) {
                                        value={formData.numberOfChild}
                                        onChange={handleChange}
                                        placeholder="Phone"
-                                    min={0}
+                                       min={0}
                                        max={8}
                                 />
                                 <label htmlFor="numberOfChild">Number of Children </label>
@@ -265,7 +264,7 @@ export default function RegistrationForm(props) {
                         <ReCAPTCHA
                             ref={recaptcha}
                             size="invisible"
-                            sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
+                            sitekey={process.env.REACT_APP_G_ReCAPTCHA_S_KEY}
                         />
                     </div>
 

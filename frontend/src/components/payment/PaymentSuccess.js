@@ -30,10 +30,10 @@ export default function PaymentSuccess(){
                             <div className="row g-4 py-5">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp h-25" data-wow-delay="0.2s">
                                     <p className="text-primary">
-                                        {'Thanks! Your '+payType+' payment successful.'}
+                                        {'Thanks! Your '+payType+' payment is successful.'}
                                     </p>
                                     {payType !=='Donation' && <p className="text-primary py-2">
-                                        You will get a email about your ticket.
+                                        You will get an email about your ticket.
                                     </p>}
                                     <h4>Order Id: <span className="text-primary py-2">{orderId}</span></h4>
                                 </div>

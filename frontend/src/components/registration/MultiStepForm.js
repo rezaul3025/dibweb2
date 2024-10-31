@@ -17,7 +17,7 @@ const detailsInitialState = {
 const addressInitialState = {
   family_ticket: false,
   numberOfAdults: 1,
-  numberOfChild: 0,
+  numberOfChild: 1,
   adultTicket:20,
   childTicket:10
 };

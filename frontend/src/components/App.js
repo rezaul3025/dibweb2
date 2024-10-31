@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {
     Routes,
     Route, BrowserRouter
@@ -19,71 +19,16 @@ import PaymentPage from "./payment/PaymentPage";
 import ScrollToTop from "./utils/ScrollToTop";
 import QrCodeVerification from "./pages/QrCodeVerification";
 import PaymentSuccess from "./payment/PaymentSuccess";
+import PageNotFound from "./PageNotFound";
 import MembershipPage from "./pages/MembershipPage";
 import TermsConditionPage from "./pages/TermsConditionPage";
 
-class App extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            authenticated: true,
-        };
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-    }
-
-    isAuthenticated() {
-        const refreshToken = localStorage.getItem('refresh_token');
-        if (refreshToken !== 'undefined' && refreshToken != null) {
-            const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
-            // exp date in token is expressed in seconds, while now() returns milliseconds:
-            const now = Math.ceil(Date.now() / 1000);
-            if (tokenParts.exp < now) {
-                this.setState({
-                        authenticated: false
-                    }
-                )
-            } else {
-                this.setState({
-                        authenticated: true
-                    }
-                )
-            }
-        } else {
-            this.setState({
-                    authenticated: false
-                }
-            )
-        }
-
-    }
-
-    handleLogout() {
-        try {
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            this.setState({
-                    authenticated: false
-                }
-            )
-        } catch (e) {
-            console.log(e);
-        }
-
-    };
-
-    componentDidMount() {
-        this.isAuthenticated()
-    }
-
-
-    render() {
-        return (
+export default function () {
+   return (
             <BrowserRouter>
                 <ScrollToTop/>
                 <Routes>
-                    <Route path='/' element={<Home/>}/>
+                    <Route exact path='/' element={<Home/>}/>
                     <Route path='/activities' element={<ActivitiesPage/>}/>
                     <Route path='/dibvision' element={<DIBVisionPage/>}/>
                     <Route path='/prayer-time' element={<PrayerTimePage/>}/>
@@ -99,11 +44,11 @@ class App extends Component {
                     <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
                     <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
                     <Route path='/terms-condition' element={<TermsConditionPage/>}/>
+                    <Route path='*' element={<PageNotFound />} />
                 </Routes>
                 <Footer/>
             </BrowserRouter>
         );
-    }
 }
 
 export default App;

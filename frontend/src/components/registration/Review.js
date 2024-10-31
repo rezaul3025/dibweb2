@@ -16,11 +16,11 @@ const Review = (props) => {
     const numberOfAdult = numberOfAttendee.family_ticket ? 2 : numberOfAttendee.numberOfAdults;
     const numberOfChild = numberOfAttendee.family_ticket ? 3 : numberOfAttendee.numberOfChild;
     const ticketPrice = numberOfAttendee.family_ticket ? 50 : numberOfAdult * 20 + numberOfChild * 10;
-    const adultTicketInfo = numberOfAdult + ' Adult x 20 Eur';
-    const childTicketInfo = numberOfChild && numberOfChild !== 0?numberOfChild + ' Children x 10 Eur':'';
+    const adultTicketInfo = numberOfAdult + ' Adult x 20 Euro';
+    const childTicketInfo = numberOfChild && numberOfChild !== 0?numberOfChild + ' Children x 10 Euro':'';
     const ticketInfo = numberOfAttendee.family_ticket ?
-        'Family Ticket(2 Adults and 3 Children) 50 Eur'
-        :adultTicketInfo+' '+childTicketInfo+' = ' + ticketPrice + ' Eur'
+        'Family Ticket( 2 Adults and 3 Children) 50 Euro'
+        :adultTicketInfo+' '+childTicketInfo+' = ' + ticketPrice + ' Euro'
 
     const onSubmit = async () => {
          setSubmitting(true)
@@ -92,7 +92,7 @@ const Review = (props) => {
                         <ReCAPTCHA
                             ref={recaptcha}
                             size="invisible"
-                            sitekey="6Ldjm20aAAAAAPf-4jJIgW2-sqOuJwZIXyRZ20zb"
+                            sitekey={process.env.REACT_APP_G_ReCAPTCHA_S_KEY}
                         />
                         <p className="text-primary">{message}</p>
                         <Button type={"default"} onClick={prev}>

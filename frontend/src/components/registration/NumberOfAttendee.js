@@ -3,6 +3,7 @@ import {Formik} from "formik";
 import {Button} from "antd";
 import {Checkbox, InputNumber} from "formik-antd";
 import MultiStepFormContext from "./MultiStepFormContext";
+import EuroICon from "../utils/EuroICon";
 
 const NumberOfAttendee = () => {
     const {numberOfAttendee, setNumberOfAttendee, next, prev} = useContext(MultiStepFormContext);
@@ -18,40 +19,45 @@ const NumberOfAttendee = () => {
                 next();
             }}
             validate={(values) => {
-                console.log(values)
                 const errors = {};
-                if (!isFamilyTicketChecked && !values.numberOfAdults) errors.numberOfAdults = "Number of adults is required";
-                if (!isFamilyTicketChecked && values.numberOfAdults < 1) errors.numberOfAdults = "At least on adult required";
+                if (!isFamilyTicketChecked && (values.numberOfAdults < 1 && values.numberOfChild < 1)) errors.general = "At least one require to buy";
                 if (!isFamilyTicketChecked && values.numberOfAdults > 10) errors.numberOfAdults = "Maximum 10 adult allowed in one ticket";
+                if (!isFamilyTicketChecked && values.numberOfChild > 8) errors.numberOfChild = "Maximum 8 children allowed in one ticket";
                 return errors;
             }}
         >
             {({handleSubmit, errors}) => {
                 return (
                     <Fragment>
+
                         <div className={"details__wrapper"}>
+                            { numberOfAdult === 2 && numberOfChild === 3 &&
+                                <p className="align-content-center text-primary pb-4">You can buy family ticket with <EuroICon />50 only.</p>}
                             <div className={`form__item`}>
-                                <Checkbox name={"family_ticket"} onChange={(e) => {
+                            <Checkbox name={"family_ticket"} onChange={(e) => {
                                     setIsFamilyTicketChecked(e.target.checked);
-                                }}> </Checkbox> <label>Family Ticket </label>
+                                }}> </Checkbox> <label>Family Ticket( 2 Adults and 3 Children ) </label>
                             </div>
                             {!isFamilyTicketChecked && <Fragment>
                                 <div className={`form__item ${errors.numberOfAdults && "input__error"}`}>
                                     <label>Number of adults</label>
-                                    <InputNumber name={"numberOfAdults"} min={1} max={10} onChange={(e)=>setNumberOfAdult(e)} />
+                                    <InputNumber name={"numberOfAdults"} min={0} max={10}
+                                                 onChange={(e) => setNumberOfAdult(e)}/>
                                     <p className={"error__feedback"}>{errors.numberOfAdults}</p>
                                 </div>
 
                                 <div className={`form__item ${errors.numberOfChild && "input__error"}`}>
                                     <label>Number of Child [7-18 years of age]</label>
-                                    <InputNumber name={"numberOfChild"} min={0} max={10} onChange={(e)=>setNumberOfChild(e)}/>
+                                    <InputNumber name={"numberOfChild"} min={0} max={8}
+                                                 onChange={(e) => setNumberOfChild(e)}/>
                                     <p className={"error__feedback"}>{errors.numberOfChild}</p>
                                 </div>
+                                <p className={"error__feedback"}>{errors.general}</p>
                             </Fragment>
                             }
                             <div className="align-content-center pb-2"><span>Total : <i
-                                className="text-primary fas fa-solid fa-euro-sign"></i> {isFamilyTicketChecked?50:
-                                numberOfAdult*numberOfAttendee.adultTicket+numberOfChild*numberOfAttendee.childTicket}</span>
+                                className="text-primary fas fa-solid fa-euro-sign"></i> {isFamilyTicketChecked ? 50 :
+                                numberOfAdult * numberOfAttendee.adultTicket + numberOfChild * numberOfAttendee.childTicket}</span>
                             </div>
                             <div className="form__item button__items d-flex justify-content-between">
                                 <Button type={"default"} onClick={prev}>
