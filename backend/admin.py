@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Attendee, Event
+from backend.models import Attendee, Event, ContactUs
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -17,3 +17,8 @@ class EventAdmin(admin.ModelAdmin):
     fields = list_display
 
 admin.site.register(Event, EventAdmin)
+
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone','subject', 'message')
+    fields = list_display
+admin.site.register(ContactUs, ContactUsAdmin)

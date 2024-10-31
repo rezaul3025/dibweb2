@@ -19,6 +19,7 @@ import PaymentPage from "./payment/PaymentPage";
 import ScrollToTop from "./utils/ScrollToTop";
 import QrCodeVerification from "./pages/QrCodeVerification";
 import PaymentSuccess from "./payment/PaymentSuccess";
+import PageNotFound from "./PageNotFound";
 
 export default function () {
     if (typeof window !== 'undefined') { // Check if we're running in the browser.
@@ -29,7 +30,7 @@ export default function () {
         <BrowserRouter>
             <ScrollToTop/>
             <Routes>
-                <Route path='/' element={<Home/>}/>
+                <Route exact path='/' element={<Home/>}/>
                 <Route path='/activities' element={<ActivitiesPage/>}/>
                 <Route path='/dibvision' element={<DIBVisionPage/>}/>
                 <Route path='/prayer-time' element={<PrayerTimePage/>}/>
@@ -43,6 +44,7 @@ export default function () {
                 <Route path='/payment/:payId' element={<PaymentPage/>}/>
                 <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
                 <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
+                <Route path='*' element={<PageNotFound />} />
             </Routes>
             <Footer/>
         </BrowserRouter>

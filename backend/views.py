@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
 from backend.models import Event, Attendee
-from backend.serializers import AttendeeSerializer, EventSerializer
+from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer
 
 
 @api_view(['POST'])
@@ -28,7 +28,7 @@ def attendee_update_after_success(request, attendee_id, payment_reference, event
     event=Event.objects.get(id=event_id)
     attendee = Attendee.objects.get(id=attendee_id)
     email = SendEmail()
-    email.sendEmail(attendee,event)
+    email.ticket_confirmation(attendee,event)
 
     attendee.payment_reference=payment_reference
     attendee.is_payment_confirm=True
@@ -71,6 +71,14 @@ def event_by_id(request, event_id):
     serializer = EventSerializer(event)
     return Response(serializer.data)
 
+@api_view(['POST'])
+def contact_us(request):
+    serializer = ContactUsSerializer(data=request.data)
+    if serializer.is_valid() and is_recaptcha_valid(request.data):
+        serializer.save()
+        return Response(status=status.HTTP_201_CREATED)
+    return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''
@@ -84,6 +92,5 @@ def is_recaptcha_valid(request_data):
     req =  urllib.request.Request(url, data=data)
     response = urllib.request.urlopen(req)
     result = json.loads(response.read().decode())
-    print(result)
     ''' End reCAPTCHA validation '''
     return result['success'];

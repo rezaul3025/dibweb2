@@ -1,16 +1,13 @@
-import os
 import smtplib
-import ssl
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from pathlib import Path
 
 import qrcode
 from django.conf import settings
 
 class SendEmail(object):
-    def sendEmail(self, attendee_data, event_data):
+    def ticket_confirmation(self, attendee_data, event_data):
         with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER, settings.SMTP_PASS)
             msg = MIMEMultipart()
@@ -23,11 +20,11 @@ class SendEmail(object):
                 <head></head>
                 <body>
                     <h4 style="font-size:15px;">Dear {},</h4> 
-                    <p>Your Ticket:</p>
+                    <p>Your Ticket details:</p>
                     <p><b>{}</b></p>
                     <p>{}</p>
-                    <p>{}</p>
-                    <a href='{}'>{}</a>
+                    <p>Date & Time: {}</p>
+                    <p>Location: <a href='{}'>{}</a></p>
                     <p>Please show the QR code on the entrance</>
                     <img src="cid:image1" alt="Logo" style="width:518px;height:518px;"><br>
                     <p><h4 style="font-size:15px;">QR Code</h4></p>  
@@ -51,6 +48,18 @@ class SendEmail(object):
 
             server.sendmail(settings.SMTP_EMAIL_FROM, attendee_data.email, msg.as_string())
             # mailsrv.quit()
+
+    def contact_email(self, contact_data):
+        with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
+            server.login(settings.SMTP_USER, settings.SMTP_PASS)
+            msg = MIMEMultipart()
+            msg['Subject'] = contact_data['subject']
+            msg['From'] = contact_data['email']
+            msg['To'] = settings.SMTP_EMAIL_FROM
+            print(contact_data['email'], contact_data['subject'])
+            message = contact_data['message']+'{}'.format(' Phone: '+contact_data['phone'] if contact_data['phone'] is not None else '')
+            print(contact_data['email'], contact_data['subject'], message)
+            server.sendmail(contact_data['email'], settings.SMTP_EMAIL_FROM, message)
 
     def geneRateQrCode(self, data):
         qr = qrcode.QRCode(

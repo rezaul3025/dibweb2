@@ -39,6 +39,13 @@ class Attendee(models.Model):
     data_privacy_st_confirm = models.BooleanField(default=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
+class ContactUs(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255, blank=True)
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+
     def __str__(self):
         return f"{self.name},{self.email},{self.phone}, {self.creation_date}"
 
