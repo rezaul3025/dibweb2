@@ -19,8 +19,11 @@ const PersonalDetails = () => {
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 const errors = {};
                 if (!values.name) errors.name = "Name is required";
+                if (values.name.length>45) errors.name = "Maximum characters 45 is allowed";
+                if (/[`!@#$%^&*()_+\-=\[\]{};':"\\|<>\/?~]/.test(values.name)) errors.name = "Not a valid name";
                 if (!values.email) errors.email = "Email is required";
-                if (!emailPattern.test(values.email)) errors.email = "No a valid email id";
+                if (values.email.length>45) errors.email = "Maximum length 45 is allowed";
+                if (!emailPattern.test(values.email) || /[`!#$%^&*()+=\[\]{};':"\\|<>\/?~]/.test(values.email)) errors.email = "No a valid email id";
                 if (!values.phone) errors.phone = "Phone number is required";
                 if (!/^\+49|0049|0[1-9][0-9]{1,14}$/.test(values.phone))
                     errors.phone = "Not a valid phone number";
@@ -32,19 +35,19 @@ const PersonalDetails = () => {
                 return (
                     <div className={"details__wrapper"}>
                         <div className={`form__item ${errors.name && "input__error"}`}>
-                            <label>Full name *</label>
+                            <label>Full name <sup className="text-danger">*</sup></label>
                             <Input name={"name"}/>
                             <p className={"error__feedback"}>{errors.name}</p>
                         </div>
                         <div className={`form__item ${errors.email && "input__error"}`}>
-                            <label>Email(e.g. info@example.com) *</label>
+                            <label>Email(e.g. info@example.com) <sup className="text-danger">*</sup></label>
                             <Input name={"email"}/>
                             <p className={"error__feedback"}>{errors.email}</p>
                         </div>
                         <div
                             className={`form__item ${errors.phone && "input__error"}`}
                         >
-                            <label>Phone(e.g. 017658788334) *</label>
+                            <label>Phone(e.g. 017658788334) <sup className="text-danger">*</sup></label>
                             <Input name={"phone"}/>
                             <p className={"error__feedback"}>{errors.phone}</p>
                         </div>

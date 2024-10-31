@@ -76,7 +76,7 @@ def contact_us(request):
     serializer = ContactUsSerializer(data=request.data)
     if serializer.is_valid() and is_recaptcha_valid(request.data):
         serializer.save()
-        return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_201_CREATED, data=serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
