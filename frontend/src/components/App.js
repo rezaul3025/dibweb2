@@ -50,5 +50,3 @@ export default function () {
             </BrowserRouter>
         );
 }
-
-export default App;
