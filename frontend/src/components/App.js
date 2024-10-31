@@ -19,6 +19,8 @@ import PaymentPage from "./payment/PaymentPage";
 import ScrollToTop from "./utils/ScrollToTop";
 import QrCodeVerification from "./pages/QrCodeVerification";
 import PaymentSuccess from "./payment/PaymentSuccess";
+import MembershipPage from "./pages/MembershipPage";
+import TermsConditionPage from "./pages/TermsConditionPage";
 
 class App extends Component {
 
@@ -86,6 +88,7 @@ class App extends Component {
                     <Route path='/dibvision' element={<DIBVisionPage/>}/>
                     <Route path='/prayer-time' element={<PrayerTimePage/>}/>
                     <Route path='/donation' element={<DonationPage/>}/>
+                    <Route path='/newmember' element={<MembershipPage/>}/>
                     <Route path='/contact' element={<ContactUs/>}/>
                     <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
                     <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
@@ -95,6 +98,7 @@ class App extends Component {
                     <Route path='/payment/:payId' element={<PaymentPage/>}/>
                     <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
                     <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
+                    <Route path='/terms-condition' element={<TermsConditionPage/>}/>
                 </Routes>
                 <Footer/>
             </BrowserRouter>

@@ -32,21 +32,20 @@ export default function Footer() {
                                 <Link to={"/history/"}><i className="fas fa-angle-right me-2"></i> History</Link>
                                 <Link to={"/activities/"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
                                 <Link to={"/donation/#"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
-                                <Link to={"/prayer-time/"}><i className="fas fa-angle-right me-2"></i> Prayer
-                                    Time</Link>
+                                <Link to={"/prayer-time/"}><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
+                                <Link to={"/terms-condition/"}><i className="fas fa-angle-right me-2"></i> Terms & Conditions</Link>
                                 <Link to={"/contact/"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item">
+                            {/* <div className="footer-item">
                                 <h4 className="text-white mb-4">Support</h4>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                                <a href="#"><i className="fas fa-angle-right me-2"></i> Terms & Conditions</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Disclaimer</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Support</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> FAQ</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Help</a>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
                             <div className="footer-item">

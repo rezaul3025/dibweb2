@@ -10,10 +10,10 @@ export default function AboutPage(){
                 {/*<!-- Header Start -->*/}
                 <div className="container-fluid bg-breadcrumb">
                     <div className="container text-center py-5" style={{maxWidth: '900px'}}>
-                        <h4 className="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
+                        <h4 className="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{t('AboutUs.text')}</h4>
                         <ol className="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                            <li className="breadcrumb-item"><a href="/">Home</a></li>
-                            <li className="breadcrumb-item active text-primary">About</li>
+                            <li className="breadcrumb-item"><a href="/"> {t('Home.text')}</a></li>
+                            <li className="breadcrumb-item active text-primary">{t('AboutUs.text')}</li>
                         </ol>
                     </div>
                 </div>
