@@ -20,33 +20,35 @@ import ScrollToTop from "./utils/ScrollToTop";
 import QrCodeVerification from "./pages/QrCodeVerification";
 import PaymentSuccess from "./payment/PaymentSuccess";
 import PageNotFound from "./PageNotFound";
+import MembershipPage from "./pages/MembershipPage";
+import TermsConditionPage from "./pages/TermsConditionPage";
 
 export default function () {
-    if (typeof window !== 'undefined') { // Check if we're running in the browser.
-        // ✅ Only runs once per app load
-
-    }
-    return (
-        <BrowserRouter>
-            <ScrollToTop/>
-            <Routes>
-                <Route exact path='/' element={<Home/>}/>
-                <Route path='/activities' element={<ActivitiesPage/>}/>
-                <Route path='/dibvision' element={<DIBVisionPage/>}/>
-                <Route path='/prayer-time' element={<PrayerTimePage/>}/>
-                <Route path='/donation' element={<DonationPage/>}/>
-                <Route path='/contact' element={<ContactUs/>}/>
-                <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
-                <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
-                <Route path='/history' element={<OurHistoryPage/>}/>
-                <Route path='/event' element={<EventPage/>}/>
-                <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
-                <Route path='/payment/:payId' element={<PaymentPage/>}/>
-                <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
-                <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
-                <Route path='*' element={<PageNotFound />} />
-            </Routes>
-            <Footer/>
-        </BrowserRouter>
-    );
+   return (
+            <BrowserRouter>
+                <ScrollToTop/>
+                <Routes>
+                    <Route exact path='/' element={<Home/>}/>
+                    <Route path='/activities' element={<ActivitiesPage/>}/>
+                    <Route path='/dibvision' element={<DIBVisionPage/>}/>
+                    <Route path='/prayer-time' element={<PrayerTimePage/>}/>
+                    <Route path='/donation' element={<DonationPage/>}/>
+                    <Route path='/newmember' element={<MembershipPage/>}/>
+                    <Route path='/contact' element={<ContactUs/>}/>
+                    <Route path='/goalsobjective' element={<GoalsObjectivePage/>}/>
+                    <Route path='/idealsvalue' element={<IdealsAndValuesPage/>}/>
+                    <Route path='/history' element={<OurHistoryPage/>}/>
+                    <Route path='/event' element={<EventPage/>}/>
+                    <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
+                    <Route path='/payment/:payId' element={<PaymentPage/>}/>
+                    <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
+                    <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
+                    <Route path='/terms-condition' element={<TermsConditionPage/>}/>
+                    <Route path='*' element={<PageNotFound />} />
+                </Routes>
+                <Footer/>
+            </BrowserRouter>
+        );
 }
+
+export default App;

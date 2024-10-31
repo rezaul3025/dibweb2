@@ -75,7 +75,11 @@ export default function Navbar(){
                 {/* Navbar & Hero Start */}
                 <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                     <a href={'/'} className="navbar-brand p-0">
-                        <h2 className="text-primary">  <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/></h2>
+                       <div style={{ backgroundColor: 'white', borderRadius: '1px', display: 'inline-block' }}>
+                            <h2 className="text-primary">
+                            <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo" />
+                            </h2>
+                       </div>
                     </a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span className="fa fa-bars"></span>
@@ -86,8 +90,9 @@ export default function Navbar(){
                             </a>
                             <About/>
                             <Link to={"/activities/"} className={`nav-item nav-link ${location.pathname === "/activities/" ? "active" : ""}`}>{t('Activities.text')}</Link>
-                             <Link to={"/dibvision/"} className={`nav-item nav-link ${location.pathname === "/dibvision/" ? "active" : ""}`}>{t('DIBVision.text')}</Link>
+                            <Link to={"/dibvision/"} className={`nav-item nav-link ${location.pathname === "/dibvision/" ? "active" : ""}`}>{t('DIBVision.text')}</Link>
                             <Link to={"/donation/"} className={`nav-item nav-link ${location.pathname === "/donation/" ? "active" : ""}`}>{t('Donation.text')}</Link>
+                            <Link to={"/newmember/"} className={`nav-item nav-link ${location.pathname === "/newmember/" ? "active" : ""}`}>{t('Membership.text')}</Link>
                             <Link to={"/prayer-time/"} className={`nav-item nav-link ${location.pathname === "/prayer-time/" ? "active" : ""}`}>{t('PrayerTime.text')}</Link>
                             <Link to={"/event/"} className={`nav-item nav-link ${location.pathname === "/event/" ? "active" : ""}`}>{t('Event.text')}</Link>
                             <Link to={"/contact/"} className={`nav-item nav-link ${location.pathname === "/contact/" ? "active" : ""}`}>{t('ContactUs.text')}</Link>

@@ -18,9 +18,12 @@ export default function Footer() {
                                     KT Bank AG <br/>
                                     IBAN: DE52 5023 4500 0155 3400 01
                                 </p>
-                                <div className="d-flex">
-                                    <img width={100} height={100} src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+
+                            <a href={'/'} className="d-flex">
+                                <div style={{ backgroundColor: 'white', borderRadius: '1px', display: 'inline-block' }}>
+                                    <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo" style={{ width: '60px', height: '50px' }} />
                                 </div>
+                            </a>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-2">
@@ -29,21 +32,20 @@ export default function Footer() {
                                 <Link to={"/history/"}><i className="fas fa-angle-right me-2"></i> History</Link>
                                 <Link to={"/activities/"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
                                 <Link to={"/donation/#"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
-                                <Link to={"/prayer-time/"}><i className="fas fa-angle-right me-2"></i> Prayer
-                                    Time</Link>
+                                <Link to={"/prayer-time/"}><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
+                                <Link to={"/terms-condition/"}><i className="fas fa-angle-right me-2"></i> Terms & Conditions</Link>
                                 <Link to={"/contact/"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item">
+                            {/* <div className="footer-item">
                                 <h4 className="text-white mb-4">Support</h4>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Privacy Policy</a>
-                                <a href="#"><i className="fas fa-angle-right me-2"></i> Terms & Conditions</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Disclaimer</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Support</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> FAQ</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Help</a>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
                             <div className="footer-item">
@@ -58,7 +60,7 @@ export default function Footer() {
                                 </div>
                                 <div className="d-flex align-items-center">
                                     <i className="fa fa-phone-alt text-primary me-3"></i>
-                                    <p className="text-white mb-0">(030) 3456 7890</p>
+                                    <p className="text-white mb-0">+49 176 5779 1221 (9:00 - 18:00)</p>
                                 </div>
                                 <div className="d-flex align-items-center mb-4">
                                     <i className="fab fa-firefox-browser text-primary me-3"></i>

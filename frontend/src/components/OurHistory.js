@@ -12,8 +12,8 @@ export default function OurHistory() {
                         <div className="col-xl-12 wow fadeInLeft" data-wow-delay="0.2s">
                             <div>
                                 <h4 className="text-primary py-4">{t('OurHistory.text')}</h4>
-                                <h2 className="display-5 mb-4"><sup><i className="fas fa-quote-right text-primary"></i>
-                                </sup> From a Humble Dream to a Grand Vision: Growing Together by the Grace of Allah
+                                <h2 className="display-5 mb-4"><sup><i className="fas fa-quote-left text-primary"></i>
+                                </sup> {t('OurHistorySubheader.text')}
                                     <sup><i className="fas fa-quote-right text-primary"></i> </sup>
                                 </h2>
                                 {/* Row for Each Section */}

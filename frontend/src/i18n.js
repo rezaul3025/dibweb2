@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Membership from './components/Membership';
 
 i18n
   .use(Backend)
@@ -15,7 +16,33 @@ i18n
           ContactUs: { text: "Contact Us" },
           Home: { text: 'Home' },
           Activities: { text: 'Activities' },
+          PleaseDonate:  { text: 'Please Donate' },
           Donation: { text: 'Donation' },
+          Membership:{text: 'Membership'},
+          BecomeAMember:{text: 'Become an Assosiate'},
+          AssociateMember:{text: 'Associate Member'},
+          MembershipDec: {text: 'Darul Ihsan Berlin is working in the path of Allah and managing a mosque. To further its mission, Darul' +
+            ' Ihsan Berlin e.V. has launched a program to welcome donor members. We encourage those' +
+            ' who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah'},
+          MembershipRules: {text: 'Membership Requirements for Associate Members'},
+          MembershipRuleOne: {text: 'All members must adhere to the Quran and Sunnah, remaining free from any acts of shirk, innovation' +
+            ' in religious practices (bidah), or openly sinful behaviour.'},
+          MembershipRuleTwo: {text: 'No involvement in illegal activities or prohibited organisations under German law is allowed.'},
+          MembershipRuleThree: {text: 'Members should refrain from any political activities or forming subgroups within the organisation.'},
+          MembershipRuleFour: {text: 'Donations must be from halal sources.'},
+          MembershipRuleFive: {text: 'Donated funds or sadaqah (charity) are non-refundable.'},
+          MembershipRuleSix: {text: 'The specified application form must be completed.'},
+          MembershipRuleSeven: {text: ''},
+          MembershipRuleFinalDec: {text: ''},
+          MembershipCancel: {text: 'Cancellation or Withdrawal of Associate Membership'},
+          MembershipCancelOne: {text: 'The executive committee reserves the right to cancel membership if the requirements or organisational rules are violated.'},
+          MembershipCancelTwo: {text: 'To withdraw from membership, a formal request must be submitted to the executive committee.'},
+          MembershipBenefit: {text: 'Benefits and Rights of Associate Members:'},
+          MembershipBenefitOne: {text: 'Members may offer guidance and participate as volunteers in various projects, as needed by the organisation.'},
+          MembershipBenefitTwo: {text: 'Members will be informed of organisational activities and receive annual financial reports on income and expenses.'},
+          MembershipBenefitThree: {text: 'Priority access to organisational events, such as free tickets for religious lectures and preferred invitations to special gatherings (e.g., iftar, picnics, award ceremonies), will be granted.'},
+          MembershipBenefitFour: {text: 'While associate members are not eligible to vote or hold executive positions, they may become full members if future requirements are met.'}, 
+          MembershipBenefitFive: {text: 'Donations are income tax-free. A certificate will be provided each year to declare for income tax, which will assist in obtaining a tax return.'},
           PrayerTime: { text: 'Prayer Time' },
           Event: {text: 'Event'},
           Language: { text: 'Language' },
@@ -114,7 +141,7 @@ i18n
           },
           ActivityOne:{
             text:'We organise waaz mahfils by inviting distinguished scholars from the contemporary'+
-             'Muslim community to expand Islamic knowledge and provide proper guidance to society.'
+             ' Muslim community to expand Islamic knowledge and provide proper guidance to society.'
           },
           ActivityTwoTitle:{
             text:'Quran Education'
@@ -134,30 +161,30 @@ i18n
             text:'Seerah Lessons'
           },
           ActivityFour:{
-            text:'Efforts are made to learn and apply lessons from the life of Prophet'+
+            text:'Efforts are made to learn and apply lessons from the life of Prophet '+
              'Muhammad (PBUH) in real life. Weekly Seerah classes are conducted for children' +
              'and youth, where they read the biographies of all Prophets and learn from their lives.'
           },
           ActivityFiveTitle:{
-            text:'Biweekly Public Session'
+            text:'Biweekly Darsul Quran'
           },
           ActivityFive:{
             text:'Topic-based discussions are held in the light of the Quran. These sessions'+
-             'are conducted in Bangla.'
+             ' are conducted in Bangla.'
           },
           ActivitySixTitle:{
             text:'Weekly Quran Study Circle'
           },
           ActivitySix:{
             text:'A weekly Quran study circle is held for members,'+
-            'where Quran recitation and Tafsir are discussed.'
+            'where Quran recitation, Tafsir and Hadiths are studied.'
           },
           ActivitySevenTitle:{
             text:'Mubasshira: Weekly Online Halaka (Sisters Only)'
           },
           ActivitySeven:{
             text:'A special online Halaka is organized for women, focusing on topic-based discussions, the'+
-             'biographies of the Prophets, lessons from the lives of the Mothers of the Believers, Asmaul Husna, and more.'
+             ' biographies of the Prophets, lessons from the lives of the Mothers of the Believers, Asmaul Husna, and more.'
           },
           ActivityEightTitle:{
             text:'Personal Development Groups'
@@ -193,7 +220,7 @@ i18n
             text:''
           },
           DIBVision:{
-            text:'DIB Vision'
+            text:'Vision'
           },
 
           DIBVisionDecOne:{
@@ -226,7 +253,30 @@ i18n
           ContactUs: { text: 'Kontakt' },
           Home: { text: 'Home' },
           Activities: { text: 'Aktivitäten' },
+          PleaseDonate:  { text: '' },
           Donation: { text: 'Spende' },
+          Membership:{text: 'Mitglied'},
+          BecomeAMember:{text: 'Mitglied werden'},
+          AssociateMember:{text: ''},
+          MembershipDec: {text: ''},
+          MembershipRules: {text: ''},
+          MembershipRuleOne: {text: ''},
+          MembershipRuleTwo: {text: ''},
+          MembershipRuleThree: {text: ''},
+          MembershipRuleFour: {text: ''},
+          MembershipRuleFive: {text: ''},
+          MembershipRuleSix: {text: ''},
+          MembershipRuleSeven: {text: ''},
+          MembershipRuleFinalDec: {text: ''},
+          MembershipCancel: {text: ''},
+          MembershipCancelOne: {text: ''},
+          MembershipCancelTwo: {text: ''},
+          MembershipBenefit: {text: ''},
+          MembershipBenefitOne: {text: ''},
+          MembershipBenefitTwo: {text: ''},
+          MembershipBenefitThree: {text: ''},
+          MembershipBenefitFour: {text: ''}, 
+          MembershipBenefitFive: {text: ''},
           PrayerTime: { text: 'Gebetszeit' },
           Language: { text: 'Sprache' },
           Event: {text: 'Veranstaltung'},
@@ -377,14 +427,38 @@ i18n
           ContactUs: { text: 'যোগাযোগ' },
           Home: { text: 'হোম' },
           Activities: { text: 'আমাদের কার্যক্রম' },
+          PleaseDonate:  { text: 'দান করুন' },
           Donation: { text: 'ডোনেশন' },
+          Membership:{text: 'সদস্য হউন '},
+          BecomeAMember:{text: 'সদস্য আহ্বান'},
+          AssociateMember:{text: 'এসোসিয়েট সদস্য'},
+          MembershipDec: {text: 'দারুল ইহসান বার্লিন আল্লাহ্‌র দ্বীনের পথে কাজ করছে এবং একটা মসজিদ পরিচালনা করছে। দ্বীনের কাজকে এগিয়ে' +
+            ' নেয়ার উদ্দশ্যে Darul Ihsan Berlin e.V. দাতা সদস্য সংগ্রহ কার্যক্রম শুরু করেছে।' +
+            ' আপনারা যারা দ্বীনের কাজে শরিক হতে চান তাদেরকে উৎসাহিত করছি সদস্য হওয়ার জন্য। আল্লাহ আমাদের পুরস্কৃত করবেন ইনশা আল্লাহ্‌।'},
+          MembershipRules: {text: 'এসোসিয়েট সদস্য হওয়ার শর্তাবলী'},
+          MembershipRuleOne: {text: 'সকল সদস্য অবশ্যই কুরআন ও সুন্নাহর অনুসারী এবং শিরকও বিদআত এবং প্রকাশ্য গুনাহ থেকে মুক্ত থাকতে হবে।'},
+          MembershipRuleTwo: {text: 'জার্মানীর আইন অনুযায়ী কোন ধরনের অপরাধমূলককর্মকাণ্ডে বা নিষিদ্ধ সংগঠনের সাথে জড়িত থাকা যাবে না।'},
+          MembershipRuleThree: {text: 'সংগঠনের মধ্যে কোন দলীয় রাজনীতি চর্চা কিংবা উপদলসৃষ্টি করা থেকে বিরত থাকতে হবে।'},
+          MembershipRuleFour: {text: 'অনুদানের অর্থ হালাল হতে হবে।'},
+          MembershipRuleFive: {text: 'দানকৃত অর্থ/সাদাকাহ ফেরত যোগ্য নয়।'},
+          MembershipRuleSix: {text: 'নির্ধারিত ফর্ম পূরণ করতে হবে।'},
+          MembershipRuleFinalDec: {text: ''},
+          MembershipCancel: {text: 'এসোসিয়েট সদস্য পদ বাতিল বা প্রত্যাহার'},
+          MembershipCancelOne: {text: 'সদস্য হওয়ার শর্তাবলী বা সংগঠনের শৃঙ্খলা ভঙ্গ করলে কার্যনির্বাহী কমিটি তার সদস্যপদ বাতিল করতে পারবে।'},
+          MembershipCancelTwo: {text: 'সদস্য পদ প্রত্যাহার এর জন্য কার্যনির্বাহী কমিটির কাছে লিখিত আবেদন করতে হবে।'},
+          MembershipBenefit: {text: 'এসোসিয়েট সদস্যদের সুযোগ সুবিধা ও অধিকার সমূহ'},
+          MembershipBenefitOne: {text: 'সংগঠনের প্রয়োজন অনুযায়ী তাঁদের পরামর্শ প্রদান এবংবিভিন্ন প্রজেক্টে স্বেচ্ছাসেবী হওয়ার সুযোগ থাকবে।'},
+          MembershipBenefitTwo: {text: 'সংগঠনের বিভিন্ন কার্যক্রম এবং প্রতিষ্ঠানের বার্ষিক আর্থিকআয় ব্যয় সম্পর্কে অবহিত করা হবে।'},
+          MembershipBenefitThree: {text: 'সংগঠন কর্তৃক আয়োজিত ওয়াজ মাহফিলে ফ্রি টিকেট এবংবিশেষ অনুষ্ঠানে (ইফতার, পিকনিক, পুরস্কার বিতরণীইত্যাদি) অগ্রাধিকার দেয়া হবে।'},
+          MembershipBenefitFour: {text: 'এসোসিয়েট সদস্যেরা কার্যনির্বাহী পদের জন্য নির্বাচনেঅংশগ্রহণ করবে না, কিন্তু ভবিষ্যতে শর্ত পূরণ সাপেক্ষে পূর্নাঙ্গসদস্য হওয়ার সুযোগ থাকবে।'}, 
+          MembershipBenefitFive: {text: 'দানকৃত অর্থ ইনকাম ট্যাক্স ফ্রী। ইনকাম ট্যাক্স ডিক্লেয়ারকরার জন্য প্রতি বছর সার্টিফিকেট প্রদান করা হবে যা ট্যাক্সরিটার্ন পাওয়ার জন্য সহায়তা করবে।'},
           PrayerTime: { text: 'নামাজের সময়সূচী' },
           Event: {text: 'ইভেন্ট'},
           Language: { text: 'ভাষা' },
           PreyerTimeMessage: { text: '' },
           OurHistory: { text: 'দারুল ইহসান বার্লিনের ইতিহাস' },
           OurHistorySubheader: {
-            text: 'ছোট স্বপ্ন থেকে বৃহৎ সাফল্যের পথে: আল্লাহর রহমতে আমাদের ঐক্যবদ্ধ পথচলা'
+            text:'ছোট স্বপ্ন থেকে বৃহৎ সাফল্যের পথে: আল্লাহর রহমতে আমাদের ঐক্যবদ্ধ পথচলা ' 
           },
           CreationOfOurGroup: { text: '' },
           OurHistoryDecOne: {
@@ -478,7 +552,7 @@ i18n
           },
           ActivityTwo:{
             text:'সঠিক তারতিল ও তাজবীদ এর সাথে কোরান পড়া শেখানো হয় । ভাই-বোন ও শিশুদের জন্য আলাদা' +
-            'ক্লাসের ব্যবস্থা আছে।'
+            ' ক্লাসের ব্যবস্থা আছে।'
           },
           ActivityThreeTitle:{
             text:'কুরআনের তাফসীর ও প্রয়োগ'
@@ -491,7 +565,7 @@ i18n
             text:'সীরাহ পাঠ'
           },
           ActivityFour:{
-            text:'রাসূল মুহাম্মদ (সা.) এর জীবন থেকে শিক্ষা নিয়ে বাস্তব জীবনে প্রয়োগ করার চেষ্টা করা হয়।শিশু-কিশোরদের' +
+            text:'রাসূল মুহাম্মদ (সা.) এর জীবন থেকে শিক্ষা নিয়ে বাস্তব জীবনে প্রয়োগ করার চেষ্টা করা হয়। শিশু-কিশোরদের' +
             ' জন্য সাপ্তাহিক সীরাহ ক্লাস নেয়া হয় যেখানে তারা সকল নবী-রাসূলদের জীবনী পড়া এবং সেখান থেকে শিক্ষা গ্রহণ করতে পারে।'
           },
           ActivityFiveTitle:{
@@ -543,13 +617,13 @@ i18n
             text:''
           },
           DIBVision:{
-            text:'DIB ভিশন'
+            text:'ভিশন'
           },
           DIBVisionDecOne:{
             text:'দারুল ইহসান বার্লিন (DIB) প্রতিষ্ঠার পর থেকে আমরা আমাদের বার্লিনে অবস্থারত মুসলিমদের  জন্য একটি সুষ্ঠ এবং' +
             ' প্রগতিশীল পরিবেশ তৈরি করার স্বপ্ন দেখি। বর্তমানে আমাদের ১৪০ মিটার বর্গক্ষেত্রের মসজিদে ২০০ জন মুসল্লি একসাথে নামাজ' +
-            'আদায় করতে সক্ষম হলেও, আমদের প্রয়োজন এবং স্বপ্ন আরও বড় । দারুল ইহসান বার্লিনের উদ্দেশ্য একটি বৃহত্তর ইসলামী কেন্দ্র প্রতিষ্ঠা' +
-            'করা, যেখানে আমরা আমাদের কার্যক্রমকে সম্প্রসারিত করতে পারবো এবং আরও নতুন উদ্যোগ গ্রহণ করতে পারবো।'
+            ' আদায় করতে সক্ষম হলেও, আমদের প্রয়োজন এবং স্বপ্ন আরও বড় । দারুল ইহসান বার্লিনের উদ্দেশ্য একটি বৃহত্তর ইসলামী কেন্দ্র প্রতিষ্ঠা' +
+            ' করা, যেখানে আমরা আমাদের কার্যক্রমকে সম্প্রসারিত করতে পারবো এবং আরও নতুন উদ্যোগ গ্রহণ করতে পারবো।'
           },
           DIBVisionDecTwo:{
             text:'আমরা একটি পূর্ণকালীন মাদ্রাসা স্থাপন করার স্বপ্ন দেখি, যেখানে শিশু ও যুবকদের জন্য ইসলামিক শিক্ষার গুণগত' +
