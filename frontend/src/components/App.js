@@ -41,7 +41,7 @@ export default function () {
                     <Route path='/event' element={<EventPage/>}/>
                     <Route path='/registration/:eventId' element={<RegistrationPage/>}/>
                     <Route path='/payment/:payId' element={<PaymentPage/>}/>
-                    <Route path='/verify/:attendeeId' element={<QrCodeVerification/>}/>
+                    <Route path='/verify/:attendeeId/:paymentReference' element={<QrCodeVerification/>}/>
                     <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
                     <Route path='/terms-condition' element={<TermsConditionPage/>}/>
                     <Route path='*' element={<PageNotFound />} />

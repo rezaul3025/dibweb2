@@ -3,11 +3,12 @@ import Navbar from "../nav/Navbar";
 import {useParams} from "react-router-dom";
 
 export default function QrCodeVerification() {
-    let {attendeeId} = useParams();
+    const {attendeeId} = useParams();
+    const {paymentReference} = useParams();
     const [attendee, setAttendee] = useState(null);
 
      useEffect(() => {
-        fetch('/api/v1/attendees/' + attendeeId + '/')
+        fetch('/api/v1/attendees/verify/' + attendeeId + '/' +paymentReference+ '/')
             .then(response => response.json())
             .then(data => setAttendee(data));
     }, []);

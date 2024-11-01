@@ -34,7 +34,7 @@ export default function Membership() {
 
                     <div className="row g-4 justify-content-center"> 
                         <div 
-                            className="col-md-6 col-lg-6 col-xl-8 wow fadeInUp" 
+                            className="col-md-12 col-lg-12 col-xl-8 wow fadeInUp"
                             data-wow-delay="0.2s" 
                             style={{ 
                                 visibility: 'visible', 

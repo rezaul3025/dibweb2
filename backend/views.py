@@ -27,14 +27,13 @@ def attendee_save(request):
 def attendee_update_after_success(request, attendee_id, payment_reference, event_id):
     event=Event.objects.get(id=event_id)
     attendee = Attendee.objects.get(id=attendee_id)
+    attendee.payment_reference = payment_reference
+    attendee.is_payment_confirm = True
+    attendee.is_email_send = True
+    attendee.payment_type = 'PP'
+
     email = SendEmail()
     email.ticket_confirmation(attendee,event)
-
-    attendee.payment_reference=payment_reference
-    attendee.is_payment_confirm=True
-    attendee.is_email_send=True
-    attendee.payment_type='PP'
-
     attendee.save()
 
     if not attendee:
@@ -44,8 +43,9 @@ def attendee_update_after_success(request, attendee_id, payment_reference, event
 
 @api_view(['GET'])
 def attendee_attendee_verification(request, attendee_id, payment_reference):
-    attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference)
-    if not attendee:
+    try:
+        attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference).first()
+    except Attendee.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     return Response(AttendeeSerializer(attendee).data, status=status.HTTP_200_OK)
 

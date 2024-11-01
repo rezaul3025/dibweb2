@@ -37,7 +37,8 @@ class SendEmail(object):
             # Attach parts into message container.
             msg.attach(part2)
             sendEmail = SendEmail()
-            sendEmail.geneRateQrCode(settings.HOST_URL+'/verify/{}/'.format(attendee_data.id))
+            print(attendee_data.payment_reference)
+            sendEmail.geneRateQrCode(settings.HOST_URL+'/verify/{}/{}/'.format(attendee_data.id, attendee_data.payment_reference))
             fp = open(settings.SIGNUP_QRCODE_IMG, 'rb')
             msgImage = MIMEImage(fp.read())
             fp.close()

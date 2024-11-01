@@ -20,7 +20,7 @@ export default function CarouselItem(props){
                                     “{props.headline}”
                                 </h4>
                                 <p className="mb-5 fs-5">
-                                    {props.subTitle}
+                                {props.subTitle}
                                 </p>
 
                                 {/* Donation Button */}
