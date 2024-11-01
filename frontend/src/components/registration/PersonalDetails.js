@@ -11,7 +11,6 @@ const PersonalDetails = () => {
         <Formik
             initialValues={personalDetails}
             onSubmit={(values) => {
-                console.log(values)
                 setPersonalDetails(values);
                 next();
             }}
@@ -31,7 +30,6 @@ const PersonalDetails = () => {
             }}
         >
             {({handleSubmit, errors}) => {
-                console.log(errors)
                 return (
                     <div className={"details__wrapper"}>
                         <div className={`form__item ${errors.name && "input__error"}`}>

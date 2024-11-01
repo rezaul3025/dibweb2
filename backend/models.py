@@ -49,3 +49,7 @@ class ContactUs(models.Model):
     def __str__(self):
         return f"{self.name},{self.email},{self.phone}, {self.creation_date}"
 
+class Toggle(models.Model):
+    name = models.CharField(max_length=255)
+    enabled = models.BooleanField(default=False)
+

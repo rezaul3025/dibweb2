@@ -7,8 +7,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee
-from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer
+from backend.models import Event, Attendee, Toggle
+from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer
 
 
 @api_view(['POST'])
@@ -79,6 +79,11 @@ def contact_us(request):
         return Response(status=status.HTTP_201_CREATED, data=serializer.data)
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def allToggles(request):
+    toggles = Toggle.objects.all();
+    serializer = ToggleSerializer(toggles, many=True)
+    return Response(serializer.data)
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''

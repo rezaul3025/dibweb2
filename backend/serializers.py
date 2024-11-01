@@ -1,7 +1,7 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event, ContactUs
+from backend.models import Attendee, Event, ContactUs, Toggle
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -19,3 +19,8 @@ class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactUs
         fields = ['name', 'email', 'phone','subject', 'message']
+
+class ToggleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Toggle
+        fields = ['name', 'enabled']

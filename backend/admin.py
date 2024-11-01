@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Attendee, Event, ContactUs
+from backend.models import Attendee, Event, ContactUs, Toggle
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -22,3 +22,9 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'phone','subject', 'message')
     fields = list_display
 admin.site.register(ContactUs, ContactUsAdmin)
+
+class ToggleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'enabled')
+    fields = list_display
+admin.site.register(Toggle, ToggleAdmin)
+

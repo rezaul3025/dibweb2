@@ -1,6 +1,6 @@
 import {Button, Col, Row} from "antd";
 import React, {useContext, useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import MultiStepFormContext from "./MultiStepFormContext";
 import ReCAPTCHA from "react-google-recaptcha";
 import Spinner from "../nav/Spinner";
@@ -12,6 +12,7 @@ const Review = (props) => {
     const [submitting, setSubmitting] = useState(false)
     const navigate = useNavigate();
     const recaptcha = useRef()
+    const [termCondition, setTermCondition] = useState(false)
 
     const numberOfAdult = numberOfAttendee.family_ticket ? 2 : numberOfAttendee.numberOfAdults;
     const numberOfChild = numberOfAttendee.family_ticket ? 3 : numberOfAttendee.numberOfChild;
@@ -83,24 +84,34 @@ const Review = (props) => {
                     <p>Email: {personalDetails.email}</p>
                     <p>Phone: {personalDetails.phone}</p>
                 </Col>
-                <Col span={30}>
-                <h4>Total ticket cost</h4>
+                <Col span={24}>
+                    <h4>Total ticket cost</h4>
 
                     <p>{ticketInfo}</p>
 
-                    <div className="form__item button__items d-flex justify-content-between">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" name="terms-condition" value={termCondition} onChange={(e)=>setTermCondition(e.target.checked)}
+                               id="flexCheckDefault"/>
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                            <Link to={"/terms-condition/"} target="_blank"><i className="fas fa-angle-right me-2"></i>Accept
+                                Terms & Conditions</Link>
+                        </label>
                         <ReCAPTCHA
-                            ref={recaptcha}
+                        ref={recaptcha}
                             size="invisible"
                             sitekey={process.env.REACT_APP_G_ReCAPTCHA_S_KEY}
                         />
-                        <p className="text-primary">{message}</p>
+                        <p className="text-primary pb-2">{message}</p>
+                    </div>
+
+                    <div className="form__item button__items d-flex justify-content-between">
                         <Button type={"default"} onClick={prev}>
                             Back
                         </Button>
-                        <Button type={"primary"} className="btn btn-primary" onClick={onSubmit}>
+                        {termCondition && <Button type={"primary"} className="btn btn-primary" onClick={onSubmit}>
                             {submitting && <Spinner width="2rem" height="2rem"/>} Payment
-                        </Button>
+                        </Button>}
+                        {!termCondition && <Button disabled='' type={"default"}> Payment</Button>}
                     </div>
                 </Col>
             </Row>
