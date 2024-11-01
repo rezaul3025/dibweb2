@@ -23,6 +23,8 @@ DATABASES = {
 #    }
 #}
 
+DEBUG = False
+
 MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/prayer.darulihsan-berlin.com/static/assets'
 
 SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
