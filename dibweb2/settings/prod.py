@@ -23,7 +23,7 @@ DATABASES = {
 #    }
 #}
 
-DEBUG = False
+DEBUG = True
 
 MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/static/assets'
 
