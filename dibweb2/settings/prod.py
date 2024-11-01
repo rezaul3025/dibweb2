@@ -28,7 +28,7 @@ DEBUG = False
 MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/prayer.darulihsan-berlin.com/static/assets'
 
 SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
-HOST_URL='http://prayer.darulihsan-berlin.com'
+HOST_URL='http://darulihsan-berlin.com'
 SMTP_HOST = 'darulihsan-berlin.com'
 SMTP_PORT = 465
 SMTP_USER = 'info@darulihsan-berlin.com'
