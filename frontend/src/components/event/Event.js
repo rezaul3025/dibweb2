@@ -45,9 +45,9 @@ export default function Event() {
                                         <h6><i
                                             className="fas fa-solid fa-location-crosshairs  text-primary me-2"></i>{event.place}
                                         </h6>
-                                        <h6><i className="fas fa-map-marker-alt text-primary me-2"></i>{event.address}
+                                        <h6 className="pt-2"><i className="fas fa-map-marker-alt text-primary me-2"></i>{event.address}
                                         </h6>
-                                        <h6><i
+                                        <h6 className="py-2"><i
                                             className="fas fa-regular fa-clock text-primary me-2"></i> {moment(event.event_datetime).format("LLL")}
                                         </h6>
 
