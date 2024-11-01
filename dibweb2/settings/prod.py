@@ -23,7 +23,7 @@ DATABASES = {
 #    }
 #}
 
-DEBUG = True
+DEBUG = False
 
 MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/prayer.darulihsan-berlin.com/static/assets'
 
