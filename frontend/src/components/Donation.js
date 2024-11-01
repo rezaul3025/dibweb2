@@ -2,13 +2,22 @@ import React,{Fragment, useState} from "react";
 import {Link} from "react-router-dom";
 
 export default function Donation(){
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(0.0);
+    const[error, setError]= useState('')
     const donationInfo = {
         amount:amount,
-        type:'donation'
+        type:'Donation'
     };
     const onChangeHandler = event => {
-        setAmount(event.target.value);
+        const moneyRegx = "/^(\\d+|\\d{1,3}(\\.\\d{3})*)(,\\d+)?$/"
+        const value = event.target.value;
+        setAmount(value);
+        if(/^(?!0\.00)\d{1,4}(,\d{3})*(\.\d\d)?$/.test(value)) {
+            setError('')
+        }
+        else {
+            setError('Only number allowed, maximum 4 digits before decimal')
+        }
     };
 
     return(
@@ -61,9 +70,10 @@ export default function Donation(){
                         <div className="row g-4 py-2">
                             <div className="col-12 col-xl-6">
                                 <div className="form-floating">
-                                    <input type="number" className="form-control border-1" id="phone" value={amount} onChange={onChangeHandler}
+                                    <input type="number" className="form-control border-1" id="amount" value={amount} onChange={onChangeHandler}
                                            placeholder="Other amount"/>
                                     <label htmlFor="phone">Other amount</label>
+                                    <span className="text-danger">{error}</span>
                                 </div>
                             </div>
                             <div className="col-12 col-xl-6">
@@ -76,7 +86,7 @@ export default function Donation(){
                         </div>
                         <div className="row g-4 py-2">
                             <div className="col-12">
-                                { amount && amount > 0?
+                                { amount && amount && !error?
                                 <Link state={donationInfo} to={"/payment/0/"} type="button" className="btn btn-primary w-100 btn-lg" >
                                     <i className="fa-solid fa-circle-dollar-to-slot"></i> Donate now
                                 </Link>: <Link to="/" className="disabled btn btn-primary w-100 btn-lg" onClick={ (event) => event.preventDefault() }>

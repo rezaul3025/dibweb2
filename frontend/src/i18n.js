@@ -19,7 +19,7 @@ i18n
           PleaseDonate:  { text: 'Please Donate' },
           Donation: { text: 'Donation' },
           Membership:{text: 'Membership'},
-          BecomeAMember:{text: 'Become an Assosiate'},
+          BecomeAMember:{text: 'Become an Associate'},
           AssociateMember:{text: 'Associate Member'},
           MembershipDec: {text: 'Darul Ihsan Berlin is working in the path of Allah and managing a mosque. To further its mission, Darul' +
             ' Ihsan Berlin e.V. has launched a program to welcome donor members. We encourage those' +

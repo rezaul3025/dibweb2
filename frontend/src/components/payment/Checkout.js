@@ -54,7 +54,7 @@ const Checkout = (props) => {
             {isPending ? <p>LOADING...</p> : (
                 <>
                     <PayPalButtons
-                        style={{layout: "vertical"}}
+                        style={{layout: "horizontal"}}
                         createOrder={(data, actions) => onCreateOrder(data, actions)}
                         onApprove={(data, actions) => onApproveOrder(data, actions)}
                         onCancel={(data, actions) => onCancelOrder(data, actions)}
