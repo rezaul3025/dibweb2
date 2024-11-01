@@ -25,7 +25,7 @@ DATABASES = {
 
 DEBUG = False
 
-MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/prayer.darulihsan-berlin.com/static/assets'
+MEDIA_ROOT = '/home/ru3675hi2cgp/public_html/static/assets'
 
 SIGNUP_URL = 'http://prayer.darulihsan-berlin.com/signup'
 HOST_URL='http://darulihsan-berlin.com'
