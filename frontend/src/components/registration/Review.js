@@ -81,7 +81,7 @@ const Review = (props) => {
     function randomString() {
         let result = '';
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        for (var i = 20; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        for (let i = 25; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
 

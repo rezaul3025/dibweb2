@@ -1,6 +1,5 @@
 import React,{Fragment} from "react";
 import Navbar from "../nav/Navbar";
-import Registration from "./Registration";
 import CashRegistration from "./CashRegistration";
 
 export default function CashRegistrationPage(){
