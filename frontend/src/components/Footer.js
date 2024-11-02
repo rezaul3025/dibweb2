@@ -33,12 +33,15 @@ export default function Footer() {
                                 <Link to={"/activities/"}><i className="fas fa-angle-right me-2"></i> Activities </Link>
                                 <Link to={"/donation/#"}><i className="fas fa-angle-right me-2"></i> Donation</Link>
                                 <Link to={"/prayer-time/"}><i className="fas fa-angle-right me-2"></i> Prayer Time</Link>
-                                <Link to={"/terms-condition/"}><i className="fas fa-angle-right me-2"></i> Terms & Conditions</Link>
                                 <Link to={"/contact/"}><i className="fas fa-angle-right me-2"></i> Contact us</Link>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-6 col-xl-3">
-                            {/* <div className="footer-item">
+                            <div className="footer-item">
+                                <h4 className="text-white mb-4">Terms & Conditions</h4>
+                                <Link to={"/terms-condition/"}><i className="fas fa-angle-right me-2"></i> Terms & Conditions</Link>
+                            </div>
+                                {/* <div className="footer-item">
                                 <h4 className="text-white mb-4">Support</h4>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Privacy Policy</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Disclaimer</a>
@@ -46,38 +49,39 @@ export default function Footer() {
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> FAQ</a>
                                 <a href="#"><i className="fas fa-angle-right me-2"></i> Help</a>
                             </div> */}
-                        </div>
-                        <div className="col-md-6 col-lg-6 col-xl-3">
-                            <div className="footer-item">
-                                <h4 className="text-white mb-4">Contact Info</h4>
-                                <div className="d-flex align-items-center">
-                                    <i className="fas fa-map-marker-alt text-primary me-3"></i>
-                                    <p className="text-white mb-0">Brunnenstraße 122, 13355 Berlin</p>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                    <i className="fas fa-envelope text-primary me-3"></i>
-                                    <p className="text-white mb-0">info@daurlihsan-berlin.de</p>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                    <i className="fa fa-phone-alt text-primary me-3"></i>
-                                    <p className="text-white mb-0">+49 176 5779 1221 (9:00 - 18:00)</p>
-                                </div>
-                                <div className="d-flex align-items-center mb-4">
-                                    <i className="fab fa-firefox-browser text-primary me-3"></i>
-                                    <p className="text-white mb-0">www.darulihsan-berlin.com</p>
-                                </div>
-                                <div className="d-flex">
-                                    <a className="btn btn-primary btn-sm-square rounded-circle me-3" href="https://www.facebook.com/profile.php?id=100068090377582"><i
-                                        className="fab fa-facebook-f text-white"></i></a>
+                            </div>
+                            <div className="col-md-6 col-lg-6 col-xl-3">
+                                <div className="footer-item">
+                                    <h4 className="text-white mb-4">Contact Info</h4>
+                                    <div className="d-flex align-items-center">
+                                        <i className="fas fa-map-marker-alt text-primary me-3"></i>
+                                        <p className="text-white mb-0">Brunnenstraße 122, 13355 Berlin</p>
+                                    </div>
+                                    <div className="d-flex align-items-center">
+                                        <i className="fas fa-envelope text-primary me-3"></i>
+                                        <p className="text-white mb-0">info@daurlihsan-berlin.de</p>
+                                    </div>
+                                    <div className="d-flex align-items-center">
+                                        <i className="fa fa-phone-alt text-primary me-3"></i>
+                                        <p className="text-white mb-0">+49 176 5779 1221 (9:00 - 18:00)</p>
+                                    </div>
+                                    <div className="d-flex align-items-center mb-4">
+                                        <i className="fab fa-firefox-browser text-primary me-3"></i>
+                                        <p className="text-white mb-0">www.darulihsan-berlin.com</p>
+                                    </div>
+                                    <div className="d-flex">
+                                        <a className="btn btn-primary btn-sm-square rounded-circle me-3"
+                                           href="https://www.facebook.com/profile.php?id=100068090377582"><i
+                                            className="fab fa-facebook-f text-white"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            {/*<!-- Footer End -->*/}
+                {/*<!-- Footer End -->*/}
 
-            {/*<!-- Copyright Start -->*/}
+                {/*<!-- Copyright Start -->*/}
             <div className="container-fluid copyright py-4">
                 <div className="container">
                     <div className="row g-4 align-items-center">

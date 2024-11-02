@@ -1,7 +1,7 @@
 import json
-import os
 import urllib
 
+from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -81,9 +81,29 @@ def contact_us(request):
 
 @api_view(['GET'])
 def allToggles(request):
-    toggles = Toggle.objects.all();
+    toggles = Toggle.objects.all()
     serializer = ToggleSerializer(toggles, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def resend_email_incomplete_payment(request, attendee_id):
+    try:
+        attendee=Attendee.objects.get(id=attendee_id)
+    except Attendee.DoesNotExist:
+        return Response(Attendee.objects.none(), status=status.HTTP_404_NOT_FOUND)
+
+    if attendee.is_email_send and attendee.is_payment_confirm and attendee.payment_reference is not None:
+        return JsonResponse({'message':'You have already purchased the ticket'}, status=status.HTTP_409_CONFLICT)
+
+    try:
+        event=Event.objects.get(id=attendee.event.id)
+    except Event.DoesNotExist:
+        return Response(Event.objects.none(), status=status.HTTP_404_NOT_FOUND)
+
+    sendEmail = SendEmail()
+    sendEmail.resend_ticket_purchase_email(attendee, event)
+    return JsonResponse(data={'message':'Resend purchase link successfully !'}, status=status.HTTP_200_OK)
+
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''
