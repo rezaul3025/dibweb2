@@ -87,7 +87,7 @@ export default function Donation(){
                         <div className="row g-4 py-2">
                             <div className="col-12">
                                 { amount && amount && !error? //to={"/payment/0/"}
-                                <Link state={donationInfo}  type="button" className="btn btn-primary w-100 btn-lg" >
+                                <Link state={donationInfo}  type="button" className="btn btn-primary w-100 btn-lg" to={"/payment/0/"} >
                                     <i className="fa-solid fa-circle-dollar-to-slot"></i> Donate now
                                 </Link>: <Link to="/" className="disabled btn btn-primary w-100 btn-lg" onClick={ (event) => event.preventDefault() }>
                                          <i className="fa-solid fa-circle-dollar-to-slot"></i> Donate now</Link>
