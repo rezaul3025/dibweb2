@@ -22,6 +22,7 @@ import PaymentSuccess from "./payment/PaymentSuccess";
 import PageNotFound from "./PageNotFound";
 import MembershipPage from "./pages/MembershipPage";
 import TermsConditionPage from "./pages/TermsConditionPage";
+import CashRegistrationPage from "./registration/CashRegistrationPage";
 
 export default function () {
    return (
@@ -44,6 +45,7 @@ export default function () {
                     <Route path='/verify/:attendeeId/:paymentReference' element={<QrCodeVerification/>}/>
                     <Route path='/payment-success/:orderId/:payType' element={<PaymentSuccess/>}/>
                     <Route path='/terms-condition' element={<TermsConditionPage/>}/>
+                    <Route path='/cash-sale' element={<CashRegistrationPage />}/>
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
                 <Footer/>

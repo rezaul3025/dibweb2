@@ -33,6 +33,7 @@ const Review = (props) => {
             return;
         }
 
+        const paymentRef = randomString();
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
         try {
@@ -48,18 +49,21 @@ const Review = (props) => {
                     'ticket_info':ticketInfo,
                     'price':ticketPrice,
                     'is_email_send':false,
-                    'payment_type':'None',
-                    'is_payment_confirm':false,
+                    'payment_type':props.saleType==='cash'?'CP':'None',
+                    'is_payment_confirm':props.saleType === 'cash',
+                    'payment_reference':props.saleType==='cash'?paymentRef:'None',
                     'recap_token': token,
                 }),
             });
             const resJson = await res.json();
             if (res.status === 201) {
-                console.log(resJson.id);
-                setMessage("Registration successful");
                 recaptcha.current.reset();
                 setSubmitting(false);
-                navigate('/payment/'+resJson.id+'/',{ replace: true });
+                if(props.saleType === 'cash'){
+                     setMessage("Ticket registration successful! Payment reference: "+paymentRef);
+                }else {
+                    navigate('/payment/' + resJson.id + '/', {replace: true});
+                }
 
             } else {
                 recaptcha.current.reset();
@@ -72,6 +76,13 @@ const Review = (props) => {
             setMessage("Some error occurred");
             console.log(err);
         }
+    }
+
+    function randomString() {
+        let result = '';
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        for (var i = 20; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
     }
 
 

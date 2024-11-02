@@ -1,5 +1,4 @@
 import React, {Fragment} from "react";
-import RegistrationForm from "./RegistrationForm";
 import MultiStepForm from "./MultiStepForm";
 import {useParams} from "react-router-dom";
 

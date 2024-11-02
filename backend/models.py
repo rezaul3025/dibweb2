@@ -25,6 +25,7 @@ class Attendee(models.Model):
         ("PP", "PayPal"),
         ("CR", "Credit Card"),
         ("BT", "Bank Transfer"),
+        ("CP", "Cash Payment"),
     )
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
