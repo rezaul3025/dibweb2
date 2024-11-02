@@ -52,6 +52,7 @@ const Review = (props) => {
                     'payment_type':props.saleType==='cash'?'CP':'None',
                     'is_payment_confirm':props.saleType === 'cash',
                     'payment_reference':props.saleType==='cash'?paymentRef:'None',
+                    'total_attendees':numberOfAdult+numberOfChild,
                     'recap_token': token,
                 }),
             });
@@ -81,7 +82,7 @@ const Review = (props) => {
     function randomString() {
         let result = '';
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        for (let i = 25; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        for (let i = 20; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
     }
 

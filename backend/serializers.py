@@ -7,7 +7,7 @@ from backend.models import Attendee, Event, ContactUs, Toggle
 class AttendeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendee
-        fields = ['id','name', 'email', 'phone','ticket_info','price','data_privacy_st_confirm','is_email_send','payment_type','is_payment_confirm','creation_date','payment_reference','event']
+        fields = ['id','name', 'email', 'phone','ticket_info','price','total_attendees','data_privacy_st_confirm','is_email_send','payment_type','is_payment_confirm','creation_date','payment_reference','event']
         read_only_field = ['creation_date']
 
 class EventSerializer(serializers.ModelSerializer):
