@@ -15,6 +15,7 @@ from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSe
 #@csrf_exempt
 def attendee_save(request):
     try:
+        print('event id', request.data['event'])
         event = Event.objects.get(id=request.data['event'], enabled=True)
     except Event.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -24,6 +25,10 @@ def attendee_save(request):
     #    content = {'error': 'duplicate_error'}
     #    return Response(content, status=status.HTTP_409_CONFLICT)
     if serializer.is_valid() and is_recaptcha_valid(request.data):
+        if request.data['payment_type'] == 'CP':
+            print(event.id, serializer.data['name'])
+            emailSend = SendEmail()
+            emailSend.ticket_confirmation_offline(event, serializer.data)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

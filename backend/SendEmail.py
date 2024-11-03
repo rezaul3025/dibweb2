@@ -50,12 +50,44 @@ class SendEmail(object):
             server.sendmail(settings.SMTP_EMAIL_FROM, attendee_data.email, msg.as_string())
             # mailsrv.quit()
 
-    def resend_ticket_purchase_email(self, attendee_data, event_data):
-        pLink='{}/payment/{}/'.format(settings.HOST_URL, attendee_data.id)
+    def ticket_confirmation_offline(self, attendee_data, event_data):
+        pLink = '{}/payment/{}/'.format(settings.HOST_URL, attendee_data.id)
         with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER, settings.SMTP_PASS)
             msg = MIMEMultipart()
-            msg['Subject'] = 'Please complete your ticket purchase for {} on {}'.format(event_data.title, event_data.event_datetime)
+            msg['Subject'] = 'Please complete your ticket purchase for {} on {}'.format(event_data.title,
+                                                                                        event_data.event_datetime)
+            msg['From'] = settings.SMTP_EMAIL_FROM
+            msg['To'] = attendee_data.email
+
+            html = """\
+                               <html>
+                               <head></head>
+                               <body>
+                                   <h4 style="font-size:15px;">Dear {},</h4> 
+                                   <p>Please go to the following link to complete the ticket purchase:</p>
+                                   <p><a href='{}'>{}</a></p>
+                                   <p> Event : {} </p>
+                                   <p>Ticket you have chosen: {} </p> 
+                                   <p>Date & Time: {}</p>
+                                   <p>Location: <a href='{}'>{}</a></p>
+                               </body>
+                               </html>
+                           """.format(attendee_data.name, pLink, pLink, event_data.title, attendee_data.ticket_info,
+                                      event_data.event_datetime, event_data.map_location, event_data.address)
+            # Record the MIME types of text/html.
+            part2 = MIMEText(html, 'html')
+
+            # Attach parts into message container.
+            msg.attach(part2)
+            server.sendmail(settings.SMTP_EMAIL_FROM, attendee_data.email, msg.as_string())
+
+    def resend_ticket_purchase_email(self, attendee_data, event_data):
+
+        with smtplib.SMTP_SSL(host=settings.SMTP_HOST, port=settings.SMTP_PORT) as server:
+            server.login(settings.SMTP_USER, settings.SMTP_PASS)
+            msg = MIMEMultipart()
+            msg['Subject'] = 'Your ticket details for {} on {}'.format(event_data.title, event_data.event_datetime)
             msg['From'] = settings.SMTP_EMAIL_FROM
             msg['To'] = attendee_data.email
 
@@ -64,15 +96,16 @@ class SendEmail(object):
                             <head></head>
                             <body>
                                 <h4 style="font-size:15px;">Dear {},</h4> 
-                                <p>Please go to the following link to complete the ticket purchase:</p>
-                                <p><a href='{}'>{}</a></p>
-                                <p> Event : {} </p>
-                                <p>Ticket you have chosen: {} </p> 
+                                <p>Your ticket details:</p>
+                                <p>Payment reference number: {}</p>
+                                <p>Payment type: {}</p>
+                                <p>Event : {} </p>
+                                <p>Ticket info: {} </p> 
                                 <p>Date & Time: {}</p>
                                 <p>Location: <a href='{}'>{}</a></p>
                             </body>
                             </html>
-                        """.format(attendee_data.name, pLink, pLink, event_data.title, attendee_data.ticket_info,
+                        """.format(attendee_data.name, attendee_data.payment_reference, attendee_data.payment_type, event_data.title, attendee_data.ticket_info,
                                    event_data.event_datetime, event_data.map_location, event_data.address)
             # Record the MIME types of text/html.
             part2 = MIMEText(html, 'html')
@@ -80,6 +113,8 @@ class SendEmail(object):
             # Attach parts into message container.
             msg.attach(part2)
             server.sendmail(settings.SMTP_EMAIL_FROM, attendee_data.email, msg.as_string())
+
+
 
     def geneRateQrCode(self, data):
         qr = qrcode.QRCode(
