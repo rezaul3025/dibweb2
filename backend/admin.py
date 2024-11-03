@@ -13,7 +13,7 @@ class AttendeeAdmin(admin.ModelAdmin):
 admin.site.register(Attendee, AttendeeAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('id','title', 'description', 'poster_image', 'address','map_location','enabled','place','event_datetime',)
+    list_display = ('title', 'description', 'poster_image', 'address','map_location','enabled','place','event_datetime',)
     fields = list_display
 
 admin.site.register(Event, EventAdmin)
