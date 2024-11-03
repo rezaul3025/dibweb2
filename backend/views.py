@@ -39,6 +39,9 @@ def attendee_update_after_success(request, attendee_id, payment_reference, event
 
     email = SendEmail()
     email.ticket_confirmation(attendee,event)
+    attendee_count = event.attendee_count + attendee.total_attendees
+    event.attendee_count = attendee_count
+    event.save()
     attendee.save()
 
     if not attendee:
@@ -108,7 +111,6 @@ def resend_email_incomplete_payment(request, attendee_id):
     sendEmail = SendEmail()
     sendEmail.resend_ticket_purchase_email(attendee, event)
     return JsonResponse(data={'message':'Resend purchase link successfully !'}, status=status.HTTP_200_OK)
-
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''

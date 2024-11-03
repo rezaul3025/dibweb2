@@ -13,7 +13,7 @@ class AttendeeSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime"]
+        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime","attendee_limit","attendee_count"]
 
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:

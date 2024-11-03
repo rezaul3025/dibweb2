@@ -9,6 +9,7 @@ export default function Event() {
 
     useEffect(() => {
         setLoading(true);
+        const eventTemp = [];
         fetch('/api/v1/events/')
             .then(response => response.json())
             .then(data => {
@@ -17,6 +18,7 @@ export default function Event() {
             }).catch(error => {
             setLoading(false);
         });
+
     }, []);
 
     return (
@@ -55,18 +57,22 @@ export default function Event() {
                                         <a href={event.map_location} target="_blank"><i
                                             className="fa-solid fa-map-location text-primary me-2"></i> Google Map
                                         </a>
-
-                                        <p className="pt-4"><b>Ticket price:</b></p>
-                                        <span>Adult <i className="text-primary fas fa-solid fa-euro-sign"></i><span
-                                            className="text-primary">20</span></span>
-                                        <br/>
-                                        <span>Children[from age 7] <i
-                                            className="text-primary fas fa-solid fa-euro-sign"></i><span
-                                            className="text-primary">10</span></span>
+                                        <ul className="list-group list-group-flush pt-2">
+                                            <li className="list-group-item"><small>Ticket price:</small></li>
+                                            <li className="list-group-item"><small>Adult </small><i
+                                                className="text-primary fas fa-solid fa-euro-sign"></i><span
+                                                className="text-primary">20</span></li>
+                                            <li className="list-group-item"><small>Children from age 7 </small><i
+                                                className="text-primary fas fa-solid fa-euro-sign"></i><span
+                                                className="text-primary">10</span></li>
+                                            <li className="list-group-item"><small>Buy ticket with cash, please contact : </small></li>
+                                            <li className="list-group-item"><small>+4915758212842 </small></li>
+                                        </ul>
                                     </div>
-                                    {event.enabled && <div className="align-bottom p-3">
-                                        <Link to={"/registration/" + event.id + "/"}
-                                              className="btn btn-primary align-bottom">Buy Ticket
+                                    {event.enabled && event.attendee_limit > event.attendee_count &&
+                                        <div className="align-bottom p-3">
+                                            <Link to={"/registration/" + event.id + "/"}
+                                                  className="btn btn-primary align-bottom">Buy With PayPal
                                             >></Link>
                                     </div>}
                                 </div>

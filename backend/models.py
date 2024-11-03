@@ -15,6 +15,8 @@ class Event(models.Model):
     map_location = models.CharField(max_length=255)
     event_datetime = models.DateTimeField()
     enabled = models.BooleanField(default=True)
+    attendee_limit = models.IntegerField(default=0)
+    attendee_count = models.IntegerField(default=0)
 
 def get_img_upload_path(instance, filename):
         return settings.UPLOAD_PATH
