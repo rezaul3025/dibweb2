@@ -37,7 +37,7 @@ const Review = (props) => {
         const paymentRef = randomString();
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
-        headers.append("csrftoken",Cookies.get('csrftoken'))
+        headers.append("X-CSRFToken",Cookies.get('csrftoken'))
         try {
             let res = await fetch("/api/v1/attendees/", {
                 method: "POST",
