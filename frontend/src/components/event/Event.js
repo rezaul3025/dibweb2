@@ -45,7 +45,8 @@ export default function Event() {
                                         <h6><i
                                             className="fas fa-solid fa-location-crosshairs  text-primary me-2"></i>{event.place}
                                         </h6>
-                                        <h6 className="pt-2"><i className="fas fa-map-marker-alt text-primary me-2"></i>{event.address}
+                                        <h6 className="pt-2"><i
+                                            className="fas fa-map-marker-alt text-primary me-2"></i>{event.address}
                                         </h6>
                                         <h6 className="py-2"><i
                                             className="fas fa-regular fa-clock text-primary me-2"></i> {moment(event.event_datetime).format("LLL")}
@@ -54,8 +55,16 @@ export default function Event() {
                                         <a href={event.map_location} target="_blank"><i
                                             className="fa-solid fa-map-location text-primary me-2"></i> Google Map
                                         </a>
+
+                                        <p className="pt-4"><b>Ticket price:</b></p>
+                                        <span>Adult <i className="text-primary fas fa-solid fa-euro-sign"></i><span
+                                            className="text-primary">20</span></span>
+                                        <br/>
+                                        <span>Children[from age 7] <i
+                                            className="text-primary fas fa-solid fa-euro-sign"></i><span
+                                            className="text-primary">10</span></span>
                                     </div>
-                                    {event.enabled && <div className="align-bottom p-4">
+                                    {event.enabled && <div className="align-bottom p-3">
                                         <Link to={"/registration/" + event.id + "/"}
                                               className="btn btn-primary align-bottom">Buy Ticket
                                             >></Link>

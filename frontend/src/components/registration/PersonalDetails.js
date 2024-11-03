@@ -16,6 +16,7 @@ const PersonalDetails = () => {
             }}
             validate={(values) => {
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phoneRegX = /^((?:\+\d+)?\s*(?:\(\d+\)\s*(?:[\/–-]\s*)?)?\d+(?:\s*(?:[\s\/–-]\s*)?\d+)*)$/
                 const errors = {};
                 if (!values.name) errors.name = "Name is required";
                 if (values.name.length>45) errors.name = "Maximum characters 45 is allowed";
@@ -24,7 +25,7 @@ const PersonalDetails = () => {
                 if (values.email.length>45) errors.email = "Maximum length 45 is allowed";
                 if (!emailPattern.test(values.email) || /[`!#$%^&*()+=\[\]{};':"\\|<>\/?~]/.test(values.email)) errors.email = "No a valid email id";
                 if (!values.phone) errors.phone = "Phone number is required";
-                if (!/^\+49|0049|0[1-9][0-9]{1,14}$/.test(values.phone))
+                if (!phoneRegX.test(values.phone) || values.phone.length > 14 || values.phone.length < 8)
                     errors.phone = "Not a valid phone number";
                 return errors;
             }}
