@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import MultiStepFormContext from "./MultiStepFormContext";
 import ReCAPTCHA from "react-google-recaptcha";
 import Spinner from "../nav/Spinner";
+import Cookies from 'js-cookie';
 
 
 const Review = (props) => {
@@ -33,8 +34,10 @@ const Review = (props) => {
             return;
         }
 
+        const paymentRef = randomString();
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
+        headers.append("X-CSRFToken",Cookies.get('csrftoken'))
         try {
             let res = await fetch("/api/v1/attendees/", {
                 method: "POST",
@@ -48,18 +51,22 @@ const Review = (props) => {
                     'ticket_info':ticketInfo,
                     'price':ticketPrice,
                     'is_email_send':false,
-                    'payment_type':'None',
-                    'is_payment_confirm':false,
+                    'payment_type':props.saleType==='cash'?'CP':'None',
+                    'is_payment_confirm':props.saleType === 'cash',
+                    'payment_reference':props.saleType==='cash'?paymentRef:'None',
+                    'total_attendees':numberOfAdult+numberOfChild,
                     'recap_token': token,
                 }),
             });
             const resJson = await res.json();
             if (res.status === 201) {
-                console.log(resJson.id);
-                setMessage("Registration successful");
                 recaptcha.current.reset();
                 setSubmitting(false);
-                navigate('/payment/'+resJson.id+'/',{ replace: true });
+                if(props.saleType === 'cash'){
+                     navigate('/payment-success/'+paymentRef+'/Cash/',{ replace: true });
+                }else {
+                    navigate('/payment/' + resJson.id + '/', {replace: true});
+                }
 
             } else {
                 recaptcha.current.reset();
@@ -72,6 +79,13 @@ const Review = (props) => {
             setMessage("Some error occurred");
             console.log(err);
         }
+    }
+
+    function randomString() {
+        let result = '';
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        for (let i = 20; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return result;
     }
 
 

@@ -25,6 +25,7 @@ class Attendee(models.Model):
         ("PP", "PayPal"),
         ("CR", "Credit Card"),
         ("BT", "Bank Transfer"),
+        ("CP", "Cash Payment"),
     )
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
@@ -37,6 +38,7 @@ class Attendee(models.Model):
     payment_type = models.CharField(max_length=50, choices=PAYMENT_TYPE_CHOICES, default="None")
     is_payment_confirm = models.BooleanField(default=False)
     data_privacy_st_confirm = models.BooleanField(default=False)
+    total_attendees = models.IntegerField(default=0)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 class ContactUs(models.Model):

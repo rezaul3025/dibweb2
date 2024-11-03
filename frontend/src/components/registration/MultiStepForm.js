@@ -22,14 +22,14 @@ const addressInitialState = {
   childTicket:10
 };
 
-const renderStep = (step, eventId) => {
+const renderStep = (step, eventId, saleType) => {
   switch (step) {
     case 0:
       return <PersonalDetails />;
     case 1:
       return <NumberOfAttendee />;
     case 2:
-      return <Review eventId={eventId}/>;
+      return <Review eventId={eventId} saleType={saleType}/>;
     default:
       return null;
   }
@@ -57,7 +57,7 @@ const MultiStepForm = (props) => {
         <Step title={"Select ticket"} />
         <Step title={"Review and Payment"} />
       </Steps>
-      <main>{renderStep(currentStep, props.eventId)}</main>
+      <main>{renderStep(currentStep, props.eventId, props.saleType)}</main>
     </Provider>
   );
 };
