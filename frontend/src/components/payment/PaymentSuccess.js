@@ -32,7 +32,7 @@ export default function PaymentSuccess(){
                                     <p className="text-primary">
                                         {'Thanks! Your '+payType+' payment is successful.'}
                                     </p>
-                                    {payType !=='Donation' && <p className="text-primary py-2">
+                                    {payType !=='Donation' && payType !=='Cash' && <p className="text-primary py-2">
                                         You will get an email about your ticket.
                                     </p>}
                                     <h4>Order Id: <span className="text-primary py-2">{orderId}</span></h4>

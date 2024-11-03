@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import MultiStepFormContext from "./MultiStepFormContext";
 import ReCAPTCHA from "react-google-recaptcha";
 import Spinner from "../nav/Spinner";
+import Cookies from 'js-cookie';
 
 
 const Review = (props) => {
@@ -36,6 +37,7 @@ const Review = (props) => {
         const paymentRef = randomString();
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
+        headers.append("csrftoken",Cookies.get('csrftoken'))
         try {
             let res = await fetch("/api/v1/attendees/", {
                 method: "POST",
@@ -61,7 +63,7 @@ const Review = (props) => {
                 recaptcha.current.reset();
                 setSubmitting(false);
                 if(props.saleType === 'cash'){
-                     setMessage("Ticket registration successful! Payment reference: "+paymentRef);
+                     navigate('/payment-success/'+paymentRef+'/Cash/',{ replace: true });
                 }else {
                     navigate('/payment/' + resJson.id + '/', {replace: true});
                 }
