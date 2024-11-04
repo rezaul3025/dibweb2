@@ -16,6 +16,7 @@ urlpatterns = [
    path('v1/toggles/', views.allToggles),
    path('v1/resend-purchase-email/<int:attendee_id>/', views.resend_email_incomplete_payment),
    path('v1/mark-checked-in/<int:attendee_id>/', views.mark_as_checked_in),
+   path('v1/resend-ticket-confirmation/<int:event_id>/<int:attendee_id>/', views.resend_email_with_qrcode)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

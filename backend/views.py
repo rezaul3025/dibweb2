@@ -125,6 +125,21 @@ def mark_as_checked_in(request, attendee_id):
         return JsonResponse({'message': 'Checked in !'}, status=status.HTTP_200_OK)
     return JsonResponse({'message': 'Somethings went wrong! Cannot checked In ! Maybe already checked in'}, status=status.HTTP_409_CONFLICT)
 
+def resend_email_with_qrcode(request, event_id, attendee_id):
+    try:
+        event = Event.objects.get(id=event_id)
+    except Event.DoesNotExist:
+        return Response(Event.objects.none(), status=status.HTTP_404_NOT_FOUND)
+
+    try:
+        attendee = Attendee.objects.get(id=attendee_id)
+    except Attendee.DoesNotExist:
+        return Response(Attendee.objects.none(), status=status.HTTP_404_NOT_FOUND)
+
+    sendEmail = SendEmail()
+    sendEmail.ticket_confirmation(attendee, event)
+    return JsonResponse({'message':'Resend ticket with qrcode sent successfully !'}, status=status.HTTP_200_OK)
+
 
 
 def is_recaptcha_valid(request_data):
