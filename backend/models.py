@@ -41,6 +41,7 @@ class Attendee(models.Model):
     is_payment_confirm = models.BooleanField(default=False)
     data_privacy_st_confirm = models.BooleanField(default=False)
     total_attendees = models.IntegerField(default=0)
+    is_checked_in = models.BooleanField(default=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 class ContactUs(models.Model):

@@ -27,14 +27,14 @@ const Checkout = (props) => {
             setWaitingToUpdate(true)
 
             if(!props.attendee_id && !props.event_id ){
-                navigate('/payment-success/'+data.orderID+'/Donation/',{ replace: true });
+                navigate('/payment-success/'+props.attendee_id+'/'+data.orderID+'/Donation/',{ replace: true });
             }
 
             fetch('/api/v1/attendees/' + props.attendee_id + '/' + data.orderID + "/" + props.event_id + '/')
                 .then(response => response.json())
                 .then(attendeeData => {
                     setWaitingToUpdate(false)
-                    navigate('/payment-success/'+data.orderID+'/Ticket/',{ replace: true });
+                    navigate('/payment-success/'+props.attendee_id+'/'+data.orderID+'/Ticket/',{ replace: true });
                 }).catch(error=>{
                     setMessage("Error while transaction")
                     setWaitingToUpdate(false);

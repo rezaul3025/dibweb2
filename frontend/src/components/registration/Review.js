@@ -63,7 +63,7 @@ const Review = (props) => {
                 recaptcha.current.reset();
                 setSubmitting(false);
                 if(props.saleType === 'cash'){
-                     navigate('/payment-success/'+paymentRef+'/Cash/',{ replace: true });
+                     navigate('/payment-success/'+resJson.id+'/'+paymentRef+'/Cash/',{ replace: true });
                 }else {
                     navigate('/payment/' + resJson.id + '/', {replace: true});
                 }

@@ -1,17 +1,35 @@
 import React, {Fragment, useEffect, useState} from "react";
 import Navbar from "../nav/Navbar";
 import {useParams} from "react-router-dom";
+import Spinner from "../nav/Spinner";
 
 export default function QrCodeVerification() {
     const {attendeeId} = useParams();
     const {paymentReference} = useParams();
     const [attendee, setAttendee] = useState(null);
+    const [message, setMessage] = useState()
+    const [checkingIn, setCheckingIn] = useState(false)
 
      useEffect(() => {
-        fetch('/api/v1/attendees/verify/' + attendeeId + '/' +paymentReference+ '/')
-            .then(response => response.json())
-            .then(data => setAttendee(data));
+         let key = prompt("Please enter the unlock key");
+         if(process.env.REACT_APP_CASH_SALE_KEY === key) {
+             fetch('/api/v1/attendees/verify/' + attendeeId + '/' + paymentReference + '/')
+                 .then(response => response.json())
+                 .then(data => setAttendee(data));
+         }
     }, []);
+
+    function markAsCheckedIn(){
+        setCheckingIn(true)
+         fetch('/api/v1/mark-checked-in/' + attendeeId + '/' )
+            .then(response => response.json())
+            .then(data => {
+                setMessage(data.message);
+                setCheckingIn(false);
+            }).catch(err =>{
+                setCheckingIn(false);
+         });
+    }
 
     return (
         <Fragment>
@@ -36,12 +54,18 @@ export default function QrCodeVerification() {
                             <h4 className="text-primary">QR Code verification</h4>
                             <div className="row g-4 py-2">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
-                                    {attendee && <Fragment>
+                                    {attendee && !attendee.is_checked_in && <Fragment>
                                         <h4 className="text-primary"> Ticket Details</h4>
                                         <hr/>
                                         <p>Name: {attendee.name}</p>
                                         <p>Ticket : {attendee.ticket_info}</p>
+                                        <h2 className="text-primary">{message} </h2>
+                                        <button className="btn btn-primary" onClick={markAsCheckedIn}>{ checkingIn && <Spinner />} Mark as a checked in</button>
                                     </Fragment>}
+
+                                     {attendee && attendee.is_checked_in &&<div>
+                                         The attendee already checked in!
+                                     </div>}
                                 </div>
                             </div>
                         </div>
