@@ -3,7 +3,7 @@ import Navbar from "../nav/Navbar";
 import {useParams} from "react-router-dom";
 
 export default function PaymentSuccess(){
-     const {orderId, payType} = useParams();
+     const {attendeeId, orderId, payType} = useParams();
 
     return(
       <Fragment>
@@ -35,6 +35,7 @@ export default function PaymentSuccess(){
                                     {payType !=='Donation' && payType !=='Cash' && <p className="text-primary py-2">
                                         You will get an email about your ticket.
                                     </p>}
+                                    {payType ==='Cash' && <h4>Attendee ID : <span className="text-primary py-2">{attendeeId}</span></h4>}
                                     <h4>Order Id: <span className="text-primary py-2">{orderId}</span></h4>
                                 </div>
                             </div>

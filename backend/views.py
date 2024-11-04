@@ -52,7 +52,7 @@ def attendee_update_after_success(request, attendee_id, payment_reference, event
 @api_view(['GET'])
 def attendee_attendee_verification(request, attendee_id, payment_reference):
     try:
-        attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference).first()
+        attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference, is_payment_confirm=True).first()
     except Attendee.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     return Response(AttendeeSerializer(attendee).data, status=status.HTTP_200_OK)
@@ -111,6 +111,21 @@ def resend_email_incomplete_payment(request, attendee_id):
     sendEmail = SendEmail()
     sendEmail.resend_ticket_purchase_email(attendee, event)
     return JsonResponse(data={'message':'Resend purchase link successfully !'}, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def mark_as_checked_in(request, attendee_id):
+    try:
+        attendee=Attendee.objects.get(id=attendee_id)
+    except Attendee.DoesNotExist:
+        return Response(Attendee.objects.none(), status=status.HTTP_404_NOT_FOUND)
+
+    if not attendee.is_checked_in:
+        attendee.is_checked_in = True
+        attendee.save()
+        return JsonResponse({'message': 'Checked in !'}, status=status.HTTP_200_OK)
+    return JsonResponse({'message': 'Somethings went wrong! Cannot checked In ! Maybe already checked in'}, status=status.HTTP_409_CONFLICT)
+
+
 
 def is_recaptcha_valid(request_data):
     ''' Begin reCAPTCHA validation '''

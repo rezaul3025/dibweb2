@@ -23,7 +23,6 @@ const PageNotFound = () => {
                 <div className="container py-4">
                     <div className="row g-5 align-items-center">
                         <div className="mx-auto wow fadeInLeft" data-wow-delay="0.2s">
-                            <h4 className="text-primary">Prayer Time</h4>
                             <div className="row g-4 py-2">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
                                     Page Not Found
