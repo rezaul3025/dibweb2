@@ -62,7 +62,7 @@ export default function Event() {
                                             <li className="list-group-item"><small>Adult </small><i
                                                 className="text-primary fas fa-solid fa-euro-sign"></i><span
                                                 className="text-primary">20</span></li>
-                                            <li className="list-group-item"><small>Children from age 7 </small><i
+                                            <li className="list-group-item"><small>Children from age 5 to 17 </small><i
                                                 className="text-primary fas fa-solid fa-euro-sign"></i><span
                                                 className="text-primary">10</span></li>
                                             <li className="list-group-item"><small>Buy ticket with cash, please contact : </small></li>

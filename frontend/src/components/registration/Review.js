@@ -15,14 +15,10 @@ const Review = (props) => {
     const recaptcha = useRef()
     const [termCondition, setTermCondition] = useState(false)
 
-    const numberOfAdult = numberOfAttendee.family_ticket ? 2 : numberOfAttendee.numberOfAdults;
-    const numberOfChild = numberOfAttendee.family_ticket ? 3 : numberOfAttendee.numberOfChild;
-    const ticketPrice = numberOfAttendee.family_ticket ? 50 : numberOfAdult * 20 + numberOfChild * 10;
-    const adultTicketInfo = numberOfAdult + ' Adult x 20 Euro';
-    const childTicketInfo = numberOfChild && numberOfChild !== 0?numberOfChild + ' Children x 10 Euro':'';
-    const ticketInfo = numberOfAttendee.family_ticket ?
-        'Family Ticket( 2 Adults and 3 Children) 50 Euro'
-        :adultTicketInfo+' '+childTicketInfo+' = ' + ticketPrice + ' Euro'
+    const ticketPrice = numberOfAttendee.numberOfAdults * 20 + numberOfAttendee.numberOfChild * 10;
+    const adultTicketInfo = numberOfAttendee.numberOfAdults + ' Adult x 20 Euro';
+    const childTicketInfo = numberOfAttendee.numberOfChild + ' Children x 10 Euro';
+    const ticketInfo = adultTicketInfo+' '+childTicketInfo+' = ' + ticketPrice + ' Euro'
 
     const onSubmit = async () => {
          setSubmitting(true)
@@ -54,7 +50,7 @@ const Review = (props) => {
                     'payment_type':props.saleType==='cash'?'CP':'None',
                     'is_payment_confirm':props.saleType === 'cash',
                     'payment_reference':props.saleType==='cash'?paymentRef:'None',
-                    'total_attendees':numberOfAdult+numberOfChild,
+                    'total_attendees':numberOfAttendee.numberOfAdults+numberOfAttendee.numberOfChild,
                     'recap_token': token,
                 }),
             });
