@@ -11,11 +11,15 @@ export default function QrCodeVerification() {
     const [checkingIn, setCheckingIn] = useState(false)
 
      useEffect(() => {
-         let key = prompt("Please enter the unlock key");
+         let key= localStorage.getItem("cashSaleKey");
+         if(!key) {
+             key = prompt("Please enter the unlock key");
+         }
          if(process.env.REACT_APP_CASH_SALE_KEY === key) {
              fetch('/api/v1/attendees/verify/' + attendeeId + '/' + paymentReference + '/')
                  .then(response => response.json())
                  .then(data => setAttendee(data));
+             localStorage.setItem("cashSaleKey", process.env.REACT_APP_CASH_SALE_KEY);
          }
     }, []);
 
