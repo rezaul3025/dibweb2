@@ -60,6 +60,7 @@ const Review = (props) => {
                 setSubmitting(false);
                 if(props.saleType === 'cash'){
                      navigate('/payment-success/'+resJson.id+'/'+paymentRef+'/Cash/',{ replace: true });
+                     await sendCashCheckoutEmailWithQrcode(resJson.id);
                 }else {
                     navigate('/payment/' + resJson.id + '/', {replace: true});
                 }
@@ -82,6 +83,12 @@ const Review = (props) => {
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         for (let i = 20; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
         return result;
+    }
+
+    async function sendCashCheckoutEmailWithQrcode(attendeeId) {
+        const response = await fetch('/api/v1/resend-ticket-confirmation/'+attendeeId+'/');
+
+        console.log(response);
     }
 
 

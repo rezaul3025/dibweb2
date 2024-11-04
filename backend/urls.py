@@ -1,9 +1,9 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-# from api.views import public_events
-from django.views.decorators.csrf import csrf_exempt
 
-from backend import viewsets, views
+from backend import views
+
+# from api.views import public_events
 
 urlpatterns = [
    path('v1/attendees/', views.attendee_save),
@@ -16,7 +16,7 @@ urlpatterns = [
    path('v1/toggles/', views.allToggles),
    path('v1/resend-purchase-email/<int:attendee_id>/', views.resend_email_incomplete_payment),
    path('v1/mark-checked-in/<int:attendee_id>/', views.mark_as_checked_in),
-   path('v1/resend-ticket-confirmation/<int:event_id>/<int:attendee_id>/', views.resend_email_with_qrcode)
+   path('v1/resend-ticket-confirmation/<int:attendee_id>/', views.resend_email_with_qrcode)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
