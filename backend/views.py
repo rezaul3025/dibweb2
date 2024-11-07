@@ -52,7 +52,7 @@ def attendee_update_after_success(request, attendee_id, payment_reference, event
 @api_view(['GET'])
 def attendee_attendee_verification(request, attendee_id, payment_reference):
     try:
-        attendee = Attendee.objects.filter(id=attendee_id, payment_reference=payment_reference, is_payment_confirm=True).first()
+        attendee = Attendee.objects.get(id=attendee_id, payment_reference=payment_reference, is_payment_confirm=True)
     except Attendee.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     return Response(AttendeeSerializer(attendee).data, status=status.HTTP_200_OK)

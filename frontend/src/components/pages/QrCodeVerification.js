@@ -58,17 +58,21 @@ export default function QrCodeVerification() {
                             <h4 className="text-primary">QR Code verification</h4>
                             <div className="row g-4 py-2">
                                 <div className="col-md-6 col-lg-12 wow fadeInUp" data-wow-delay="0.2s">
-                                    {attendee && !attendee.is_checked_in && <Fragment>
+                                    {attendee && !attendee.is_checked_in &&<Fragment>
                                         <h4 className="text-primary"> Ticket Details</h4>
                                         <hr/>
                                         <p>Name: {attendee.name}</p>
                                         <p>Ticket : {attendee.ticket_info}</p>
-                                        <h2 className="text-primary">{message} </h2>
-                                        <button className="btn btn-primary" onClick={markAsCheckedIn}>{ checkingIn && <Spinner />} Mark as a checked in</button>
+                                        <p>Ticket Type: {attendee.payment_type==='PP'?'Online':'Offline'}</p>
+                                        {message && <h2 className="text-primary"><i className="fa-solid fa-check text-primary"></i> {message} </h2>}
+                                        {!message && <button className="btn btn-primary" onClick={markAsCheckedIn}>{ checkingIn && <Spinner />} Mark as a checked in</button>}
                                     </Fragment>}
 
                                      {attendee && attendee.is_checked_in &&<div>
                                          The attendee already checked in!
+                                     </div>}
+                                    {!attendee &&<div>
+                                        <p className="text-warning">The attendee not found! </p>
                                      </div>}
                                 </div>
                             </div>
