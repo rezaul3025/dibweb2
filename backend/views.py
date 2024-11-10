@@ -18,6 +18,8 @@ def attendee_save(request):
         event = Event.objects.get(id=request.data['event'], enabled=True)
     except Event.DoesNotExist:
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    if event.attendee_count > event.attendee_limit:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
     serializer = AttendeeSerializer(data=request.data)
     # print(request.data['recap_token'])
     # if Attendee.objects.filter(email=request.data['email']).first():
