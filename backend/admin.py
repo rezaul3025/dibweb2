@@ -7,7 +7,7 @@ from backend.models import Attendee, Event, ContactUs, Toggle
 
 class AttendeeAdmin(admin.ModelAdmin):
     list_display = ('id','name', 'email', 'phone','ticket_info','price','total_attendees','data_privacy_st_confirm','is_email_send','payment_type','is_payment_confirm','payment_reference','creation_date','is_checked_in','event',)
-    readonly_fields = ('id','creation_date','price','total_attendees','is_checked_in','event',)
+    readonly_fields = ('id','creation_date','price','total_attendees','event',)
     #'is_email_send','payment_type','is_payment_confirm','payment_reference',
     fields = list_display
 
