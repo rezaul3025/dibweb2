@@ -67,19 +67,19 @@ export default function BankDetails() {
                 <div className="col-md-12 col-lg-12 col-xl-8">
                     <ul className="list-group list-group-flush pt-2">
                         <li className="list-group-item">
-                            Name <span className="mb-2"><b>{name}</b> <i role="button" id="name" onClick={handleCopy}
+                            <small> Name </small><span className="mb-2"><b><small>{name}</small></b> <i role="button" id="name" onClick={handleCopy}
                                                                   className="fa-duotone fa-solid fa-copy text-primary"></i>
                         </span>
                         </li>
                         <li className="list-group-item">
-                            IBAN <span className="mb-2"><b>{iban} </b><i role="button" id="iban" onClick={handleCopy}
+                            <small>IBAN</small> <span className="mb-2"><b><small>{iban} </small></b><i role="button" id="iban" onClick={handleCopy}
                                                              className="fa-duotone fa-solid fa-copy text-primary"></i>
-                        </span>
+                            </span>
                         </li>
                         <li className="list-group-item">
-                            BIC <span className="mb-2"><b>{bic}</b> <i role="button" id="bic" onClick={handleCopy}
+                            <small>BIC <span className="mb-2"><b>{bic}</b> <i role="button" id="bic" onClick={handleCopy}
                                                             className="fa-duotone fa-solid fa-copy text-primary"></i>
-                            </span>
+                            </span></small>
                         </li>
                     </ul>
                 </div>

@@ -36,7 +36,7 @@ export default function Event() {
                     <div className="row g-4">
                         {loading && <Spinner width="6rem" height="6rem"/>}
                         {events != null && events.map((event) => (
-                            <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp d-flex align-items-stretch"
+                            <div className="col-md-12 col-lg-12 col-xl-12 wow fadeInUp d-flex align-items-stretch"
                                  key={event.id}
                                  data-wow-delay="0.2s">
                                 {event.enabled && <div className="card">
@@ -68,6 +68,9 @@ export default function Event() {
                                             <li className="list-group-item"><small>Children from age 5 to 17 </small><i
                                                 className="text-primary fas fa-solid fa-euro-sign"></i><span
                                                 className="text-primary">10</span></li>
+                                            <li className="list-group-item">
+                                                <small>Reference for both bank and payal : <b>MDI_Ahmadullah Event Ticket</b></small>
+                                            </li>
                                         </ul>
                                         <BankDetails/>
                                         <br/>
