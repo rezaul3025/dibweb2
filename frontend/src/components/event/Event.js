@@ -2,6 +2,9 @@ import React, {Fragment, useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import moment from "moment"
 import Spinner from "../nav/Spinner";
+import PayPalAndBankDetails from "../payment/PayPalAndBankDetails";
+import BankDetails from "../payment/BankDetails";
+import PayPalQrCode from "../payment/PayPalQrCode";
 
 export default function Event() {
     const [events, setEvents] = useState(null);
@@ -36,7 +39,7 @@ export default function Event() {
                             <div className="col-md-12 col-lg-12 col-xl-6 wow fadeInUp d-flex align-items-stretch"
                                  key={event.id}
                                  data-wow-delay="0.2s">
-                                <div className="card">
+                                {event.enabled && <div className="card">
                                     <img src={'/static/assets' + event.poster_image} className="card-img-top"
                                          alt={event.poster_image}/>
                                     <div className="card-body">
@@ -55,7 +58,7 @@ export default function Event() {
                                         </h6>
 
                                         <a href={event.map_location} target="_blank"><i
-                                            className="fa-solid fa-map-location text-primary me-2"></i> Google Map
+                                            className="fa-solid fa-map-location text-primary me-2"></i> Signup
                                         </a>
                                         <ul className="list-group list-group-flush pt-2">
                                             <li className="list-group-item"><small>Ticket price:</small></li>
@@ -65,17 +68,19 @@ export default function Event() {
                                             <li className="list-group-item"><small>Children from age 5 to 17 </small><i
                                                 className="text-primary fas fa-solid fa-euro-sign"></i><span
                                                 className="text-primary">10</span></li>
-                                            <li className="list-group-item"><small>Buy ticket with cash, please contact : </small></li>
-                                            <li className="list-group-item"><small>+4915758212842 </small></li>
                                         </ul>
+                                        <BankDetails/>
+                                        <br/>
+                                        <PayPalQrCode/>
                                     </div>
-                                    {event.enabled && event.attendee_limit > event.attendee_count &&
-                                        <div className="align-bottom p-3">
-                                            <Link to={"/registration/" + event.id + "/"}
-                                                  className="btn btn-primary align-bottom">Buy With PayPal
-                                            >></Link>
-                                    </div>}
-                                </div>
+                                    {//event.enabled && event.attendee_limit > event.attendee_count &&
+                                      //  <div className="align-bottom p-3">
+                                      //      <Link to={"/registration/" + event.id + "/"}
+                                       //           className="btn btn-primary align-bottom">Buy With PayPal
+                                       //     >></Link>
+                                    //</div>
+                                        }
+                                </div>}
                             </div>
                         ))}
                     </div>
