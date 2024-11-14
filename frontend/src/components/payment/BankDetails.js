@@ -61,7 +61,7 @@ export default function BankDetails() {
 
 
     return (
-        <div className="p-4 bg-light" style={{maxWidth: '800px'}}>
+        <div className="p-4 bg-light" >
             <p> Transfer to our bank account</p>
             <div className="row">
                 <div className="col-md-12 col-lg-12 col-xl-8">

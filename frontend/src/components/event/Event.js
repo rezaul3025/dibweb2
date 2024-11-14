@@ -74,8 +74,6 @@ export default function Event() {
                                             </li>
                                         </ul>
                                         <BankDetails/>
-                                        <br/>
-                                        <PayPalQrCode/>
                                     </div>
                                     {//event.enabled && event.attendee_limit > event.attendee_count &&
                                         //  <div className="align-bottom p-3">
