@@ -1,6 +1,8 @@
 import React, {Fragment, useState} from "react";
 import PayPalAndBankDetails from "./payment/PayPalAndBankDetails";
 import BankDetails from "./payment/BankDetails";
+import PayPalDonateButton from "./payment/PayPalDonateButton";
+import PayPalQrCode from "./payment/PayPalQrCode";
 
 export default function Donation() {
 
@@ -17,7 +19,7 @@ export default function Donation() {
                         <p className="mb-0">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533.</p>
                     </div>
                     <div className="p-5 rounded h-100 wow fadeInUp" data-wow-delay="0.2s">
-                        <BankDetails/>
+                        <PayPalAndBankDetails />
                     </div>
                 </div>
             </div>

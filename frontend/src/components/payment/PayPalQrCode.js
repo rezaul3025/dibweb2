@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PayPalQrCode() {
     return (
-        <div className="p-4 bg-light" style={{maxWidth: '800px'}}>
+        <div className="p-4 bg-light">
             <div className="col-md-12 col-lg-12 col-xl-12">
                 <div className="text-center bg-light">
                     <p> Scan QR-Code to pay via PayPal</p>
