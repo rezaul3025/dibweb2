@@ -1,6 +1,11 @@
+import re
+
 import json
 import urllib
+from http.client import HTTPException
 
+import requests
+from bs4 import BeautifulSoup
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -126,6 +131,27 @@ def mark_as_checked_in(request, attendee_id):
         attendee.save()
         return JsonResponse({'message': 'Checked in !'}, status=status.HTTP_200_OK)
     return JsonResponse({'message': 'Somethings went wrong! Cannot checked In ! Maybe already checked in'}, status=status.HTTP_409_CONFLICT)
+
+@api_view(['GET'])
+def prayer_times(request, mosque_id):
+    r = requests.get(f"https://mawaqit.net/fr/{mosque_id}")
+    if r.status_code == 200:
+        soup = BeautifulSoup(r.text, 'html.parser')
+        script = soup.find('script', string=re.compile(r'var confData = (.*?);', re.DOTALL))
+        if script:
+            mawaqit = re.search(r'var confData = (.*?);', script.string, re.DOTALL)
+            if mawaqit:
+                conf_data_json = mawaqit.group(1)
+                conf_data = json.loads(conf_data_json)
+                return JsonResponse(conf_data, status=status.HTTP_200_OK)
+            else:
+                raise HTTPException(status_code=500, detail=f"Failed to extract confData JSON for {mosque_id}")
+        else:
+            print("Script containing confData not found.")
+            raise HTTPException(status_code=500, detail=f"Script containing confData not found for {mosque_id}")
+    if r.status_code == 404:
+        raise HTTPException(status_code=404, detail=f"{mosque_id} not found")
+
 
 def resend_email_with_qrcode(request, attendee_id):
     try:
