@@ -3,6 +3,10 @@
     display: none;
 }
 
+.prayer-time-thm{
+    background-color: rgba(55, 55, 55, 0.6);
+}
+
 /*** Spinner Start ***/
 /*** Spinner ***/
 #spinner {

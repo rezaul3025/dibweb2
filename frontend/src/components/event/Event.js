@@ -1,10 +1,7 @@
 import React, {Fragment, useState, useEffect} from "react";
-import {Link} from "react-router-dom";
 import moment from "moment"
 import Spinner from "../nav/Spinner";
-import PayPalAndBankDetails from "../payment/PayPalAndBankDetails";
 import BankDetails from "../payment/BankDetails";
-import PayPalQrCode from "../payment/PayPalQrCode";
 
 export default function Event() {
     const [events, setEvents] = useState(null);

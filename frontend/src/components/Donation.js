@@ -1,8 +1,5 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment} from "react";
 import PayPalAndBankDetails from "./payment/PayPalAndBankDetails";
-import BankDetails from "./payment/BankDetails";
-import PayPalDonateButton from "./payment/PayPalDonateButton";
-import PayPalQrCode from "./payment/PayPalQrCode";
 
 export default function Donation() {
 
