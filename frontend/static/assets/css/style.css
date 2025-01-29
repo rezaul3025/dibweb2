@@ -7,6 +7,10 @@
     background-color: rgba(55, 55, 55, 0.6);
 }
 
+.header-carousel .header-carousel-item{
+  height: 810px !important;
+}
+
 /*** Spinner Start ***/
 /*** Spinner ***/
 #spinner {
