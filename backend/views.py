@@ -134,7 +134,7 @@ def mark_as_checked_in(request, attendee_id):
 
 @api_view(['GET'])
 def prayer_times(request, mosque_id):
-    r = requests.get(f"https://mawaqit.net/fr/{mosque_id}")
+    r = requests.get(f"https://mawaqit.net/en/{mosque_id}")
     if r.status_code == 200:
         soup = BeautifulSoup(r.text, 'html.parser')
         script = soup.find('script', string=re.compile(r'var confData = (.*?);', re.DOTALL))

@@ -31,16 +31,16 @@ export default function CarouselItem(props){
                                         <div className="row mt-4 mb-2">
                                             <h4 className="text-primary text-uppercase fw-bold">بِسْمِ ٱللَّٰهِ
                                                 ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h4>
-                                            <h4 className="display-4 text-white">
-                                                <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
-                                            </h4>
-                                            <h4 className="text-white">{moment(new Date()).format('dddd, MMM D YYYY')}</h4>
+                                            <h3 className="text-white mb-2">“Whoever builds a mosque for
+                                                Allah, Allah will build for him a house like it in Paradise.”</h3>
+                                            <p className="fs-6">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533</p>
                                         </div>
                                         <div className="row">
-                                            <div className="col-md-6 col-lg-6 col-xl-5 align-self-center">
-                                                <h3 className="text-white mb-2">“Whoever builds a mosque for
-                                                    Allah, Allah will build for him a house like it in Paradise.”</h3>
-                                                <p className="fs-5">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533</p>
+                                            <div className="col-md-6 col-lg-6 col-xl-4 align-self-center mx-1">
+                                                <h4 className="display-4 text-white">
+                                                <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
+                                                </h4>
+                                                <h4 className="text-white">{moment(new Date()).format('dddd, MMM D YYYY')}</h4>
                                             </div>
                                             <div className="col-md-6 col-lg-6 col-xl-7">
                                                 <div className="row">
@@ -105,10 +105,11 @@ export default function CarouselItem(props){
                                         Follow us
                                     </a>
                                 </div>
+                            {/* <SocialMediaLink /> */}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     )
 }
