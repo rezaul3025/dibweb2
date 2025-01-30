@@ -105,11 +105,11 @@ export default function CarouselItem(props){
                                         Follow us
                                     </a>
                                 </div>
+                            {/* <SocialMediaLink /> */}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     )
 }
