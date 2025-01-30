@@ -105,6 +105,7 @@ export default function CarouselItem(props){
                                         Follow us
                                     </a>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
