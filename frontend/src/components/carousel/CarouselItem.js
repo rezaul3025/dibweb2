@@ -36,7 +36,7 @@ export default function CarouselItem(props){
                                             <p className="fs-6">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533</p>
                                         </div>
                                         <div className="row">
-                                            <div className="col-md-6 col-lg-6 col-xl-4 align-self-center mx-1">
+                                            <div className="col-md-6 col-lg-6 col-xl-5 align-self-center">
                                                 <h4 className="display-4 text-white">
                                                 <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
                                                 </h4>
