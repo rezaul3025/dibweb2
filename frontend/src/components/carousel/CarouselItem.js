@@ -29,11 +29,12 @@ export default function CarouselItem(props){
                                 {prayerTimes &&
                                     <Fragment>
                                         <div className="row mt-4 mb-2">
-                                            <h4 className="text-primary text-uppercase fw-bold">بِسْمِ ٱللَّٰهِ
-                                                ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h4>
-                                            <h3 className="text-white mb-2">“Whoever builds a mosque for
-                                                Allah, Allah will build for him a house like it in Paradise.”</h3>
-                                            <p className="fs-6">Source: Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533</p>
+                                            <h5 className="text-primary text-uppercase fw-bold">بِسْمِ ٱللَّٰهِ
+                                                ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h5>
+                                            <h5 className="text-white mb-2">“{t('HomePageHeading.text')}”</h5>
+                                            <figcaption className="blockquote-footer text-white">
+                                                <cite title="Source Title">{t('HomePageHeadingSource.text')}</cite>
+                                            </figcaption>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6 col-lg-6 col-xl-5 align-self-center">
@@ -45,47 +46,47 @@ export default function CarouselItem(props){
                                             <div className="col-md-6 col-lg-6 col-xl-7">
                                                 <div className="row">
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Fajr</p>
                                                             <h2 className="text-primary">{prayerTimes.times[0]}</h2>
                                                             <h4 className="text-white">{prayerTimes.iqamaCalendar[0]["1"][0]}</h4>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Dhuhr</p>
                                                             <h2 className="text-primary">{prayerTimes.times[1]}</h2>
                                                             <h4 className="text-white">{prayerTimes.iqamaCalendar[0]["1"][1]}</h4>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Asr</p>
                                                             <h2 className="text-primary">{prayerTimes.times[2]}</h2>
                                                             <h4 className="text-white">{prayerTimes.iqamaCalendar[0]["1"][2]}</h4>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Maghrib</p>
                                                             <h2 className="text-primary">{prayerTimes.times[3]}</h2>
                                                             <h4 className="text-white">{prayerTimes.iqamaCalendar[0]["1"][3]}</h4>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Isha</p>
                                                             <h2 className="text-primary">{prayerTimes.times[4]}</h2>
                                                             <h4 className="text-white">{prayerTimes.iqamaCalendar[0]["1"][4]}</h4>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                     <div className="col-lg-4 col-6">
-                                                        <p className="prayer-time-thm rounded py-2 px-3">
+                                                        <div className="prayer-time-thm rounded py-2 px-3 m-2">
                                                             <p className="text-white">Jumua</p>
                                                             <h2 className="text-primary">{prayerTimes.jumua}</h2>
                                                             <hr/>
                                                             <h2 className="text-primary">{prayerTimes.jumua2}</h2>
-                                                        </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
