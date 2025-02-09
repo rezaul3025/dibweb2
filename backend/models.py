@@ -58,3 +58,41 @@ class Toggle(models.Model):
     name = models.CharField(max_length=255)
     enabled = models.BooleanField(default=False)
 
+class Shift(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class StudentClass(models.Model):
+    name = models.CharField(max_length=255)
+    teachers = models.ManyToManyField(Teacher)
+    day = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, blank=True)
+    contact_details = models.CharField(max_length=255, blank=True)
+    shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
+    classes = models.ManyToManyField(StudentClass)
+    siblings = models.BooleanField(default=False)
+    class Meta:
+        ordering = ["first_name"]
+
+    def get_classes(self):
+        return ",".join([str(c) for c in self.classes.all()])
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} {self.address}"
+
+

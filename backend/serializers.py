@@ -1,7 +1,7 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event, ContactUs, Toggle
+from backend.models import Attendee, Event, ContactUs, Toggle, Student, StudentClass, Teacher, Shift
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -24,3 +24,29 @@ class ToggleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Toggle
         fields = ['name', 'enabled']
+
+class ShiftSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shift
+        fields = ['name', 'description']
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ['name', 'description']
+
+
+class StudentClassSerializer(serializers.ModelSerializer):
+    teachers = TeacherSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = StudentClass
+        fields = ['name', 'day','description','teachers']
+
+class StudentSerializer(serializers.ModelSerializer):
+    classes = StudentClassSerializer(read_only=True, many=True)
+    shift = ShiftSerializer(read_only=True)
+    class Meta:
+        model = Student
+        fields = ['id','first_name', 'last_name','address', 'contact_details','shift','classes','siblings','shift']

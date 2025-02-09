@@ -252,6 +252,9 @@ i18n
                     HomePageHeadingSource:{
                       text:'Al-Quran 103'
                     },
+                    Students: {
+                        text: 'Students'
+                    },
                 },
             },
             de: {
@@ -654,6 +657,9 @@ i18n
                     },
                     HomePageHeadingSource:{
                       text:'আল-কুরআন ১০৩'
+                    },
+                    Students: {
+                        text: 'Students'
                     },
 
                 },

@@ -12,8 +12,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee, Toggle
-from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer
+from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift
+from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
+    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer
 
 
 @api_view(['POST'])
@@ -184,3 +185,27 @@ def is_recaptcha_valid(request_data):
     result = json.loads(response.read().decode())
     ''' End reCAPTCHA validation '''
     return result['success'];
+
+@api_view(['GET'])
+def allStudents(request):
+    students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allClasses(request):
+    classes = StudentClass.objects.all()
+    serializer = StudentClassSerializer(classes, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allTeachers(request):
+    teaches = Teacher.objects.all()
+    serializer = TeacherSerializer(teaches, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allShifts(request):
+    shifts = Shift.objects.all()
+    serializer = ShiftSerializer(shifts, many=True)
+    return Response(serializer.data)
