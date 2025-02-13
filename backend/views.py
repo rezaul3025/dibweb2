@@ -193,6 +193,25 @@ def allStudents(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def studentsByClass(request, class_id):
+    students = Student.objects.filter(classes__id=class_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByTeacher(request, teacher_id):
+    classes = StudentClass.objects.filter(teachers__id=teacher_id)
+    students = Student.objects.filter(classes__in=classes)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByShift(request, shift_id):
+    students = Student.objects.filter(shift__id=shift_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def allClasses(request):
     classes = StudentClass.objects.all()
     serializer = StudentClassSerializer(classes, many=True)

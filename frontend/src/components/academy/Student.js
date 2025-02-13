@@ -22,19 +22,48 @@ export default function Student() {
     }, []);
 
     const groupBySearchParams = {
-        'cl':{full_name:'Class', url:'/api/v1/classes/'},
-        'sh':{full_name:'Shift', url:'/api/v1/shifts/'},
-        'th':{full_name:'Teacher', url:'/api/v1/teachers/'}
+        'cl':{full_name:'Class', short_name:'cl', url:'/api/v1/classes/', student_filter_url:'/api/v1/students/classes/'},
+        'sh':{full_name:'Shift',  short_name:'sh', url:'/api/v1/shifts/', student_filter_url:'/api/v1/students/shifts/'},
+        'th':{full_name:'Teacher',  short_name:'th', url:'/api/v1/teachers/',  student_filter_url:'/api/v1/students/teacher/'}
     }
 
     const groupByHandler = (groupParam) =>{
-        console.log(groupParam.target.value);
-        fetch(groupBySearchParams[groupParam.target.value].url)
+        const selectedGroupParam = groupParam.target.value;
+        console.log(selectedGroupParam);
+        fetch(groupBySearchParams[selectedGroupParam].url)
             .then(response => response.json())
             .then(data => {
-                setSelectedGroup(groupBySearchParams[groupParam.target.value].full_name)
+                setSelectedGroup(groupBySearchParams[selectedGroupParam].full_name)
                 setGroupData(data)
+                let groupData = [];
+                let groupDataLine0 = {'id':-1,'name':'Select Class','selected': true};
+                if(selectedGroupParam === 'sh'){
+                     groupDataLine0['name'] = 'Select Shift';
+                }else if(selectedGroupParam === 'th'){
+                    groupDataLine0['name'] = 'Select Teacher';
+                }
+
+                groupData.push(groupDataLine0);
+
+                data.map(group => {
+                    let groupDataLine = {'id':group.id, 'name':group.name, 'student_filter_url':groupBySearchParams[selectedGroupParam].student_filter_url+group.id+'/'};
+                    groupData.push(groupDataLine);
+                })
+                setGroupData(groupData);
+
             }).catch(error => {
+        });
+    }
+
+    const handleSelectedGroup = (event) => {
+        console.log(event.target.value);
+         fetch(event.target.value)
+            .then(response => response.json())
+            .then(data => {
+                setStudents(data)
+                setLoading(false);
+            }).catch(error => {
+            setLoading(false);
         });
     }
 
@@ -53,10 +82,10 @@ export default function Student() {
                         </div>
 
                         {groupData != null && <div className="dropdown">
-                            <select className="form-select"  defaultValue={'Select '+selectedGroup}>
-                                <option  selected={selectedGroup != null} value={'Select '+selectedGroup}>{'Select '+selectedGroup}</option>
+                            <select className="form-select" onChange={e=> handleSelectedGroup(e)}>
                                     {groupData.map((group) => (
-                                        <option key={group.id} value={group.name}>{group.name}</option>))}
+                                        <option selected={group.selected} key={group.id} value={group.student_filter_url} onChange={e=> handleSelectedGroup(e)}>{group.name}</option>
+                                    ))}
                             </select>
                         </div>}
 
@@ -75,7 +104,7 @@ export default function Student() {
                                     <td>{student.first_name}</td>
                                     <td>{student.last_name}</td>
                                     <td>{student.classes[0].name}</td>
-                                    <td>{student.siblings ? '' : 'X'}</td>
+                                    <td>{!student.siblings? '' : 'X'}</td>
                                 </tr>
                             ))}
                             </tbody>

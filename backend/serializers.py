@@ -28,13 +28,13 @@ class ToggleSerializer(serializers.ModelSerializer):
 class ShiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shift
-        fields = ['name', 'description']
+        fields = ['id', 'name', 'description']
 
 
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ['name', 'description']
+        fields = ['id', 'name', 'description']
 
 
 class StudentClassSerializer(serializers.ModelSerializer):
@@ -42,7 +42,7 @@ class StudentClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StudentClass
-        fields = ['name', 'day','description','teachers']
+        fields = ['id', 'name', 'day','description','teachers']
 
 class StudentSerializer(serializers.ModelSerializer):
     classes = StudentClassSerializer(read_only=True, many=True)
