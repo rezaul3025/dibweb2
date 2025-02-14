@@ -6,6 +6,7 @@ from http.client import HTTPException
 
 import requests
 from bs4 import BeautifulSoup
+from django.db.models import Q
 from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -189,6 +190,12 @@ def is_recaptcha_valid(request_data):
 @api_view(['GET'])
 def allStudents(request):
     students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allStudentBySearch(request, search_params):
+    students = Student.objects.filter(Q(first_name__icontains=search_params) | Q(last_name__icontains=search_params))
     serializer = StudentSerializer(students, many=True)
     return Response(serializer.data)
 

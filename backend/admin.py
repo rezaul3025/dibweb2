@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Attendee, Event, ContactUs, Toggle, Student, Shift, Teacher, StudentClass
+from backend.models import Attendee, Event, ContactUs, Toggle, Student, Shift, Teacher, StudentClass, \
+    NoticeBoardDocument, AcademyNoticeBoard
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -53,4 +54,13 @@ class StudentAdmin(admin.ModelAdmin):
     fields = list_display+filter_horizontal
 admin.site.register(Student, StudentAdmin)
 
+class NoticeBoardDocumentAdmin(admin.StackedInline):
+    model = NoticeBoardDocument
 
+@admin.register(AcademyNoticeBoard)
+class AcademyNoticeBoardAdmin(admin.ModelAdmin):
+    inlines = [NoticeBoardDocumentAdmin]
+
+@admin.register(NoticeBoardDocument)
+class NoticeBoardDocumentAdmin(admin.ModelAdmin):
+    pass

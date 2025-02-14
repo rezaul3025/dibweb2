@@ -21,6 +21,7 @@ urlpatterns = [
    path('v1/students/classes/<int:class_id>/', views.studentsByClass),
    path('v1/students/teacher/<int:teacher_id>/', views.studentsByTeacher),
    path('v1/students/shifts/<int:shift_id>/', views.studentsByShift),
+   path('v1/students/search/<str:search_params>/', views.allStudentBySearch),
    path('v1/students/', views.allStudents),
    path('v1/classes/', views.allClasses),
    path('v1/shifts/', views.allShifts),
