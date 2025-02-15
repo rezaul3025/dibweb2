@@ -66,6 +66,7 @@ import {Link} from "react-router-dom";
 import Language from "./Language";
 import { useTranslation } from 'react-i18next';
 import About from "./About";
+import Academy from "./Academy";
 
 export default function Navbar(){
     const { t } = useTranslation();
@@ -93,9 +94,9 @@ export default function Navbar(){
                             <Link to={"/dibvision/"} className={`nav-item nav-link ${location.pathname === "/dibvision/" ? "active" : ""}`}>{t('DIBVision.text')}</Link>
                             <Link to={"/donation/"} className={`nav-item nav-link ${location.pathname === "/donation/" ? "active" : ""}`}>{t('Donation.text')}</Link>
                             <Link to={"/newmember/"} className={`nav-item nav-link ${location.pathname === "/newmember/" ? "active" : ""}`}>{t('Membership.text')}</Link>
-                            <Link to={"/prayer-time/"} className={`nav-item nav-link ${location.pathname === "/prayer-time/" ? "active" : ""}`}>{t('PrayerTime.text')}</Link>
                             <Link to={"/event/"} className={`nav-item nav-link ${location.pathname === "/event/" ? "active" : ""}`}>{t('Event.text')}</Link>
                             <Link to={"/contact/"} className={`nav-item nav-link ${location.pathname === "/contact/" ? "active" : ""}`}>{t('ContactUs.text')}</Link>
+                            <Academy />
                             <Language/>
                         </div>
                     </div>

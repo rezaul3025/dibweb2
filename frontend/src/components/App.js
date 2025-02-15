@@ -24,6 +24,7 @@ import MembershipPage from "./pages/MembershipPage";
 import TermsConditionPage from "./pages/TermsConditionPage";
 import CashRegistrationPage from "./registration/CashRegistrationPage";
 import StudentPage from "./pages/StudentPage";
+import NoticeBoardPage from "./pages/NoticeBoardPage";
 
 export default function () {
    return (
@@ -48,6 +49,7 @@ export default function () {
                     <Route path='/terms-condition' element={<TermsConditionPage/>}/>
                     <Route path='/cash-sale' element={<CashRegistrationPage />}/>
                     <Route path='/students' element={<StudentPage />}/>
+                     <Route path='/notice-board' element={<NoticeBoardPage />}/>
                     <Route path='*' element={<PageNotFound />} />
                 </Routes>
                 <Footer/>

@@ -98,6 +98,13 @@ class Student(models.Model):
 class AcademyNoticeBoard(models.Model):
     text = RichTextField()
 
+    def __str__(self):
+        return self.text
+
 class NoticeBoardDocument(models.Model):
     notice_board = models.ForeignKey(AcademyNoticeBoard, on_delete=models.CASCADE)
+    description = models.TextField()
     document = models.FileField(upload_to='notice_board_docs', null = True, blank = True)
+
+    def __str__(self):
+        return f"{self.notice_board} - {self.description}"

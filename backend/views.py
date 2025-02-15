@@ -13,9 +13,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift
+from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift, AcademyNoticeBoard
 from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
-    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer
+    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, AcademyNoticeBoardSerializer
 
 
 @api_view(['POST'])
@@ -235,3 +235,9 @@ def allShifts(request):
     shifts = Shift.objects.all()
     serializer = ShiftSerializer(shifts, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def noticeBoard(request):
+    notice_board = AcademyNoticeBoard.objects.all()
+    serializer = AcademyNoticeBoardSerializer(notice_board, many=True)
+    return Response(serializer.data[0])

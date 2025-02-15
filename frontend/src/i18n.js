@@ -255,6 +255,15 @@ i18n
                     Students: {
                         text: 'Students'
                     },
+                    StudentPageHeading: {
+                        text: 'Student List'
+                    },
+                     Academy: {
+                        text: 'Academy'
+                    },
+                     NoticeBoard: {
+                         text: 'Notice Board'
+                     }
                 },
             },
             de: {
@@ -427,8 +436,18 @@ i18n
                     DIBVisionDecFour: {
                         text: ''
                     },
-
-
+                    Students: {
+                        text: 'Students'
+                    },
+                    StudentPageHeading: {
+                        text: 'Student List'
+                    },
+                     Academy: {
+                        text: 'Academy'
+                    },
+                     NoticeBoard: {
+                         text: 'Notice Board'
+                     }
                 },
             },
             bn: {
@@ -661,7 +680,15 @@ i18n
                     Students: {
                         text: 'Students'
                     },
-
+                    StudentPageHeading: {
+                        text: 'Student List'
+                    },
+                     Academy: {
+                        text: 'Academy'
+                    },
+                     NoticeBoard: {
+                         text: 'Notice Board'
+                     }
                 },
             },
         },
