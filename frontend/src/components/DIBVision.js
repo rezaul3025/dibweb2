@@ -42,27 +42,35 @@ export default function DIBVision() {
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-center mt-5">
-                                    <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2" href="/donation/">
-                                        Please donate
-                                    </a>
-                                    <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2" href="/newmember/">
-                                        {t('BecomeAMember.text')}
-                                    </a>
-                                    <a
-                                        className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2"
-                                        href="/static/assets/DarulIhsan(Bangla).pdf"
-                                        download="DIB_Brochure.pdf"
-                                    >
-                                        Download Brochure
-                                    </a>
+                                    <div className="row">
+                                        <div className="col-md-auto d-grid gap-2 d-md-block">
+                                            <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2 mb-2"
+                                               href="/donation/">
+                                                Please donate
+                                            </a>
+                                        </div>
+                                        <div className="col-md-auto d-grid gap-2 d-md-block">
+                                            <a className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2 mb-2"
+                                               href="/newmember/">
+                                                {t('BecomeAMember.text')}
+                                            </a>
+                                        </div>
+                                        <div className="col-md-auto d-grid gap-2 d-md-block">
+                                            <a
+                                                className="btn btn-primary rounded-pill py-3 px-4 px-md-5 mx-2"
+                                                href="/static/assets/DarulIhsan(Bangla).pdf"
+                                                download="DIB_Brochure.pdf"
+                                            >
+                                                Download Brochure
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                
+                                    </div>
+                        </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </Fragment>
-    );
+);
 }

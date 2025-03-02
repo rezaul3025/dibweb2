@@ -92,25 +92,40 @@ export default function CarouselItem(props){
                                             </div>
                                         </div>
                                     </Fragment>}
-                                <div className="d-flex justify-content-center flex-shrink-0 mb-5">
-                                    <Link to={"/donation/"}
-                                          className="btn btn-primary rounded-pill py-3 px-4 px-md-5 me-2">
-                                        Donate
-                                    </Link>
-
-                                    <a
-                                        href="https://www.facebook.com/profile.php?id=100068090377582"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="btn btn-primary rounded-pill py-3 px-4 px-md-5 me-2">
-                                        Follow us
-                                    </a>
+                            <div className="d-flex justify-content-center flex-shrink-0 mb-5">
+                                <div className="row">
+                                    <div className="col-md-auto d-grid gap-2 d-md-block">
+                                        <Link to={"/donation/"}
+                                              className="btn btn-primary btn-block rounded-pill mb-2 py-3 px-4 px-md-5 me-2 align-self-center">
+                                            Donate
+                                        </Link>
+                                    </div>
+                                    <div className="col-md-auto d-grid gap-2 d-md-block">
+                                        <a
+                                            href="https://www.facebook.com/profile.php?id=100068090377582"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-primary btn-block rounded-pill mb-2 py-3 px-4 px-md-5 me-2 align-self-center">
+                                            Follow us
+                                        </a>
+                                        </div>
+                                    <div className="col-md-auto d-grid gap-2 d-md-block">
+                                        <a
+                                            className="btn btn-primary btn-block rounded-pill py-3 px-4 px-md-5 me-2 align-self-center"
+                                            href="/static/assets/pdf/RamadanCalendar-2025.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Download Ramadan Calendar
+                                        </a>
+                                    </div>
+                                    </div>
                                 </div>
-                            {/* <SocialMediaLink /> */}
-                            </div>
+                                {/* <SocialMediaLink /> */}
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     )
 }
