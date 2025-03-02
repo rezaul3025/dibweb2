@@ -1,4 +1,11 @@
 import React, {Fragment, useEffect, useState} from "react";
+import { Document, Page } from "react-pdf";
+import { pdfjs } from "react-pdf";
+import worker from 'pdfjs-dist/webpack'
+
+pdfjs.GlobalWorkerOptions.workerSrc = worker
+
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 export default function NoticeBoard() {
     const [noticeBoard, setNoticeBoard] = useState(null);
@@ -27,13 +34,7 @@ export default function NoticeBoard() {
                      {noticeBoard.documents.map((document) => (
                          <Fragment>
                              <p>{document.description}</p>
-                             <object data={'/static/assets' + document.document} width="100%" height="600px" type="application/pdf">
-                                 <p>Your browser doesn’t support PDFs. Please download the PDF to view it: <a
-                                     href={'/static/assets' + document.document} >Download PDF</a>.</p>
-                             </object>
-                             <embed src={'/static/assets' + document.document} width="100%" height="600px"
-                                    type="application/pdf"/>
-
+                             <Document file={'/static/assets' + document.document} />
                              <img src={'/static/assets' + document.document} className="img-fluid" alt="..."/>
                          </Fragment>
                      ))}
