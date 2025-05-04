@@ -22,4 +22,5 @@ urlpatterns = [
     path('cash-sale/', index),
     path('students/', index),
     path('notice-board/', index),
+    path('notice-board/pdf.worker.min.js/', index),
 ]

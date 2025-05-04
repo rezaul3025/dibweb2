@@ -1,11 +1,5 @@
 import React, {Fragment, useEffect, useState} from "react";
-import { Document, Page } from "react-pdf";
-import { pdfjs } from "react-pdf";
-import worker from 'pdfjs-dist/webpack'
-
-pdfjs.GlobalWorkerOptions.workerSrc = worker
-
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+import { Document, Page } from 'react-pdf';
 
 export default function NoticeBoard() {
     const [noticeBoard, setNoticeBoard] = useState(null);
