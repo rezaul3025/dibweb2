@@ -35,7 +35,7 @@ const FooterV3 = () => {
                             {/*<img className="h-16 w-16" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> */}
                             <h3 className="text-green-500 text-xl font-bold">Darul Ihsan Berlin e.V</h3>
                         </div>
-                        <p className="mb-4">To foster Quranic education in a family-oriented environment and to implement Islamic teachings in social life.</p>
+                        <p className="mb-4 break-all">To foster Quranic education in a family-oriented environment and to implement Islamic teachings in social life.</p>
                         <div className="flex space-x-4">
                             <a href="#" className="text-gray-400 hover:text-white">
                                 <span className="sr-only">Facebook</span>
@@ -50,12 +50,13 @@ const FooterV3 = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Services</h4>
+                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h4>
                         <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-white">Personal Banking</a></li>
-                            <li><a href="#" className="hover:text-white">Business Accounts</a></li>
-                            <li><a href="#" className="hover:text-white">Loans</a></li>
-                            <li><a href="#" className="hover:text-white">Investments</a></li>
+                            <li><a href="#" className="hover:text-white">Membership</a></li>
+                            <li><a href="#" className="hover:text-white">Prayer Time</a></li>
+                            <li><a href="#" className="hover:text-white">Academy</a></li>
+                            <li><a href="#" className="hover:text-white">Donation</a></li>
+                            <li><a href="#" className="hover:text-white">Download</a></li>
                         </ul>
                     </div>
 
