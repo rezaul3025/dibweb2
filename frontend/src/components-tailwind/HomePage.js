@@ -6,6 +6,7 @@ import CarouselWithSidebarV2 from "./activities/CarouselWithSidebarV2";
 import FooterV3 from "./FooterV3";
 import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
+import PrayerTimeHeaderV2 from "./prayer-time/PrayerTimeHeaderV2";
 
 
 const HomePage = () => {
@@ -40,7 +41,7 @@ const HomePage = () => {
       <main className="flex-grow">
         {/* Hero Prayer Section */}
         <section className="container mx-auto px-4 pt-4">
-          <PrayerTimesHeader/>
+          <PrayerTimeHeaderV2 />
         </section>
         {/* Hero Carousel Section */}
         <section className="container mx-auto px-4 pt-4">
