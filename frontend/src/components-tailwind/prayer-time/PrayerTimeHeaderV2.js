@@ -54,7 +54,7 @@ const PrayerTimeHeaderV2 = () => {
   });
 
   return (
-    <header className="text-gray-700">
+    <header className="text-gray-500">
       <div className="container mx-auto py-3">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           {/* Title */}
@@ -85,15 +85,16 @@ const PrayerTimeHeaderV2 = () => {
         <div className="mt-4 overflow-x-auto pb-2">
           <div className="flex gap-4 min-w-max">
             {prayerTimes && prayerTimes.map((prayer, index) => (
-              <div
-                key={index}
-                className={`flex flex-col items-center px-4 py-2 rounded-lg min-w-[80px] ${
-                  prayer.active ? 'bg-green-300' : 'bg-gray-100'
-                }`}
-              >
-                <span className="text-sm font-medium">{prayer.icon} {prayer.name}</span>
-                <span className="text-lg font-bold">{prayer.time}  {prayer.iqama}</span>
-              </div>
+                <div
+                    key={index}
+                    className={`flex flex-col items-center px-4 py-2 rounded-lg min-w-[80px] ${
+                        prayer.active ? 'bg-green-300' : 'bg-gray-100'
+                    }`}
+                >
+                    <span className="text-sm font-medium">{prayer.icon} {prayer.name}</span>
+                    <span className="text-lg font-bold">{prayer.time}</span>
+                    <span className="text-sm">{prayer.iqama}</span>
+                </div>
             ))}
           </div>
         </div>

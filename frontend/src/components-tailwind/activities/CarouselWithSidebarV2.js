@@ -58,14 +58,14 @@ const CarouselWithSidebar = ({ carouselItems }) => {
   return (
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Carousel - 75% width on large screens, full width on mobile */}
-          <div className="w-full lg:w-3/4 relative rounded-xl overflow-hidden shadow-lg">
-              <ActivityCarouselV3 />
-          </div>
+        <div className="w-full lg:w-3/4 relative rounded-xl overflow-hidden shadow-lg">
+          <ActivityCarouselV3/>
+        </div>
 
-          {/* Sidebar - 25% width on large screens, full width on mobile */}
-          <div className="w-full lg:w-1/4 space-y-6">
-              <EventsSidebar />
-          </div>
+        {/* Sidebar - 25% width on large screens, full width on mobile */}
+        <div className="w-full lg:w-1/4 space-y-6">
+          <EventsSidebar/>
+        </div>
       </div>
   );
 };

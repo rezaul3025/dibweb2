@@ -55,7 +55,7 @@ const EventSidebar = () => {
     <div className="h-full bg-gray-200/80 backdrop-blur-sm border-l border-gray-200/50">
       {/* Transparent Header */}
       <div className="sticky top-0 px-4 py-3 bg-white/30 border-b border-gray-200/50 backdrop-blur-sm">
-        <h3 className="text-sm font-semibold text-gray-700">Upcoming Events</h3>
+        <h3 className="text-sm font-semibold text-gray-500">Upcoming Events</h3>
       </div>
 
       {/* Events List */}

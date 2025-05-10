@@ -8,7 +8,7 @@ const ActivityCarouselV3 = () => {
 
   const slides = [
     {
-      image: "/static/assets/img/carousel/image1.png",
+      image: "/static/assets/img/event1.png",
       title: "Nature Retreat",
       description: "Experience breathtaking landscapes in our guided eco-tours through pristine wilderness areas.",
       address: "Brunnenstraße 122, 13355 Berlin",
@@ -61,7 +61,7 @@ const ActivityCarouselV3 = () => {
     <Fragment>
       {/* Carousel Container */}
       <div
-        className="flex h-full transition-transform duration-500 ease-in-out"
+        className="flex h-full transition-transform duration-5000 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide, index) => (
@@ -69,27 +69,27 @@ const ActivityCarouselV3 = () => {
             {/* Image */}
             <img
               src={slide.image}
-              alt={slide.title}
+              alt="    "
               className="w-full h-96 md:h-110 object-cover"
             />
 
             {/* Text Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end pl-12 pb-6">
-              <div className="max-w-2xl">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end pl-12 pb-6">
+              <div className="w-full items-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 ml-4">
                   {slide.title}
                 </h3>
-                <p className="text-gray-200 mb-4 line-clamp-2">
+                <p className="text-gray-200 text-xl mb-4 line-clamp-2 ml-4">
                   {slide.description}
                 </p>
 
                 {/* Address and Date */}
-                <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                  <div className="flex items-center text-gray-200">
+                <div className="flex flex-col sm:flex-row gap-4 mb-4 ml-4">
+                  <div className="flex text-gray-200">
                     <MapPinIcon className="h-5 w-5 mr-2" />
                     <span>{slide.address}</span>
                   </div>
-                  <div className="flex items-center text-gray-200">
+                  <div className="flex text-gray-200">
                     <CalendarIcon className="h-5 w-5 mr-2" />
                     <span>{formatDate(slide.date)}</span>
                   </div>
