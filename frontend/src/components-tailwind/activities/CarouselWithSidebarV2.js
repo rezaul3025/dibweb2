@@ -5,6 +5,9 @@ import EventsSidebar from "./EventsSidebar";
 import CarouselWithSidebarV2 from "./CarouselWithSidebarV2";
 import ActivityCarouselV2 from "./ActivityCarouselV2";
 import ActivityCarouselV3 from "./ActivityCarouselV3";
+import ActivityCarouselV4 from "./ActivityCarouselV4";
+import ActivityCarouselV5 from "./ActivityCarouselV5";
+import ActivityCarouselV6 from "./ActivityCarouselV6";
 
 const CarouselWithSidebar = ({ carouselItems }) => {
   // Carousel state
@@ -59,7 +62,7 @@ const CarouselWithSidebar = ({ carouselItems }) => {
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Carousel - 75% width on large screens, full width on mobile */}
         <div className="w-full lg:w-3/4 relative rounded-xl overflow-hidden shadow-lg">
-          <ActivityCarouselV3/>
+          <ActivityCarouselV6/>
         </div>
 
         {/* Sidebar - 25% width on large screens, full width on mobile */}

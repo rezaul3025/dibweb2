@@ -7,13 +7,24 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
 class Event(models.Model):
+    EVENT_TYPE_CHOICES = (
+        ("None", "None"),
+        ("WB", "Weekly Brothers Session"),
+        ("WS", "Weekly Sister Session"),
+        ("BW", "Bi-weekly Halaka"),
+        ("ST", "Scholar Talk"),
+        ("KP", "Kids Program"),
+        ("EID", "EID Program"),
+        ("DV", "DIB vision"),
+        ("MB", "Member programs"),
+    )
     title = models.CharField(max_length=255)
     description = RichTextField()
     poster_image = models.FileField(upload_to='uploads', blank = True)
     place=models.CharField(max_length=255, blank = True)
     address = models.CharField(max_length=255)
     map_location = models.CharField(max_length=255)
-    event_datetime = models.DateTimeField()
+    event_datetime = models.DateTimeField(blank = True)
     enabled = models.BooleanField(default=True)
     attendee_limit = models.IntegerField(default=0)
     attendee_count = models.IntegerField(default=0)
