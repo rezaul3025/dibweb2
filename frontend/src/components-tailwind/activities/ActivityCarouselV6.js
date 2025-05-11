@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from "react";
 import { ChevronLeftIcon, ChevronRightIcon, MapPinIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import moment from "moment/moment";
+import {Link} from "react-router-dom";
 
 const ActivityCarouselV6 = ({events}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +68,7 @@ const ActivityCarouselV6 = ({events}) => {
             <div className="flex flex-col lg:flex-row">
               {/* Text Content */}
               <div className="p-6 md:p-8 lg:w-2/3">
-                <h2 className="text-2xl md:text-3xl font-bold text-green-800 mb-3">{event.title}</h2>
+                <h2 className="text-2xl font-bold text-green-800 mb-3">{event.title}</h2>
                 <p className="text-gray-600 mb-6">{event.description}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -92,9 +93,9 @@ const ActivityCarouselV6 = ({events}) => {
                     {/*<button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium shadow-md transition-colors">
                     Register Now
                   </button>*/}
-                  <button className="border border-green-600 text-green-600 hover:bg-green-100 px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium transition-colors">
+                  <Link to={"/activity-details/"+event.id+"/"} className="border border-green-600 text-green-600 hover:bg-green-100 px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium transition-colors">
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -104,7 +105,7 @@ const ActivityCarouselV6 = ({events}) => {
                   {event.poster_image ? (
                     <img
                       src={event.poster_image}
-                      alt={event.title}
+                      alt="  "
                       className="w-full h-full object-cover"
                     />
                   ) : (

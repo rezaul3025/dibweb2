@@ -20,4 +20,5 @@ urlpatterns = [
     path('terms-condition/', index),
     path('verify/<int:num>/<str:paymentRef>/', index),
     path('cash-sale/', index),
+    path('activity-details/<int:eventId>/', index),
 ]

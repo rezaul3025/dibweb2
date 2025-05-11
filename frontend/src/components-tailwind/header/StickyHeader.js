@@ -2,6 +2,7 @@ import React from "react";
 
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
+import {Link} from "react-router-dom";
 
 const StickyNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +33,7 @@ const StickyNavbar = () => {
 
   const menuItems = [
     { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#', dropdown: ['Product 1', 'Product 2'] },
+    { name: 'About Us', href: '#', dropdown: [{name: 'History', href: '/history'},]},
     { name: 'Vision', href: '#' },
     { name: 'Membership', href: '#' },
     {name: 'Prayer Time', href: '#' },
@@ -47,7 +48,9 @@ const StickyNavbar = () => {
       <div className="container mx-auto px-4 sm:px-6">
           <div className="flex justify-between h-16">
               {/* Logo */}
-              <img src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+              <Link to={ '/'}>
+                <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+              </Link>
 
               {/* Desktop Menu */}
               <div className="hidden md:flex items-center space-x-4">
@@ -66,13 +69,13 @@ const StickyNavbar = () => {
                                       <div
                                           className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                                           {item.dropdown.map((subItem, subIndex) => (
-                                              <a
+                                              <Link
                                                   key={subIndex}
-                                                  href="#"
+                                                  to={subItem.href}
                                                   className="block px-4 py-2 text-gray-700 hover:bg-green-50"
                                               >
-                                                  {subItem}
-                                              </a>
+                                                  {subItem.name}
+                                              </Link>
                                           ))}
                                       </div>
                                   )}

@@ -1,30 +1,104 @@
 import React, {Fragment} from "react";
-import ActivityCarousel from "./ActivityCarousel";
+import moment from "moment";
 
-export default function Activities() {
-    return (
-        <Fragment>
-            <section className="bg-white dark:bg-gray-900">
-                <div className="max-w-screen-xl pt-20 lg:pt-28 px-4 pb-8 mx-auto lg:pb-16">
-                    <div className="items-center gap-4 lg:grid lg:grid-cols-4 xl:gap-8">
-                        <div className="text-gray-500 col-span-3 sm:text-lg dark:text-gray-400">
-                            <h1>Current Activities</h1>
-                            <ActivityCarousel/>
-                        </div>
-                        <div
-                            className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 h-56 md:h-96">
-                            <a href="#">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                                    technology acquisitions 2021</h5>
-                            </a>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest
-                                enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+export default function Activities({event}) {
+   return (
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Main Content */}
+        <div className="lg:w-2/3 space-y-6">
+          {/* Event Heading */}
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">{event.title}</h1>
+            <div className="flex gap-2 mt-2">
+              <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Study</span>
+              <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Quran</span>
+            </div>
+          </div>
 
-                        </div>
+          {/* Event Description */}
+          <div className="prose">
+            <p className="text-gray-700">
+                {event.description}
+            </p>
+            <ul className="mt-4 space-y-2 text-gray-700">
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>15+ keynote speakers</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Interactive workshops</span>
+              </li>
+            </ul>
+          </div>
 
-                    </div>
+          {/* Date & Time */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <h2 className="text-lg font-semibold mb-3">Date & Time</h2>
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-100 p-2 rounded-lg">
+                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                  {/*<p className="font-medium">Nov 15-17, 2023</p>*/}
+                <p className="text-gray-600">{moment(event.event_datetime).format("LLL")}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <h2 className="text-lg font-semibold mb-3">Location</h2>
+            <div className="flex items-center gap-3">
+              <div className="bg-green-100 p-2 rounded-lg">
+                <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-gray-600">{event.address}</p>
+                <a href="#" className="text-blue-600 text-sm mt-1 inline-block">View on map</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Side Thumbnail */}
+        <div className="lg:w-1/3">
+          <div className="bg-white rounded-lg overflow-hidden shadow-lg sticky top-6">
+            <img
+              src={event.poster_image+'?auto=format&fit=crop&w=600&q=80'}
+              alt="Event"
+              className="w-full h-full object-cover"
+            />
+              {/*<div className="p-4">
+              <h3 className="font-bold text-lg mb-3">Ticket Options</h3>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between">
+                  <span>General Admission</span>
+                  <span className="font-bold">$299</span>
                 </div>
-            </section>
-        </Fragment>
-    )
+                <div className="flex justify-between">
+                  <span>VIP Pass</span>
+                  <span className="font-bold">$599</span>
+                </div>
+              </div>
+              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium">
+                Register Now
+              </button>
+            </div>
+            */}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

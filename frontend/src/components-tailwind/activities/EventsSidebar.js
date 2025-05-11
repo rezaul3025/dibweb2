@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const EventSidebar = ({events}) => {
   events = events.filter(function (event) {
@@ -104,10 +105,10 @@ const EventSidebar = ({events}) => {
                       <span className="text-xs text-gray-500">
                     {formatDate(event.event_datetime)} • {formatTime(event.event_datetime)}
                   </span>
-                      <button
+                      <Link to={"/activity-details/"+event.id+"/"}
                           className="text-xs font-medium text-green-600 hover:text-green-800 px-2 py-1 rounded transition-colors">
                           View Details
-                      </button>
+                      </Link>
                   </div>
               </div>
             </div>
