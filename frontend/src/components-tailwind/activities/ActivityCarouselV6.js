@@ -2,26 +2,13 @@ import React, {Fragment, useState, useEffect} from "react";
 import { ChevronLeftIcon, ChevronRightIcon, MapPinIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import moment from "moment/moment";
 
-const ActivityCarouselV6 = () => {
+const ActivityCarouselV6 = ({events}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
-  const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        setLoading(true);
-        const eventTemp = [];
-        fetch('/api/v1/events/')
-            .then(response => response.json())
-            .then(data => {
-                setEvents(data)
-                setLoading(false);
-            }).catch(error => {
-            setLoading(false);
-        });
-
-    }, []);
-
+  events = events.filter(function (event) {
+    return event.event_type === 'CURRENT';
+    });
  /* const events = [
     {
       title: "Sustainable Living Expo",
@@ -152,7 +139,7 @@ const ActivityCarouselV6 = () => {
 
       {/* Indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
-        {events.map((_, index) => (
+        {events.map((event, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}

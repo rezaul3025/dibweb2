@@ -1,8 +1,11 @@
 import React from "react";
 
-const EventSidebar = () => {
+const EventSidebar = ({events}) => {
+  events = events.filter(function (event) {
+    return event.event_type === 'FUTURE';
+    });
   // Sample event data
-  const events = [
+  /*const events = [
     {
       id: 1,
       title: "Team Sync Meeting",
@@ -31,7 +34,7 @@ const EventSidebar = () => {
       date: "2023-11-22T16:00:00",
       color: "bg-yellow-100"
     }
-  ];
+  ];*/
 
   // Format date and time
   const formatDate = (dateString) => {
@@ -60,19 +63,19 @@ const EventSidebar = () => {
 
       {/* Events List */}
       <div className="overflow-y-auto h-[calc(100%-52px)]">
-        {events.map((event) => (
-          <div
+        {events.map((event, index) => (
+         <div
             key={event.id}
-            className={`px-4 py-3 border-b border-green-100 hover:bg-white/50 transition-colors ${event.color}`}
+            className={`px-4 py-3 border-b border-green-100 hover:bg-white/50 transition-colors ${index%2===0?'bg-blue-100':'bg-green-100'}`}
           >
             <div className="flex items-start gap-3">
               {/* Date Indicator */}
               <div className="flex flex-col items-center min-w-[40px]">
                 <span className="text-xs font-medium text-gray-500">
-                  {new Date(event.date).toLocaleString('default', { weekday: 'short' }).toUpperCase()}
+                  {new Date(event.event_datetime).toLocaleString('default', { weekday: 'short' }).toUpperCase()}
                 </span>
                 <span className="text-lg font-bold text-gray-700">
-                  {new Date(event.date).getDate()}
+                  {new Date(event.event_datetime).getDate()}
                 </span>
               </div>
 
@@ -82,7 +85,7 @@ const EventSidebar = () => {
                   {event.title}
                 </h4>
                 <p className="text-xs text-gray-600 line-clamp-1 mt-1">
-                  {event.shortDesc}
+                  {event.description}
                 </p>
                   <div className="flex items-center gap-1 mt-1.5">
                       <svg
@@ -99,10 +102,10 @@ const EventSidebar = () => {
                           />
                       </svg>
                       <span className="text-xs text-gray-500">
-                    {formatDate(event.date)} • {formatTime(event.date)}
+                    {formatDate(event.event_datetime)} • {formatTime(event.event_datetime)}
                   </span>
                       <button
-                          className="text-xs font-medium text-blue-600 hover:text-blue-800 px-2 py-1 rounded hover:bg-blue-50 transition-colors">
+                          className="text-xs font-medium text-green-600 hover:text-green-800 px-2 py-1 rounded transition-colors">
                           View Details
                       </button>
                   </div>

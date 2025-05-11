@@ -9,14 +9,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 class Event(models.Model):
     EVENT_TYPE_CHOICES = (
         ("None", "None"),
-        ("WB", "Weekly Brothers Session"),
-        ("WS", "Weekly Sister Session"),
-        ("BW", "Bi-weekly Halaka"),
-        ("ST", "Scholar Talk"),
-        ("KP", "Kids Program"),
-        ("EID", "EID Program"),
-        ("DV", "DIB vision"),
-        ("MB", "Member programs"),
+        ("CURRENT", "Current event or activity"),
+        ("FUTURE", "Future event or activity"),
     )
     title = models.CharField(max_length=255)
     description = RichTextField()
@@ -24,10 +18,12 @@ class Event(models.Model):
     place=models.CharField(max_length=255, blank = True)
     address = models.CharField(max_length=255)
     map_location = models.CharField(max_length=255)
-    event_datetime = models.DateTimeField(blank = True)
+    event_datetime = models.DateTimeField(blank = True, default=None)
+    event_datetime_text = models.CharField(max_length=255, blank = True)
     enabled = models.BooleanField(default=True)
     attendee_limit = models.IntegerField(default=0)
     attendee_count = models.IntegerField(default=0)
+    event_type = models.CharField(max_length=50, choices=EVENT_TYPE_CHOICES, default="CURRENT")
 
 def get_img_upload_path(instance, filename):
         return settings.UPLOAD_PATH

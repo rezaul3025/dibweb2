@@ -2,17 +2,28 @@ import React from "react";
 
 import { useState, useEffect } from 'react';
 import EventsSidebar from "./EventsSidebar";
-import CarouselWithSidebarV2 from "./CarouselWithSidebarV2";
-import ActivityCarouselV2 from "./ActivityCarouselV2";
-import ActivityCarouselV3 from "./ActivityCarouselV3";
-import ActivityCarouselV4 from "./ActivityCarouselV4";
-import ActivityCarouselV5 from "./ActivityCarouselV5";
 import ActivityCarouselV6 from "./ActivityCarouselV6";
 
 const CarouselWithSidebar = ({ carouselItems }) => {
   // Carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        setLoading(true);
+        const eventTemp = [];
+        fetch('/api/v1/events/')
+            .then(response => response.json())
+            .then(data => {
+                setEvents(data)
+                setLoading(false);
+            }).catch(error => {
+            setLoading(false);
+        });
+
+    }, []);
 
   // Sample sidebar items
   const sidebarItems = [
@@ -62,12 +73,12 @@ const CarouselWithSidebar = ({ carouselItems }) => {
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Carousel - 75% width on large screens, full width on mobile */}
         <div className="w-full lg:w-3/4 relative rounded-xl overflow-hidden shadow-lg">
-          <ActivityCarouselV6/>
+          <ActivityCarouselV6 events={events}/>
         </div>
 
         {/* Sidebar - 25% width on large screens, full width on mobile */}
         <div className="w-full lg:w-1/4 space-y-6">
-          <EventsSidebar/>
+          <EventsSidebar events={events}/>
         </div>
       </div>
   );
