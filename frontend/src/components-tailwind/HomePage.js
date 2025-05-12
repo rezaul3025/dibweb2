@@ -7,12 +7,14 @@ import FooterV3 from "./FooterV3";
 import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
 import PrayerTimeHeaderV2 from "./prayer-time/PrayerTimeHeaderV2";
+import Header from "./header/Header";
+import StickyHeaderV2 from "./header/StickyHeaderV2";
 
 
 const HomePage = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <StickyHeader />
+      <StickyHeaderV2 />
       <main className="flex-grow">
         {/* Hero Prayer Section */}
         <section className="container mx-auto px-4 pt-4">

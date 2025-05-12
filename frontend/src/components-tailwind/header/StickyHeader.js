@@ -32,14 +32,14 @@ const StickyNavbar = () => {
   const [currentLang, setCurrentLang] = useState(languages[0]);
 
   const menuItems = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#', dropdown: [{name: 'History', href: '/history'},]},
-    { name: 'Vision', href: '#' },
-    { name: 'Membership', href: '#' },
-    {name: 'Prayer Time', href: '#' },
-      {name: 'Academy', href: '#' },
-    { name: 'Contact Us', href: '#' },
-    { name: 'Donation', href: '#' },
+    { name: 'Home', href: '#' ,dropdown:[]},
+    { name: 'About Us', href: '#', dropdown: [{name1: 'History', href1: '/history'},{name1: 'History1', href1: '/history1'},]},
+    { name: 'Vision', href: '#' ,dropdown:[]},
+    { name: 'Membership', href: '#' ,dropdown:[]},
+    {name: 'Prayer Time', href: '#' ,dropdown:[]},
+      {name: 'Academy', href: '#' ,dropdown:[]},
+    { name: 'Contact Us', href: '#' ,dropdown:[]},
+    { name: 'Donation', href: '#' ,dropdown:[]},
 
   ];
 
