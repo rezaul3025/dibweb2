@@ -65,7 +65,7 @@ const History = () => {
                 <div className={`sm:flex ${index % 2 === 0 ? 'sm:justify-start' : 'sm:justify-end'}`}>
                   <div className={`sm:w-5/12 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
                     {/* Year label */}
-                    <div className={`absolute left-0 sm:left-1/2 -translate-x-10 sm:top-0 text-sm font-medium text-green-500 ${index % 2 === 0 ? 'sm:-translate-x-16 sm:text-left' : 'sm:translate-x-4 sm:text-right'}`}>
+                    <div className={`absolute sm:pl-8 left-0 sm:left-1/2 -translate-x-10 sm:top-0 text-sm font-medium text-green-500 ${index % 2 === 0 ? 'sm:-translate-x-16 sm:text-left' : 'sm:translate-x-4 sm:text-right'}`}>
                       {item.year}
                     </div>
 
