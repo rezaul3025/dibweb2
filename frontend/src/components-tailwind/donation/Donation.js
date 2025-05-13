@@ -1,0 +1,138 @@
+import React, { useState } from 'react';
+import { FaPaypal, FaQrcode, FaCopy, FaCheck } from 'react-icons/fa';
+import {BuildingLibraryIcon} from "@heroicons/react/24/outline";
+
+const Donation = () => {
+  const [copied, setCopied] = useState({
+    accountNumber: false,
+    iban: false,
+    swift: false
+  });
+
+  const bankDetails = {
+    name: "Eco Initiative Foundation",
+    bank: "Green Earth Bank",
+    account: "1234 5678 9012 3456",
+    iban: "GB12 ABCD 3456 7890 1234 56",
+    swift: "ABCDGB12"
+  };
+
+  const copyToClipboard = (text, field) => {
+    navigator.clipboard.writeText(text);
+    setCopied({ ...copied, [field]: true });
+    setTimeout(() => setCopied({ ...copied, [field]: false }), 2000);
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto bg-white rounded-lg p-6">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Support Our Mission</h2>
+
+      {/* PayPal Section */}
+      <div className="mb-8">
+        <div className="flex items-center mb-3">
+          <FaPaypal className="text-green-500 mr-2 text-xl"/>
+          <h3 className="text-lg font-semibold text-gray-700">PayPal Donation</h3>
+        </div>
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+          <input type="hidden" name="hosted_button_id" value="5PZFDLV6A5Q46"/>
+          <button type="submit"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">
+            <FaPaypal className="mr-2"/>
+            Donate with PayPal
+          </button>
+        </form>
+      </div>
+
+      {/* QR Code Section */}
+      <div className="mb-8">
+        <div className="flex items-center mb-3">
+          <FaQrcode className="text-green-500 mr-2 text-xl" />
+          <h3 className="text-lg font-semibold text-gray-700">QR Code Payment</h3>
+        </div>
+        <div className="bg-green-50 p-4 rounded-lg flex flex-col items-center">
+          {/* Replace with your actual QR code image */}
+          <div className="w-40 h-40 bg-white p-2 mb-3 flex items-center justify-center border border-green-200">
+            <span className="text-green-500 text-xs">
+              <img src="/static/assets/img/paypal/pay-qr.jpg" alt="Donation QR Code" className="w-40 h-40"/>
+            </span>
+          </div>
+          <p className="text-sm text-gray-600 text-center">Scan to donate via mobile banking</p>
+        </div>
+      </div>
+
+      {/* Bank Transfer Section */}
+      <div>
+        <h3 className="flex text-lg font-semibold text-gray-700 mb-4">
+          <BuildingLibraryIcon className="h-5 w-5 mr-2 mt-1 text-green-500"/>
+          Bank Transfer
+        </h3>
+        <div className="space-y-4">
+          <div>
+            <p className="text-sm text-gray-500 mb-1">Bank Name</p>
+            <div className="p-3 bg-green-50 rounded-lg border border-green-100">
+              <p className="text-gray-800">{bankDetails.bank}</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm text-gray-500 mb-1">Account Name</p>
+            <div className="p-3 bg-green-50 rounded-lg border border-green-100">
+              <p className="text-gray-800">{bankDetails.name}</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm text-gray-500 mb-1">Account Number</p>
+            <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+              <p className="text-gray-800 flex-grow">{bankDetails.account}</p>
+              <button
+                onClick={() => copyToClipboard(bankDetails.account, 'accountNumber')}
+                className="text-green-500 hover:text-green-600 ml-2"
+                aria-label="Copy account number"
+              >
+                {copied.accountNumber ? <FaCheck /> : <FaCopy />}
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm text-gray-500 mb-1">IBAN</p>
+            <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+              <p className="text-gray-800 flex-grow">{bankDetails.iban}</p>
+              <button
+                onClick={() => copyToClipboard(bankDetails.iban, 'iban')}
+                className="text-green-500 hover:text-green-600 ml-2"
+                aria-label="Copy IBAN"
+              >
+                {copied.iban ? <FaCheck /> : <FaCopy />}
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm text-gray-500 mb-1">SWIFT/BIC</p>
+            <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+              <p className="text-gray-800 flex-grow">{bankDetails.swift}</p>
+              <button
+                onClick={() => copyToClipboard(bankDetails.swift, 'swift')}
+                className="text-green-500 hover:text-green-600 ml-2"
+                aria-label="Copy SWIFT code"
+              >
+                {copied.swift ? <FaCheck /> : <FaCopy />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Thank You Note */}
+      <div className="mt-8 p-4 bg-green-50 rounded-lg border border-green-100">
+        <p className="text-green-600 text-center">
+          Thank you for your support! Your contribution helps us make a difference.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Donation;

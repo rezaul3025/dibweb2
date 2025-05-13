@@ -51,6 +51,7 @@
     --spacing: 0.25rem;
     --breakpoint-xl: 80rem;
     --container-md: 28rem;
+    --container-xl: 36rem;
     --container-2xl: 42rem;
     --container-3xl: 48rem;
     --container-6xl: 72rem;
@@ -795,6 +796,9 @@
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
+  .h-40 {
+    height: calc(var(--spacing) * 40);
+  }
   .h-50 {
     height: calc(var(--spacing) * 50);
   }
@@ -935,6 +939,9 @@
   }
   .max-w-screen-xl {
     max-width: var(--breakpoint-xl);
+  }
+  .max-w-xl {
+    max-width: var(--container-xl);
   }
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
@@ -2201,6 +2208,11 @@
   .hover\:text-green-500 {
     &:hover {
       color: var(--color-green-500);
+    }
+  }
+  .hover\:text-green-600 {
+    &:hover {
+      color: var(--color-green-600);
     }
   }
   .hover\:text-green-800 {
