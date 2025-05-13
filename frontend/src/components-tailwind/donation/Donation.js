@@ -4,17 +4,14 @@ import {BuildingLibraryIcon} from "@heroicons/react/24/outline";
 
 const Donation = () => {
   const [copied, setCopied] = useState({
-    accountNumber: false,
+    name: false,
     iban: false,
-    swift: false
   });
 
   const bankDetails = {
-    name: "Eco Initiative Foundation",
-    bank: "Green Earth Bank",
-    account: "1234 5678 9012 3456",
-    iban: "GB12 ABCD 3456 7890 1234 56",
-    swift: "ABCDGB12"
+    name: "Darul Ihsan Berlin e.V",
+    bank: "KT Bank AG",
+    iban: "DE52 5023 4500 0155 3400 01",
   };
 
   const copyToClipboard = (text, field) => {
@@ -51,7 +48,7 @@ const Donation = () => {
         </div>
         <div className="bg-green-50 p-4 rounded-lg flex flex-col items-center">
           {/* Replace with your actual QR code image */}
-          <div className="w-40 h-40 bg-white p-2 mb-3 flex items-center justify-center border border-green-200">
+          <div className="w-40 h-40 bg-white p-2 mb-3 flex items-center justify-center border border-gray-200">
             <span className="text-green-500 text-xs">
               <img src="/static/assets/img/paypal/pay-qr.jpg" alt="Donation QR Code" className="w-40 h-40"/>
             </span>
@@ -76,25 +73,17 @@ const Donation = () => {
 
           <div>
             <p className="text-sm text-gray-500 mb-1">Account Name</p>
-            <div className="p-3 bg-green-50 rounded-lg border border-green-100">
-              <p className="text-gray-800">{bankDetails.name}</p>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Account Number</p>
             <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
-              <p className="text-gray-800 flex-grow">{bankDetails.account}</p>
+              <p className="text-gray-800 flex-grow">{bankDetails.name}</p>
               <button
-                onClick={() => copyToClipboard(bankDetails.account, 'accountNumber')}
-                className="text-green-500 hover:text-green-600 ml-2"
-                aria-label="Copy account number"
+                  onClick={() => copyToClipboard(bankDetails.name, 'name')}
+                  className="text-green-500 hover:text-green-600 ml-2"
+                  aria-label="Copy Name"
               >
-                {copied.accountNumber ? <FaCheck /> : <FaCopy />}
+                {copied.name ? <FaCheck/> : <FaCopy/>}
               </button>
             </div>
           </div>
-
           <div>
             <p className="text-sm text-gray-500 mb-1">IBAN</p>
             <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
@@ -105,20 +94,6 @@ const Donation = () => {
                 aria-label="Copy IBAN"
               >
                 {copied.iban ? <FaCheck /> : <FaCopy />}
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <p className="text-sm text-gray-500 mb-1">SWIFT/BIC</p>
-            <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
-              <p className="text-gray-800 flex-grow">{bankDetails.swift}</p>
-              <button
-                onClick={() => copyToClipboard(bankDetails.swift, 'swift')}
-                className="text-green-500 hover:text-green-600 ml-2"
-                aria-label="Copy SWIFT code"
-              >
-                {copied.swift ? <FaCheck /> : <FaCopy />}
               </button>
             </div>
           </div>
