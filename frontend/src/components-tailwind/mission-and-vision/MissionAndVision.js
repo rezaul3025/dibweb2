@@ -52,7 +52,7 @@ const MissionAndVision = () => {
                     <div
                         key={index}
                         className="group p3 rounded-lg gap-3 p-3
-                        bg-white/50 dark:hover:bg-gray-800/50
+                        dark:hover:bg-gray-800/50
                             border border-transparent hover:border-gray-200 dark:hover:border-gray-700
                                 backdrop-blur-sm"
                     >

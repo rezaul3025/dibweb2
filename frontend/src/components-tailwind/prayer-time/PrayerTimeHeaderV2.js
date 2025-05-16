@@ -56,36 +56,42 @@ const PrayerTimeHeaderV2 = () => {
   return (
     <header className="text-gray-500">
       <div className="container mx-auto py-3">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          {/* Title */}
-          <div className="text-center md:text-left">
-            <h1 className="text-2xl font-bold">Prayer Times</h1>
-          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              {/* Title */}
+              {/*<div className="text-center">
+                  <h1 className="text-2xl font-bold">Prayer Times</h1>
+              </div>*/}
+              <blockquote className="text-gray-600 italic border-l-4 border-green-300 pl-4">
+                  <p className="font-serif italic text-gray-600">"By Al-’Asr (the time).
+                      Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience."</p>
+                  <footer className="not-italic text-sm mt-2 text-gray-500">— Al-Quran 103</footer>
+              </blockquote>
 
-          {/* Location and Time */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8">
-            {/* Location */}
-            <div className="flex items-center">
-              <MapPinIcon className="h-5 w-5 mr-2" />
-              <span>{location}</span>
-            </div>
+              {/* Location and Time */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8">
+                  {/* Location */}
+                  <div className="flex items-center">
+                      <MapPinIcon className="h-5 w-5 mr-2"/>
+                      <span>{location}</span>
+                  </div>
 
-            {/* Current Time */}
-            <div className="flex items-center">
-              <ClockIcon className="h-5 w-5 mr-2" />
-              <div className="text-center">
-                <div className="text-xl font-semibold"><Clock format="HH:mm:ss" interval={1000} ticking={true}/></div>
-                <div className="text-sm">{formattedDate}</div>
+                  {/* Current Time */}
+                  <div className="flex items-center">
+                      <ClockIcon className="h-5 w-5 mr-2"/>
+                      <div className="text-center">
+                          <div className="text-xl font-semibold"><Clock format="HH:mm:ss" interval={1000}
+                                                                        ticking={true}/></div>
+                          <div className="text-sm">{formattedDate}</div>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
 
-        {/* Prayer Times - Horizontal Scroll on mobile */}
-        <div className="mt-4 overflow-x-auto pb-2">
-          <div className="flex gap-4 min-w-max">
-            {prayerTimes && prayerTimes.map((prayer, index) => (
-                <div
+          {/* Prayer Times - Horizontal Scroll on mobile */}
+          <div className="mt-4 overflow-x-auto pb-2">
+              <div className="flex gap-4 min-w-max">
+                  {prayerTimes && prayerTimes.map((prayer, index) => (
+                      <div
                     key={index}
                     className={`flex flex-col items-center px-4 py-2 rounded-lg min-w-[80px] ${
                         prayer.active ? 'bg-green-300' : 'bg-gray-100'

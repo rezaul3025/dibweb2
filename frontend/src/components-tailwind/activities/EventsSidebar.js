@@ -56,9 +56,9 @@ const EventSidebar = ({events}) => {
   };
 
   return (
-    <div className="h-full bg-gray-200/80 backdrop-blur-sm border-l border-gray-200/50">
+    <div className="h-full bg-green-50 backdrop-blur-sm border-l border-gray-200/50 rounded-2xl shadow-lg">
       {/* Transparent Header */}
-      <div className="sticky top-0 px-4 py-3 bg-white/30 border-b border-gray-200/50 backdrop-blur-sm">
+      <div className="top-0 px-4 py-3 border-b border-gray-200/50 rounded-t-2xl backdrop-blur-sm">
         <h3 className="text-sm font-semibold text-gray-500">Upcoming Events</h3>
       </div>
 
@@ -67,7 +67,7 @@ const EventSidebar = ({events}) => {
         {events.map((event, index) => (
          <div
             key={event.id}
-            className={`px-4 py-3 border-b border-green-100 hover:bg-white/50 transition-colors ${index%2===0?'bg-blue-100':'bg-green-100'}`}
+            className={`px-4 py-3 border-b border-green-100 hover:bg-green-300 transition-colors ${index%2===0?'bg-blue-100':'bg-green-100'}`}
           >
             <div className="flex items-start gap-3">
               {/* Date Indicator */}
