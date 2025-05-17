@@ -8,6 +8,8 @@ import HomePage from "./HomePage";
 import ActivityDetailsPage from "./activities/ActivityDetailsPage";
 import HistoryPage from "./about-us/HistoryPage";
 import DonationPage from "./donation/DonationPage";
+import AboutUsPage from "./about-us/AboutUsPage";
+import VisionPage from "./vision/VisionPage";
 
 export default function () {
    return (
@@ -16,7 +18,8 @@ export default function () {
                 <Routes>
                     <Route exact path='/' element={<HomePage/>}/>
                     <Route exact path='/activity-details/:eventId' element={<ActivityDetailsPage />}/>
-                    <Route exact path='/history' element={<HistoryPage />}/>
+                    <Route exact path='/history' element={<AboutUsPage />}/>
+                    <Route exact path='/vision' element={<VisionPage />}/>
                     <Route exact path='/donation-tailwind' element={<DonationPage /> } />
                 </Routes>
             </BrowserRouter>

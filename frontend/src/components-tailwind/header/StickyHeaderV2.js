@@ -31,14 +31,12 @@ const StickyHeaderV2 = () => {
   ];
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/' },
     { name: 'About Us', href: '/history/' },
-    { name: 'Vision', href: '#pricing' },
+    { name: 'Vision', href: '/vision/' },
     { name: 'Membership', href: '#contact' },
     { name: 'Academy', href: '#contact' },
     { name: 'Donation', href: '/donation-tailwind/' },
-    { name: 'Contact Us', href: '#contact' },
-
   ];
 
   return (

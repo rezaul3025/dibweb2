@@ -1,14 +1,10 @@
 import React from "react";
-import CarouselWithSidebar from "./activities/CarouselWithSidebar";
-import PrayerTimesHeader from "./prayer-time/PrayerTimesHeader";
-import StickyHeader from "./header/StickyHeader";
 import CarouselWithSidebarV2 from "./activities/CarouselWithSidebarV2";
 import FooterV3 from "./FooterV3";
 import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
-import PrayerTimeHeaderV2 from "./prayer-time/PrayerTimeHeaderV2";
-import Header from "./header/Header";
 import StickyHeaderV2 from "./header/StickyHeaderV2";
+import PrayerTimeCard from "./prayer-time/PrayerTimeCard";
 
 
 const HomePage = () => {
@@ -16,12 +12,25 @@ const HomePage = () => {
     <div className="min-h-screen flex flex-col">
       <StickyHeaderV2 />
       <main className="flex-grow">
-        {/* Hero Prayer Section */}
-        <section className="container mx-auto px-4 pt-4">
-          <PrayerTimeHeaderV2 />
+        <section className="container mx-auto px-4 pt-2">
+            <div className="text-center">
+                <figure className="p-2">
+                    <blockquote className="italic text-gray-700">"By Al-’Asr (the time).
+                      Verily, man is [deep] in loss, except for those who believe and do good deeds,
+                        urge one another to the truth and urge one another to patience."
+                    </blockquote>
+                    <figcaption className="mt-2 text-sm text-gray-500">
+                        — <cite>Al-Quran 103</cite>
+                    </figcaption>
+                </figure>
+            </div>
         </section>
-        {/* Hero Carousel Section */}
-        <section className="container mx-auto px-4 pt-4">
+          {/* Hero Prayer Section */}
+          <section className="container mx-auto px-4 pt-4">
+              <PrayerTimeCard/>
+          </section>
+          {/* Hero Carousel Section */}
+          <section className="container mx-auto px-4 pt-4">
           <CarouselWithSidebarV2 />
           {/*<Carousel items={carouselItems} autoPlay={true} interval={5000} /> */}
 

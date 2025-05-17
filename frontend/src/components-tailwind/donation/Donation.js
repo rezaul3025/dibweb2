@@ -44,7 +44,7 @@ const Donation = () => {
       <div className="mb-8">
         <div className="flex items-center mb-3">
           <FaQrcode className="text-green-500 mr-2 text-xl" />
-          <h3 className="text-lg font-semibold text-gray-700">QR Code Payment</h3>
+          <h3 className="text-lg font-semibold text-gray-700">PayPal QR Code</h3>
         </div>
         <div className="bg-green-50 p-4 rounded-lg flex flex-col items-center">
           {/* Replace with your actual QR code image */}
@@ -53,7 +53,7 @@ const Donation = () => {
               <img src="/static/assets/img/paypal/pay-qr.jpg" alt="Donation QR Code" className="w-40 h-40"/>
             </span>
           </div>
-          <p className="text-sm text-gray-600 text-center">Scan to donate via mobile banking</p>
+          <p className="text-sm text-gray-600 text-center">Scan to donate via PayPal</p>
         </div>
       </div>
 

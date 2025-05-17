@@ -62,7 +62,7 @@ const PrayerTimeHeaderV2 = () => {
                   <h1 className="text-2xl font-bold">Prayer Times</h1>
               </div>*/}
               <blockquote className="text-gray-600 italic border-l-4 border-green-300 pl-4">
-                  <p className="font-serif italic text-gray-600">"By Al-’Asr (the time).
+                  <p className="italic text-gray-500">"By Al-’Asr (the time).
                       Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience."</p>
                   <footer className="not-italic text-sm mt-2 text-gray-500">— Al-Quran 103</footer>
               </blockquote>
