@@ -3,7 +3,7 @@ import Clock from "react-live-clock";
 import moment from "moment/moment";
 
 const PrayerTimeCard = () => {
-  const [setPrayerTimes, setCurrentTimes] = useState(new Date());
+  const [prayerTimes, setPrayerTimes] = useState([]);
   const [currentPrayer, setCurrentPrayer] = useState('Dhuhr');
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const PrayerTimeCard = () => {
                   { name: "Dhuhr", time: data.times[1], iqama: data.iqamaCalendar[0]["1"][1], active: false, icon: "🕌" },
                   { name: "Asr", time: data.times[2], iqama: data.iqamaCalendar[0]["1"][2], active: false, icon: "📿" },
                   { name: "Maghrib", time: data.times[3], iqama: data.iqamaCalendar[0]["1"][3], active: false, icon: "🌇" },
-                  { name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌙" }
+                  { name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌃" }
                 ];
                 setPrayerTimes(prayerTimesObj);
             }).catch(error => {
@@ -26,14 +26,14 @@ const PrayerTimeCard = () => {
     }, []);
 
   // Sample data - replace with API calls
-  const prayerTimes = [
+  /*const prayerTimes = [
     { name: 'Fajr', time: '5:30 AM', icon: '🌙' },
     { name: 'Sunrise', time: '6:45 AM', icon: '☀️' },
     { name: 'Dhuhr', time: '12:30 PM', icon: '🕌', isCurrent: true },
     { name: 'Asr', time: '3:45 PM', icon: '📿' },
     { name: 'Maghrib', time: '6:50 PM', icon: '🌆' },
     { name: 'Isha', time: '8:15 PM', icon: '🌃' }
-  ];
+  ];*/
 
   const location = {
     city: 'Berlin',
@@ -74,12 +74,12 @@ const PrayerTimeCard = () => {
                     >
                         <span className="text-xl mb-1">{prayer.icon}</span>
                         <span className="text-xs font-medium">{prayer.name}</span>
-                        <span className="text-sm">{prayer.iqama}</span>
                         <span className={`mt-1 font-bold ${
                             prayer.active ? 'text-white' : 'text-gray-600'
                         }`}>
-                {prayer.time}
-              </span>
+                            {prayer.time}
+                        </span>
+                        <span className="text-sm">{prayer.iqama}</span>
                         {prayer.active && (
                             <span className="mt-1 text-xs bg-white text-green-600 px-2 py-0.5 rounded-full">
                   Current
