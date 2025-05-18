@@ -145,6 +145,7 @@ def prayer_times(request, mosque_id):
                 conf_data = json.loads(conf_data_json)
                 return JsonResponse(conf_data, status=status.HTTP_200_OK)
             else:
+                print("Failed to extract confData JSON")
                 raise HTTPException(status_code=500, detail=f"Failed to extract confData JSON for {mosque_id}")
         else:
             print("Script containing confData not found.")

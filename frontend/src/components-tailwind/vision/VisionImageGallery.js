@@ -19,7 +19,7 @@ const VisionImageGallery = ({ images }) => {
   return (
     <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center">
       {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
         {images.map((image, index) => (
             <div className="flex justify-center" key={index}>
               <div  className="relative group">
@@ -28,7 +28,7 @@ const VisionImageGallery = ({ images }) => {
                   <img
                     src={image.thumbnail}
                     alt={image.alt || `Image ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-100 cursor-pointer"
                     onClick={() => openModal(image)}
                     loading="lazy"
                   />

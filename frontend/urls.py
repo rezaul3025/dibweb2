@@ -23,4 +23,5 @@ urlpatterns = [
     path('activity-details/<int:eventId>/', index),
     path('donation-tailwind/', index),
     path('vision/', index),
+    path('membership/', index),
 ]

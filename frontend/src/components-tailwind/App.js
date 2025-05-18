@@ -10,6 +10,7 @@ import HistoryPage from "./about-us/HistoryPage";
 import DonationPage from "./donation/DonationPage";
 import AboutUsPage from "./about-us/AboutUsPage";
 import VisionPage from "./vision/VisionPage";
+import MembershipPage from "./membership/MembershipPage";
 
 export default function () {
    return (
@@ -20,6 +21,7 @@ export default function () {
                     <Route exact path='/activity-details/:eventId' element={<ActivityDetailsPage />}/>
                     <Route exact path='/history' element={<AboutUsPage />}/>
                     <Route exact path='/vision' element={<VisionPage />}/>
+                    <Route exact path='/membership' element={<MembershipPage />}/>
                     <Route exact path='/donation-tailwind' element={<DonationPage /> } />
                 </Routes>
             </BrowserRouter>

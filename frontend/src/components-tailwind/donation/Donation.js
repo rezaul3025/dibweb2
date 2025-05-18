@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaPaypal, FaQrcode, FaCopy, FaCheck } from 'react-icons/fa';
 import {BuildingLibraryIcon} from "@heroicons/react/24/outline";
+import QuoteText from "../QuoteText";
 
 const Donation = () => {
   const [copied, setCopied] = useState({
@@ -21,14 +22,18 @@ const Donation = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Support Our Mission</h2>
-
+    <div className="max-w-2xl mx-auto bg-white rounded-lg">
+      <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Support Our Mission</h2>
+      <QuoteText
+                    text="Whoever builds a mosque for Allah, Allah will build for him a house like it in Paradise."
+                    author="Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533"
+                    size="sm"
+                />
       {/* PayPal Section */}
       <div className="mb-8">
         <div className="flex items-center mb-3">
           <FaPaypal className="text-green-500 mr-2 text-xl"/>
-          <h3 className="text-lg font-semibold text-gray-700">PayPal Donation</h3>
+          <h3 className="text-xl font-semibold text-gray-700">PayPal Donation</h3>
         </div>
         <form action="https://www.paypal.com/donate" method="post" target="_top">
           <input type="hidden" name="hosted_button_id" value="5PZFDLV6A5Q46"/>
@@ -44,7 +49,7 @@ const Donation = () => {
       <div className="mb-8">
         <div className="flex items-center mb-3">
           <FaQrcode className="text-green-500 mr-2 text-xl" />
-          <h3 className="text-lg font-semibold text-gray-700">PayPal QR Code</h3>
+          <h3 className="text-xl font-semibold text-gray-700">PayPal QR Code</h3>
         </div>
         <div className="bg-green-50 p-4 rounded-lg flex flex-col items-center">
           {/* Replace with your actual QR code image */}
@@ -59,7 +64,7 @@ const Donation = () => {
 
       {/* Bank Transfer Section */}
       <div>
-        <h3 className="flex text-lg font-semibold text-gray-700 mb-4">
+        <h3 className="flex text-xl font-semibold text-gray-700 mb-4">
           <BuildingLibraryIcon className="h-5 w-5 mr-2 mt-1 text-green-500"/>
           Bank Transfer
         </h3>

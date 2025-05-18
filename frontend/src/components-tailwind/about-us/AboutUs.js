@@ -39,11 +39,11 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="bg-white py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white px-4 sm:px-6 lg:px-8">
       {/* About Us Description */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+          <h2 className="text-2xl font-extrabold text-green-500 sm:text-3xl">
             Darul Ihsan Berlin (DIB) e.V.
           </h2>
           <div className="mt-6 mx-auto text-xl text-gray-500 break-keep">
@@ -62,7 +62,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="p-4">
               <p className="text-4xl font-bold text-green-600">10+</p>
-              <p className="mt-2 text-lg text-gray-600">Years in History</p>
+              <p className="mt-2 text-lg text-gray-600">Years of History</p>
             </div>
             <div className="p-4">
               <p className="text-4xl font-bold text-green-600">50+</p>
@@ -77,7 +77,7 @@ const AboutUs = () => {
 
         {/* Team Section */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-green-500 sm:text-4xl">
             Board member
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">

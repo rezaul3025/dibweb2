@@ -5,6 +5,7 @@ import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
 import StickyHeaderV2 from "./header/StickyHeaderV2";
 import PrayerTimeCard from "./prayer-time/PrayerTimeCard";
+import QuoteText from "./QuoteText";
 
 
 const HomePage = () => {
@@ -14,7 +15,12 @@ const HomePage = () => {
       <main className="flex-grow">
         <section className="container mx-auto px-4 pt-2">
             <div className="text-center">
-                <figure className="p-2">
+                <QuoteText
+                    text="By Al-’Asr (the time). Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience."
+                    author="Al-Quran 103"
+                    size="sm"
+                />
+                {/*<figure className="p-2">
                     <blockquote className="italic text-gray-700">"By Al-’Asr (the time).
                       Verily, man is [deep] in loss, except for those who believe and do good deeds,
                         urge one another to the truth and urge one another to patience."
@@ -22,7 +28,7 @@ const HomePage = () => {
                     <figcaption className="mt-2 text-sm text-gray-500">
                         — <cite>Al-Quran 103</cite>
                     </figcaption>
-                </figure>
+                </figure>*/}
             </div>
         </section>
           {/* Hero Prayer Section */}

@@ -4,22 +4,39 @@ import VisionImageGallery from "./VisionImageGallery";
 const Vision = () => {
     return (
         <Fragment>
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Support Our Mission</h2>
-            <div className="container mx-auto px-4 py-8">
-                <div className="relative aspect-video w-full max-w-6xl mx-auto">
-                    {/*<img
+            <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Support Our Mission</h2>
+            <p className="text-gray-600 text-center max-w-2xl mx-auto text-lg leading-loose">
+                Since the establishment of Darul Ihsan Berlin (DIB), we have dreamed of creating a healthy and progressive environmentfor Muslims residing in Berlin.
+                Although our current mosque, with an area of 140 square metres, accommodates 200 worshippersat a time, our needs and aspirations are much greater.
+                Darul Ihsan Berlin envisions establishing a larger Islamic centre wherewe can expand our activities and undertake new initiatives.
+            </p>
+            <div className="relative aspect-video w-full max-w-6xl mx-auto">
+                {/*<img
                         src={'/static/assets/img/vision/vision_v1.png'}
                         alt="Featured content"
                         className="absolute inset-0 w-full h-full object-contain"
                         loading="lazy"
                     />*/}
-                     <VisionImageGallery images={[
-                            { thumbnail: '/static/assets/img/vision/vision_v1.png', fullSize: '/static/assets/img/vision/vision_v1.png', alt: 'Vision 1' },
-                            { thumbnail: '/static/assets/img/vision/vision_v2.png', fullSize: '/static/assets/img/vision/vision_v2.png', alt: 'Vision 2' },
-                     ]} />
-                </div>
+                <VisionImageGallery images={[
+                    {
+                        thumbnail: '/static/assets/img/vision/vision_v1.png',
+                        fullSize: '/static/assets/img/vision/vision_v1.png',
+                        alt: 'Vision 1'
+                    },
+                    {
+                        thumbnail: '/static/assets/img/vision/vision_v2.png',
+                        fullSize: '/static/assets/img/vision/vision_v2.png',
+                        alt: 'Vision 2'
+                    },
+                    {
+                        thumbnail: '/static/assets/img/vision/vision_v3.png',
+                        fullSize: '/static/assets/img/vision/vision_v3.png',
+                        alt: 'Vision 2'
+                    },
+                ]}/>
+            </div>
 
-                {/*<div className="relative w-full h-screen max-h-[80vh] overflow-hidden">
+            {/*<div className="relative w-full h-screen max-h-[80vh] overflow-hidden">
                     <img
                          src={'/static/assets/img/vision/vision_v1.png'}
                         alt="Hero image"
@@ -30,7 +47,6 @@ const Vision = () => {
                         <h1 className="text-white text-4xl md:text-6xl font-bold">Hero Title</h1>
                     </div>
                 </div>*/}
-            </div>
 
 
             {/*<img

@@ -1,28 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import Clock from "react-live-clock";
 import moment from "moment/moment";
+import LoadingIcon from "../LoadingIcon";
+import QuoteText from "../QuoteText";
 
 const PrayerTimeCard = () => {
   const [prayerTimes, setPrayerTimes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const [currentPrayer, setCurrentPrayer] = useState('Dhuhr');
 
-  useEffect(() => {
-        fetch('/api/v1/prayer_times/darul-ihsan-berlin/')
-            .then(response => response.json())
-            .then(data => {
-              const prayerTimesObj = [
-                  { name: "Fajr", time: data.times[0], iqama: data.iqamaCalendar[0]["1"][0], active: false, icon: "🌄" },
-                  { name: "Sunrise", time: data.shuruq , iqama: "", active: false, icon: "☀️" },
-                  { name: "Dhuhr", time: data.times[1], iqama: data.iqamaCalendar[0]["1"][1], active: false, icon: "🕌" },
-                  { name: "Asr", time: data.times[2], iqama: data.iqamaCalendar[0]["1"][2], active: false, icon: "📿" },
-                  { name: "Maghrib", time: data.times[3], iqama: data.iqamaCalendar[0]["1"][3], active: false, icon: "🌇" },
-                  { name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌃" }
-                ];
-                setPrayerTimes(prayerTimesObj);
-            }).catch(error => {
-            console.log(error);
-        });
+    function getPrayerTimesObj(data) {
+        const prayerTimesObj = [
+            {name: "Fajr", time: data.times[0], iqama: data.iqamaCalendar[0]["1"][0], active: false, icon: "🌄"},
+            {name: "Sunrise", time: data.shuruq, iqama: "", active: false, icon: "☀️"},
+            {name: "Dhuhr", time: data.times[1], iqama: data.iqamaCalendar[0]["1"][1], active: false, icon: "🕌"},
+            {name: "Asr", time: data.times[2], iqama: data.iqamaCalendar[0]["1"][2], active: false, icon: "📿"},
+            {name: "Maghrib", time: data.times[3], iqama: data.iqamaCalendar[0]["1"][3], active: false, icon: "🌇"},
+            {name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌃"}
+        ];
+        return prayerTimesObj;
+    }
 
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetch('/api/v1/prayer_times/darul-ihsan-berlin/');
+              const data = await response.json();
+              const prayerTimesObj = getPrayerTimesObj(data);
+                setPrayerTimes(prayerTimesObj);
+                setLoading(false);
+                localStorage.setItem("prayerTimesJson", JSON.stringify(data));
+          } catch (error) {
+              let prayerTimesData = localStorage.getItem("prayerTimesJson");
+              const prayerTimesObj = prayerTimesData?getPrayerTimesObj(JSON.parse(prayerTimesData)): [];
+              setPrayerTimes(prayerTimesObj);
+              console.error("Error fetching event data:", error);
+              setLoading(false);
+          }
+      };
+      fetchData();
     }, []);
 
   // Sample data - replace with API calls
@@ -45,7 +62,7 @@ const PrayerTimeCard = () => {
   return (
     <div className="bg-green-50 text-gray-700 rounded-lg overflow-hidden">
       {/* Top Section - Location & Date */}
-      <div className="px-4 py-3 bg-green-100 flex flex-col sm:flex-row justify-between items-center">
+      <div className="px-4 py-3 bg-green-50 flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center mb-2 sm:mb-0">
           <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -64,11 +81,14 @@ const PrayerTimeCard = () => {
 
       {/* Prayer Times - Horizontal Scroll on Mobile */}
         <div className="px-4 py-3 overflow-x-auto">
-            <div className="flex space-x-4 min-w-max">
-                {prayerTimes.map((prayer, index) => (
+            <div className="flex space-x-4 min-w-max justify-center md:gap-12">
+                {loading && <div className="w-full px-4">
+                    <LoadingIcon type="spinner" size="sm" color="green-500"/>
+                </div>}
+                {!loading && prayerTimes.map((prayer, index) => (
                     <div
                         key={index}
-                        className={`flex flex-col items-center p-3 rounded-lg min-w-[80px] ${
+                        className={`flex flex-col items-center rounded-lg min-w-[80px] ${
                             prayer.active ? 'bg-green-400 shadow-md' : 'bg-green-300'
                         }`}
                     >
@@ -91,7 +111,7 @@ const PrayerTimeCard = () => {
         </div>
 
         {/* Current Time Footer */}
-        <div className="px-4 py-2 bg-green-100 text-sm flex justify-between items-center">
+        <div className="px-4 py-2 bg-green-50 text-sm flex justify-between items-center">
             <div className="flex items-center">
                 <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

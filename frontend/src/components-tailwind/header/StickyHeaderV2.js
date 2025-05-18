@@ -34,7 +34,7 @@ const StickyHeaderV2 = () => {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/history/' },
     { name: 'Vision', href: '/vision/' },
-    { name: 'Membership', href: '#contact' },
+    { name: 'Membership', href: '/membership/' },
     { name: 'Academy', href: '#contact' },
     { name: 'Donation', href: '/donation-tailwind/' },
   ];
