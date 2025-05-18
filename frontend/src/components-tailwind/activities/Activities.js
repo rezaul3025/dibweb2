@@ -9,7 +9,7 @@ export default function Activities({event}) {
         <div className="lg:w-2/3 space-y-6">
           {/* Event Heading */}
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">{event.title}</h1>
+            <h1 className="text-3xl font-bold text-green-500">{event.title}</h1>
             <div className="flex gap-2 mt-2">
               <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Study</span>
               <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Quran</span>
@@ -18,10 +18,10 @@ export default function Activities({event}) {
 
           {/* Event Description */}
           <div className="prose">
-            <p className="text-gray-700 text-justify break-words">
+            <p className="text-gray-500 text-xl text-justify break-words">
                 {event.description}
             </p>
-            <ul className="mt-4 space-y-2 text-gray-700">
+            <ul className="mt-4 space-y-2 text-gray-500">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -48,7 +48,7 @@ export default function Activities({event}) {
               </div>
               <div>
                   {/*<p className="font-medium">Nov 15-17, 2023</p>*/}
-                <p className="text-gray-600">{moment(event.event_datetime).format("LLL")}</p>
+                <p className="text-gray-500">{moment(event.event_datetime).format("LLL")}</p>
               </div>
             </div>
           </div>
@@ -64,8 +64,8 @@ export default function Activities({event}) {
                 </svg>
               </div>
               <div>
-                <p className="text-gray-600">{event.address}</p>
-                <a href="#" className="text-blue-600 text-sm mt-1 inline-block">View on map</a>
+                <p className="text-gray-500">{event.address}</p>
+                <a href="#" className="text-green-500 text-sm mt-1 inline-block">View on map</a>
               </div>
             </div>
           </div>

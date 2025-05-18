@@ -25,4 +25,5 @@ urlpatterns = [
     path('vision/', index),
     path('membership/', index),
     path('download/', index),
+    path('academy/', index),
 ]

@@ -58,9 +58,9 @@ const PrayerTimeCard = () => {
 
 
   return (
-    <div className="bg-green-50 text-gray-700 rounded-lg overflow-hidden">
+    <div className="bg-green-50 text-gray-500 rounded-lg overflow-hidden">
       {/* Top Section - Location & Date */}
-      <div className="px-4 py-3 bg-green-50 flex flex-col sm:flex-row justify-between items-center">
+      <div className="px-4 py-3 bg-green-50 flex flex-col sm:flex-row justify-between items-center border-b border-gray-100">
         <div className="flex items-center mb-2 sm:mb-0">
           <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -109,7 +109,7 @@ const PrayerTimeCard = () => {
         </div>
 
         {/* Current Time Footer */}
-        <div className="px-4 py-2 bg-green-50 text-sm flex justify-between items-center">
+        <div className="px-4 py-2 bg-green-50 text-sm flex justify-between items-center border-t border-gray-100">
             <div className="flex items-center">
                 <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

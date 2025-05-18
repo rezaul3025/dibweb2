@@ -68,15 +68,15 @@ const ActivityCarouselV6 = ({events}) => {
             <div className="flex flex-col lg:flex-row">
               {/* Text Content */}
               <div className="p-6 md:p-8 lg:w-2/3">
-                <h2 className="text-2xl font-bold text-green-800 mb-3">{event.title}</h2>
-                <p className="text-gray-600 mb-6 text-justify break-words">{event.description}</p>
+                <h2 className="text-2xl font-bold text-gray-500 mb-3">{event.title}</h2>
+                <p className="text-gray-600 mb-6 text-justify break-words text-gray-500">{event.description}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-start">
                     <CalendarIcon className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">Date & Time</p>
-                      <p className="font-medium">{moment(event.event_datetime).format("LLL")}</p>
+                      <p className="font-medium text-gray-600">{moment(event.event_datetime).format("LLL")}</p>
                     </div>
                   </div>
 
@@ -84,7 +84,7 @@ const ActivityCarouselV6 = ({events}) => {
                     <MapPinIcon className="h-5 w-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500">Location</p>
-                      <p className="font-medium">{event.address}</p>
+                      <p className="font-medium text-gray-600">{event.address}</p>
                     </div>
                   </div>
                 </div>

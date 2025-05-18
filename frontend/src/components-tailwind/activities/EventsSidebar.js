@@ -75,14 +75,14 @@ const EventSidebar = ({events}) => {
                 <span className="text-xs font-medium text-gray-500">
                   {new Date(event.event_datetime).toLocaleString('default', { weekday: 'short' }).toUpperCase()}
                 </span>
-                <span className="text-lg font-bold text-gray-700">
+                <span className="text-lg font-bold text-gray-600">
                   {new Date(event.event_datetime).getDate()}
                 </span>
               </div>
 
               {/* Event Details */}
               <div className="flex-1">
-                <h4 className="text-sm font-semibold text-gray-800 line-clamp-1">
+                <h4 className="text-sm font-semibold text-gray-500 line-clamp-1">
                   {event.title}
                 </h4>
                 <p className="text-xs text-gray-600 line-clamp-1 mt-1">
