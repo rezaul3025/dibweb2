@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import History from "./History";
 import HistoryV2 from "./HistoryV2";
 
@@ -39,15 +39,15 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="bg-white px-4 sm:px-6 lg:px-8">
+      <Fragment>
       {/* About Us Description */}
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-2xl font-extrabold text-green-500 sm:text-3xl">
             Darul Ihsan Berlin (DIB) e.V.
           </h2>
-          <div className="mt-6 mx-auto text-xl text-gray-500 break-keep">
-            <p className="mb-6">
+          <div className="mt-6 mx-auto text-xl text-gray-500">
+            <p className="mb-6 text-justify break-words">
               In 2011, five families in Berlin came together with a desire to gain a deeper understanding of Islam’s teachings and way of life,
                 which led them to begin Quranic Tafsir sessions. Over time, the need arose for an organization where families could study the Quran,
                 Tafsir, and Seerah together, guiding their lives with the light of Islamic knowledge.
@@ -92,7 +92,7 @@ const AboutUs = () => {
         </div>
           <HistoryV2 />
       </div>
-    </section>
+   </Fragment>
   );
 };
 

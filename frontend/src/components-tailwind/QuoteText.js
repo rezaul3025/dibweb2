@@ -10,7 +10,7 @@ const QuoteText = ({
 }) => {
   // Theme classes
   const themeClasses = {
-    light: "bg-white text-gray-800",
+    light: "bg-white text-gray-500",
     dark: "bg-gray-800 text-gray-100"
   };
 
@@ -38,7 +38,7 @@ const QuoteText = ({
   };
 
   return (
-    <div className={`max-w-4xl mx-auto p-3 md:p-3  ${themeClasses[theme]} ${alignClasses[align]}`}>
+    <div className={`max-w-4xl mx-auto p-3 md:p-3 ${themeClasses[theme]} ${alignClasses[align]}`}>
       <div className="relative">
         {/* Quote icon - only shown for left-aligned quotes */}
         {align === "left" && (
@@ -49,7 +49,7 @@ const QuoteText = ({
 
         {/* Quote text */}
         <blockquote>
-          <p className={`${textSizeClasses[size]} p-2 leading-relaxed italic font-medium`}>
+          <p className={`${textSizeClasses[size]} p-2 sm:break-words leading-relaxed italic font-medium`}>
             {text}
           </p>
 

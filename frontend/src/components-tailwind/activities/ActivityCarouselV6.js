@@ -69,7 +69,7 @@ const ActivityCarouselV6 = ({events}) => {
               {/* Text Content */}
               <div className="p-6 md:p-8 lg:w-2/3">
                 <h2 className="text-2xl font-bold text-green-800 mb-3">{event.title}</h2>
-                <p className="text-gray-600 mb-6">{event.description}</p>
+                <p className="text-gray-600 mb-6 text-justify break-words">{event.description}</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-start">

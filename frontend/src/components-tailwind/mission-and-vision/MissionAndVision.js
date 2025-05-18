@@ -62,13 +62,13 @@ const MissionAndVision = () => {
                                 {item.title}
                             </span>
                         </div>
-                        <p className="text-gray-600 dark:text-gray-300 mt-1">
+                        <p className="text-gray-600 dark:text-gray-300 mt-1 text-justify break-words">
                             {item.description}
                         </p>
 
                         {item.items && item.items.map((item, index) => (
                             <ul className="space-y-3">
-                                <li className="text-gray-600 dark:text-gray-300 mt-4"> <span className="font-bold">{index +1}. {item.title}  : </span> {item.description} </li>
+                                <li className="text-gray-600 dark:text-gray-300 mt-4 text-justify break-words"> <span className="font-bold">{index +1}. {item.title}  : </span> {item.description} </li>
                             </ul>
                         ))}
 

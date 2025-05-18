@@ -56,7 +56,7 @@ const HistoryV2 = () => {
                             className="mb-1 text-md font-normal leading-none text-green-500 dark:text-gray-700">{item.year}
                         </time>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white"> {item.title}</h3>
-                        <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{item.description}</p>
+                        <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400 text-justify break-words">{item.description}</p>
                     </li>))}
                 </ol>
             </div>

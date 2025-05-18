@@ -16,10 +16,10 @@ const MembershipPage = () => {
                 {/* Event details page section */}
                 <section className="container mx-auto px-4 pt-4">
                     <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Become an Associate</h2>
-                    <p className="text-gray-600 text-center max-w-2xl mx-auto text-lg leading-loose">
+                    <p className="text-gray-500 mx-auto text-xl text-justify break-words p-2">
                         Darul Ihsan Berlin is working in the path of Allah and managing a mosque.
                         To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members.
-                        We encourage those who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah
+                        We encourage those who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah.
                     </p>
                     <div className="relative aspect-video w-full max-w-6xl mx-auto">
                         <VisionImageGallery images={[

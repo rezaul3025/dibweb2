@@ -18,7 +18,7 @@ export default function Activities({event}) {
 
           {/* Event Description */}
           <div className="prose">
-            <p className="text-gray-700">
+            <p className="text-gray-700 text-justify break-words">
                 {event.description}
             </p>
             <ul className="mt-4 space-y-2 text-gray-700">

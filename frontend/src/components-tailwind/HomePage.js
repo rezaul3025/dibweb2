@@ -18,7 +18,7 @@ const HomePage = () => {
                 <QuoteText
                     text="By Al-’Asr (the time). Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience."
                     author="Al-Quran 103"
-                    size="sm"
+                    size="lg"
                 />
                 {/*<figure className="p-2">
                     <blockquote className="italic text-gray-700">"By Al-’Asr (the time).

@@ -5,7 +5,7 @@ const Vision = () => {
     return (
         <Fragment>
             <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Support Our Mission</h2>
-            <p className="text-gray-600 text-center max-w-2xl mx-auto text-lg leading-loose">
+            <p className="text-gray-500 mx-auto text-xl text-justify break-words p-2">
                 Since the establishment of Darul Ihsan Berlin (DIB), we have dreamed of creating a healthy and progressive environmentfor Muslims residing in Berlin.
                 Although our current mosque, with an area of 140 square metres, accommodates 200 worshippersat a time, our needs and aspirations are much greater.
                 Darul Ihsan Berlin envisions establishing a larger Islamic centre wherewe can expand our activities and undertake new initiatives.
