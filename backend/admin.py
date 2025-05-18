@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Attendee, Event, ContactUs, Toggle
+from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
+    NoticeBoardDocument, AcademyNoticeBoard, DownloadItem
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -28,3 +29,43 @@ class ToggleAdmin(admin.ModelAdmin):
     list_display = ('name', 'enabled')
     fields = list_display
 admin.site.register(Toggle, ToggleAdmin)
+
+class ShiftAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    fields = list_display
+admin.site.register(Shift, ShiftAdmin)
+
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    fields = list_display
+admin.site.register(Teacher, TeacherAdmin)
+
+class StudentClassAdmin(admin.ModelAdmin):
+    filter_horizontal = ('teachers',)
+    list_display = ('name', 'description', 'day')
+    fields = list_display+filter_horizontal
+admin.site.register(StudentClass, StudentClassAdmin)
+
+
+class StudentAdmin(admin.ModelAdmin):
+    filter_horizontal = ('classes',)
+    list_display = ('first_name', 'last_name', 'address', 'contact_details', 'shift', 'siblings', 'get_classes')
+    readonly_fields = ('get_classes',)
+    fields = list_display+filter_horizontal
+admin.site.register(Student, StudentAdmin)
+
+class NoticeBoardDocumentAdmin(admin.StackedInline):
+    model = NoticeBoardDocument
+
+@admin.register(AcademyNoticeBoard)
+class AcademyNoticeBoardAdmin(admin.ModelAdmin):
+    inlines = [NoticeBoardDocumentAdmin]
+
+@admin.register(NoticeBoardDocument)
+class NoticeBoardDocumentAdmin(admin.ModelAdmin):
+    pass
+
+class DownloadItemAdmin(admin.ModelAdmin):
+    list_display = ('filename', 'document', 'filesize', 'date')
+    readonly_fields = ('filesize', 'date')
+admin.site.register(DownloadItem, DownloadItemAdmin)

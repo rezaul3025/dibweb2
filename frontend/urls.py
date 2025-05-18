@@ -24,4 +24,5 @@ urlpatterns = [
     path('donation-tailwind/', index),
     path('vision/', index),
     path('membership/', index),
+    path('download/', index),
 ]

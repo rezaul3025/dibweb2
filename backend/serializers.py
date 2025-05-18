@@ -1,7 +1,8 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event, ContactUs, Toggle
+from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardDocument, Student, StudentClass, \
+    AcademyNoticeBoard, Teacher, Shift, DownloadItem
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -24,3 +25,45 @@ class ToggleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Toggle
         fields = ['name', 'enabled']
+
+class ShiftSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shift
+        fields = ['id', 'name', 'description']
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ['id', 'name', 'description']
+
+
+class StudentClassSerializer(serializers.ModelSerializer):
+    teachers = TeacherSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = StudentClass
+        fields = ['id', 'name', 'day','description','teachers']
+
+class StudentSerializer(serializers.ModelSerializer):
+    classes = StudentClassSerializer(read_only=True, many=True)
+    shift = ShiftSerializer(read_only=True)
+    class Meta:
+        model = Student
+        fields = ['id','first_name', 'last_name','address', 'contact_details','shift','classes','siblings','shift']
+
+class NoticeBoardDocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NoticeBoardDocument
+        fields = ['description','document']
+
+class AcademyNoticeBoardSerializer(serializers.ModelSerializer):
+    documents = NoticeBoardDocumentSerializer(source='noticeboarddocument_set', many=True)
+    class Meta:
+        model = AcademyNoticeBoard
+        fields = ['text','documents']
+
+class DownloadItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DownloadItem
+        fields = ['document', 'filename', 'filesize', 'date']

@@ -7,32 +7,32 @@ const AboutUs = () => {
     {
       id: 1,
       name: 'Dr. Nasir Uddin',
-      position: 'CEO & Founder',
-      bio: 'Sarah founded the company with a vision to revolutionize the industry through sustainable practices.',
+      position: 'President',
+      bio: '#',
       twitter: '#',
       linkedin: '#'
     },
     {
       id: 2,
       name: 'Dr. Sabbir Ahmed Osmany ',
-      position: 'CTO',
-      bio: 'Michael leads our technical team with expertise in sustainable technology solutions.',
+      position: 'Vice President',
+      bio: '',
       twitter: '#',
       linkedin: '#'
     },
     {
       id: 3,
       name: 'Masud Rana Hossain',
-      position: 'Head of Sustainability',
-      bio: 'Elena ensures all our operations meet the highest environmental standards.',
+      position: 'Head of Operations',
+      bio: '',
       twitter: '#',
       linkedin: '#'
     },
     {
       id: 4,
       name: 'Dr. Mohammad Maruf Hossain',
-      position: 'Marketing Director',
-      bio: 'David crafts our brand message to communicate our environmental commitment.',
+      position: 'Head of Finance',
+      bio: '',
       twitter: '#',
       linkedin: '#'
     }

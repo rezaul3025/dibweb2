@@ -19,9 +19,9 @@ const VisionImageGallery = ({ images }) => {
   return (
     <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center">
       {/* Image Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto justify-center">
         {images.map((image, index) => (
-            <div className="flex justify-center" key={index}>
+            <div className="flex" key={index}>
               <div  className="relative group">
                 {/* Image with hover effect */}
                 <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 border border-gray-200">

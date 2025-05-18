@@ -12,8 +12,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee, Toggle
-from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer
+from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift, AcademyNoticeBoard, \
+    DownloadItem
+from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
+    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, AcademyNoticeBoardSerializer, \
+    DownloadItemSerializer
 
 
 @api_view(['POST'])
@@ -185,3 +188,64 @@ def is_recaptcha_valid(request_data):
     result = json.loads(response.read().decode())
     ''' End reCAPTCHA validation '''
     return result['success'];
+
+@api_view(['GET'])
+def allStudents(request):
+    students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allStudentBySearch(request, search_params):
+    students = Student.objects.filter(Q(first_name__icontains=search_params) | Q(last_name__icontains=search_params))
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByClass(request, class_id):
+    students = Student.objects.filter(classes__id=class_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByTeacher(request, teacher_id):
+    classes = StudentClass.objects.filter(teachers__id=teacher_id)
+    students = Student.objects.filter(classes__in=classes)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByShift(request, shift_id):
+    students = Student.objects.filter(shift__id=shift_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allClasses(request):
+    classes = StudentClass.objects.all()
+    serializer = StudentClassSerializer(classes, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allTeachers(request):
+    teaches = Teacher.objects.all()
+    serializer = TeacherSerializer(teaches, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allShifts(request):
+    shifts = Shift.objects.all()
+    serializer = ShiftSerializer(shifts, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def noticeBoard(request):
+    notice_board = AcademyNoticeBoard.objects.all()
+    serializer = AcademyNoticeBoardSerializer(notice_board, many=True)
+    return Response(serializer.data[0])
+
+@api_view(['GET'])
+def downloadItems(request):
+    downloads = DownloadItem.objects.all()
+    serializer = DownloadItemSerializer(downloads, many=True)
+    return Response(serializer.data)

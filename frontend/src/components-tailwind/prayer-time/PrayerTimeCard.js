@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Clock from "react-live-clock";
 import moment from "moment/moment";
 import LoadingIcon from "../LoadingIcon";
-import QuoteText from "../QuoteText";
 
 const PrayerTimeCard = () => {
   const [prayerTimes, setPrayerTimes] = useState([]);
@@ -11,7 +10,7 @@ const PrayerTimeCard = () => {
   const [currentPrayer, setCurrentPrayer] = useState('Dhuhr');
 
     function getPrayerTimesObj(data) {
-        const prayerTimesObj = [
+        return [
             {name: "Fajr", time: data.times[0], iqama: data.iqamaCalendar[0]["1"][0], active: false, icon: "🌄"},
             {name: "Sunrise", time: data.shuruq, iqama: "", active: false, icon: "☀️"},
             {name: "Dhuhr", time: data.times[1], iqama: data.iqamaCalendar[0]["1"][1], active: false, icon: "🕌"},
@@ -19,7 +18,6 @@ const PrayerTimeCard = () => {
             {name: "Maghrib", time: data.times[3], iqama: data.iqamaCalendar[0]["1"][3], active: false, icon: "🌇"},
             {name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌃"}
         ];
-        return prayerTimesObj;
     }
 
     useEffect(() => {

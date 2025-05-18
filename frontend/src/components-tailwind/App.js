@@ -11,6 +11,7 @@ import DonationPage from "./donation/DonationPage";
 import AboutUsPage from "./about-us/AboutUsPage";
 import VisionPage from "./vision/VisionPage";
 import MembershipPage from "./membership/MembershipPage";
+import DownloadPage from "./download/DownloadPage";
 
 export default function () {
    return (
@@ -23,6 +24,7 @@ export default function () {
                     <Route exact path='/vision' element={<VisionPage />}/>
                     <Route exact path='/membership' element={<MembershipPage />}/>
                     <Route exact path='/donation-tailwind' element={<DonationPage /> } />
+                    <Route exact path='/download' element={<DownloadPage /> } />
                 </Routes>
             </BrowserRouter>
         );

@@ -1,4 +1,6 @@
+import os
 from datetime import datetime
+from pathlib import Path
 
 from ckeditor.fields import RichTextField
 from django.db import models
@@ -65,3 +67,76 @@ class Toggle(models.Model):
     name = models.CharField(max_length=255)
     enabled = models.BooleanField(default=False)
 
+class Shift(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class StudentClass(models.Model):
+    name = models.CharField(max_length=255)
+    teachers = models.ManyToManyField(Teacher)
+    day = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"{self.name} {self.description}"
+
+class Student(models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, blank=True)
+    contact_details = models.CharField(max_length=255, blank=True)
+    shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
+    classes = models.ManyToManyField(StudentClass)
+    siblings = models.BooleanField(default=False)
+    class Meta:
+        ordering = ["first_name"]
+
+    def get_classes(self):
+        return ",".join([str(c) for c in self.classes.all()])
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} {self.address}"
+
+class AcademyNoticeBoard(models.Model):
+    text = RichTextField()
+
+    def __str__(self):
+        return self.text
+
+class NoticeBoardDocument(models.Model):
+    notice_board = models.ForeignKey(AcademyNoticeBoard, on_delete=models.CASCADE)
+    description = models.TextField()
+    document = models.FileField(upload_to='notice_board_docs', null = True, blank = True)
+
+    def __str__(self):
+        return f"{self.notice_board} - {self.description}"
+
+class DownloadItem(models.Model):
+    document = models.FileField(upload_to='download_docs', null=True, blank=True)
+    date = models.DateTimeField(default=datetime.now)
+
+    @property
+    def filename(self):
+        return Path(self.document.name).name
+
+    @property
+    def filesize(self):
+        if self.document:
+            size = self.document.size
+            if size < 1024:
+                return f"{size} bytes"
+            elif size < 1024 * 1024:
+                return f"{round(size / 1024, 2)} KB"
+            else:
+                return f"{round(size / (1024 * 1024), 2)} MB"
+        return "0 bytes"
+
+    def __str__(self):
+        return self.filename

@@ -17,7 +17,17 @@ urlpatterns = [
    path('v1/resend-purchase-email/<int:attendee_id>/', views.resend_email_incomplete_payment),
    path('v1/mark-checked-in/<int:attendee_id>/', views.mark_as_checked_in),
    path('v1/resend-ticket-confirmation/<int:attendee_id>/', views.resend_email_with_qrcode),
-   path('v1/prayer_times/<str:mosque_id>/', views.prayer_times)
+   path('v1/prayer_times/<str:mosque_id>/', views.prayer_times),
+   path('v1/students/classes/<int:class_id>/', views.studentsByClass),
+   path('v1/students/teacher/<int:teacher_id>/', views.studentsByTeacher),
+   path('v1/students/shifts/<int:shift_id>/', views.studentsByShift),
+   path('v1/students/search/<str:search_params>/', views.allStudentBySearch),
+   path('v1/students/', views.allStudents),
+   path('v1/classes/', views.allClasses),
+   path('v1/shifts/', views.allShifts),
+   path('v1/teachers/', views.allTeachers),
+   path('v1/notice-board/', views.noticeBoard),
+   path('v1/download-items/', views.downloadItems),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
