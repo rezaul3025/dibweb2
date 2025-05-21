@@ -105,22 +105,26 @@ class Student(models.Model):
         return f"{self.first_name} {self.last_name} {self.address}"
 
 class AcademyNoticeBoard(models.Model):
-    text = RichTextField()
+   pass
 
-    def __str__(self):
-        return self.text
-
-class NoticeBoardDocument(models.Model):
+class NoticeBoardItem(models.Model):
     notice_board = models.ForeignKey(AcademyNoticeBoard, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
     description = models.TextField()
+    date = models.DateTimeField(default=datetime.now)
     document = models.FileField(upload_to='notice_board_docs', null = True, blank = True)
 
     def __str__(self):
         return f"{self.notice_board} - {self.description}"
 
 class DownloadItem(models.Model):
+    DEPARTMENT_CHOICES = (
+        ("AC", "Academy"),
+        ("DI", "DIB"),
+    )
     document = models.FileField(upload_to='download_docs', null=True, blank=True)
     date = models.DateTimeField(default=datetime.now)
+    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES, default="DI")
 
     @property
     def filename(self):

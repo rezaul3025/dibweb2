@@ -61,7 +61,7 @@ const StickyHeaderV2 = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-gray-700 hover:text-green-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 hover:bg-green-50"
+                className={`${location.pathname === item.href ? "text-green-500 bg-green-50" : ""} text-gray-700 hover:text-green-500 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 hover:bg-green-50`}
               >
                 {item.name}
               </Link>

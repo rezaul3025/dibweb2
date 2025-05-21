@@ -3,13 +3,13 @@ import moment from "moment";
 
 export default function Activities({event}) {
    return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 py-4">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
         <div className="lg:w-2/3 space-y-6">
           {/* Event Heading */}
           <div>
-            <h1 className="text-3xl font-bold text-green-500">{event.title}</h1>
+            <h1 className="text-xl font-bold text-green-500">{event.title}</h1>
             <div className="flex gap-2 mt-2">
               <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Study</span>
               <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Quran</span>

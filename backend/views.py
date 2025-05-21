@@ -13,10 +13,10 @@ from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
 from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift, AcademyNoticeBoard, \
-    DownloadItem
+    DownloadItem, NoticeBoardItem
 from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
     StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, AcademyNoticeBoardSerializer, \
-    DownloadItemSerializer
+    DownloadItemSerializer, NoticeBoardItemSerializer
 
 
 @api_view(['POST'])
@@ -240,12 +240,13 @@ def allShifts(request):
 
 @api_view(['GET'])
 def noticeBoard(request):
-    notice_board = AcademyNoticeBoard.objects.all()
-    serializer = AcademyNoticeBoardSerializer(notice_board, many=True)
-    return Response(serializer.data[0])
+    notice_board_items= NoticeBoardItem.objects.all()
+    serializer = NoticeBoardItemSerializer(notice_board_items, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
-def downloadItems(request):
-    downloads = DownloadItem.objects.all()
+def downloadItems(request, department):
+    downloads = DownloadItem.objects.filter(department=department)
+    print(downloads)
     serializer = DownloadItemSerializer(downloads, many=True)
     return Response(serializer.data)

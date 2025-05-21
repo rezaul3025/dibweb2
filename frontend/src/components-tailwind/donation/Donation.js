@@ -22,7 +22,7 @@ const Donation = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white rounded-lg">
+    <div className="max-w-2xl mx-auto bg-white rounded-lg mb-4">
       <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Support Our Mission</h2>
       <QuoteText
                     text="Whoever builds a mosque for Allah, Allah will build for him a house like it in Paradise."

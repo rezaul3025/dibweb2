@@ -27,7 +27,7 @@ urlpatterns = [
    path('v1/shifts/', views.allShifts),
    path('v1/teachers/', views.allTeachers),
    path('v1/notice-board/', views.noticeBoard),
-   path('v1/download-items/', views.downloadItems),
+   path('v1/download-items/<str:department>/', views.downloadItems),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

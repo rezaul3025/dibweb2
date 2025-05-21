@@ -1,7 +1,7 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardDocument, Student, StudentClass, \
+from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
     AcademyNoticeBoard, Teacher, Shift, DownloadItem
 
 
@@ -52,18 +52,18 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = ['id','first_name', 'last_name','address', 'contact_details','shift','classes','siblings','shift']
 
-class NoticeBoardDocumentSerializer(serializers.ModelSerializer):
+class NoticeBoardItemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = NoticeBoardDocument
-        fields = ['description','document']
+        model = NoticeBoardItem
+        fields = ['title','description','date','document']
 
 class AcademyNoticeBoardSerializer(serializers.ModelSerializer):
-    documents = NoticeBoardDocumentSerializer(source='noticeboarddocument_set', many=True)
+    documents = NoticeBoardItemSerializer(source='noticeboarddocument_set', many=True)
     class Meta:
         model = AcademyNoticeBoard
-        fields = ['text','documents']
+        fields = ['documents']
 
 class DownloadItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = DownloadItem
-        fields = ['document', 'filename', 'filesize', 'date']
+        fields = ['document', 'filename', 'filesize', 'date','department']

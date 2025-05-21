@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from backend.SendEmail import SendEmail
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
-    NoticeBoardDocument, AcademyNoticeBoard, DownloadItem
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -55,17 +55,17 @@ class StudentAdmin(admin.ModelAdmin):
 admin.site.register(Student, StudentAdmin)
 
 class NoticeBoardDocumentAdmin(admin.StackedInline):
-    model = NoticeBoardDocument
+    model = NoticeBoardItem
 
 @admin.register(AcademyNoticeBoard)
 class AcademyNoticeBoardAdmin(admin.ModelAdmin):
     inlines = [NoticeBoardDocumentAdmin]
 
-@admin.register(NoticeBoardDocument)
+@admin.register(NoticeBoardItem)
 class NoticeBoardDocumentAdmin(admin.ModelAdmin):
     pass
 
 class DownloadItemAdmin(admin.ModelAdmin):
-    list_display = ('filename', 'document', 'filesize', 'date')
+    list_display = ('filename', 'document', 'filesize', 'date', 'department')
     readonly_fields = ('filesize', 'date')
 admin.site.register(DownloadItem, DownloadItemAdmin)

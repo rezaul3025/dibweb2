@@ -1,7 +1,7 @@
 import React from "react";
 import StickyHeaderV2 from "../header/StickyHeaderV2";
 import FooterV3 from "../FooterV3";
-import AcademyDashboard from "./AcademyDashboard";
+import AcademyDashboardV3 from "./AcademyDashboardV3";
 
 const AcademyPage = () => {
     return (
@@ -10,7 +10,7 @@ const AcademyPage = () => {
             <main className="flex-grow">
                 {/* Event details page section */}
                 <section className="container mx-auto px-4 pt-4">
-                    <AcademyDashboard />
+                    <AcademyDashboardV3 />
                 </section>
             </main>
             <FooterV3/>

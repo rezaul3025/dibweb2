@@ -8,7 +8,7 @@ const DownloadPage = () => {
     useEffect(() => {
       const fetchData = async () => {
           try {
-              const response = await fetch('/api/v1/download-items/');
+              const response = await fetch('/api/v1/download-items/DI/');
               const data = await response.json();
               setDownloadItems(data);
 
