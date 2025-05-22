@@ -11,10 +11,16 @@ import {
     UserIcon
 } from '@heroicons/react/24/outline';
 import Overlay2 from "../OverlayV2";
+import moment from "moment";
+import PDFThumbnail from "../PDFThumbnail";
+import PDFPreview from "../PDFPreview";
 
 const AcademyDashboardV3 = () => {
 
     const [downloadItems, setDownloadItems] = useState([]);
+    const [noticeBoardItems, setNoticeBoardItems] = useState([]);
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,9 +35,33 @@ const AcademyDashboardV3 = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const fetchNoticeBoardData = async () => {
+            try {
+                const response = await fetch('/api/v1/notice-board/');
+                const data = await response.json();
+                setNoticeBoardItems(data);
+
+            } catch (error) {
+                console.error("Error fetching NoticeBoar data:", error);
+            }
+        };
+        fetchNoticeBoardData();
+    }, []);
+
     function HtmlRenderer({htmlContent}) {
         return <div dangerouslySetInnerHTML={{__html: htmlContent}}/>;
     }
+
+    const handleView = (title) => {
+    console.log(`Viewing: ${title}`);
+    // Implement PDF viewer logic
+  };
+
+  const handleDownload = (title) => {
+    console.log(`Downloading: ${title}`);
+    // Implement download logic
+  };
 
     // Sample data
     const academyInfo = {
@@ -140,16 +170,50 @@ const AcademyDashboardV3 = () => {
                         </h2>
                         <div className="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
                             <div className="grid grid-cols-1 divide-y divide-gray-100">
-                                {notices.map(notice => (
-                                    <div key={notice.id}
+                                {noticeBoardItems.map((notice, index) => (
+                                    <div key={index}
                                          className="p-4 hover:bg-green-50 transition-colors">
                                         <div className="flex justify-between items-start">
                                             <div>
                                                 <h3 className="font-medium text-gray-800">
                                                     {notice.title}
                                                 </h3>
-                                                <p className="text-sm text-gray-500 mt-1">{notice.date}</p>
+                                                <p className="text-md text-gray-600 mt-1 text-justify break-words">{notice.description}</p>
+                                                <div className="flex items-center mt-1">
+                                                    <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                                         stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round"
+                                                              strokeWidth={2}
+                                                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                                    </svg>
+                                                    <span
+                                                        className="text-sm text-gray-500 mt-1">{moment(notice.date).format('dddd, MMM D YYYY')}</span>
+                                                </div>
+                                                {/*<PDFThumbnail
+                                                    key={index}
+                                                    title={notice.document_name}
+                                                    description={notice.description}
+                                                    size={notice.document_size}
+                                                    lastModified={notice.date}
+                                                    thumbnailUrl={notice.document}
+                                                    onView={() => handleView(notice.document_name)}
+                                                    onDownload={() => handleDownload(notice.document_name)}
+                                                  />*/}
+                                                <PDFPreview
+                                                    file={notice.document}
+                                                    onDownload={() => handleDownload(notice.document_name)}
+                                                  />
+                                                <Overlay2
+                                                    triggerText="View Details"
+                                                    title="Confirmation Required"
+                                                >
+                                                    <div className="space-y-4">
+                                                        <p className="text-gray-500"><HtmlRenderer
+                                                            htmlContent={notice.description}/></p>
+                                                    </div>
+                                                </Overlay2>
                                             </div>
+
                                             {notice.urgent && (
                                                 <span
                                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">

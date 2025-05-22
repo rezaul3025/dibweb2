@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from backend.SendEmail import SendEmail
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
-    NoticeBoardItem, AcademyNoticeBoard, DownloadItem
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -53,6 +53,11 @@ class StudentAdmin(admin.ModelAdmin):
     readonly_fields = ('get_classes',)
     fields = list_display+filter_horizontal
 admin.site.register(Student, StudentAdmin)
+
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('headline','image', 'enabled')
+    fields = list_display
+admin.site.register(Notification, NotificationAdmin)
 
 class NoticeBoardDocumentAdmin(admin.StackedInline):
     model = NoticeBoardItem

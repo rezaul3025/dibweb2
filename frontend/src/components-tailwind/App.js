@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     Routes,
     Route, BrowserRouter
@@ -6,17 +6,32 @@ import {
 import ScrollToTop from "../components/utils/ScrollToTop";
 import HomePage from "./HomePage";
 import ActivityDetailsPage from "./activities/ActivityDetailsPage";
-import HistoryPage from "./about-us/HistoryPage";
 import DonationPage from "./donation/DonationPage";
 import AboutUsPage from "./about-us/AboutUsPage";
 import VisionPage from "./vision/VisionPage";
 import MembershipPage from "./membership/MembershipPage";
 import DownloadPage from "./download/DownloadPage";
 import AcademyPage from "./academy/AcademyPage";
+import NotificationOverlayV2 from "./NotificationOverlayV2";
 
 export default function () {
+    const [notification, setNotification] = useState(null);
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetch('/api/v1/notification/');
+              const data = await response.json();
+              setNotification(data);
+          } catch (error) {
+              console.error("Error fetching notification data:", error);
+          }
+      };
+      fetchData();
+    }, []);
+
    return (
             <BrowserRouter>
+                {notification && <NotificationOverlayV2 notification={notification[0]}/>}
                 <ScrollToTop/>
                 <Routes>
                     <Route exact path='/' element={<HomePage/>}/>

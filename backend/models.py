@@ -1,12 +1,11 @@
-import os
 from datetime import datetime
 from pathlib import Path
 
 from ckeditor.fields import RichTextField
-from django.db import models
 from django.conf import settings
-
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.db import models
+
 
 class Event(models.Model):
     EVENT_TYPE_CHOICES = (
@@ -114,6 +113,14 @@ class NoticeBoardItem(models.Model):
     date = models.DateTimeField(default=datetime.now)
     document = models.FileField(upload_to='notice_board_docs', null = True, blank = True)
 
+    @property
+    def document_name(self):
+        return Path(self.document.name).name
+
+    @property
+    def document_size(self):
+        return getDocumentSize(self.document)
+
     def __str__(self):
         return f"{self.notice_board} - {self.description}"
 
@@ -132,15 +139,23 @@ class DownloadItem(models.Model):
 
     @property
     def filesize(self):
-        if self.document:
-            size = self.document.size
-            if size < 1024:
-                return f"{size} bytes"
-            elif size < 1024 * 1024:
-                return f"{round(size / 1024, 2)} KB"
-            else:
-                return f"{round(size / (1024 * 1024), 2)} MB"
-        return "0 bytes"
+        return getDocumentSize(self.document)
 
     def __str__(self):
         return self.filename
+
+class Notification(models.Model):
+    headline = models.CharField(max_length=255)
+    image = models.FileField(upload_to='notification_images', null = True, blank = True)
+    enabled = models.BooleanField(default=False)
+
+def getDocumentSize(document):
+    if document:
+        size = document.size
+        if size < 1024:
+            return f"{size} bytes"
+        elif size < 1024 * 1024:
+            return f"{round(size / 1024, 2)} KB"
+        else:
+            return f"{round(size / (1024 * 1024), 2)} MB"
+    return "0 bytes"

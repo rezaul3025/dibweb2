@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
-    AcademyNoticeBoard, Teacher, Shift, DownloadItem
+    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class StudentSerializer(serializers.ModelSerializer):
 class NoticeBoardItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = NoticeBoardItem
-        fields = ['title','description','date','document']
+        fields = ['title','description','date','document','document_name','document_size']
 
 class AcademyNoticeBoardSerializer(serializers.ModelSerializer):
     documents = NoticeBoardItemSerializer(source='noticeboarddocument_set', many=True)
@@ -67,3 +67,8 @@ class DownloadItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = DownloadItem
         fields = ['document', 'filename', 'filesize', 'date','department']
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ['headline','image','enabled']
