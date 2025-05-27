@@ -1,13 +1,16 @@
 import React from "react";
- import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 const StickyHeaderV2 = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState('English');
+  const [currentLanguage, setCurrentLanguage] = useState(localStorage.getItem("languageName")?localStorage.getItem("languageName") : 'বাংলা');
   const langMenuRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const { t } = useTranslation();
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -24,21 +27,28 @@ const StickyHeaderV2 = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const languages = [
+   const languages = [
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
     { code: 'bn', name: 'বাংলা', flag: '🇧🇩' }
   ];
 
+
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/history/' },
-    { name: 'Vision', href: '/vision/' },
-    { name: 'Membership', href: '/membership/' },
-    { name: 'Academy', href: '/academy/' },
-    { name: 'Donation', href: '/donation-tailwind/' },
-    { name: 'Download', href: '/download/' },
+    { name: t('Home.text'), href: '/' },
+    { name: t('AboutUs.text'), href: '/history/' },
+    { name: t('Vision.text'), href: '/vision/' },
+    { name: t('Membership.text'), href: '/membership/' },
+    { name: t('Academy.text'), href: '/academy/' },
+    { name: t('Donation.text'), href: '/donation-tailwind/' },
+    { name: t('Download.text'), href: '/download/' },
   ];
+
+  const changeLanguage = (lang) =>{
+        i18n.changeLanguage(lang.code);
+        localStorage.setItem("languageCode", lang.code);
+        localStorage.setItem("languageName", lang.name);
+    }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
@@ -96,6 +106,7 @@ const StickyHeaderV2 = () => {
                       <button
                         key={lang.code}
                         onClick={() => {
+                          changeLanguage(lang)
                           setCurrentLanguage(lang.name);
                           setIsLangMenuOpen(false);
                         }}
@@ -153,7 +164,10 @@ const StickyHeaderV2 = () => {
               key={item.name}
               href={item.href}
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-500 hover:bg-green-50 transition-colors duration-300"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+              }
+            }
             >
               {item.name}
             </a>
@@ -162,7 +176,9 @@ const StickyHeaderV2 = () => {
           {/* Language Dropdown - Mobile */}
           <div className="pt-2 border-t border-gray-200 mt-2">
             <button
-              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              onClick={() => {
+                setIsLangMenuOpen(!isLangMenuOpen);
+            }}
               className="flex items-center w-full px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-500 hover:bg-green-50 transition-colors duration-300"
             >
               <span className="mr-1">{languages.find(l => l.name === currentLanguage)?.flag}</span>
@@ -184,17 +200,18 @@ const StickyHeaderV2 = () => {
             {isLangMenuOpen && (
               <div className="mt-1 pl-4">
                 {languages.map((lang) => (
-                  <button
+                  <a
                     key={lang.code}
                     onClick={() => {
-                      setCurrentLanguage(lang.name);
-                      setIsLangMenuOpen(false);
+                        setCurrentLanguage(lang.name);
+                        setIsLangMenuOpen(false);
+                        changeLanguage(lang);
                     }}
                     className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-green-500 hover:text-white transition-colors duration-200 ${currentLanguage === lang.name ? 'bg-green-100 text-green-700' : ''}`}
                   >
                     <span className="mr-2">{lang.flag}</span>
                     {lang.name}
-                  </button>
+                  </a>
                 ))}
               </div>
             )}

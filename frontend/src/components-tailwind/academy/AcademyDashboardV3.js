@@ -12,8 +12,8 @@ import {
 } from '@heroicons/react/24/outline';
 import Overlay2 from "../OverlayV2";
 import moment from "moment";
-import PDFThumbnail from "../PDFThumbnail";
-import PDFPreview from "../PDFPreview";
+import PDFViewerWithDownload from "../pdf/PDFViewerWithDownload";
+import PdfThumbnailPreview from "../pdf/PdfThumbnailPreview";
 
 const AcademyDashboardV3 = () => {
 
@@ -58,9 +58,13 @@ const AcademyDashboardV3 = () => {
     // Implement PDF viewer logic
   };
 
-  const handleDownload = (title) => {
-    console.log(`Downloading: ${title}`);
-    // Implement download logic
+  const handleDownload = (file) => {
+    const link = document.createElement('a');
+    link.href = file; // Replace with your PDF path
+    link.download = 'document.pdf'; // Custom filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
     // Sample data
@@ -175,11 +179,11 @@ const AcademyDashboardV3 = () => {
                                          className="p-4 hover:bg-green-50 transition-colors">
                                         <div className="flex justify-between items-start">
                                             <div>
-                                                <h3 className="font-medium text-gray-800">
+                                                <h3 className="text-lg font-semibold text-gray-500">
                                                     {notice.title}
                                                 </h3>
                                                 <p className="text-md text-gray-600 mt-1 text-justify break-words">{notice.description}</p>
-                                                <div className="flex items-center mt-1">
+                                                <div className="flex items-center my-4">
                                                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                                          stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -199,19 +203,28 @@ const AcademyDashboardV3 = () => {
                                                     onView={() => handleView(notice.document_name)}
                                                     onDownload={() => handleDownload(notice.document_name)}
                                                   />*/}
-                                                <PDFPreview
-                                                    file={notice.document}
-                                                    onDownload={() => handleDownload(notice.document_name)}
-                                                  />
+
+                                                <PdfThumbnailPreview file={notice.document}
+                                                                     doc_name={notice.document_name}
+                                                                    doc_size={notice.document_size}
+                                                />
+
                                                 <Overlay2
                                                     triggerText="View Details"
-                                                    title="Confirmation Required"
+                                                    title={notice.title}
                                                 >
                                                     <div className="space-y-4">
                                                         <p className="text-gray-500"><HtmlRenderer
                                                             htmlContent={notice.description}/></p>
                                                     </div>
+                                                    <PDFViewerWithDownload
+                                                        file={notice.document}
+                                                        doc_name={notice.document_name}
+                                                        doc_size={notice.document_size}
+                                                        onDownload={() => handleDownload(notice.document_name)}
+                                                    />
                                                 </Overlay2>
+
                                             </div>
 
                                             {notice.urgent && (
@@ -257,7 +270,7 @@ const AcademyDashboardV3 = () => {
                     </div>
 
                     {/* Teacher List */}
-                    <div>
+                    {/*<div>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
                             <UserIcon className="h-6 w-6 text-green-500 mr-2"/>
                             Faculty Members
@@ -278,7 +291,7 @@ const AcademyDashboardV3 = () => {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
 
                 {/* Sidebar - 1 column */}
@@ -302,7 +315,7 @@ const AcademyDashboardV3 = () => {
                                             <p className="text-xs text-gray-500">{item.size}</p>
                                         </div>
                                     </div>
-                                    <button className="text-green-500 hover:text-green-700">
+                                    <button className="text-green-500 hover:text-green-700" onClick={() => handleDownload(item.document)} title="Download">
                                         <ArrowDownTrayIcon className="h-5 w-5"/>
                                     </button>
                                 </div>
@@ -311,7 +324,7 @@ const AcademyDashboardV3 = () => {
                     </div>
 
                     {/* Quick Links */}
-                    <div className="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
+                    {/*<div className="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
                         <div className="bg-green-500 px-4 py-2">
                             <h2 className="text-lg font-semibold text-white flex items-center">
                                 <ClipboardDocumentIcon className="h-5 w-5 mr-2"/>
@@ -336,7 +349,7 @@ const AcademyDashboardV3 = () => {
                                 Library Resources
                             </a>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
         </div>

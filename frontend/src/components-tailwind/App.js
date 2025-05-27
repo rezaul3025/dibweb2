@@ -13,6 +13,7 @@ import MembershipPage from "./membership/MembershipPage";
 import DownloadPage from "./download/DownloadPage";
 import AcademyPage from "./academy/AcademyPage";
 import NotificationOverlayV2 from "./NotificationOverlayV2";
+import '../i18n-v2'
 
 export default function () {
     const [notification, setNotification] = useState(null);
