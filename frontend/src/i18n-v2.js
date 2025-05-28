@@ -33,28 +33,29 @@ i18n
                                 description: '১ লা ফেব্রুয়ারি ২০২৫ থেকে শেখ মুস্তাফিজুর রহমান সাহেবকে প্রধান শিক্ষক করে দারুল ইহসান একাডেমি\'র অফিসিয়াল কার্যক্রম শুরু হয়।'
                             },
                             y_2024:{
-                                title: '',
-                                description: ''
+                                title: 'দারুল ইনসান ভিশন',
+                                description: 'সেপ্টেম্বর ২০২৪ এ "দারুল ইনসান ভিশন" প্রণয়ন করা হয় এবং এর জন্য সহযোগী সদস্য গ্রহণ করা শুরু হয়।'
                             },
                             y_2021:{
-                                title: '',
-                                description: ''
+                                title: 'মসজিদ',
+                                description: 'এপ্রিল ২০২১, রমজান মাস থেকে ব্রুনেনস্ট্রাসে ১২২ এ, "দারুল ইহসান বার্লিন" এর মসজিদ উন্মুক্ত করা হয়।'
                             },
                             y_2018:{
-                                title: '',
-                                description: ''
+                                title: 'নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম',
+                                description: '২০১৮ থেকে "দারুল ইহসান বার্লিন" নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম পরিচালনার জন্য নিজস্য জায়গার ভাড়া অথবা ক্রয় করার জন্য প্রচেস্টা শুরু হয়।' +
+                                    'একই বছর ভবিষ্যতে একটি মসজিদ এবং মাদ্রাসা প্রতিষ্ঠার পরিকল্পনাকে মাথায় রেখে শেখ মুস্তাফিজুর রহমান সাহেবকে শিক্ষক হিসেবে সম্পৃক্ত করে।'
                             },
                             y_2016:{
-                                title: '',
-                                description: ''
+                                title: 'এসোসিয়েশন রেজিস্ট্রেশন',
+                                description: '২০১৬ সালে এসে নিজেদের দাওয়াতী কার্যক্রম পরিচালনাকে প্রাতিষ্ঠানিক রূপ দেওয়ার জন্য "দারুল ইহসান বার্লিন" নামে একটি থেকে এসোসিয়েশন রেজিস্ট্রেশনের কাজ শুরু করে।'
                             },
                             y_2015:{
-                                title: '',
-                                description: ''
+                                title: 'উম্মুক্ত দাওয়াহ কার্যক্রম শুরু',
+                                description: '২০১৫ সালে এসে পাক্ষিক ভাবে ফ্রিড্রিকশাইনের ভিন স্ট্রাসেতে একটি পাবলিক মিটিং হল ভাড়া করে কুরআন কে সহজ ভাবে সকল মানুশের মাঝে সহজ ভাবে তুলে ধরার মাধ্যমে উম্মুক্ত দাওয়াহ কার্যক্রম শুরু।'
                             },
                             y_2011:{
-                                title: '',
-                                description: ''
+                                title: 'কুরআন স্টাডি সার্কেল\'র যাত্রা শুরু',
+                                description: 'মে ২০১১- ৫ টি পরিবার প্রতি সপ্তাহে তাদের ড্রয়িংরুমে কুরআন স্টাডি সার্কেল আয়োজনের মধ্য দিয়ে যাত্রা শুরু করে।'
                             }
                         }
                       },
@@ -143,28 +144,28 @@ i18n
                                 description: 'Die offiziellen Aktivitäten der Darul Ihsan Academy begannen am 1. Februar 2025 mit Sheikh Mustafizur Rahman als Schulleiter.'
                             },
                             y_2024:{
-                                title: '',
-                                description: ''
+                                title: 'Darul Insan Vision',
+                                description: 'Im September 2024 wurde „Darul Insan Vision“ formuliert und die Aufnahme assoziierter Mitglieder begann.'
                             },
                             y_2021:{
-                                title: '',
-                                description: ''
+                                title: 'Moschee',
+                                description: 'Ab April 2021 ist mit Beginn des Fastenmonats Ramadan die Moschee „Darul Ihsan Berlin“ in der Brunnenstraße 122 geöffnet.'
                             },
                             y_2018:{
-                                title: '',
-                                description: ''
+                                title: 'Eigene Dawah und Bildungsprogramme',
+                                description: 'Seit 2018 versucht „Darul Ihsan Berlin“, eigene Räumlichkeiten für seine Da\'wah- und Bildungsaktivitäten zu mieten oder zu erwerben. Im selben Jahr wurde Scheich Mustafizur Rahman als Lehrer engagiert, mit dem Plan, in Zukunft eine Moschee und eine Madrasa zu errichten.'
                             },
                             y_2016:{
-                                title: '',
-                                description: ''
+                                title: 'Vereinsregistrierung',
+                                description: 'Im Jahr 2016 begann ein Verein namens „Darul Ihsan Berlin“ mit der Registrierung, um seine Dawah-Aktivitäten zu institutionalisieren.'
                             },
                             y_2015:{
-                                title: '',
-                                description: ''
+                                title: 'Beginn der offenen Dawah-Aktivitäten',
+                                description: 'Im Jahr 2015 begannen wir mit einem offenen Dawah-Programm, indem wir alle zwei Wochen einen öffentlichen Versammlungssaal in der Wienstraße in Friedrichshain mieteten, um allen Menschen den Koran auf leicht verständliche Weise vorzustellen.'
                             },
                             y_2011:{
-                                title: '',
-                                description: ''
+                                title: 'Die Reise des Quran Sturdy Circle beginnt',
+                                description: 'Mai 2011 – 5 Familien begannen ihre Reise, indem sie jede Woche einen Koranstudienkreis in ihrem Wohnzimmer veranstalteten.'
                             }
                         }
                     },
@@ -253,28 +254,28 @@ i18n
                                 description: 'The official activities of Darul Ihsan Academy began on February 1, 2025 with Sheikh Mustafizur Rahman as the headmaster.'
                             },
                             y_2024:{
-                                title: '',
-                                description: ''
+                                title: 'Darul Insan Vision',
+                                description: 'In September 2024, "Darul Insan Vision" was formulated and associate members began to be accepted for it.'
                             },
                             y_2021:{
-                                title: '',
-                                description: ''
+                                title: 'Mosque',
+                                description: 'From April 2021, the mosque of "Darul Ihsan Berlin" opened at Brunnenstrasse 122, starting from the month of Ramadan.'
                             },
                             y_2018:{
-                                title: '',
-                                description: ''
+                                title: 'Own dawah and educational programs',
+                                description: 'Since 2018, "Darul Ihsan Berlin" has been trying to rent or purchase its own space to conduct its da\'wah and educational activities. In the same year, Sheikh Mustafizur Rahman was involved as a teacher, keeping in mind the plan to establish a mosque and madrasa in the future.'
                             },
                             y_2016:{
-                                title: '',
-                                description: ''
+                                title: 'Association Registration',
+                                description: 'In 2016, an association called "Darul Ihsan Berlin" began work on registering to institutionalize its Dawah activities.'
                             },
                             y_2015:{
-                                title: '',
-                                description: ''
+                                title: 'Open Dawah activities begin',
+                                description: 'In 2015, we began an open dawah program by renting a public meeting hall on Wien Strasse in Friedrichshain fortnightly to present the Quran to all people in an easy-to-understand manner.'
                             },
                             y_2011:{
-                                title: '',
-                                description: ''
+                                title: 'The journey of Quran Sturdy Circle begins',
+                                description: 'May 2011 - 5 families started their journey by hosting a Quran study circle in their drawing room every week.'
                             }
                         }
                     },

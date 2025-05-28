@@ -11,35 +11,34 @@ const HistoryV2 = () => {
         },
         {
             year: 2024,
-            title: "দারুল ইনসান ভিশন",
-            description: "সেপ্টেম্বর ২০২৪ এ \"দারুল ইনসান ভিশন\" প্রণয়ন করা হয় এবং এর জন্য সহযোগী সদস্য গ্রহণ করা শুরু হয়।"
+            title: t('AboutUs.history_timeline.y_2024.title'),
+            description: t('AboutUs.history_timeline.y_2024.description')
         },
         {
             year: 2021,
-            title: "মসজিদ",
-            description: "এপ্রিল ২০২১, রমজান মাস থেকে ব্রুনেনস্ট্রাসে ১২২ এ, \"দারুল ইহসান বার্লিন\" এর মসজিদ উন্মুক্ত করা হয়।"
+            title: t('AboutUs.history_timeline.y_2021.title'),
+            description: t('AboutUs.history_timeline.y_2021.description')
         },
         {
             year: 2018,
-            title: "নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম",
-            description: "২০১৮ থেকে \"দারুল ইহসান বার্লিন\" নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম পরিচালনার জন্য নিজস্য জায়গার ভাড়া অথবা ক্রয় করার জন্য প্রচেস্টা শুরু হয়।" +
-                "একই বছর ভবিষ্যতে একটি মসজিদ এবং মাদ্রাসা প্রতিষ্ঠার পরিকল্পনাকে মাথায় রেখে " +
-                "শেখ মুস্তাফিজুর রহমান সাহেবকে শিক্ষক হিসেবে সম্পৃক্ত করে।"
+            title: t('AboutUs.history_timeline.y_2018.title'),
+            description: t('AboutUs.history_timeline.y_2018.description')
+
         },
         {
             year: 2016,
-            title: "ফারাইন রেজিস্ট্রেশ",
-            description: "২০১৬ সালে এসে নিজেদের দাওয়াতী কার্যক্রম পরিচালনাকে প্রাতিষ্ঠানিক রূপ দেওয়ার জন্য \"দারুল ইহসান বার্লিন\" নামে একটি থেকে ফারাইন রেজিস্ট্রেশনের কাজ শুরু করে।"
+            title: t('AboutUs.history_timeline.y_2016.title'),
+            description: t('AboutUs.history_timeline.y_2016.description')
         },
         {
             year: 2015,
-            title: "উম্মুক্ত  দাওয়াহ কার্যক্রম শুরু",
-            description: "২০১৫ সালে এসে পাক্ষিক ভাবে ফ্রিড্রিকশাইনের ভিন স্ট্রাসেতে একটি পাবলিক মিটিং হল ভাড়া করে  কুরআন কে সহজ ভাবে সকল মানুশের মাঝে সহজ ভাবে তুলে ধরার মাধ্যমে উম্মুক্ত  দাওয়াহ কার্যক্রম শুরু।"
+            title: t('AboutUs.history_timeline.y_2015.title'),
+            description: t('AboutUs.history_timeline.y_2015.description')
         },
         {
             year: 2011,
-            title: "কুরআন স্টাডি সার্কেল'র যাত্রা শুরু",
-            description: "মে ২০১১-  ৫ টি পরিবার প্রতি সপ্তাহে তাদের ড্রয়িংরুমে কুরআন স্টাডি সার্কেল আয়োজনের মধ্য দিয়ে যাত্রা শুরু করে।"
+            title: t('AboutUs.history_timeline.y_2011.title'),
+            description: t('AboutUs.history_timeline.y_2011.description')
         }
     ];
 
