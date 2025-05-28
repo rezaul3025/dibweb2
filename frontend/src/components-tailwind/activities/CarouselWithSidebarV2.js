@@ -3,6 +3,8 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import EventsSidebar from "./EventsSidebar";
 import ActivityCarouselV6 from "./ActivityCarouselV6";
+import ImageSlider from "./ImageSlider";
+import ImageSliderV2 from "./ImageSliderV2";
 
 const CarouselWithSidebar = () => {
   const [events, setEvents] = useState([]);
@@ -27,7 +29,7 @@ const CarouselWithSidebar = () => {
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Carousel - 75% width on large screens, full width on mobile */}
         <div className="w-full lg:w-3/4 relative rounded-xl overflow-hidden shadow-lg">
-          <ActivityCarouselV6 events={events}/>
+          <ImageSliderV2 events={events}/>
         </div>
 
         {/* Sidebar - 25% width on large screens, full width on mobile */}

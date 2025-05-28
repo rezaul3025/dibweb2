@@ -35,14 +35,14 @@ const NotificationOverlayV2 = ({notification}) => {
                 {/* Close Button */}
                 <button
                     onClick={handleClose}
-                    className="absolute -top-3 -right-3 z-10 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors"
+                    className="absolute -right-3 z-10 p-2 bg-white rounded-full shadow-md hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors"
                     aria-label="Close ad"
                 >
                     <FiX className="w-5 h-5"/>
                 </button>
 
                 {/* Image with Badge */}
-                <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                <div className="relative top-4 rounded-xl overflow-hidden shadow-2xl">
 
                     {/*<div className="relative overflow-hidden aspect-[4/3]">
                   <img
@@ -68,7 +68,7 @@ const NotificationOverlayV2 = ({notification}) => {
 
                     {/* Green 500 Theme Badge */}
                     <div
-                        className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
+                        className="absolute top-5 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
                         {notification.headline}
                     </div>
                 </div>
