@@ -110,7 +110,7 @@ const EventSidebar = ({events}) => {
                   </span>
                       <Link to={"/activity-details/"+event.id+"/"}
                           className="text-xs font-medium text-green-600 hover:text-green-800 px-2 py-1 rounded transition-colors">
-                          View Details
+                        {t('view_details')}
                       </Link>
                   </div>
               </div>

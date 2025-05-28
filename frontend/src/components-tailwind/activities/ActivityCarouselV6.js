@@ -2,11 +2,12 @@ import React, {Fragment, useState, useEffect} from "react";
 import { ChevronLeftIcon, ChevronRightIcon, MapPinIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import moment from "moment/moment";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const ActivityCarouselV6 = ({events}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
-
+  const { t } = useTranslation();
   events = events.filter(function (event) {
     return event.event_type === 'CURRENT';
     });
@@ -51,9 +52,9 @@ const ActivityCarouselV6 = ({events}) => {
   };
 
   useEffect(() => {
-    if (!autoPlay) return;
-    const timer = setTimeout(nextSlide, 7000);
-    return () => clearTimeout(timer);
+    //if (!autoPlay) return;
+    //const timer = setTimeout(nextSlide, 7000);
+    //return () => clearTimeout(timer);
   }, [currentIndex, autoPlay]);
 
   return (
@@ -94,7 +95,7 @@ const ActivityCarouselV6 = ({events}) => {
                     Register Now
                   </button>*/}
                   <Link to={"/activity-details/"+event.id+"/"} className="border border-green-600 text-green-600 hover:bg-green-100 px-6 py-2 md:px-8 md:py-3 rounded-lg font-medium transition-colors">
-                    Learn More
+                      {t('view_details')}
                   </Link>
                 </div>
               </div>
