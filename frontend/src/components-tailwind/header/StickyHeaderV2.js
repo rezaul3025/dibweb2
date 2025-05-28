@@ -37,11 +37,11 @@ const StickyHeaderV2 = () => {
   const navItems = [
     { name: t('Home.title'), href: '/' },
     { name: t('AboutUs.title'), href: '/history/' },
-    { name: t('Vision.text'), href: '/vision/' },
-    { name: t('Membership.text'), href: '/membership/' },
+    { name: t('Vision.title'), href: '/vision/' },
+    { name: t('Membership.title'), href: '/membership/' },
     { name: t('Academy.nav_title'), href: '/academy/' },
-    { name: t('Donation.text'), href: '/donation-tailwind/' },
-    { name: t('Download.text'), href: '/download/' },
+    { name: t('Donation.title'), href: '/donation-tailwind/' },
+    { name: t('Download.title'), href: '/download/' },
   ];
 
   const changeLanguage = (lang) =>{
@@ -160,17 +160,17 @@ const StickyHeaderV2 = () => {
       <div className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`} ref={mobileMenuRef}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.name}
-              href={item.href}
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-500 hover:bg-green-50 transition-colors duration-300"
+              to={item.href}
+              className={`${location.pathname === item.href ? "text-green-500 bg-green-50" : ""} block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-500 hover:bg-green-50 transition-colors duration-300 hover:bg-green-50`}
               onClick={() => {
                 setIsMobileMenuOpen(false)
               }
             }
             >
               {item.name}
-            </a>
+            </Link>
           ))}
 
           {/* Language Dropdown - Mobile */}
@@ -198,20 +198,20 @@ const StickyHeaderV2 = () => {
             </button>
 
             {isLangMenuOpen && (
-              <div className="mt-1 pl-4">
+              <div className="mt-1 pl-4 z-50">
                 {languages.map((lang) => (
-                  <a
+                  <button
                     key={lang.code}
                     onClick={() => {
+                        //changeLanguage(lang);
                         setCurrentLanguage(lang.name);
                         setIsLangMenuOpen(false);
-                        changeLanguage(lang);
                     }}
-                    className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-green-500 hover:text-white transition-colors duration-200 ${currentLanguage === lang.name ? 'bg-green-100 text-green-700' : ''}`}
+                    className={`block z-50 w-full text-left px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-green-500 hover:text-white transition-colors duration-200 ${currentLanguage === lang.name ? 'bg-green-100 text-green-700' : ''}`}
                   >
                     <span className="mr-2">{lang.flag}</span>
                     {lang.name}
-                  </a>
+                  </button>
                 ))}
               </div>
             )}

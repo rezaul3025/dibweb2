@@ -1,14 +1,14 @@
 import React, {Fragment} from "react";
 import VisionImageGallery from "./VisionImageGallery";
+import {useTranslation} from "react-i18next";
 
 const Vision = () => {
+    const { t } = useTranslation();
     return (
         <Fragment>
-            <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">Support Our Mission</h2>
+            <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">{t('Vision.heading')}</h2>
             <p className="text-gray-500 mx-auto text-xl text-justify break-words p-2">
-                Since the establishment of Darul Ihsan Berlin (DIB), we have dreamed of creating a healthy and progressive environmentfor Muslims residing in Berlin.
-                Although our current mosque, with an area of 140 square metres, accommodates 200 worshippersat a time, our needs and aspirations are much greater.
-                Darul Ihsan Berlin envisions establishing a larger Islamic centre wherewe can expand our activities and undertake new initiatives.
+                {t('Vision.description')}
             </p>
             <div className="relative aspect-video w-full max-w-6xl mx-auto">
                 {/*<img

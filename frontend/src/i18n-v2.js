@@ -14,6 +14,7 @@ i18n
                       DIB: 'দারুল ইহসান বার্লিন e.V.',
                       download: 'ডাউনলোড',
                       view_details: 'বিস্তারিত দেখুন',
+                      AcName: 'অ্যাকাউন্টের নাম',
                       AboutUs: {
                           title: 'আমাদের সম্পর্কে',
                           description: '২০১১ সালে, বার্লিনের পাঁচটি পরিবার ইসলামের শিক্ষা এবং জীবনধারা সম্পর্কে আরও গভীর ধারণা অর্জনের আকাঙ্ক্ষা নিয়ে একত্রিত হয়েছিল,\n' +
@@ -59,7 +60,12 @@ i18n
                             }
                         }
                       },
-                      Membership: {text: "সদস্যপদ"},
+                      Membership: {
+                          title: 'সদস্যপদ',
+                          heading: 'সহযোগী সদস্য হন',
+                          description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি কর্মসূচি চালু করেছে। ' +
+                              'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
+                      },
                       Home: {
                           title: 'হোম',
                           heading: 'আল-আসরের (সময়ের) শপথ। নিশ্চয়ই মানুষ [গভীর] ক্ষতির মধ্যে নিমজ্জিত, তবে তারা ব্যতীত যারা ঈমান আনে এবং সৎকর্ম করে, একে অপরকে সত্যের দিকে উৎসাহিত করে এবং একে অপরকে ধৈর্যের দিকে উৎসাহিত করে।',
@@ -93,7 +99,12 @@ i18n
                                   'এই সেন্টার হবে সমাজের মুসলিম পরিবারগুলোর সকলের ইসলামী পরিবেশে সামাজিক মিলনের একটি প্রাণকেন্দ্র।'
                           }
                       },
-                      Vision: {text: 'ভিশন'},
+                      Vision: {
+                          title: 'ভিশন',
+                          heading: 'আমাদের লক্ষ্যকে সমর্থন করুন',
+                          description: 'দারুল ইহসান বার্লিন (DIB) প্রতিষ্ঠার পর থেকে, আমরা বার্লিনে বসবাসকারী মুসলমানদের জন্য একটি সুস্থ ও প্রগতিশীল পরিবেশ তৈরির স্বপ্ন দেখে আসছি। যদিও আমাদের বর্তমান মসজিদ, ১৪০ বর্গমিটার আয়তনের, একসাথে ২০০ জন মুসল্লির থাকার ব্যবস্থা করে, তবুও আমাদের চাহিদা এবং আকাঙ্ক্ষা অনেক বেশি। ' +
+                              'দারুল ইহসান বার্লিন একটি বৃহত্তর ইসলামিক কেন্দ্র প্রতিষ্ঠার স্বপ্ন দেখে যেখানে আমরা আমাদের কার্যক্রম সম্প্রসারণ করতে এবং নতুন উদ্যোগ গ্রহণ করতে পারি।'
+                      },
                       Academy: {
                           nav_title: 'একাডেমি',
                           page_title: 'দারুল ইহসান বার্লিন একাডেমি',
@@ -103,13 +114,28 @@ i18n
                           download: 'ডাউনলোড করুন',
                           courses_section: 'বিভাগসমুহ ও শিক্ষাদানের সময়সীমা'
                       },
-                      Donation: {text: 'ডোনেশন'},
-                      Download: {text: 'ডাউনলোড করুন'},
+                      Donation: {
+                          title: 'ডোনেশন',
+                          heading: 'একটি ইসলামিক সেন্টার তৈরিতে সহায়তা করুন',
+                          sub_heading: 'যে ব্যক্তি আল্লাহর জন্য একটি মসজিদ নির্মাণ করবে, আল্লাহ তার জন্য জান্নাতে অনুরূপ একটি ঘর নির্মাণ করবেন।',
+                          sub_heading_1: 'Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533',
+                          paypal_heading: 'PayPal Donation',
+                          paypal_button_heading: 'PayPal দিয়ে দান করুন',
+                          paypal_heading_RRcode: 'PayPal QR Code',
+                          paypal_heading_RRcode_ins: 'PayPal এর মাধ্যমে দান করতে স্ক্যান করুন',
+                          bank_transfer_heading: 'ব্যাংকের বিবরণ',
+                          bank_name: 'ব্যাংকের নাম',
+                          thank_msg: 'আপনার সমর্থনের জন্য ধন্যবাদ! আপনার অবদান আমাদের পরিবর্তন আনতে সাহায্য করবে।'
+                      },
+                      Download: {
+                          title: 'ডাউনলোড করুন',
+                          heading: 'ডাউনলোড করার জন্য ফাইলগুলি',
+                          heading_files: 'ডাউনলোডযোগ্য ফাইল'
+                      },
                       Footer: {
                           DescText: 'পারিবারিক পরিবেশে কুরআন শিক্ষার প্রসার ঘটানো এবং সামাজিক জীবনে ইসলামী শিক্ষা বাস্তবায়ন করা।',
                           ContactUs: 'যোগাযোগ',
                           BankDetails: 'ব্যাংকের তথ্য',
-                          AcName: 'অ্যাকাউন্টের নাম',
                           QuickLinks: 'Quick Links',
                           CopyAll: 'Copy All'
                       },
@@ -126,6 +152,7 @@ i18n
                     DIB: 'Darul Ihsan Berlin e.V',
                     download: 'Herunterladen',
                     view_details: 'Details anzeigen',
+                    AcName: 'Kontoinhaber',
                     AboutUs: {
                         title: 'Über uns',
                         description: 'Im Jahr 2011 schlossen sich fünf Berliner Familien zusammen, um die Lehren und die Lebensweise des Islam besser zu verstehen. ' +
@@ -169,7 +196,12 @@ i18n
                             }
                         }
                     },
-                    Membership: {text: "Mitgliedschaft"},
+                    Membership: {
+                        title: "Mitgliedschaft",
+                        heading: 'Werden Sie assoziiertes Mitglied',
+                        description: 'Darul Ihsan Berlin arbeitet auf dem Weg Allahs und betreibt eine Moschee. Um seine Mission voranzutreiben, hat Darul Ihsan Berlin e.V. ein Programm zur Aufnahme von Spendern ins Leben gerufen. ' +
+                            'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, inschallah.'
+                    },
                     Home: {
                         title: 'Home',
                         heading: 'Bei Al-‘Asr (der Zeit). Wahrlich, der Mensch ist [tief] im Verlust, außer denen, die glauben und gute Taten tun, sich gegenseitig zur Wahrheit anhalten und sich gegenseitig zur Geduld anhalten.',
@@ -204,7 +236,12 @@ i18n
                                 'Dieses Zentrum wird ein Treffpunkt für alle muslimischen Familien der Gesellschaft in islamischem Umfeld sein.'
                         }
                     },
-                    Vision:{text: 'Vision'},
+                    Vision: {
+                        title: 'Vision',
+                        heading: 'Unterstützen Sie unsere Mission',
+                        description: 'Seit der Gründung von Darul Ihsan Berlin (DIB) träumen wir davon, ein gesundes und fortschrittliches Umfeld für die in Berlin lebenden Muslime zu schaffen. Obwohl unsere derzeitige Moschee mit 140 Quadratmetern Platz für 200 Gläubige bietet, sind unsere Bedürfnisse und Ziele viel größer. ' +
+                            'Darul Ihsan Berlin träumt von der Gründung eines größeren islamischen Zentrums, in dem wir unsere Aktivitäten ausweiten und neue Initiativen ergreifen können.'
+                    },
                     Academy: {
                         nav_title: 'Akademie',
                         page_title: 'Darul Ihsan Berlin Academy',
@@ -214,13 +251,28 @@ i18n
                         download: 'Herunterladen',
                         courses_section: 'Fachbereiche und Lehrzeiten'
                     },
-                    Donation:{text:'Spende'},
-                    Download:{text:'Herunterladen'},
+                    Donation: {
+                        title: 'Spende',
+                        heading: 'Unterstützung beim Bau eines islamischen Zentrums',
+                        sub_heading: 'Wer für Allah eine Moschee baut, dem wird Allah im Paradies ein Haus wie dieses bauen.',
+                        sub_heading_1: 'Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533',
+                        paypal_heading: 'PayPal-Spende',
+                        paypal_button_heading: 'Spenden mit PayPal',
+                        paypal_heading_RRcode: 'PayPal QR Code',
+                        paypal_heading_RRcode_ins: 'Scannen, um über PayPal zu spenden',
+                        bank_transfer_heading: 'Banküberweisung',
+                        bank_name: 'Name der Bank',
+                        thank_msg: 'Vielen Dank für Ihre Unterstützung! Ihr Beitrag hilft uns, etwas zu bewegen.'
+                    },
+                    Download: {
+                        title: 'Herunterladen',
+                        heading: 'Artikel herunterladen',
+                        heading_files: 'Herunterladbare Dateien'
+                    },
                     Footer: {
                         DescText: 'Förderung der Koranbildung in einem familienorientierten Umfeld und Umsetzung der islamischen Lehren im gesellschaftlichen Leben.',
                         ContactUs: 'Kontakt',
                         BankDetails: 'Bankverbindung',
-                        AcName: 'Kontoinhaber',
                         QuickLinks: 'Direktlinks',
                         CopyAll: 'Alles kopieren'
                     },
@@ -237,6 +289,7 @@ i18n
                     DIB: 'Darul Ihsan Berlin e.V',
                     download: 'Download',
                     view_details: 'View Details',
+                    AcName: 'Account Name',
                     AboutUs: {
                         title: 'About Us',
                         description: 'In 2011, five families in Berlin came together with a desire to gain a deeper understanding of Islam’s teachings and way of life, which led them to begin Quranic Tafsir sessions. ' +
@@ -279,7 +332,12 @@ i18n
                             }
                         }
                     },
-                    Membership: {text: "Membership"},
+                    Membership: {
+                        title: "Membership",
+                        heading: 'Become an Associate Member',
+                        description: 'Darul Ihsan Berlin is working in the path of Allah and managing a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
+                            'We encourage those who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah.'
+                    },
                     Home: {
                         title: 'Home',
                         heading: 'By Al-’Asr (the time). Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience.',
@@ -313,7 +371,13 @@ i18n
                                 'This center will be a center of social gathering in an Islamic environment for all Muslim families of the society.'
                         }
                     },
-                    Vision:{text: 'Vision'},
+                    Vision: {
+                        title: 'Vision',
+                        heading: 'Support Our Mission',
+                        description: 'Since the establishment of Darul Ihsan Berlin (DIB), we have dreamed of creating a healthy and progressive environmentfor Muslims residing in Berlin. ' +
+                            'Although our current mosque, with an area of 140 square metres, accommodates 200 worshippersat a time, our needs and aspirations are much greater. ' +
+                            'Darul Ihsan Berlin envisions establishing a larger Islamic centre wherewe can expand our activities and undertake new initiatives.'
+                    },
                     Academy: {
                         nav_title: 'Academy',
                         page_title: 'Darul Ihsan Berlin Academy',
@@ -323,13 +387,28 @@ i18n
                         download: 'Download',
                         courses_section: 'Departments and teaching periods'
                     },
-                    Donation:{text:'Donation'},
-                    Download:{text:'Download'},
+                    Donation: {
+                        title: 'Donation',
+                        heading: 'Support to build an islamic center',
+                        sub_heading: 'Whoever builds a mosque for Allah, Allah will build for him a house like it in Paradise.',
+                        sub_heading_1: 'Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533',
+                        paypal_heading: 'PayPal Donation',
+                        paypal_button_heading: 'Donate with PayPal',
+                        paypal_heading_RRcode: 'PayPal QR Code',
+                        paypal_heading_RRcode_ins: 'Scan to donate via PayPal',
+                        bank_transfer_heading: 'Bank Transfer',
+                        bank_name: 'Bank Name',
+                        thank_msg: 'Thank you for your support! Your contribution helps us make a difference.'
+                    },
+                    Download: {
+                        title: 'Download',
+                        heading: 'Download Item(s)',
+                        heading_files: 'Downloadable Files'
+                    },
                     Footer: {
                         DescText: 'To foster Quranic education in a family-oriented environment and to implement Islamic teachings in social life.',
                         ContactUs: 'Contact US',
                         BankDetails: 'Bank Details',
-                        AcName: 'Account Name',
                         QuickLinks: 'Quick Links',
                         CopyAll: 'Copy All'
                     },

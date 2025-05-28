@@ -3,19 +3,19 @@ import CarouselWithSidebarV2 from "./activities/CarouselWithSidebarV2";
 import FooterV3 from "./FooterV3";
 import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
-import StickyHeaderV2 from "./header/StickyHeaderV2";
 import PrayerTimeCard from "./prayer-time/PrayerTimeCard";
 import QuoteText from "./QuoteText";
 import {useTranslation} from "react-i18next";
+import StickyHeaderV3 from "./header/StickyHeaderV3";
 
 
 const HomePage = () => {
     const { t } = useTranslation();
   return (
     <div className="min-h-screen flex flex-col">
-      <StickyHeaderV2 />
+        <StickyHeaderV3/>
       <main className="flex-grow">
-        <section className="container mx-auto px-4 pt-2">
+          <section className="container mx-auto px-4 pt-20">
             <div className="text-center">
                 <QuoteText
                     text={t('Home.heading')}

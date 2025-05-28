@@ -56,11 +56,11 @@ const FooterV3 = () => {
                     <div>
                         <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">{t('Footer.QuickLinks')}</h4>
                         <ul className="space-y-2">
-                            <li><Link to={'/membership'} className="hover:text-green-500">{t('Membership.text')}</Link></li>
-                            <li><Link to={'/donation-tailwind/'} className="hover:text-green-500">{t('Donation.text')}</Link></li>
-                            <li><Link to={'/download/'} className="hover:text-green-500">{t('Download.text')}</Link></li>
+                            <li><Link to={'/membership/'} className="hover:text-green-500">{t('Membership.title')}</Link></li>
+                            <li><Link to={'/donation-tailwind/'} className="hover:text-green-500">{t('Donation.title')}</Link></li>
+                            <li><Link to={'/download/'} className="hover:text-green-500">{t('Download.title')}</Link></li>
                             <li><Link to={'/academy/'} className="hover:text-green-500">{t('Academy.nav_title')}</Link></li>
-                            <li><Link to={'/vision/'} className="hover:text-green-500">{t('Vision.text')}</Link></li>
+                            <li><Link to={'/vision/'} className="hover:text-green-500">{t('Vision.title')}</Link></li>
                         </ul>
                     </div>
 
@@ -101,7 +101,7 @@ const FooterV3 = () => {
                             {/* Account Name */}
                             <div className="group">
                                 <div className="flex justify-between items-center">
-                                    <p className="text-gray-400">{t('Footer.AcName')}</p>
+                                    <p className="text-gray-400">{t('AcName')}</p>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.name, 'name')}
                                         className="text-green-500 hover:text-green-900 group-hover:opacity-100 transition"

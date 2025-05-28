@@ -3,6 +3,7 @@ import FooterV3 from "../FooterV3";
 import Activities from "./Activities";
 import {useParams} from "react-router-dom";
 import StickyHeaderV2 from "../header/StickyHeaderV2";
+import StickyHeaderV3 from "../header/StickyHeaderV3";
 
 const ActivityDetailsPage = () => {
     const {eventId} = useParams();
@@ -16,7 +17,7 @@ const ActivityDetailsPage = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <StickyHeaderV2/>
+            <StickyHeaderV3/>
             <main className="flex-grow">
                 {/* Event details page section */}
                 <section className="container mx-auto px-4 pt-4">

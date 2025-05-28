@@ -43,7 +43,7 @@ const MissionAndVision = () => {
         <div className="mx-auto">
             {/* List Header */}
             <div className="mb-8 text-center">
-                <h2 className="text-2xl font-bold text-gray-700 mb-2">{t('Home.mission_vision')}</h2>
+                <h2 className="text-3xl font-bold text-green-500 sm:text-4xl mb-2">{t('Home.mission_vision')}</h2>
             </div>
 
             {/* Content List */}
