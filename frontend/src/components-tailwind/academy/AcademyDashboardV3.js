@@ -164,7 +164,7 @@ const AcademyDashboardV3 = () => {
             </header>
 
             {/* Main Content */}
-            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div className="mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-5 gap-8">
                 {/* Main Content - 3 columns */}
                 <div className="lg:col-span-3 space-y-8">
                     {/* Notice Board */}
@@ -296,7 +296,7 @@ const AcademyDashboardV3 = () => {
                 </div>
 
                 {/* Sidebar - 1 column */}
-                <div className="lg:col-span-1 space-y-6 md:pt-14">
+                <div className="lg:col-span-2 space-y-6 md:pt-14">
                     {/* Download Items */}
                     <div className="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
                         <div className="bg-green-500 px-4 py-2">
