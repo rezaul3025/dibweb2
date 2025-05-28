@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const EventSidebar = ({events}) => {
   events = events.filter(function (event) {
@@ -55,11 +56,13 @@ const EventSidebar = ({events}) => {
     });
   };
 
+  const { t } = useTranslation();
+
   return (
     <div className="h-full bg-green-50 backdrop-blur-sm border-l border-gray-200/50 rounded-2xl shadow-lg">
       {/* Transparent Header */}
       <div className="top-0 px-4 py-3 border-b border-gray-200/50 rounded-t-2xl backdrop-blur-sm">
-        <h3 className="text-sm font-semibold text-gray-500">Upcoming Events</h3>
+        <h3 className="text-sm font-semibold text-gray-500">{t('Home.next_event')}</h3>
       </div>
 
       {/* Events List */}

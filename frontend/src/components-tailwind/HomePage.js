@@ -6,9 +6,11 @@ import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
 import StickyHeaderV2 from "./header/StickyHeaderV2";
 import PrayerTimeCard from "./prayer-time/PrayerTimeCard";
 import QuoteText from "./QuoteText";
+import {useTranslation} from "react-i18next";
 
 
 const HomePage = () => {
+    const { t } = useTranslation();
   return (
     <div className="min-h-screen flex flex-col">
       <StickyHeaderV2 />
@@ -16,8 +18,8 @@ const HomePage = () => {
         <section className="container mx-auto px-4 pt-2">
             <div className="text-center">
                 <QuoteText
-                    text="By Al-’Asr (the time). Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience."
-                    author="Al-Quran 103"
+                    text={t('Home.heading')}
+                    author={t('Home.sub_heading')}
                     size="lg"
                 />
                 {/*<figure className="p-2">

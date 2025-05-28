@@ -14,11 +14,12 @@ import Overlay2 from "../OverlayV2";
 import moment from "moment";
 import PDFViewerWithDownload from "../pdf/PDFViewerWithDownload";
 import PdfThumbnailPreview from "../pdf/PdfThumbnailPreview";
+import {useTranslation} from "react-i18next";
 
 const AcademyDashboardV3 = () => {
-
     const [downloadItems, setDownloadItems] = useState([]);
     const [noticeBoardItems, setNoticeBoardItems] = useState([]);
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -69,9 +70,9 @@ const AcademyDashboardV3 = () => {
 
     // Sample data
     const academyInfo = {
-        name: "Darul Ihsan Berlin Academy",
-        motto: "Excellence Through Innovation",
-        established: "Established 2024"
+        name: t('Academy.page_title'),
+        motto: t('Academy.page_motto'),
+        established: t('Academy.established'),
     };
 
     const courses = [
@@ -80,7 +81,7 @@ const AcademyDashboardV3 = () => {
             name: "নূরানী",
             requirement: "বয়স ৫ বছর",
             instructor: "Hafez Hasan Abbas, Sheikh Momahmad Mustafijur Rahman",
-            description: "কেন পড়তে হবে ? \n" +
+            description: "<p>কেন পড়তে হবে ? </p> \n" +
                 "তাজবিদ সহকারে বিশুদ্ধভাবে কুরআন পড়তে পারা, রাসুল সালাল্লাহুয়ালাইহিস সালাম এর জীবনী জানা, নামাজের বিশুদ্ধ পদ্ধতি জানা, তাহারাত অর্জনের পদ্ধতি শেখা \n"
         },
         {
@@ -88,7 +89,7 @@ const AcademyDashboardV3 = () => {
             name: "হিফয",
             requirement: "শর্ত নূরানী",
             instructor: "Hafez Hasan Abbas, Sheikh Momahmad Mustafijur Rahman",
-            description: "কেন পড়তে হবে ? \n" +
+            description: "<p>কেন পড়তে হবে ? </p> \n" +
                 "কুরআনের হিফাজতকারী হওয়া, দক্ষ ইমাম ও হাফেজ হওয়া, কিয়ামতের দিনে বাবা-মায়ের মর্যাদা \n"
         },
         {
@@ -107,7 +108,7 @@ const AcademyDashboardV3 = () => {
             name: "বাংলা",
             requirement: "সবার জন্য",
             instructor: "Farazana Bithy, Mehnaj Tabaksum",
-            description: "কেন পড়তে হবে ? \n" +
+            description: "<p>কেন পড়তে হবে ? </p>\n" +
                 "বাংলাদেশি আত্মীয়দের সাথে সুন্দর করে কথা বলতে শেখা \n" +
                 "বাংলা ভাষায় আত্মীয়দেরকে জন্য দায়ী ইলাল্লাহ হিসেবে থাকা\n"
         }
@@ -170,7 +171,7 @@ const AcademyDashboardV3 = () => {
                     <div>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
                             <BellIcon className="h-6 w-6 text-green-500 mr-2"/>
-                            Notice Board
+                            {t('Academy.notice_board')}
                         </h2>
                         <div className="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
                             <div className="grid grid-cols-1 divide-y divide-gray-100">
@@ -210,7 +211,7 @@ const AcademyDashboardV3 = () => {
                                                 />
 
                                                 <Overlay2
-                                                    triggerText="View Details"
+                                                    triggerText={t('view_details')}
                                                     title={notice.title}
                                                 >
                                                     <div className="space-y-4">
@@ -243,7 +244,7 @@ const AcademyDashboardV3 = () => {
                     <div>
                         <h2 className="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
                             <BookOpenIcon className="h-6 w-6 text-green-500 mr-2"/>
-                            বিভাগসমুহ ও শিক্ষাদানের সময়সীমা
+                            {t('Academy.courses_section')}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {courses.map(course => (
@@ -256,8 +257,8 @@ const AcademyDashboardV3 = () => {
                                         <p className="mt-2">Instructor: {course.instructor}</p>
                                     </div>
                                     <Overlay2
-                                        triggerText="View Details"
-                                        title="Confirmation Required"
+                                        triggerText={t('view_details')}
+                                        title={course.name}
                                     >
                                         <div className="space-y-4">
                                             <p className="text-gray-500"><HtmlRenderer
@@ -301,7 +302,7 @@ const AcademyDashboardV3 = () => {
                         <div className="bg-green-500 px-4 py-2">
                             <h2 className="text-lg font-semibold text-white flex items-center">
                                 <ArrowDownTrayIcon className="h-5 w-5 mr-2"/>
-                                Downloads
+                                {t('Academy.download')}
                             </h2>
                         </div>
                         <div className="p-4 space-y-3">

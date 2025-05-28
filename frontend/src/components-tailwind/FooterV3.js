@@ -9,6 +9,8 @@ import {
     PhoneIcon,
     QrCodeIcon
 } from '@heroicons/react/24/outline';
+import {useTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
 
 const FooterV3 = () => {
     const [copiedField, setCopiedField] = useState(null);
@@ -24,6 +26,8 @@ const FooterV3 = () => {
         setTimeout(() => setCopiedField(null), 2000);
     };
 
+    const { t } = useTranslation();
+
     return (
         <footer className="bg-gray-900 text-gray-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -33,9 +37,9 @@ const FooterV3 = () => {
                     <div className="md:col-span-2 lg:col-span-1">
                         <div className="flex items-center mb-4">
                             {/*<img className="h-16 w-16" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> */}
-                            <h3 className="text-green-500 text-xl font-bold">Darul Ihsan Berlin e.V</h3>
+                            <h3 className="text-green-500 text-xl font-bold">{t('DIB')}</h3>
                         </div>
-                        <p className="mb-4 break-all">To foster Quranic education in a family-oriented environment and to implement Islamic teachings in social life.</p>
+                        <p className="mb-4 text-justify break-words">{t('Footer.DescText')}</p>
                         <div className="flex space-x-4">
                             <a href="#" className="text-gray-400 hover:text-white">
                                 <span className="sr-only">Facebook</span>
@@ -50,19 +54,19 @@ const FooterV3 = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h4>
+                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">{t('Footer.QuickLinks')}</h4>
                         <ul className="space-y-2">
-                            <li><a href="#" className="hover:text-white">Membership</a></li>
-                            <li><a href="#" className="hover:text-white">Prayer Time</a></li>
-                            <li><a href="#" className="hover:text-white">Academy</a></li>
-                            <li><a href="#" className="hover:text-white">Donation</a></li>
-                            <li><a href="#" className="hover:text-white">Download</a></li>
+                            <li><Link to={'/membership'} className="hover:text-green-500">{t('Membership.text')}</Link></li>
+                            <li><Link to={'/donation-tailwind/'} className="hover:text-green-500">{t('Donation.text')}</Link></li>
+                            <li><Link to={'/download/'} className="hover:text-green-500">{t('Download.text')}</Link></li>
+                            <li><Link to={'/academy/'} className="hover:text-green-500">{t('Academy.nav_title')}</Link></li>
+                            <li><Link to={'/vision/'} className="hover:text-green-500">{t('Vision.text')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Contact Us</h4>
+                        <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">{t('Footer.ContactUs')}</h4>
                         <ul className="space-y-3">
                             <li className="flex items-start">
                                 <MapPinIcon className="h-5 w-5 mr-3 mt-0.5 flex-shrink-0 text-green-500"/>
@@ -84,7 +88,7 @@ const FooterV3 = () => {
                         <div className="flex items-center justify-between mb-4">
                             <h4 className="text-white font-medium flex items-center">
                                 <BuildingLibraryIcon className="h-5 w-5 mr-2 text-green-500"/>
-                                Bank Details
+                                {t('Footer.BankDetails')}
                             </h4>
                             {copiedField && (
                                 <span className="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">
@@ -97,7 +101,7 @@ const FooterV3 = () => {
                             {/* Account Name */}
                             <div className="group">
                                 <div className="flex justify-between items-center">
-                                    <p className="text-gray-400">Account Name</p>
+                                    <p className="text-gray-400">{t('Footer.AcName')}</p>
                                     <button
                                         onClick={() => copyToClipboard(bankDetails.name, 'name')}
                                         className="text-green-500 hover:text-green-900 group-hover:opacity-100 transition"
@@ -138,12 +142,12 @@ const FooterV3 = () => {
                                     <button
                                         className="text-xs bg-green-500 hover:bg-green-700 text-white px-3 py-1 rounded flex items-center">
                                         <DocumentDuplicateIcon className="h-3 w-3 mr-1"/>
-                                        Copy All
+                                        {t('Footer.CopyAll')}
                                     </button>
                                     <button
                                         className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded flex items-center">
                                         <GlobeAltIcon className="h-3 w-3 mr-1"/>
-                                        Download QR
+                                        {t('download')} QR
                                     </button>
                                 </div>
                             </div>
@@ -154,7 +158,7 @@ const FooterV3 = () => {
                 {/* Copyright */}
                 <div
                     className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Global Financial. All rights
+                    <p className="text-gray-400 text-sm">© {new Date().getFullYear()} {t('DIB')} All rights
                         reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <a href="#" className="text-gray-400 hover:text-white text-sm">Privacy</a>

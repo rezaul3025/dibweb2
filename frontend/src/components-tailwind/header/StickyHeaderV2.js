@@ -35,11 +35,11 @@ const StickyHeaderV2 = () => {
 
 
   const navItems = [
-    { name: t('Home.text'), href: '/' },
-    { name: t('AboutUs.text'), href: '/history/' },
+    { name: t('Home.title'), href: '/' },
+    { name: t('AboutUs.title'), href: '/history/' },
     { name: t('Vision.text'), href: '/vision/' },
     { name: t('Membership.text'), href: '/membership/' },
-    { name: t('Academy.text'), href: '/academy/' },
+    { name: t('Academy.nav_title'), href: '/academy/' },
     { name: t('Donation.text'), href: '/donation-tailwind/' },
     { name: t('Download.text'), href: '/download/' },
   ];

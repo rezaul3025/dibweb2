@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
+
 i18n
     .use(Backend)
     .use(LanguageDetector)
@@ -10,35 +11,333 @@ i18n
         resources: {
              bn: {
                   translation: {
-                      AboutUs: {text: 'আমাদের সম্পর্কে'},
+                      DIB: 'দারুল ইহসান বার্লিন e.V.',
+                      download: 'ডাউনলোড',
+                      view_details: 'বিস্তারিত দেখুন',
+                      AboutUs: {
+                          title: 'আমাদের সম্পর্কে',
+                          description: '২০১১ সালে, বার্লিনের পাঁচটি পরিবার ইসলামের শিক্ষা এবং জীবনধারা সম্পর্কে আরও গভীর ধারণা অর্জনের আকাঙ্ক্ষা নিয়ে একত্রিত হয়েছিল,\n' +
+                              'যার ফলে তারা কুরআনের তাফসির অধিবেশন শুরু করে। সময়ের সাথে সাথে, এমন একটি সংস্থার প্রয়োজন দেখা দেয় যেখানে পরিবারগুলি একসাথে কুরআন,\n' +
+                              'তাফসির এবং সীরাহ অধ্যয়ন করতে পারে, ইসলামী জ্ঞানের আলোয় তাদের জীবন পরিচালনা করতে পারে।\n' +
+                              'ততক্ষণে, দারুল ইহসান পরিবার ১৮টি পরিবারে বৃদ্ধি পেয়েছিল। আল্লাহর অশেষ রহমতে,\n' +
+                              '২০১৮ সালে, দারুল ইহসান বার্লিন (DIB) e.V. প্রতিষ্ঠার মাধ্যমে এই স্বপ্ন বাস্তবে পরিণত হয়।',
+                          history_text: 'বছরের ইতিহাস',
+                          member_text: 'সদস্য',
+                          associate_member_text: 'সহযোগী সদস্য',
+                          board_member_text: 'বোর্ড সদস্য',
+                          board_member_sub_text: 'আমাদের সাফল্যের পেছনে প্রতিভাবান ব্যক্তিরা',
+                           history_timeline: {
+                            title: 'দারুল ইহসান বার্লিন-এর যাত্রা',
+                            y_2025: {
+                                title: 'দারুল ইহসান একাডেমি',
+                                description: '১ লা ফেব্রুয়ারি ২০২৫ থেকে শেখ মুস্তাফিজুর রহমান সাহেবকে প্রধান শিক্ষক করে দারুল ইহসান একাডেমি\'র অফিসিয়াল কার্যক্রম শুরু হয়।'
+                            },
+                            y_2024:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2021:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2018:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2016:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2015:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2011:{
+                                title: '',
+                                description: ''
+                            }
+                        }
+                      },
                       Membership: {text: "সদস্যপদ"},
-                      Home: {text: 'হোম'},
+                      Home: {
+                          title: 'হোম',
+                          heading: 'আল-আসরের (সময়ের) শপথ। নিশ্চয়ই মানুষ [গভীর] ক্ষতির মধ্যে নিমজ্জিত, তবে তারা ব্যতীত যারা ঈমান আনে এবং সৎকর্ম করে, একে অপরকে সত্যের দিকে উৎসাহিত করে এবং একে অপরকে ধৈর্যের দিকে উৎসাহিত করে।',
+                          sub_heading: 'আল-কুরআন ১০৩',
+                          next_event: 'Upcoming Events',
+                          mission_vision: 'মিশন এবং ভিশন',
+                          vision_heading: 'দারুল ইহসান বার্লিনের ভিশন',
+                          vision_sub_heading: 'বার্লিনের মুসলমান, বিশেষ করে বাংলাদেশীদের সংগঠিত করে ইসলামের আদর্শ ও শিক্ষাকে ধারণ করে এমন একটি সমাজ ব্যবস্থা বিনির্মাণ করার জন্য প্রচেষ্টা চালিয়ে যাওয়া।',
+                          mission: {
+                              title: 'মিশন : (৪ দফা কার্যক্রম)',
+                              items:
+                                  {
+                                      title_0: "আত্ম উন্নয়ন ",
+                                      description_0: "আল-কুরআন, সুন্নাহ ও সীরাহ্‌-এর সঠিক জ্ঞানার্জন, এর আলোকে আমল ও আত্ম উন্নয়নের মাধ্যমে দ্বীনের একজন দায়ী হিসেবে গড়ে তোলা।",
+
+                                      title_1: "দাওয়াত ",
+                                      description_1: "সকল মুসলিমদের মধ্যে আল-কুরআনের শিক্ষা, রাসুল সাঃ এর জীবনী  ও সুন্নাহর প্রচার ও প্রসারের মাধ্যমে ইসলামের সত্যতা, এবং সৌন্দর্য তুলে ধরা। এই লক্ষ্যে নিয়মিত দারসুল কুরআন, ওয়াজ মাহ্‌ফিল, ইসলামী সেমিনার ও আলোচনা সভা আয়োজন করা। \n" +
+                                          "অন্যান্য ধর্মাবলম্বীদের কাছে ইসলামের সঠিক শিক্ষা তুলে ধরা এবং ভূল ধারণাগুলো দূর করার চেষ্টা করা।",
+
+                                      title_2: "প্রতিষ্ঠান ",
+                                      description_2: "দ্বীনি শিক্ষাকে প্রতিষ্ঠানিক রূপ দেয়ার জন্য মাদ্রাসা কার্যক্রম, ইসলামিক লাইব্রেরি পরিচালনা, এবং বিভিন্ন কোর্স চালুর মাধ্যমে শিশু , কিশোর এবং প্রাপ্তবয়ষ্কদের ইসলাম শিক্ষায় সম্পৃক্ত করা ।",
+
+                                      title_3: "মানবতার জন্য দায়বদ্ধতা ",
+                                      description_3: "বিভিন্ন সামাজিক ও মানবিক কল্যানমুলক কাজে উদ্যোগ গ্রহণ এবং স্বেচ্ছাসেবী হিসেবে ভুমিকা রাখা।"
+                                  }
+                          },
+                          Goal: {
+                              title: 'লক্ষ্য',
+                              description: 'দারুল ইহসানের সকল শিক্ষা, দাওয়াতী ও সামাজিক কার্যক্রম পরিচালনার জন্য একটি পুরণাংগ ইসলামিক সেন্টার প্রতিষ্ঠা করা, যাকে কেন্দ্র করে কুরআন ও সুন্নাহর আলোকে পরিচালিত একটি ইসলামী সমাজ গড়ে উঠবে। ' +
+                                  'এই সেন্টারে অন্তর্ভুক্ত থাকবে একটি পুর্ণকালীন মাদ্রাসা, যেখান থেকে পরবর্তী প্রজন্ম থেকে সমাজের জন্য আলেম উলামা তৈরীর বীজ বপন করা হবে । ' +
+                                  'এই সেন্টার হবে সমাজের মুসলিম পরিবারগুলোর সকলের ইসলামী পরিবেশে সামাজিক মিলনের একটি প্রাণকেন্দ্র।'
+                          }
+                      },
                       Vision: {text: 'ভিশন'},
-                      Academy: {text: 'একাডেমি'},
+                      Academy: {
+                          nav_title: 'একাডেমি',
+                          page_title: 'দারুল ইহসান বার্লিন একাডেমি',
+                          page_motto: '',
+                          established: '2024 সালে প্রতিষ্ঠিত',
+                          notice_board: 'নোটিশ বোর্ড ',
+                          download: 'ডাউনলোড করুন',
+                          courses_section: 'বিভাগসমুহ ও শিক্ষাদানের সময়সীমা'
+                      },
                       Donation: {text: 'ডোনেশন'},
                       Download: {text: 'ডাউনলোড করুন'},
+                      Footer: {
+                          DescText: 'পারিবারিক পরিবেশে কুরআন শিক্ষার প্রসার ঘটানো এবং সামাজিক জীবনে ইসলামী শিক্ষা বাস্তবায়ন করা।',
+                          ContactUs: 'যোগাযোগ',
+                          BankDetails: 'ব্যাংকের তথ্য',
+                          AcName: 'অ্যাকাউন্টের নাম',
+                          QuickLinks: 'Quick Links',
+                          CopyAll: 'Copy All'
+                      },
+                      MemberAnnouncement: {
+                          heading: 'দারুল ইনসান ভিশনের একজন পৃষ্ঠপোষক হোন।',
+                          sub_heading: 'সহযোগী সদস্য হিসেবে যোগদান করুন।',
+                          description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি প্রোগ্রাম চালু করেছে। ' +
+                              'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
+                      }
                   }
              },
             de: {
                 translation: {
-                    AboutUs: {text: 'Über uns'},
+                    DIB: 'Darul Ihsan Berlin e.V',
+                    download: 'Herunterladen',
+                    view_details: 'Details anzeigen',
+                    AboutUs: {
+                        title: 'Über uns',
+                        description: 'Im Jahr 2011 schlossen sich fünf Berliner Familien zusammen, um die Lehren und die Lebensweise des Islam besser zu verstehen. ' +
+                            'Dies führte dazu, dass sie mit Koran-Tafsir-Sitzungen begannen. Mit der Zeit entstand der Bedarf nach einer Organisation, in der Familien gemeinsam Koran, Tafsir und Sira studieren und ihr Leben im Licht des islamischen Wissens gestalten konnten. ' +
+                            'Zu diesem Zeitpunkt war die Familie Darul Ihsan auf 18 Familien angewachsen. ' +
+                            'Durch die große Gnade Allahs wurde dieser Traum 2018 mit der Gründung von Darul Ihsan Berlin (DIB) e.V. Wirklichkeit.',
+                        history_text: 'Jahre der Geschichte',
+                        member_text: 'Mitglieder',
+                        associate_member_text: 'Assoziierte Mitglieder',
+                        board_member_text: 'Vorstandsmitglied',
+                        board_member_sub_text: 'Die talentierten Menschen hinter unserem Erfolg',
+                        history_timeline: {
+                            title: 'Die Reise von Darul Ihsan Berlin',
+                            y_2025: {
+                                title: 'Darul Ihsan Academy',
+                                description: 'Die offiziellen Aktivitäten der Darul Ihsan Academy begannen am 1. Februar 2025 mit Sheikh Mustafizur Rahman als Schulleiter.'
+                            },
+                            y_2024:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2021:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2018:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2016:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2015:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2011:{
+                                title: '',
+                                description: ''
+                            }
+                        }
+                    },
                     Membership: {text: "Mitgliedschaft"},
-                    Home: {text: 'Home'},
+                    Home: {
+                        title: 'Home',
+                        heading: 'Bei Al-‘Asr (der Zeit). Wahrlich, der Mensch ist [tief] im Verlust, außer denen, die glauben und gute Taten tun, sich gegenseitig zur Wahrheit anhalten und sich gegenseitig zur Geduld anhalten.',
+                        sub_heading: 'Al-Quran 103',
+                        next_event: 'Kommende Veranstaltungen',
+                        mission_vision: 'Mission und Vision',
+                        vision_heading: 'Die Vision von Darul Ihsan Berlin',
+                        vision_sub_heading: 'Die Bemühungen zur Organisation der Muslime in Berlin, insbesondere der Bangladescher, fortzusetzen und ein soziales System aufzubauen, das die Ideale und Lehren des Islam verkörpert.',
+                        mission: {
+                            title: 'Mission: (4-Punkte-Aktivitäten)',
+                            items:
+                                {
+                                    title_0: "Selbstentwicklung",
+                                    description_0: "Sich selbst als verantwortungsbewusste Person der Religion zu entwickeln, indem man genaue Kenntnisse über den Koran, die Sunna und die Sira erlangt, im Lichte dessen handelt und sich selbst weiterentwickelt.",
+
+                                    title_1: "Einladung",
+                                    description_1: "Die Wahrheit und Schönheit des Islam soll allen Muslimen durch die Lehren des Korans, der Biographie des Propheten Mohammed (Friede sei mit ihm) und der Sunna nahegebracht werden. " +
+                                        "Zu diesem Zweck werden regelmäßig Darsul Quran, Waz Mahfil, islamische Seminare und Diskussionsveranstaltungen organisiert. " +
+                                        "Anhängern anderer Religionen sollen die wahren Lehren des Islam vermittelt und Missverständnisse ausgeräumt werden.",
+
+                                    title_2: "Organist ",
+                                    description_2: "Institutionalisierung der islamischen Bildung durch Einbeziehung von Kindern, Jugendlichen und Erwachsenen in die islamische Bildung durch Madrasa-Aktivitäten, Betrieb islamischer Bibliotheken und Einführung verschiedener Kurse.",
+
+                                    title_3: "Verantwortung für die Menschheit",
+                                    description_3: "Initiative ergreifen und sich ehrenamtlich in verschiedenen sozialen und humanitären Wohlfahrtsaktivitäten engagieren."
+                                }
+                        },
+                        Goal: {
+                            title: 'Ziel',
+                            description: 'Die Gründung eines vollwertigen islamischen Zentrums für alle Bildungs-, Da\'wah- und sozialen Aktivitäten von Darul Ihsan, um das herum eine islamische Gesellschaft entstehen soll, die sich am Licht des Korans und der Sunna orientiert. ' +
+                                'Zu diesem Zentrum gehört auch eine vollwertige Madrasa, von der aus die Grundlage für die Ausbildung von Gelehrten für die nächste Generation gelegt wird. ' +
+                                'Dieses Zentrum wird ein Treffpunkt für alle muslimischen Familien der Gesellschaft in islamischem Umfeld sein.'
+                        }
+                    },
                     Vision:{text: 'Vision'},
-                    Academy:{text:'Akademie'},
+                    Academy: {
+                        nav_title: 'Akademie',
+                        page_title: 'Darul Ihsan Berlin Academy',
+                        page_motto: 'Exzellenz durch Innovation',
+                        established: 'Gegründet 2024',
+                        notice_board: 'Anschlagbrett',
+                        download: 'Herunterladen',
+                        courses_section: 'Fachbereiche und Lehrzeiten'
+                    },
                     Donation:{text:'Spende'},
                     Download:{text:'Herunterladen'},
+                    Footer: {
+                        DescText: 'Förderung der Koranbildung in einem familienorientierten Umfeld und Umsetzung der islamischen Lehren im gesellschaftlichen Leben.',
+                        ContactUs: 'Kontakt',
+                        BankDetails: 'Bankverbindung',
+                        AcName: 'Kontoinhaber',
+                        QuickLinks: 'Direktlinks',
+                        CopyAll: 'Alles kopieren'
+                    },
+                    MemberAnnouncement: {
+                        heading: 'Werden Sie Förderer von Darul Insan Vision.',
+                        sub_heading: 'Werden Sie assoziiertes Mitglied',
+                        description: 'Darul Ihsan Berlin arbeitet auf dem Weg Allahs und betreibt eine Moschee. Um seine Mission zu fördern, hat Darul Ihsan Berlin e.V. ein Programm zur Aufnahme von Spendern ins Leben gerufen. ' +
+                            'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, InshaAllah.'
+                    }
                 }
             },
             en: {
                 translation: {
-                    AboutUs: {text: 'About Us'},
+                    DIB: 'Darul Ihsan Berlin e.V',
+                    download: 'Download',
+                    view_details: 'View Details',
+                    AboutUs: {
+                        title: 'About Us',
+                        description: 'In 2011, five families in Berlin came together with a desire to gain a deeper understanding of Islam’s teachings and way of life, which led them to begin Quranic Tafsir sessions. ' +
+                            'Over time, the need arose for an organization where families could study the Quran, Tafsir, and Seerah together, guiding their lives with the light of Islamic knowledge. ' +
+                            'By then, the Darul Ihsan family had grown to 18 families. By the immense grace of Allah, in 2018, this dream became a reality with the establishment of Darul Ihsan Berlin (DIB) e.V.',
+                        history_text: 'Years of History',
+                        member_text: 'Members',
+                        associate_member_text: 'Associate Members',
+                        board_member_text: 'Board member',
+                        board_member_sub_text: 'The talented people behind our success',
+                        history_timeline: {
+                            title: 'The journey of Darul Ihsan Berlin',
+                            y_2025: {
+                                title: 'Darul Ihsan Academy',
+                                description: 'The official activities of Darul Ihsan Academy began on February 1, 2025 with Sheikh Mustafizur Rahman as the headmaster.'
+                            },
+                            y_2024:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2021:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2018:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2016:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2015:{
+                                title: '',
+                                description: ''
+                            },
+                            y_2011:{
+                                title: '',
+                                description: ''
+                            }
+                        }
+                    },
                     Membership: {text: "Membership"},
-                    Home: {text: 'Home'},
+                    Home: {
+                        title: 'Home',
+                        heading: 'By Al-’Asr (the time). Verily, man is [deep] in loss, except for those who believe and do good deeds, urge one another to the truth and urge one another to patience.',
+                        sub_heading: 'Al-Quran 103',
+                        next_event: 'Upcoming Events',
+                        mission_vision: 'Mission & Vision',
+                        vision_heading: 'The vision of Darul Ihsan Berlin',
+                        vision_sub_heading: 'To continue efforts to organize Muslims in Berlin, especially Bangladeshis, and build a social system that embodies the ideals and teachings of Islam.',
+                        mission: {
+                            title: 'Mission: (4-point activities)',
+                            items:
+                                {
+                                    title_0: "Self-development",
+                                    description_0: "To develop oneself as a responsible person of the religion through acquiring accurate knowledge of the Quran, Sunnah, and Seerah, acting in light of this, and self-development.",
+
+                                    title_1: "Invitation",
+                                    description_1: "To highlight the truth and beauty of Islam among all Muslims through the teachings of the Quran, the biography of the Prophet Muhammad (peace be upon him) and the Sunnah. " +
+                                        "To this end, to organize regular Darsul Quran, Waz Mahfil, Islamic seminars and discussion meetings. To present the correct teachings of Islam to followers of other religions and try to remove misconceptions.",
+
+                                    title_2: "Organisation ",
+                                    description_2: "To institutionalize Islamic education by involving children, adolescents, and adults in Islamic education through madrasa activities, running Islamic libraries, and launching various courses.",
+
+                                    title_3: "Responsibility for humanity",
+                                    description_3: "Taking initiatives and volunteering in various social and humanitarian welfare activities."
+                                }
+                        },
+                        Goal: {
+                            title: 'Goal',
+                            description: 'To establish a full-fledged Islamic Center to conduct all educational, da\'wah and social activities of Darul Ihsan, around which an Islamic society will be developed guided by the light of the Quran and Sunnah.' +
+                                ' This center will include a full-fledged Madrasa, from where the seeds of producing scholars for the society from the next generation will be sown. ' +
+                                'This center will be a center of social gathering in an Islamic environment for all Muslim families of the society.'
+                        }
+                    },
                     Vision:{text: 'Vision'},
-                    Academy:{text:'Academy'},
+                    Academy: {
+                        nav_title: 'Academy',
+                        page_title: 'Darul Ihsan Berlin Academy',
+                        page_motto: 'Excellence Through Innovation',
+                        established: 'Established 2024',
+                        notice_board: 'Notice Board',
+                        download: 'Download',
+                        courses_section: 'Departments and teaching periods'
+                    },
                     Donation:{text:'Donation'},
                     Download:{text:'Download'},
+                    Footer: {
+                        DescText: 'To foster Quranic education in a family-oriented environment and to implement Islamic teachings in social life.',
+                        ContactUs: 'Contact US',
+                        BankDetails: 'Bank Details',
+                        AcName: 'Account Name',
+                        QuickLinks: 'Quick Links',
+                        CopyAll: 'Copy All'
+                    },
+                    MemberAnnouncement: {
+                        heading: 'Become a patron of Darul Insan Vision.',
+                        sub_heading: 'Join as an associate member',
+                        description: 'Darul Ihsan Berlin works in the way of Allah and runs a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
+                            'We encourage those who want to support the cause of faith to join as members. May Allah reward us all, InshaAllah.'
+                    }
                 }
             },
         },

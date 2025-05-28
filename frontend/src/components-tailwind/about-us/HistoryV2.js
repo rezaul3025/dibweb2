@@ -1,11 +1,13 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 const HistoryV2 = () => {
+    const { t } = useTranslation();
     const timelineData = [
         {
             year: 2025,
-            title: "দারুল ইহসান একাডেমি",
-            description: "১ লা ফেব্রুয়ারি ২০২৫ থেকে শেখ মুস্তাফিজুর রহমান সাহেবকে প্রধান শিক্ষক করে দারুল ইহসান একাডেমি'র অফিসিয়াল কার্যক্রম শুরু হয়।"
+            title: t('AboutUs.history_timeline.y_2025.title'),
+            description: t('AboutUs.history_timeline.y_2025.description')
         },
         {
             year: 2024,
@@ -46,7 +48,7 @@ const HistoryV2 = () => {
         <div className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
             <div className="max-w-3xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-                    <span className="text-green-500">দারুল ইহসান বার্লিন-এর যাত্রা</span>
+                    <span className="text-green-500">{t('AboutUs.history_timeline.title')}</span>
                 </h2>
                 <ol className="relative border-s border-gray-200 dark:border-gray-700">
                     {timelineData.map((item, index) => (<li className="mb-10 ms-4">

@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react';
 import History from "./History";
 import HistoryV2 from "./HistoryV2";
+import {useTranslation} from "react-i18next";
 
 const AboutUs = () => {
+  const { t } = useTranslation();
   const teamMembers = [
     {
       id: 1,
@@ -44,15 +46,11 @@ const AboutUs = () => {
       <div className="mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-2xl font-extrabold text-green-500 sm:text-3xl">
-            Darul Ihsan Berlin (DIB) e.V.
+            {t('DIB')}
           </h2>
           <div className="mt-6 mx-auto text-xl text-gray-500">
             <p className="mb-6 text-justify break-words">
-              In 2011, five families in Berlin came together with a desire to gain a deeper understanding of Islam’s teachings and way of life,
-                which led them to begin Quranic Tafsir sessions. Over time, the need arose for an organization where families could study the Quran,
-                Tafsir, and Seerah together, guiding their lives with the light of Islamic knowledge.
-                By then, the Darul Ihsan family had grown to 18 families. By the immense grace of Allah,
-                in 2018, this dream became a reality with the establishment of Darul Ihsan Berlin (DIB) e.V.
+              {t('AboutUs.description')}
             </p>
           </div>
         </div>
@@ -62,15 +60,15 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="p-4">
               <p className="text-4xl font-bold text-green-600">10+</p>
-              <p className="mt-2 text-lg text-gray-600">Years of History</p>
+              <p className="mt-2 text-lg text-gray-600">{t('AboutUs.history_text')}</p>
             </div>
             <div className="p-4">
               <p className="text-4xl font-bold text-green-600">50+</p>
-              <p className="mt-2 text-lg text-gray-600">Associate Members</p>
+              <p className="mt-2 text-lg text-gray-600">{t('AboutUs.member_text')}</p>
             </div>
             <div className="p-4">
               <p className="text-4xl font-bold text-green-600">30+</p>
-              <p className="mt-2 text-lg text-gray-600">Members</p>
+              <p className="mt-2 text-lg text-gray-600">{t('AboutUs.associate_member_text')}</p>
             </div>
           </div>
         </div>
@@ -78,10 +76,10 @@ const AboutUs = () => {
         {/* Team Section */}
         <div className="text-center mb-10">
           <h2 className="text-3xl font-extrabold text-green-500 sm:text-4xl">
-            Board member
+            {t('AboutUs.board_member_text')}
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-            The talented people behind our success
+             {t('AboutUs.board_member_sub_text')}
           </p>
         </div>
 
