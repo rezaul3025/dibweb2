@@ -24,19 +24,12 @@ const DownloadPage = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="min-h-screen flex flex-col">
-            <StickyHeaderV3/>
-            <main className="flex-grow">
-                {/* Event details page section */}
-                <section className="container mx-auto px-4 pt-4">
-                    <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">{t('Download.heading')}</h2>
-                    <div className="w-full max-w-2xl mx-auto py-10">
-                        <DownloadList items={downloadItems}/>
-                    </div>
-                </section>
-            </main>
-            <FooterV3/>
-        </div>
+        <section className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">{t('Download.heading')}</h2>
+            <div className="w-full max-w-2xl mx-auto py-10">
+                <DownloadList items={downloadItems}/>
+            </div>
+        </section>
     )
 
 }

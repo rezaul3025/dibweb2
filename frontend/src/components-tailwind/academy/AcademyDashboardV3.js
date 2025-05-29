@@ -154,7 +154,7 @@ const AcademyDashboardV3 = () => {
     return (
         <div className="min-h-screen">
             {/* Academy Header */}
-            <header className="text-green-500 py-2">
+            <header className="text-green-500">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <AcademicCapIcon className="h-12 w-12 mx-auto text-green-500"/>
                     <h1 className="text-3xl md:text-4xl font-bold mt-4">{academyInfo.name}</h1>

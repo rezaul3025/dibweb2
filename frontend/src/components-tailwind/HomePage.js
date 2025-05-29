@@ -1,21 +1,17 @@
-import React from "react";
+import React, {Fragment} from "react";
 import CarouselWithSidebarV2 from "./activities/CarouselWithSidebarV2";
-import FooterV3 from "./FooterV3";
 import MissionAndVision from "./mission-and-vision/MissionAndVision";
 import NewMemberAnnouncementBlock from "./NewMemberAnnouncementBlock";
 import PrayerTimeCard from "./prayer-time/PrayerTimeCard";
 import QuoteText from "./QuoteText";
 import {useTranslation} from "react-i18next";
-import StickyHeaderV3 from "./header/StickyHeaderV3";
 
 
 const HomePage = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
   return (
-    <div className="min-h-screen flex flex-col">
-        <StickyHeaderV3/>
-      <main className="flex-grow">
-          <section className="container mx-auto px-4 pt-20">
+      <Fragment>
+          <section className="container mx-auto px-4">
             <div className="text-center">
                 <QuoteText
                     text={t('Home.heading')}
@@ -49,9 +45,7 @@ const HomePage = () => {
             <NewMemberAnnouncementBlock />
           </div>
         </section>
-      </main>
-      <FooterV3/>
-    </div>
+      </Fragment>
   );
 };
 
