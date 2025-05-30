@@ -31,7 +31,7 @@ const MembershipPage = () => {
                         ]}/>
                         <div className="text-gray-600 items-center max-w-2xl pb-4 mx-auto">
                             <DownloadButton
-                                text="Download Form"
+                                text={t('Membership.download_form')}
                                 enabled
                                 className="mt-4 mb-4"
                                 onClick={handleDownload}/>

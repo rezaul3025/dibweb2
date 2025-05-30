@@ -9,149 +9,150 @@ i18n
     .use(initReactI18next) // passes i18n down to react-i18next
     .init({
         resources: {
-             bn: {
-                  translation: {
-                      DIB: 'দারুল ইহসান বার্লিন e.V.',
-                      download: 'ডাউনলোড',
-                      view_details: 'বিস্তারিত দেখুন',
-                      AcName: 'অ্যাকাউন্টের নাম',
-                      AboutUs: {
-                          title: 'আমাদের সম্পর্কে',
-                          description: '২০১১ সালে, বার্লিনের পাঁচটি পরিবার ইসলামের শিক্ষা এবং জীবনধারা সম্পর্কে আরও গভীর ধারণা অর্জনের আকাঙ্ক্ষা নিয়ে একত্রিত হয়েছিল,\n' +
-                              'যার ফলে তারা কুরআনের তাফসির অধিবেশন শুরু করে। সময়ের সাথে সাথে, এমন একটি সংস্থার প্রয়োজন দেখা দেয় যেখানে পরিবারগুলি একসাথে কুরআন,\n' +
-                              'তাফসির এবং সীরাহ অধ্যয়ন করতে পারে, ইসলামী জ্ঞানের আলোয় তাদের জীবন পরিচালনা করতে পারে।\n' +
-                              'ততক্ষণে, দারুল ইহসান পরিবার ১৮টি পরিবারে বৃদ্ধি পেয়েছিল। আল্লাহর অশেষ রহমতে,\n' +
-                              '২০১৮ সালে, দারুল ইহসান বার্লিন (DIB) e.V. প্রতিষ্ঠার মাধ্যমে এই স্বপ্ন বাস্তবে পরিণত হয়।',
-                          history_text: 'বছরের ইতিহাস',
-                          member_text: 'সদস্য',
-                          associate_member_text: 'সহযোগী সদস্য',
-                          board_member_text: 'বোর্ড সদস্য',
-                          board_member_sub_text: 'আমাদের সাফল্যের পেছনে প্রতিভাবান ব্যক্তিরা',
-                           history_timeline: {
+            bn: {
+                translation: {
+                    DIB: 'দারুল ইহসান বার্লিন e.V.',
+                    download: 'ডাউনলোড',
+                    view_details: 'বিস্তারিত দেখুন',
+                    AcName: 'অ্যাকাউন্টের নাম',
+                    AboutUs: {
+                        title: 'আমাদের সম্পর্কে',
+                        description: '২০১১ সালে, বার্লিনের পাঁচটি পরিবার ইসলামের শিক্ষা এবং জীবনধারা সম্পর্কে আরও গভীর ধারণা অর্জনের আকাঙ্ক্ষা নিয়ে একত্রিত হয়েছিল,\n' +
+                            'যার ফলে তারা কুরআনের তাফসির অধিবেশন শুরু করে। সময়ের সাথে সাথে, এমন একটি সংস্থার প্রয়োজন দেখা দেয় যেখানে পরিবারগুলি একসাথে কুরআন,\n' +
+                            'তাফসির এবং সীরাহ অধ্যয়ন করতে পারে, ইসলামী জ্ঞানের আলোয় তাদের জীবন পরিচালনা করতে পারে।\n' +
+                            'ততক্ষণে, দারুল ইহসান পরিবার ১৮টি পরিবারে বৃদ্ধি পেয়েছিল। আল্লাহর অশেষ রহমতে,\n' +
+                            '২০১৮ সালে, দারুল ইহসান বার্লিন (DIB) e.V. প্রতিষ্ঠার মাধ্যমে এই স্বপ্ন বাস্তবে পরিণত হয়।',
+                        history_text: 'বছরের ইতিহাস',
+                        member_text: 'সদস্য',
+                        associate_member_text: 'সহযোগী সদস্য',
+                        board_member_text: 'বোর্ড সদস্য',
+                        board_member_sub_text: 'আমাদের সাফল্যের পেছনে প্রতিভাবান ব্যক্তিরা',
+                        history_timeline: {
                             title: 'দারুল ইহসান বার্লিন-এর যাত্রা',
                             y_2025: {
                                 title: 'দারুল ইহসান একাডেমি',
                                 description: '১ লা ফেব্রুয়ারি ২০২৫ থেকে শেখ মুস্তাফিজুর রহমান সাহেবকে প্রধান শিক্ষক করে দারুল ইহসান একাডেমি\'র অফিসিয়াল কার্যক্রম শুরু হয়।'
                             },
-                            y_2024:{
+                            y_2024: {
                                 title: 'দারুল ইনসান ভিশন',
                                 description: 'সেপ্টেম্বর ২০২৪ এ "দারুল ইনসান ভিশন" প্রণয়ন করা হয় এবং এর জন্য সহযোগী সদস্য গ্রহণ করা শুরু হয়।'
                             },
-                            y_2021:{
+                            y_2021: {
                                 title: 'মসজিদ',
                                 description: 'এপ্রিল ২০২১, রমজান মাস থেকে ব্রুনেনস্ট্রাসে ১২২ এ, "দারুল ইহসান বার্লিন" এর মসজিদ উন্মুক্ত করা হয়।'
                             },
-                            y_2018:{
+                            y_2018: {
                                 title: 'নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম',
                                 description: '২০১৮ থেকে "দারুল ইহসান বার্লিন" নিজেদের দাওয়াতী ও শিক্ষা কার্যক্রম পরিচালনার জন্য নিজস্য জায়গার ভাড়া অথবা ক্রয় করার জন্য প্রচেস্টা শুরু হয়।' +
                                     'একই বছর ভবিষ্যতে একটি মসজিদ এবং মাদ্রাসা প্রতিষ্ঠার পরিকল্পনাকে মাথায় রেখে শেখ মুস্তাফিজুর রহমান সাহেবকে শিক্ষক হিসেবে সম্পৃক্ত করে।'
                             },
-                            y_2016:{
+                            y_2016: {
                                 title: 'এসোসিয়েশন রেজিস্ট্রেশন',
                                 description: '২০১৬ সালে এসে নিজেদের দাওয়াতী কার্যক্রম পরিচালনাকে প্রাতিষ্ঠানিক রূপ দেওয়ার জন্য "দারুল ইহসান বার্লিন" নামে একটি থেকে এসোসিয়েশন রেজিস্ট্রেশনের কাজ শুরু করে।'
                             },
-                            y_2015:{
+                            y_2015: {
                                 title: 'উম্মুক্ত দাওয়াহ কার্যক্রম শুরু',
                                 description: '২০১৫ সালে এসে পাক্ষিক ভাবে ফ্রিড্রিকশাইনের ভিন স্ট্রাসেতে একটি পাবলিক মিটিং হল ভাড়া করে কুরআন কে সহজ ভাবে সকল মানুশের মাঝে সহজ ভাবে তুলে ধরার মাধ্যমে উম্মুক্ত দাওয়াহ কার্যক্রম শুরু।'
                             },
-                            y_2011:{
+                            y_2011: {
                                 title: 'কুরআন স্টাডি সার্কেল\'র যাত্রা শুরু',
                                 description: 'মে ২০১১- ৫ টি পরিবার প্রতি সপ্তাহে তাদের ড্রয়িংরুমে কুরআন স্টাডি সার্কেল আয়োজনের মধ্য দিয়ে যাত্রা শুরু করে।'
                             }
                         }
-                      },
-                      Membership: {
-                          title: 'সদস্যপদ',
-                          heading: 'সহযোগী সদস্য হন',
-                          description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি কর্মসূচি চালু করেছে। ' +
-                              'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
-                      },
-                      Home: {
-                          title: 'হোম',
-                          heading: 'আল-আসরের (সময়ের) শপথ। নিশ্চয়ই মানুষ [গভীর] ক্ষতির মধ্যে নিমজ্জিত, তবে তারা ব্যতীত যারা ঈমান আনে এবং সৎকর্ম করে, একে অপরকে সত্যের দিকে উৎসাহিত করে এবং একে অপরকে ধৈর্যের দিকে উৎসাহিত করে।',
-                          sub_heading: 'আল-কুরআন ১০৩',
-                          next_event: 'Upcoming Events',
-                          mission_vision: 'মিশন এবং ভিশন',
-                          vision_heading: 'দারুল ইহসান বার্লিনের ভিশন',
-                          vision_sub_heading: 'বার্লিনের মুসলমান, বিশেষ করে বাংলাদেশীদের সংগঠিত করে ইসলামের আদর্শ ও শিক্ষাকে ধারণ করে এমন একটি সমাজ ব্যবস্থা বিনির্মাণ করার জন্য প্রচেষ্টা চালিয়ে যাওয়া।',
-                          mission: {
-                              title: 'মিশন : (৪ দফা কার্যক্রম)',
-                              items:
-                                  {
-                                      title_0: "আত্ম উন্নয়ন ",
-                                      description_0: "আল-কুরআন, সুন্নাহ ও সীরাহ্‌-এর সঠিক জ্ঞানার্জন, এর আলোকে আমল ও আত্ম উন্নয়নের মাধ্যমে দ্বীনের একজন দায়ী হিসেবে গড়ে তোলা।",
+                    },
+                    Membership: {
+                        title: 'সদস্যপদ',
+                        heading: 'সহযোগী সদস্য হন',
+                        description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি কর্মসূচি চালু করেছে। ' +
+                            'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।',
+                        download_form:'ডাউনলোড ফর্ম'
+                    },
+                    Home: {
+                        title: 'হোম',
+                        heading: 'আল-আসরের (সময়ের) শপথ। নিশ্চয়ই মানুষ [গভীর] ক্ষতির মধ্যে নিমজ্জিত, তবে তারা ব্যতীত যারা ঈমান আনে এবং সৎকর্ম করে, একে অপরকে সত্যের দিকে উৎসাহিত করে এবং একে অপরকে ধৈর্যের দিকে উৎসাহিত করে।',
+                        sub_heading: 'আল-কুরআন ১০৩',
+                        next_event: 'Upcoming Events',
+                        mission_vision: 'মিশন এবং ভিশন',
+                        vision_heading: 'দারুল ইহসান বার্লিনের ভিশন',
+                        vision_sub_heading: 'বার্লিনের মুসলমান, বিশেষ করে বাংলাদেশীদের সংগঠিত করে ইসলামের আদর্শ ও শিক্ষাকে ধারণ করে এমন একটি সমাজ ব্যবস্থা বিনির্মাণ করার জন্য প্রচেষ্টা চালিয়ে যাওয়া।',
+                        mission: {
+                            title: 'মিশন : (৪ দফা কার্যক্রম)',
+                            items:
+                                {
+                                    title_0: "আত্ম উন্নয়ন ",
+                                    description_0: "আল-কুরআন, সুন্নাহ ও সীরাহ্‌-এর সঠিক জ্ঞানার্জন, এর আলোকে আমল ও আত্ম উন্নয়নের মাধ্যমে দ্বীনের একজন দায়ী হিসেবে গড়ে তোলা।",
 
-                                      title_1: "দাওয়াত ",
-                                      description_1: "সকল মুসলিমদের মধ্যে আল-কুরআনের শিক্ষা, রাসুল সাঃ এর জীবনী  ও সুন্নাহর প্রচার ও প্রসারের মাধ্যমে ইসলামের সত্যতা, এবং সৌন্দর্য তুলে ধরা। এই লক্ষ্যে নিয়মিত দারসুল কুরআন, ওয়াজ মাহ্‌ফিল, ইসলামী সেমিনার ও আলোচনা সভা আয়োজন করা। \n" +
-                                          "অন্যান্য ধর্মাবলম্বীদের কাছে ইসলামের সঠিক শিক্ষা তুলে ধরা এবং ভূল ধারণাগুলো দূর করার চেষ্টা করা।",
+                                    title_1: "দাওয়াত ",
+                                    description_1: "সকল মুসলিমদের মধ্যে আল-কুরআনের শিক্ষা, রাসুল সাঃ এর জীবনী  ও সুন্নাহর প্রচার ও প্রসারের মাধ্যমে ইসলামের সত্যতা, এবং সৌন্দর্য তুলে ধরা। এই লক্ষ্যে নিয়মিত দারসুল কুরআন, ওয়াজ মাহ্‌ফিল, ইসলামী সেমিনার ও আলোচনা সভা আয়োজন করা। \n" +
+                                        "অন্যান্য ধর্মাবলম্বীদের কাছে ইসলামের সঠিক শিক্ষা তুলে ধরা এবং ভূল ধারণাগুলো দূর করার চেষ্টা করা।",
 
-                                      title_2: "প্রতিষ্ঠান ",
-                                      description_2: "দ্বীনি শিক্ষাকে প্রতিষ্ঠানিক রূপ দেয়ার জন্য মাদ্রাসা কার্যক্রম, ইসলামিক লাইব্রেরি পরিচালনা, এবং বিভিন্ন কোর্স চালুর মাধ্যমে শিশু , কিশোর এবং প্রাপ্তবয়ষ্কদের ইসলাম শিক্ষায় সম্পৃক্ত করা ।",
+                                    title_2: "প্রতিষ্ঠান ",
+                                    description_2: "দ্বীনি শিক্ষাকে প্রতিষ্ঠানিক রূপ দেয়ার জন্য মাদ্রাসা কার্যক্রম, ইসলামিক লাইব্রেরি পরিচালনা, এবং বিভিন্ন কোর্স চালুর মাধ্যমে শিশু , কিশোর এবং প্রাপ্তবয়ষ্কদের ইসলাম শিক্ষায় সম্পৃক্ত করা ।",
 
-                                      title_3: "মানবতার জন্য দায়বদ্ধতা ",
-                                      description_3: "বিভিন্ন সামাজিক ও মানবিক কল্যানমুলক কাজে উদ্যোগ গ্রহণ এবং স্বেচ্ছাসেবী হিসেবে ভুমিকা রাখা।"
-                                  }
-                          },
-                          Goal: {
-                              title: 'লক্ষ্য',
-                              description: 'দারুল ইহসানের সকল শিক্ষা, দাওয়াতী ও সামাজিক কার্যক্রম পরিচালনার জন্য একটি পুরণাংগ ইসলামিক সেন্টার প্রতিষ্ঠা করা, যাকে কেন্দ্র করে কুরআন ও সুন্নাহর আলোকে পরিচালিত একটি ইসলামী সমাজ গড়ে উঠবে। ' +
-                                  'এই সেন্টারে অন্তর্ভুক্ত থাকবে একটি পুর্ণকালীন মাদ্রাসা, যেখান থেকে পরবর্তী প্রজন্ম থেকে সমাজের জন্য আলেম উলামা তৈরীর বীজ বপন করা হবে । ' +
-                                  'এই সেন্টার হবে সমাজের মুসলিম পরিবারগুলোর সকলের ইসলামী পরিবেশে সামাজিক মিলনের একটি প্রাণকেন্দ্র।'
-                          }
-                      },
-                      Vision: {
-                          title: 'ভিশন',
-                          heading: 'আমাদের লক্ষ্যকে সমর্থন করুন',
-                          description: 'দারুল ইহসান বার্লিন (DIB) প্রতিষ্ঠার পর থেকে, আমরা বার্লিনে বসবাসকারী মুসলমানদের জন্য একটি সুস্থ ও প্রগতিশীল পরিবেশ তৈরির স্বপ্ন দেখে আসছি। যদিও আমাদের বর্তমান মসজিদ, ১৪০ বর্গমিটার আয়তনের, একসাথে ২০০ জন মুসল্লির থাকার ব্যবস্থা করে, তবুও আমাদের চাহিদা এবং আকাঙ্ক্ষা অনেক বেশি। ' +
-                              'দারুল ইহসান বার্লিন একটি বৃহত্তর ইসলামিক কেন্দ্র প্রতিষ্ঠার স্বপ্ন দেখে যেখানে আমরা আমাদের কার্যক্রম সম্প্রসারণ করতে এবং নতুন উদ্যোগ গ্রহণ করতে পারি।'
-                      },
-                      Academy: {
-                          nav_title: 'একাডেমি',
-                          page_title: 'দারুল ইহসান বার্লিন একাডেমি',
-                          page_motto: '',
-                          established: '2024 সালে প্রতিষ্ঠিত',
-                          notice_board: 'নোটিশ বোর্ড ',
-                          download: 'ডাউনলোড করুন',
-                          courses_section: 'বিভাগসমুহ ও শিক্ষাদানের সময়সীমা'
-                      },
-                      Donation: {
-                          title: 'ডোনেশন',
-                          heading: 'একটি ইসলামিক সেন্টার তৈরিতে সহায়তা করুন',
-                          sub_heading: 'যে ব্যক্তি আল্লাহর জন্য একটি মসজিদ নির্মাণ করবে, আল্লাহ তার জন্য জান্নাতে অনুরূপ একটি ঘর নির্মাণ করবেন।',
-                          sub_heading_1: 'Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533',
-                          paypal_heading: 'PayPal Donation',
-                          paypal_button_heading: 'PayPal দিয়ে দান করুন',
-                          paypal_heading_RRcode: 'PayPal QR Code',
-                          paypal_heading_RRcode_ins: 'PayPal এর মাধ্যমে দান করতে স্ক্যান করুন',
-                          bank_transfer_heading: 'ব্যাংকের বিবরণ',
-                          bank_name: 'ব্যাংকের নাম',
-                          thank_msg: 'আপনার সমর্থনের জন্য ধন্যবাদ! আপনার অবদান আমাদের পরিবর্তন আনতে সাহায্য করবে।'
-                      },
-                      Download: {
-                          title: 'ডাউনলোড করুন',
-                          heading: 'ডাউনলোড করার জন্য ফাইলগুলি',
-                          heading_files: 'ডাউনলোডযোগ্য ফাইল'
-                      },
-                      Footer: {
-                          DescText: 'পারিবারিক পরিবেশে কুরআন শিক্ষার প্রসার ঘটানো এবং সামাজিক জীবনে ইসলামী শিক্ষা বাস্তবায়ন করা।',
-                          ContactUs: 'যোগাযোগ',
-                          BankDetails: 'ব্যাংকের তথ্য',
-                          QuickLinks: 'Quick Links',
-                          CopyAll: 'Copy All'
-                      },
-                      MemberAnnouncement: {
-                          heading: 'দারুল ইনসান ভিশনের একজন পৃষ্ঠপোষক হোন।',
-                          sub_heading: 'সহযোগী সদস্য হিসেবে যোগদান করুন।',
-                          description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি প্রোগ্রাম চালু করেছে। ' +
-                              'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
-                      },
-                      ActivityDetails: {
-                          date_time_heading :'তারিখ এবং সময়',
-                          location_heading:'স্থান',
-                          view_on_google_map:'মানচিত্রে দেখুন'
-                      }
-                  }
-             },
+                                    title_3: "মানবতার জন্য দায়বদ্ধতা ",
+                                    description_3: "বিভিন্ন সামাজিক ও মানবিক কল্যানমুলক কাজে উদ্যোগ গ্রহণ এবং স্বেচ্ছাসেবী হিসেবে ভুমিকা রাখা।"
+                                }
+                        },
+                        Goal: {
+                            title: 'লক্ষ্য',
+                            description: 'দারুল ইহসানের সকল শিক্ষা, দাওয়াতী ও সামাজিক কার্যক্রম পরিচালনার জন্য একটি পুরণাংগ ইসলামিক সেন্টার প্রতিষ্ঠা করা, যাকে কেন্দ্র করে কুরআন ও সুন্নাহর আলোকে পরিচালিত একটি ইসলামী সমাজ গড়ে উঠবে। ' +
+                                'এই সেন্টারে অন্তর্ভুক্ত থাকবে একটি পুর্ণকালীন মাদ্রাসা, যেখান থেকে পরবর্তী প্রজন্ম থেকে সমাজের জন্য আলেম উলামা তৈরীর বীজ বপন করা হবে । ' +
+                                'এই সেন্টার হবে সমাজের মুসলিম পরিবারগুলোর সকলের ইসলামী পরিবেশে সামাজিক মিলনের একটি প্রাণকেন্দ্র।'
+                        }
+                    },
+                    Vision: {
+                        title: 'ভিশন',
+                        heading: 'আমাদের লক্ষ্যকে সমর্থন করুন',
+                        description: 'দারুল ইহসান বার্লিন (DIB) প্রতিষ্ঠার পর থেকে, আমরা বার্লিনে বসবাসকারী মুসলমানদের জন্য একটি সুস্থ ও প্রগতিশীল পরিবেশ তৈরির স্বপ্ন দেখে আসছি। যদিও আমাদের বর্তমান মসজিদ, ১৪০ বর্গমিটার আয়তনের, একসাথে ২০০ জন মুসল্লির থাকার ব্যবস্থা করে, তবুও আমাদের চাহিদা এবং আকাঙ্ক্ষা অনেক বেশি। ' +
+                            'দারুল ইহসান বার্লিন একটি বৃহত্তর ইসলামিক কেন্দ্র প্রতিষ্ঠার স্বপ্ন দেখে যেখানে আমরা আমাদের কার্যক্রম সম্প্রসারণ করতে এবং নতুন উদ্যোগ গ্রহণ করতে পারি।'
+                    },
+                    Academy: {
+                        nav_title: 'একাডেমি',
+                        page_title: 'দারুল ইহসান বার্লিন একাডেমি',
+                        page_motto: '',
+                        established: '2024 সালে প্রতিষ্ঠিত',
+                        notice_board: 'নোটিশ বোর্ড ',
+                        download: 'ডাউনলোড করুন',
+                        courses_section: 'বিভাগসমুহ ও শিক্ষাদানের সময়সীমা'
+                    },
+                    Donation: {
+                        title: 'ডোনেশন',
+                        heading: 'একটি ইসলামিক সেন্টার তৈরিতে সহায়তা করুন',
+                        sub_heading: 'যে ব্যক্তি আল্লাহর জন্য একটি মসজিদ নির্মাণ করবে, আল্লাহ তার জন্য জান্নাতে অনুরূপ একটি ঘর নির্মাণ করবেন।',
+                        sub_heading_1: 'Ṣaḥīḥ al-Bukhārī 450, Ṣaḥīḥ Muslim 533',
+                        paypal_heading: 'PayPal Donation',
+                        paypal_button_heading: 'PayPal দিয়ে দান করুন',
+                        paypal_heading_RRcode: 'PayPal QR Code',
+                        paypal_heading_RRcode_ins: 'PayPal এর মাধ্যমে দান করতে স্ক্যান করুন',
+                        bank_transfer_heading: 'ব্যাংকের বিবরণ',
+                        bank_name: 'ব্যাংকের নাম',
+                        thank_msg: 'আপনার সমর্থনের জন্য ধন্যবাদ! আপনার অবদান আমাদের পরিবর্তন আনতে সাহায্য করবে।'
+                    },
+                    Download: {
+                        title: 'ডাউনলোড করুন',
+                        heading: 'ডাউনলোড করার জন্য ফাইলগুলি',
+                        heading_files: 'ডাউনলোডযোগ্য ফাইল'
+                    },
+                    Footer: {
+                        DescText: 'পারিবারিক পরিবেশে কুরআন শিক্ষার প্রসার ঘটানো এবং সামাজিক জীবনে ইসলামী শিক্ষা বাস্তবায়ন করা।',
+                        ContactUs: 'যোগাযোগ',
+                        BankDetails: 'ব্যাংকের তথ্য',
+                        QuickLinks: 'Quick Links',
+                        CopyAll: 'Copy All'
+                    },
+                    MemberAnnouncement: {
+                        heading: 'দারুল ইনসান ভিশনের একজন পৃষ্ঠপোষক হোন।',
+                        sub_heading: 'সহযোগী সদস্য হিসেবে যোগদান করুন।',
+                        description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি প্রোগ্রাম চালু করেছে। ' +
+                            'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
+                    },
+                    ActivityDetails: {
+                        date_time_heading: 'তারিখ এবং সময়',
+                        location_heading: 'স্থান',
+                        view_on_google_map: 'মানচিত্রে দেখুন'
+                    }
+                }
+            },
             de: {
                 translation: {
                     DIB: 'Darul Ihsan Berlin e.V',
@@ -175,27 +176,27 @@ i18n
                                 title: 'Darul Ihsan Academy',
                                 description: 'Die offiziellen Aktivitäten der Darul Ihsan Academy begannen am 1. Februar 2025 mit Sheikh Mustafizur Rahman als Schulleiter.'
                             },
-                            y_2024:{
+                            y_2024: {
                                 title: 'Darul Insan Vision',
                                 description: 'Im September 2024 wurde „Darul Insan Vision“ formuliert und die Aufnahme assoziierter Mitglieder begann.'
                             },
-                            y_2021:{
+                            y_2021: {
                                 title: 'Moschee',
                                 description: 'Ab April 2021 ist mit Beginn des Fastenmonats Ramadan die Moschee „Darul Ihsan Berlin“ in der Brunnenstraße 122 geöffnet.'
                             },
-                            y_2018:{
+                            y_2018: {
                                 title: 'Eigene Dawah und Bildungsprogramme',
                                 description: 'Seit 2018 versucht „Darul Ihsan Berlin“, eigene Räumlichkeiten für seine Da\'wah- und Bildungsaktivitäten zu mieten oder zu erwerben. Im selben Jahr wurde Scheich Mustafizur Rahman als Lehrer engagiert, mit dem Plan, in Zukunft eine Moschee und eine Madrasa zu errichten.'
                             },
-                            y_2016:{
+                            y_2016: {
                                 title: 'Vereinsregistrierung',
                                 description: 'Im Jahr 2016 begann ein Verein namens „Darul Ihsan Berlin“ mit der Registrierung, um seine Dawah-Aktivitäten zu institutionalisieren.'
                             },
-                            y_2015:{
+                            y_2015: {
                                 title: 'Beginn der offenen Dawah-Aktivitäten',
                                 description: 'Im Jahr 2015 begannen wir mit einem offenen Dawah-Programm, indem wir alle zwei Wochen einen öffentlichen Versammlungssaal in der Wienstraße in Friedrichshain mieteten, um allen Menschen den Koran auf leicht verständliche Weise vorzustellen.'
                             },
-                            y_2011:{
+                            y_2011: {
                                 title: 'Die Reise des Quran Sturdy Circle beginnt',
                                 description: 'Mai 2011 – 5 Familien begannen ihre Reise, indem sie jede Woche einen Koranstudienkreis in ihrem Wohnzimmer veranstalteten.'
                             }
@@ -205,7 +206,8 @@ i18n
                         title: "Mitgliedschaft",
                         heading: 'Werden Sie assoziiertes Mitglied',
                         description: 'Darul Ihsan Berlin arbeitet auf dem Weg Allahs und betreibt eine Moschee. Um seine Mission voranzutreiben, hat Darul Ihsan Berlin e.V. ein Programm zur Aufnahme von Spendern ins Leben gerufen. ' +
-                            'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, inschallah.'
+                            'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, inschallah.',
+                        download_form:'Formular herunterladen'
                     },
                     Home: {
                         title: 'Home',
@@ -288,10 +290,10 @@ i18n
                             'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, InshaAllah.'
                     },
                     ActivityDetails: {
-                          date_time_heading :'Datum und Uhrzeit',
-                          location_heading:'Standort',
-                          view_on_google_map:'Auf der Karte anzeigen'
-                      }
+                        date_time_heading: 'Datum und Uhrzeit',
+                        location_heading: 'Standort',
+                        view_on_google_map: 'Auf der Karte anzeigen'
+                    }
                 }
             },
             en: {
@@ -316,27 +318,27 @@ i18n
                                 title: 'Darul Ihsan Academy',
                                 description: 'The official activities of Darul Ihsan Academy began on February 1, 2025 with Sheikh Mustafizur Rahman as the headmaster.'
                             },
-                            y_2024:{
+                            y_2024: {
                                 title: 'Darul Insan Vision',
                                 description: 'In September 2024, "Darul Insan Vision" was formulated and associate members began to be accepted for it.'
                             },
-                            y_2021:{
+                            y_2021: {
                                 title: 'Mosque',
                                 description: 'From April 2021, the mosque of "Darul Ihsan Berlin" opened at Brunnenstrasse 122, starting from the month of Ramadan.'
                             },
-                            y_2018:{
+                            y_2018: {
                                 title: 'Own dawah and educational programs',
                                 description: 'Since 2018, "Darul Ihsan Berlin" has been trying to rent or purchase its own space to conduct its da\'wah and educational activities. In the same year, Sheikh Mustafizur Rahman was involved as a teacher, keeping in mind the plan to establish a mosque and madrasa in the future.'
                             },
-                            y_2016:{
+                            y_2016: {
                                 title: 'Association Registration',
                                 description: 'In 2016, an association called "Darul Ihsan Berlin" began work on registering to institutionalize its Dawah activities.'
                             },
-                            y_2015:{
+                            y_2015: {
                                 title: 'Open Dawah activities begin',
                                 description: 'In 2015, we began an open dawah program by renting a public meeting hall on Wien Strasse in Friedrichshain fortnightly to present the Quran to all people in an easy-to-understand manner.'
                             },
-                            y_2011:{
+                            y_2011: {
                                 title: 'The journey of Quran Sturdy Circle begins',
                                 description: 'May 2011 - 5 families started their journey by hosting a Quran study circle in their drawing room every week.'
                             }
@@ -346,7 +348,8 @@ i18n
                         title: "Membership",
                         heading: 'Become an Associate Member',
                         description: 'Darul Ihsan Berlin is working in the path of Allah and managing a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
-                            'We encourage those who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah.'
+                            'We encourage those who wish to support the cause of deen (faith) to join as members. May Allah reward us all, Insha’Allah.',
+                        download_form:'Download Form'
                     },
                     Home: {
                         title: 'Home',
@@ -429,10 +432,10 @@ i18n
                             'We encourage those who want to support the cause of faith to join as members. May Allah reward us all, InshaAllah.'
                     },
                     ActivityDetails: {
-                          date_time_heading :'Date & Time',
-                          location_heading:'Location',
-                          view_on_google_map:'View on map'
-                      }
+                        date_time_heading: 'Date & Time',
+                        location_heading: 'Location',
+                        view_on_google_map: 'View on map'
+                    }
                 }
             },
         },
