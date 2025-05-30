@@ -144,6 +144,11 @@ i18n
                           sub_heading: 'সহযোগী সদস্য হিসেবে যোগদান করুন।',
                           description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি প্রোগ্রাম চালু করেছে। ' +
                               'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
+                      },
+                      ActivityDetails: {
+                          date_time_heading :'তারিখ এবং সময়',
+                          location_heading:'স্থান',
+                          view_on_google_map:'মানচিত্রে দেখুন'
                       }
                   }
              },
@@ -281,7 +286,12 @@ i18n
                         sub_heading: 'Werden Sie assoziiertes Mitglied',
                         description: 'Darul Ihsan Berlin arbeitet auf dem Weg Allahs und betreibt eine Moschee. Um seine Mission zu fördern, hat Darul Ihsan Berlin e.V. ein Programm zur Aufnahme von Spendern ins Leben gerufen. ' +
                             'Wir ermutigen alle, die die Sache des Glaubens unterstützen möchten, Mitglied zu werden. Möge Allah uns alle belohnen, InshaAllah.'
-                    }
+                    },
+                    ActivityDetails: {
+                          date_time_heading :'Datum und Uhrzeit',
+                          location_heading:'Standort',
+                          view_on_google_map:'Auf der Karte anzeigen'
+                      }
                 }
             },
             en: {
@@ -417,7 +427,12 @@ i18n
                         sub_heading: 'Join as an associate member',
                         description: 'Darul Ihsan Berlin works in the way of Allah and runs a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
                             'We encourage those who want to support the cause of faith to join as members. May Allah reward us all, InshaAllah.'
-                    }
+                    },
+                    ActivityDetails: {
+                          date_time_heading :'Date & Time',
+                          location_heading:'Location',
+                          view_on_google_map:'View on map'
+                      }
                 }
             },
         },

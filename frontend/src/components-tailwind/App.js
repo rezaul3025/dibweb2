@@ -33,22 +33,16 @@ export default function () {
        <BrowserRouter>
            {notification && <NotificationOverlayV2 notification={notification[0]}/>}
            <ScrollToTop/>
-           <div className="min-h-screen flex flex-col">
-               <StickyHeaderV3/>
-               <main className="flex-grow pt-20">
-                   <Routes>
-                       <Route exact path='/' element={<HomePage/>}/>
-                       <Route exact path='/activity-details/:eventId' element={<ActivityDetailsPage/>}/>
-                       <Route exact path='/history' element={<AboutUsPage/>}/>
-                       <Route exact path='/vision' element={<VisionPage/>}/>
-                       <Route exact path='/membership' element={<MembershipPage/>}/>
-                       <Route exact path='/donation-tailwind' element={<DonationPage/>}/>
-                       <Route exact path='/download' element={<DownloadPage/>}/>
-                       <Route exact path='/academy' element={<AcademyPage/>}/>
-                   </Routes>
-               </main>
-               <FooterV3/>
-           </div>
+               <Routes>
+                   <Route exact path='/' element={<HomePage/>}/>
+                   <Route exact path='/activity-details/:eventId' element={<ActivityDetailsPage/>}/>
+                   <Route exact path='/history' element={<AboutUsPage/>}/>
+                   <Route exact path='/vision' element={<VisionPage/>}/>
+                   <Route exact path='/membership' element={<MembershipPage/>}/>
+                   <Route exact path='/donation-tailwind' element={<DonationPage/>}/>
+                   <Route exact path='/download' element={<DownloadPage/>}/>
+                   <Route exact path='/academy' element={<AcademyPage/>}/>
+               </Routes>
        </BrowserRouter>
    );
 }

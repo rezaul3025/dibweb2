@@ -1,7 +1,9 @@
 import React, {Fragment} from "react";
 import moment from "moment";
+import {useTranslation} from "react-i18next";
 
 export default function Activities({event}) {
+  const { t } = useTranslation();
    return (
     <div className="max-w-6xl mx-auto px-4 py-4">
       <div className="flex flex-col lg:flex-row gap-8">
@@ -21,7 +23,7 @@ export default function Activities({event}) {
             <p className="text-gray-500 text-xl text-justify break-words">
                 {event.description}
             </p>
-            <ul className="mt-4 space-y-2 text-gray-500">
+            {/*<ul className="mt-4 space-y-2 text-gray-500">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
@@ -34,12 +36,12 @@ export default function Activities({event}) {
                 </svg>
                 <span>Interactive workshops</span>
               </li>
-            </ul>
+            </ul>*/}
           </div>
 
           {/* Date & Time */}
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Date & Time</h2>
+          {event.event_datetime && <div className="bg-white p-4 rounded-lg shadow-sm">
+            <h2 className="text-lg font-semibold mb-3">{t('ActivityDetails.date_time_heading')}</h2>
             <div className="flex items-center gap-3">
               <div className="bg-blue-100 p-2 rounded-lg">
                 <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,11 +53,11 @@ export default function Activities({event}) {
                 <p className="text-gray-500">{moment(event.event_datetime).format("LLL")}</p>
               </div>
             </div>
-          </div>
+          </div>}
 
           {/* Location */}
-          <div className="bg-white p-4 rounded-lg shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Location</h2>
+          {event.address && <div className="bg-white p-4 rounded-lg shadow-sm">
+            <h2 className="text-lg font-semibold mb-3">{t('ActivityDetails.location_heading')}</h2>
             <div className="flex items-center gap-3">
               <div className="bg-green-100 p-2 rounded-lg">
                 <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -65,14 +67,14 @@ export default function Activities({event}) {
               </div>
               <div>
                 <p className="text-gray-500">{event.address}</p>
-                <a href="#" className="text-green-500 text-sm mt-1 inline-block">View on map</a>
+                <a href="#" className="text-green-500 text-sm mt-1 inline-block">{t('ActivityDetails.view_on_google_map')}</a>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
 
         {/* Side Thumbnail */}
-        <div className="lg:w-1/3">
+        {event.poster_image && <div className="lg:w-1/3">
           <div className="bg-white rounded-lg overflow-hidden shadow-lg sticky top-6">
             <img
               src={event.poster_image+'?auto=format&fit=crop&w=600&q=80'}
@@ -97,7 +99,7 @@ export default function Activities({event}) {
             </div>
             */}
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

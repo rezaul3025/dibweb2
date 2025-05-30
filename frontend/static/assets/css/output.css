@@ -2673,11 +2673,6 @@
       color: var(--color-green-900);
     }
   }
-  .hover\:text-indigo-600 {
-    &:hover {
-      color: var(--color-indigo-600);
-    }
-  }
   .hover\:text-white {
     &:hover {
       color: var(--color-white);

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FiChevronDown, FiGlobe, FiMenu, FiX} from 'react-icons/fi';
-import {Link, useLocation} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import i18n from "i18next";
 
@@ -17,18 +17,15 @@ const StickyHeaderV3 = () => {
         {code: 'en', name: 'English', flag: '🇬🇧'},
     ];
 
-    const navItemsInit = [
-    { name: t('Home.title'), href: '/', active:true},
-    { name: t('AboutUs.title'), href: '/history/', active:false},
-    { name: t('Vision.title'), href: '/vision/', active:false },
-    { name: t('Membership.title'), href: '/membership/', active:false },
-    { name: t('Academy.nav_title'), href: '/academy/', active:false },
-    { name: t('Donation.title'), href: '/donation-tailwind/', active:false },
-    { name: t('Download.title'), href: '/download/', active:false },
+    const navItems = [
+    { name: t('Home.title'), href: '/' },
+    { name: t('AboutUs.title'), href: '/history/' },
+    { name: t('Vision.title'), href: '/vision/' },
+    { name: t('Membership.title'), href: '/membership/' },
+    { name: t('Academy.nav_title'), href: '/academy/' },
+    { name: t('Donation.title'), href: '/donation-tailwind/' },
+    { name: t('Download.title'), href: '/download/' },
   ];
-
-    const [navItems, setNavItems] = useState(navItemsInit);
-    const [currentPath, setCurrentPath] = useState('/')
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,23 +44,13 @@ const StickyHeaderV3 = () => {
         setIsLanguageOpen(!isLanguageOpen);
     };
 
-    const selectLanguage = (lang, path) => {
-        setNavItemActive(path);
+    const selectLanguage = (lang) => {
         setSelectedLanguage(lang.name);
         setIsLanguageOpen(false);
         i18n.changeLanguage(lang.code);
         localStorage.setItem("languageCode", lang.code);
         localStorage.setItem("languageName", lang.name);
     };
-
-    const setNavItemActive = (path) =>{
-        const i= navItemsInit.map(item => {
-           item.active = item.href === path;
-        });
-
-        setNavItems(navItemsInit);
-        setCurrentPath(path);
-    }
 
     return (
         <nav
@@ -76,7 +63,7 @@ const StickyHeaderV3 = () => {
                     {/* Logo and main nav items */}
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                             <Link to={ '/'} onClick={()=> setNavItemActive('/')} >
+                             <Link to={ '/'}  >
                                 <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
                              </Link>
                         </div>
@@ -84,10 +71,9 @@ const StickyHeaderV3 = () => {
                             <div className="ml-10 flex items-baseline space-x-6">
                                 {navItems.map((item) => (
                                   <Link
-                                      onClick={()=> setNavItemActive(item.href)}
                                     key={item.name}
                                     to={item.href}
-                                    className={`${item.active ? "bg-green-600" : ""} text-green-100 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                                    className={`${location.pathname === item.href ? "bg-green-600" : ""} text-green-100 hover:bg-green-600 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                                   >
                                     {item.name}
                                   </Link>
@@ -146,7 +132,7 @@ const StickyHeaderV3 = () => {
                                         {languages.map((lang) => (
                                             <button
                                                 key={lang.code}
-                                                onClick={() => selectLanguage(lang, currentPath)}
+                                                onClick={() => selectLanguage(lang)}
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 w-full text-left"
                                             >
                                                 <span className="mr-2">{lang.flag}</span>
@@ -178,10 +164,9 @@ const StickyHeaderV3 = () => {
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navItems.map((item) => (
                                   <Link
-                                      onClick={()=> setNavItemActive(item.href)}
                                     key={item.name}
                                     to={item.href}
-                                    className={`${item.active ? "bg-green-600" : ""} text-green-100 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
+                                    className={`${location.pathname === item.href ? "bg-green-600" : ""} text-green-100 hover:bg-green-600 hover:text-white block px-3 py-2 rounded-md text-base font-medium`}
                                   >
                                     {item.name}
                                   </Link>
@@ -229,7 +214,7 @@ const StickyHeaderV3 = () => {
                                 {languages.map((lang) => (
                                     <button
                                         key={lang.code}
-                                        onClick={() => selectLanguage(lang, currentPath)}
+                                        onClick={() => selectLanguage(lang)}
                                         className="block px-3 py-2 text-sm text-gray-700 hover:bg-green-50 w-full text-left rounded-md"
                                     >
                                         <span className="mr-2">{lang.flag}</span>
