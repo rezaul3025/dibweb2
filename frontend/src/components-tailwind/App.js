@@ -13,6 +13,7 @@ import NotificationOverlayV2 from "./NotificationOverlayV2";
 import '../i18n-v2'
 import StickyHeaderV3 from "./header/StickyHeaderV3";
 import FooterV3 from "./FooterV3";
+import MonthlyPrayerTimetablePage from "./prayer-time/MonthlyPrayerTimetablePage";
 
 export default function () {
     const [notification, setNotification] = useState(null);
@@ -42,6 +43,7 @@ export default function () {
                    <Route exact path='/donation-tailwind' element={<DonationPage/>}/>
                    <Route exact path='/download' element={<DownloadPage/>}/>
                    <Route exact path='/academy' element={<AcademyPage/>}/>
+                    <Route exact path='/prayer-time-tld' element={<MonthlyPrayerTimetablePage/>}/>
                </Routes>
        </BrowserRouter>
    );

@@ -29,6 +29,8 @@ const PrayerTimeCard = () => {
                 setPrayerTimes(prayerTimesObj);
                 setLoading(false);
                 localStorage.setItem("prayerTimesJson", JSON.stringify(data));
+                const prayerTimesCalendarData = data.calendar;
+                localStorage.setItem("prayerTimesCalendarData", JSON.stringify(prayerTimesCalendarData));
             } catch (error) {
                 let prayerTimesData = localStorage.getItem("prayerTimesJson");
                 const prayerTimesObj = prayerTimesData ? getPrayerTimesObj(JSON.parse(prayerTimesData)) : [];

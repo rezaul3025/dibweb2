@@ -128,6 +128,15 @@ i18n
                         bank_name: 'ব্যাংকের নাম',
                         thank_msg: 'আপনার সমর্থনের জন্য ধন্যবাদ! আপনার অবদান আমাদের পরিবর্তন আনতে সাহায্য করবে।'
                     },
+                    PrayerTime: {
+                        title: 'নামাজের সময়',
+                        heading: 'নামাজের সময়সূচী',
+                        select_month: 'মাস নির্বাচন করুন',
+                        date: 'তারিখ',
+                        fajr: 'ফজর',
+                        sunrise : 'সূর্যোদয়'
+
+                    },
                     Download: {
                         title: 'ডাউনলোড করুন',
                         heading: 'ডাউনলোড করার জন্য ফাইলগুলি',
@@ -271,6 +280,14 @@ i18n
                         bank_name: 'Name der Bank',
                         thank_msg: 'Vielen Dank für Ihre Unterstützung! Ihr Beitrag hilft uns, etwas zu bewegen.'
                     },
+                    PrayerTime: {
+                        title: 'Gebetszeit',
+                        heading: 'Gebetsplan für ',
+                        select_month: 'Monat auswählen',
+                        date: 'Datum',
+                        fajr: 'Fajr',
+                        sunrise:'Sonnenaufgang',
+                    },
                     Download: {
                         title: 'Herunterladen',
                         heading: 'Artikel herunterladen',
@@ -412,6 +429,14 @@ i18n
                         bank_transfer_heading: 'Bank Transfer',
                         bank_name: 'Bank Name',
                         thank_msg: 'Thank you for your support! Your contribution helps us make a difference.'
+                    },
+                    PrayerTime: {
+                        title: 'Prayer Time',
+                        heading: 'Prayer Timetable For',
+                        select_month: 'Select Month',
+                        date: 'Date',
+                        fajr: 'Fajr',
+                        sunrise: 'Sunrise'
                     },
                     Download: {
                         title: 'Download',

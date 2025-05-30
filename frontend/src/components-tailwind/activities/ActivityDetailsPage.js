@@ -9,7 +9,7 @@ const ActivityDetailsPage = () => {
     const [event, setEvent] = useState(null);
 
     useEffect(() => {
-        fetch('/api/v1/events/' + eventId+'/')
+        fetch('/api/v1/events/' + eventId + '/')
             .then(response => response.json())
             .then(data => setEvent(data));
     }, []);
@@ -22,7 +22,7 @@ const ActivityDetailsPage = () => {
                     {event && <Activities event={event}/>}
                 </section>
             </main>
-            <FooterV3 />
+            <FooterV3/>
         </div>
     );
 };

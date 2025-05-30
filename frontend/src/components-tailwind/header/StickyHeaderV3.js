@@ -24,6 +24,7 @@ const StickyHeaderV3 = () => {
     { name: t('Membership.title'), href: '/membership/' },
     { name: t('Academy.nav_title'), href: '/academy/' },
     { name: t('Donation.title'), href: '/donation-tailwind/' },
+    {name: t('PrayerTime.title'), href: '/prayer-time-tld/'},
     { name: t('Download.title'), href: '/download/' },
   ];
 
@@ -58,7 +59,7 @@ const StickyHeaderV3 = () => {
                 isScrolled ? 'bg-green-600 shadow-lg' : 'bg-green-500'
             }`}
         >
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-6">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo and main nav items */}
                     <div className="flex items-center">
@@ -68,7 +69,7 @@ const StickyHeaderV3 = () => {
                              </Link>
                         </div>
                         <div className="hidden md:block">
-                            <div className="ml-10 flex items-baseline space-x-6">
+                            <div className="ml-10 flex items-baseline space-x-3">
                                 {navItems.map((item) => (
                                   <Link
                                     key={item.name}
@@ -118,7 +119,7 @@ const StickyHeaderV3 = () => {
                                         className="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none"
                                         id="language-menu"
                                     >
-                                        <FiGlobe className="h-4 w-4"/>
+                                        {/*<FiGlobe className="h-4 w-4"/>*/}
                                         <span
                                             className="mx-2">{languages.find(l => l.name === selectedLanguage)?.flag}</span>
                                         <span className="ml-1">{selectedLanguage}</span>
@@ -203,7 +204,7 @@ const StickyHeaderV3 = () => {
                                 onClick={toggleLanguageDropdown}
                                 className="flex items-center text-sm text-white focus:outline-none"
                             >
-                                <FiGlobe className="h-5 w-5"/>
+                                {/*<FiGlobe className="h-5 w-5"/>*/}
                                 <span
                                     className="mx-2">{languages.find(l => l.name === selectedLanguage)?.flag}</span>
                                 <span className="ml-1">{selectedLanguage}</span>

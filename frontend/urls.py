@@ -26,4 +26,5 @@ urlpatterns = [
     path('membership/', index),
     path('download/', index),
     path('academy/', index),
+    path('prayer-time-tld/', index),
 ]

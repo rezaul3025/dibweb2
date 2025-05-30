@@ -52,10 +52,14 @@ const ActivityCarouselV6 = ({events}) => {
   };
 
   useEffect(() => {
-    //if (!autoPlay) return;
-    //const timer = setTimeout(nextSlide, 7000);
-    //return () => clearTimeout(timer);
+    if (!autoPlay) return;
+    const timer = setTimeout(nextSlide, 7000);
+    return () => clearTimeout(timer);
   }, [currentIndex, autoPlay]);
+
+  function HtmlRenderer({htmlContent}) {
+        return <div dangerouslySetInnerHTML={{__html: htmlContent}}/>;
+  }
 
   return (
     <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-2xl shadow-lg bg-green-50 border border-green-100">
@@ -70,7 +74,9 @@ const ActivityCarouselV6 = ({events}) => {
               {/* Text Content */}
               <div className="p-6 md:p-8 lg:w-2/3">
                 <h2 className="text-2xl font-bold text-gray-500 mb-3">{event.title}</h2>
-                <p className="text-gray-600 mb-6 text-justify break-words text-gray-500">{event.description}</p>
+                <p className="text-gray-600 mb-6 text-justify break-words text-gray-500">
+                    <HtmlRenderer htmlContent={event.description}/>
+                </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-start">

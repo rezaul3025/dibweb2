@@ -3,8 +3,13 @@ import moment from "moment";
 import {useTranslation} from "react-i18next";
 
 export default function Activities({event}) {
-  const { t } = useTranslation();
-   return (
+    function HtmlRenderer({htmlContent}) {
+        return <div dangerouslySetInnerHTML={{__html: htmlContent}}/>;
+    }
+
+    const { t } = useTranslation();
+
+    return (
     <div className="max-w-6xl mx-auto px-4 py-4">
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Main Content */}
@@ -21,7 +26,7 @@ export default function Activities({event}) {
           {/* Event Description */}
           <div className="prose">
             <p className="text-gray-500 text-xl text-justify break-words">
-                {event.description}
+                 <HtmlRenderer htmlContent={event.description}/>
             </p>
             {/*<ul className="mt-4 space-y-2 text-gray-500">
               <li className="flex items-start">
