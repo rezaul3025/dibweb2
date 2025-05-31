@@ -134,8 +134,11 @@ i18n
                         select_month: 'মাস নির্বাচন করুন',
                         date: 'তারিখ',
                         fajr: 'ফজর',
-                        sunrise : 'সূর্যোদয়'
-
+                        sunrise : 'সূর্যোদয়',
+                        dhuhr: 'যোহর',
+                        asr: 'আসর',
+                        maghrib: 'মাগরিব',
+                        isha: 'ইশা'
                     },
                     Download: {
                         title: 'ডাউনলোড করুন',
@@ -287,6 +290,10 @@ i18n
                         date: 'Datum',
                         fajr: 'Fajr',
                         sunrise:'Sonnenaufgang',
+                        dhuhr:'Dhuhr',
+                        asr:'Asr',
+                        maghrib:'Maghrib',
+                        isha: 'Isha'
                     },
                     Download: {
                         title: 'Herunterladen',
@@ -436,7 +443,11 @@ i18n
                         select_month: 'Select Month',
                         date: 'Date',
                         fajr: 'Fajr',
-                        sunrise: 'Sunrise'
+                        sunrise: 'Sunrise',
+                        dhuhr:'Dhuhr',
+                        asr:'Asr',
+                        maghrib:'Maghrib',
+                        isha: 'Isha'
                     },
                     Download: {
                         title: 'Download',

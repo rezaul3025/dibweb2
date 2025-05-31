@@ -2112,9 +2112,6 @@
   .text-blue-600 {
     color: var(--color-blue-600);
   }
-  .text-blue-800 {
-    color: var(--color-blue-800);
-  }
   .text-emerald-500 {
     color: var(--color-emerald-500);
   }
@@ -2174,9 +2171,6 @@
   }
   .text-purple-500 {
     color: var(--color-purple-500);
-  }
-  .text-purple-800 {
-    color: var(--color-purple-800);
   }
   .text-red-500 {
     color: var(--color-red-500);

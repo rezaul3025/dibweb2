@@ -155,10 +155,10 @@ const MonthlyPrayerTimetable = () => {
                                 <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.date')}</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.fajr')}</th>
                                 <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.sunrise')}</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">Dhuhr</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">Asr</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">Maghrib</th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">Isha</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.dhuhr')}</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.asr')}</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.maghrib')}</th>
+                                <th className="px-6 py-3 text-left text-xs font-medium text-green-700 uppercase tracking-wider">{t('PrayerTime.isha')}</th>
                             </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
@@ -166,7 +166,7 @@ const MonthlyPrayerTimetable = () => {
                                 <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-green-50'}>
                                     {/*<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{prayer.date}</td>*/}
                                     {prayer.map((pd, i) => <td
-                                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{pd}</td>)}
+                                        className={`px-6 py-4 whitespace-nowrap text-sm text-gray-700 ${new Date(prayer[0]).getDate() === new Date().getDate() && new Date(prayer[0]).getMonth() === new Date().getMonth()?'font-bold':''}`}>{pd}</td>)}
                                 </tr>
                             ))}
                             </tbody>

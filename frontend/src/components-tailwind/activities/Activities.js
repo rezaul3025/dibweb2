@@ -18,14 +18,14 @@ export default function Activities({event}) {
           <div>
             <h1 className="text-xl font-bold text-green-500">{event.title}</h1>
             <div className="flex gap-2 mt-2">
-              <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Study</span>
-              <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Quran</span>
+              <span className="px-2 py-1 bg-blue-100 text-green-500 text-xs rounded-full">Study</span>
+              <span className="px-2 py-1 bg-purple-100 text-green-500 text-xs rounded-full">Quran</span>
             </div>
           </div>
 
           {/* Event Description */}
           <div className="prose">
-            <p className="text-gray-500 text-xl text-justify break-words">
+            <p className="text-gray-500 text-md text-justify break-words">
                  <HtmlRenderer htmlContent={event.description}/>
             </p>
             {/*<ul className="mt-4 space-y-2 text-gray-500">
@@ -48,8 +48,8 @@ export default function Activities({event}) {
           {event.event_datetime && <div className="bg-white p-4 rounded-lg shadow-sm">
             <h2 className="text-lg font-semibold mb-3">{t('ActivityDetails.date_time_heading')}</h2>
             <div className="flex items-center gap-3">
-              <div className="bg-blue-100 p-2 rounded-lg">
-                <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="bg-green-100 p-2 rounded-lg">
+                <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
