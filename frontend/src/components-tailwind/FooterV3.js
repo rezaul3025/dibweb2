@@ -41,11 +41,17 @@ const FooterV3 = () => {
                     <div className="md:col-span-2 lg:col-span-1">
                         <div className="flex items-center mb-4">
                             {/*<img className="h-16 w-16" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> */}
-                            <h3 className="text-green-500 text-xl font-bold">{t('DIB')}</h3>
+                            <div className="flex items-center space-x-2">
+                                <Link to={'/'}>
+                                    <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'}
+                                         alt="Logo"/>
+                                </Link>
+                                <h3 className="text-green-500 text-xl font-bold">{t('DIB')}</h3>
+                            </div>
                         </div>
                         <p className="mb-4 text-justify break-words">{t('Footer.DescText')}</p>
                         <div className="flex space-x-4">
-                            <a href="#" className="text-gray-400 hover:text-white">
+                            <a href="https://www.facebook.com/profile.php?id=100068090377582" target="_blank" className="text-green-500 hover:text-green-700">
                                 <span className="sr-only">Facebook</span>
                                 <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                                     <path fillRule="evenodd"
@@ -53,9 +59,6 @@ const FooterV3 = () => {
                                           clipRule="evenodd"/>
                                 </svg>
                             </a>
-                            <Link to={ '/'}  >
-                                <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
-                             </Link>
                         </div>
                     </div>
 

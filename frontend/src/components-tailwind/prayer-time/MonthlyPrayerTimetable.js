@@ -165,7 +165,7 @@ const MonthlyPrayerTimetable = () => {
                             {currentMonthPrayers.map((prayer, index) => (
                                 <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-green-50'}>
                                     {/*<td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{prayer.date}</td>*/}
-                                    {prayer.map((pd, i) => <td
+                                    {prayer.map((pd, index) => <td key={index}
                                         className={`px-6 py-4 whitespace-nowrap text-sm text-gray-700 ${new Date(prayer[0]).getDate() === new Date().getDate() && new Date(prayer[0]).getMonth() === new Date().getMonth()?'font-bold':''}`}>{pd}</td>)}
                                 </tr>
                             ))}

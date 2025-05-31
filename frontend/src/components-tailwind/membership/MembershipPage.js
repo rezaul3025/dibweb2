@@ -10,7 +10,7 @@ const MembershipPage = () => {
         window.open('/static/assets/pdf/membership_form.pdf', '_blank');
     };
 
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -40,7 +40,7 @@ const MembershipPage = () => {
                     </div>
                 </section>
             </main>
-            <FooterV3 />
+            <FooterV3/>
         </div>
     )
 }

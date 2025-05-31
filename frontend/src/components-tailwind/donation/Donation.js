@@ -38,7 +38,7 @@ const Donation = () => {
           <FaPaypal className="text-green-500 mr-2 text-xl"/>
           <h3 className="text-xl font-semibold text-gray-700">{t('Donation.paypal_heading')}</h3>
         </div>
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <form action="https://www.paypal.com/donate" method="post" target="_blank">
           <input type="hidden" name="hosted_button_id" value="5PZFDLV6A5Q46"/>
           <button type="submit"
               className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">

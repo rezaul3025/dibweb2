@@ -63,11 +63,11 @@ const AboutUs = () => {
               <p className="mt-2 text-lg text-gray-600">{t('AboutUs.history_text')}</p>
             </div>
             <div className="p-4">
-              <p className="text-4xl font-bold text-green-600">50+</p>
+              <p className="text-4xl font-bold text-green-600">30+</p>
               <p className="mt-2 text-lg text-gray-600">{t('AboutUs.member_text')}</p>
             </div>
             <div className="p-4">
-              <p className="text-4xl font-bold text-green-600">30+</p>
+              <p className="text-4xl font-bold text-green-600">50+</p>
               <p className="mt-2 text-lg text-gray-600">{t('AboutUs.associate_member_text')}</p>
             </div>
           </div>

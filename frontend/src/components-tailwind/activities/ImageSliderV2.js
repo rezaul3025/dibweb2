@@ -74,9 +74,9 @@ const ImageSliderV2 = ({
                                 {event.title}
                             </h2>
                             {event.description && (
-                                <p className="text-sm sm:text-base mb-4 text-white/90 drop-shadow-md line-clamp-3" >
+                                <div className="text-sm sm:text-base mb-4 text-white/90 drop-shadow-md line-clamp-3" >
                                     <HtmlRenderer htmlContent={event.description}/>
-                                </p>
+                                </div>
                             )}
                             {event.id && (
                                 <Link

@@ -25,9 +25,9 @@ export default function Activities({event}) {
 
           {/* Event Description */}
           <div className="prose">
-            <p className="text-gray-500 text-justify break-words">
+            <div className="text-gray-500 text-justify break-words">
                  <HtmlRenderer htmlContent={event.description}/>
-            </p>
+            </div>
             {/*<ul className="mt-4 space-y-2 text-gray-500">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

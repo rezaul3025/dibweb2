@@ -39,7 +39,6 @@
     --color-indigo-50: oklch(96.2% 0.018 272.314);
     --color-purple-100: oklch(94.6% 0.033 307.174);
     --color-purple-500: oklch(62.7% 0.265 303.9);
-    --color-purple-800: oklch(43.8% 0.218 303.724);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
@@ -2977,6 +2976,12 @@
       line-height: var(--tw-leading, var(--text-base--line-height));
     }
   }
+  .sm\:font-normal {
+    @media (width >= 40rem) {
+      --tw-font-weight: var(--font-weight-normal);
+      font-weight: var(--font-weight-normal);
+    }
+  }
   .sm\:break-words {
     @media (width >= 40rem) {
       overflow-wrap: break-word;
@@ -3236,6 +3241,12 @@
       line-height: var(--tw-leading, var(--text-xl--line-height));
     }
   }
+  .md\:font-medium {
+    @media (width >= 48rem) {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
+    }
+  }
   .md\:text-green-500 {
     @media (width >= 48rem) {
       color: var(--color-green-500);
@@ -3336,6 +3347,11 @@
   .lg\:p-0 {
     @media (width >= 64rem) {
       padding: calc(var(--spacing) * 0);
+    }
+  }
+  .lg\:px-2 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 2);
     }
   }
   .lg\:px-6 {

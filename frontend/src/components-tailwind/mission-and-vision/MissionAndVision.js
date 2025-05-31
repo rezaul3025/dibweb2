@@ -67,8 +67,8 @@ const MissionAndVision = () => {
                         </p>
 
                         {item.items && item.items.map((item, index) => (
-                            <ul className="space-y-3">
-                                <li className="text-gray-600 dark:text-gray-300 mt-4 text-justify break-words"> <span className="font-bold">{index +1}. {item.title}  : </span> {item.description} </li>
+                            <ul className="space-y-3" key={index}>
+                                <li className="text-gray-600 dark:text-gray-300 mt-4 text-justify break-words" > <span className="font-bold">{index +1}. {item.title}  : </span> {item.description} </li>
                             </ul>
                         ))}
 

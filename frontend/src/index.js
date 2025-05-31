@@ -7,7 +7,8 @@ import './tailwind.css';
 import 'preline/preline'
 import 'preline/variants.css'
 import './i18n-v2'
+import {createRoot} from "react-dom/client";
 
-render((
-    <App/>
-), document.getElementById('app'));
+const root = createRoot(document.getElementById('root'));
+
+root.render(<App />);

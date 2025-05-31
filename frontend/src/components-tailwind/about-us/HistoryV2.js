@@ -50,7 +50,7 @@ const HistoryV2 = () => {
                     <span className="text-green-500">{t('AboutUs.history_timeline.title')}</span>
                 </h2>
                 <ol className="relative border-s border-gray-200 dark:border-gray-700">
-                    {timelineData.map((item, index) => (<li className="mb-10 ms-4">
+                    {timelineData.map((item, index) => (<li className="mb-10 ms-4" key={index}>
                         <div
                             className="absolute w-3 h-3 bg-green-500 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
                         <time

@@ -183,10 +183,10 @@ const AcademyDashboardV3 = () => {
                                                 <h3 className="text-lg font-semibold text-gray-500">
                                                     {notice.title}
                                                 </h3>
-                                                <p className="text-gray-600 mt-1 text-justify break-words">
+                                                <div className="text-gray-600 mt-1 text-justify break-words">
                                                     <HtmlRenderer
                                                             htmlContent={notice.description}/>
-                                                </p>
+                                                </div>
                                                 <div className="flex items-center my-4">
                                                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                                          stroke="currentColor">
@@ -250,8 +250,8 @@ const AcademyDashboardV3 = () => {
                             {t('Academy.courses_section')}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {courses.map(course => (
-                                <div key={course.id}
+                            {courses.map((course, index) => (
+                                <div key={index}
                                      className="bg-white rounded-lg shadow-sm border border-green-100 p-6 hover:shadow-md transition-shadow">
                                     <h3 className="text-lg font-medium text-green-700">{course.name}</h3>
                                     <div className="mt-2 text-sm text-gray-600 space-y-1">
@@ -309,8 +309,8 @@ const AcademyDashboardV3 = () => {
                             </h2>
                         </div>
                         <div className="p-4 space-y-3">
-                            {downloadItems.map(item => (
-                                <div key={item.id}
+                            {downloadItems.map((item,index) => (
+                                <div key={index}
                                      className="flex items-center justify-between p-3 bg-green-50 rounded-md hover:bg-green-100 transition-colors">
                                     <div className="flex items-center">
                                         <DocumentTextIcon className="h-5 w-5 text-green-500 mr-3"/>

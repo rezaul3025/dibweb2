@@ -63,7 +63,7 @@ const PrayerTimeCard = () => {
         <div className="bg-green-50 text-gray-500 rounded-lg overflow-hidden">
             {/* Top Section - Location & Date */}
             <div
-                className="px-4 py-3 bg-green-50 flex flex-col sm:flex-row justify-between items-center border-b border-gray-100">
+                className="px-4 py-3 bg-green-50 text-sm flex flex-col sm:flex-row justify-between items-center border-b border-gray-100">
                 <div className="flex items-center mb-2 sm:mb-0">
                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -79,12 +79,16 @@ const PrayerTimeCard = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    <span
-                        className="font-medium">{moment(new Date()).format('dddd, MMM D YYYY')} • {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                    }).format(Date.now())}</span>
+                    <div className="md:font-medium flex items-center sm:font-normal">
+                        <div className="px-1">{moment(new Date()).format('dddd, MMM D YYYY')}</div>
+                        <div className="px-1">
+                            {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            }).format(Date.now())}
+                        </div>
+                    </div>
                 </div>
             </div>
 
