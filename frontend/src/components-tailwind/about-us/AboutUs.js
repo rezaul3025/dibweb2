@@ -48,7 +48,7 @@ const AboutUs = () => {
           <h2 className="text-2xl font-extrabold text-green-500 sm:text-3xl">
             {t('DIB')}
           </h2>
-          <div className="mt-6 mx-auto text-xl text-gray-500">
+          <div className="mt-6 mx-auto text-gray-500">
             <p className="mb-6 text-justify break-words">
               {t('AboutUs.description')}
             </p>

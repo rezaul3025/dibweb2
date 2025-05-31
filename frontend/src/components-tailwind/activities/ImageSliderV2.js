@@ -10,6 +10,10 @@ const ImageSliderV2 = ({
                        }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    events = events.filter(function (event) {
+    return event.event_type === 'CURRENT';
+    });
+
     const goToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? events.length - 1 : currentIndex - 1;
@@ -70,8 +74,7 @@ const ImageSliderV2 = ({
                                 {event.title}
                             </h2>
                             {event.description && (
-                                <p className="text-sm sm:text-base mb-4 text-white/90 drop-shadow-md line-clamp-3"
-                                   title={event.description}>
+                                <p className="text-sm sm:text-base mb-4 text-white/90 drop-shadow-md line-clamp-3" >
                                     <HtmlRenderer htmlContent={event.description}/>
                                 </p>
                             )}

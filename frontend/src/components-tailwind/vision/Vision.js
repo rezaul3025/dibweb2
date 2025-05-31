@@ -7,7 +7,7 @@ const Vision = () => {
     return (
         <Fragment>
             <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">{t('Vision.heading')}</h2>
-            <p className="text-gray-500 mx-auto text-xl text-justify break-words p-2">
+            <p className="text-gray-500 mx-auto text-justify break-words p-2">
                 {t('Vision.description')}
             </p>
             <div className="relative aspect-video w-full max-w-6xl mx-auto">

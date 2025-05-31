@@ -25,7 +25,7 @@ export default function Activities({event}) {
 
           {/* Event Description */}
           <div className="prose">
-            <p className="text-gray-500 text-md text-justify break-words">
+            <p className="text-gray-500 text-justify break-words">
                  <HtmlRenderer htmlContent={event.description}/>
             </p>
             {/*<ul className="mt-4 space-y-2 text-gray-500">
@@ -54,8 +54,8 @@ export default function Activities({event}) {
                 </svg>
               </div>
               <div>
-                  {/*<p className="font-medium">Nov 15-17, 2023</p>*/}
-                <p className="text-gray-500">{moment(event.event_datetime).format("LLL")}</p>
+                  { event.event_datetime_text && <p className="text-gray-500">{event.event_datetime_text}</p>}
+                  { !event.event_datetime_text && <p className="text-gray-500">{moment(event.event_datetime).format("LLL")}</p>}
               </div>
             </div>
           </div>}
@@ -72,7 +72,7 @@ export default function Activities({event}) {
               </div>
               <div>
                 <p className="text-gray-500">{event.address}</p>
-                <a href="#" className="text-green-500 text-sm mt-1 inline-block">{t('ActivityDetails.view_on_google_map')}</a>
+                <a href={event.map_location} target="_blank" className="text-green-500 text-sm mt-1 inline-block">{t('ActivityDetails.view_on_google_map')}</a>
               </div>
             </div>
           </div>}

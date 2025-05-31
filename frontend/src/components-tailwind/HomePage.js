@@ -20,7 +20,7 @@ const HomePage = () => {
                       <QuoteText
                           text={t('Home.heading')}
                           author={t('Home.sub_heading')}
-                          size="lg"
+                          size="sm"
                       />
                       {/*<figure className="p-2">
                     <blockquote className="italic text-gray-700">"By Al-’Asr (the time).

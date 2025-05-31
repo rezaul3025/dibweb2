@@ -2,8 +2,6 @@ import React from "react";
 
 import { useState, useEffect } from 'react';
 import EventsSidebar from "./EventsSidebar";
-import ActivityCarouselV6 from "./ActivityCarouselV6";
-import ImageSlider from "./ImageSlider";
 import ImageSliderV2 from "./ImageSliderV2";
 
 const CarouselWithSidebar = () => {

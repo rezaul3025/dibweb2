@@ -183,7 +183,10 @@ const AcademyDashboardV3 = () => {
                                                 <h3 className="text-lg font-semibold text-gray-500">
                                                     {notice.title}
                                                 </h3>
-                                                <p className="text-md text-gray-600 mt-1 text-justify break-words">{notice.description}</p>
+                                                <p className="text-gray-600 mt-1 text-justify break-words">
+                                                    <HtmlRenderer
+                                                            htmlContent={notice.description}/>
+                                                </p>
                                                 <div className="flex items-center my-4">
                                                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                                                          stroke="currentColor">

@@ -26,6 +26,10 @@ const FooterV3 = () => {
         setTimeout(() => setCopiedField(null), 2000);
     };
 
+    const openTermsAndConditionsPdf = () => {
+        window.open('/static/assets/pdf/terms_and_conditions.pdf', '_blank');
+    };
+
     const { t } = useTranslation();
 
     return (
@@ -49,6 +53,9 @@ const FooterV3 = () => {
                                           clipRule="evenodd"/>
                                 </svg>
                             </a>
+                            <Link to={ '/'}  >
+                                <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+                             </Link>
                         </div>
                     </div>
 
@@ -161,9 +168,7 @@ const FooterV3 = () => {
                     <p className="text-gray-400 text-sm">© {new Date().getFullYear()} {t('DIB')} All rights
                         reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" className="text-gray-400 hover:text-white text-sm">Privacy</a>
-                        <a href="#" className="text-gray-400 hover:text-white text-sm">Terms</a>
-                        <a href="#" className="text-gray-400 hover:text-white text-sm">Security</a>
+                        <a href="#" onClick={()=>openTermsAndConditionsPdf()} className="text-gray-400 hover:text-white text-sm">Terms & Conditions</a>
                     </div>
                 </div>
             </div>

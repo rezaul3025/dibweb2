@@ -18,7 +18,7 @@ const MembershipPage = () => {
             <main className="flex-grow pt-20">
                 <section className="container mx-auto px-4">
                     <h2 className="text-2xl font-bold text-green-500 mb-6 text-center">{t('Membership.heading')}</h2>
-                    <p className="text-gray-500 mx-auto text-xl text-justify break-words p-2">
+                    <p className="text-gray-500 mx-auto text-justify break-words p-2">
                         {t('Membership.description')}
                     </p>
                     <div className="relative aspect-video w-full max-w-6xl mx-auto">
