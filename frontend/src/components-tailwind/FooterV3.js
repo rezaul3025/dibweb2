@@ -43,7 +43,7 @@ const FooterV3 = () => {
                             {/*<img className="h-16 w-16" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/> */}
                             <div className="flex items-center space-x-2">
                                 <Link to={'/'}>
-                                    <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'}
+                                    <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new_v2.png'}
                                          alt="Logo"/>
                                 </Link>
                                 <h3 className="text-green-500 text-xl font-bold">{t('DIB')}</h3>

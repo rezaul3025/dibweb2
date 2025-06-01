@@ -65,7 +65,7 @@ const StickyHeaderV3 = () => {
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
                             <Link to={'/'}>
-                                <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new.png'} alt="Logo"/>
+                                <img className="h-16 w-18" src={'/static/assets/images/dib-logo-new_v2.png'} alt="Logo"/>
                             </Link>
                         </div>
                         <div className="hidden md:block">
