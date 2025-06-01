@@ -2,6 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import {useReactToPrint} from "react-to-print";
 import moment from "moment";
 import {useTranslation} from "react-i18next";
+import {PDFDownloadLink} from "@react-pdf/renderer";
+import PrayerTimesPDF from "./PrayerTimesPDF";
 
 const MonthlyPrayerTimetable = () => {
     const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
@@ -101,6 +103,7 @@ const MonthlyPrayerTimetable = () => {
         fetchData(new Date().getMonth());
     }, []);
 
+
     return (
 
         <div className="mx-auto">
@@ -111,18 +114,27 @@ const MonthlyPrayerTimetable = () => {
                 <label htmlFor="month-select" className="block text-sm font-medium text-green-700 mb-2">
                     {t('PrayerTime.select_month')}:
                 </label>
-                <select
-                    id="month-select"
-                    value={selectedMonth}
-                    onChange={(e) => fetchData(parseInt(e.target.value))}
-                    className="block w-full md:w-64 p-2 border border-green-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 bg-white"
-                >
-                    {months.map((month, index) => (
-                        <option key={month} value={index}>
-                            {month}
-                        </option>
-                    ))}
-                </select>
+                <div className="flex gap-4">
+                    <select
+                        id="month-select"
+                        value={selectedMonth}
+                        onChange={(e) => fetchData(parseInt(e.target.value))}
+                        className="block w-full md:w-64 p-2 border border-green-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 bg-white"
+                    >
+                        {months.map((month, index) => (
+                            <option key={month} value={index}>
+                                {month}
+                            </option>
+                        ))}
+                    </select>
+                    <PDFDownloadLink
+                        document={<PrayerTimesPDF prayerTimes={currentMonthPrayers} month={months[selectedMonth]}/>}
+                        fileName="dib_prayer_times.pdf"
+                        className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded transition-colors"
+                    >
+                        {({loading}) => (loading ? 'Generating PDF...' : 'Download PDF')}
+                    </PDFDownloadLink>
+                </div>
             </div>
 
             {/* Tabs */}
@@ -144,7 +156,7 @@ const MonthlyPrayerTimetable = () => {
 
             {/* Prayer Times Table */}
             {currentMonthPrayers && activeTab === 'prayers' && (
-                <div className="bg-white shadow-md rounded-lg overflow-hidden  border border-green-300 mb-4" ref={componentRef}>
+                <div className="bg-white shadow-md rounded-lg overflow-hidden  border border-green-300 mb-4">
                     <div className="text-gary-700 p-4 items-center">
                         <h2 className="text-xl font-semibold">{months[selectedMonth]} {year}</h2>
                     </div>
