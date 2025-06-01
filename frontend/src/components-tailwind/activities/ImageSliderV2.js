@@ -60,7 +60,7 @@ const ImageSliderV2 = ({
                     >
                         {/* Background image */}
                         <img
-                            src={event.poster_image}
+                            src={'/static/assets'+event.poster_image}
                             alt=' '
                             className="absolute inset-0 object-cover w-full h-full"
                         />

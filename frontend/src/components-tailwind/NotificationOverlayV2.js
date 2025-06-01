@@ -60,7 +60,7 @@ const NotificationOverlayV2 = ({notification}) => {
                   />
               </div>*/}
                     <ResponsiveImageV2
-                        src={notification.image}
+                        src={'/static/assets'+notification.image}
                         alt="vdfdfdf "
                         maxWidth="400px"
                         maxHeight="500px"
