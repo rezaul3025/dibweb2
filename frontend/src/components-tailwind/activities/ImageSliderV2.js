@@ -11,7 +11,7 @@ const ImageSliderV2 = ({
     const [currentIndex, setCurrentIndex] = useState(0);
 
     events = events.filter(function (event) {
-    return event.event_type === 'CURRENT';
+    return event.enabled && event.event_type === 'CURRENT';
     });
 
     const goToPrevious = () => {
