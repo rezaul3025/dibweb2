@@ -81,13 +81,13 @@ const PrayerTimeCard = () => {
                     </svg>
                     <div className="md:font-medium flex items-center sm:font-normal">
                         <div className="px-1">{moment(new Date()).format('dddd, MMM D YYYY')}</div>
-                        <div className="px-1">
+                        {/*<div className="px-1">
                             {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
                                 day: 'numeric',
                                 month: 'long',
                                 year: 'numeric'
                             }).format(Date.now())}
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </div>
