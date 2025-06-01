@@ -82,7 +82,7 @@ export default function Activities({event}) {
         {event.poster_image && <div className="lg:w-1/3">
           <div className="bg-white rounded-lg overflow-hidden shadow-lg sticky top-6">
             <img
-              src={event.poster_image+'?auto=format&fit=crop&w=600&q=80'}
+              src={'/static/assets'+event.poster_image+'?auto=format&fit=crop&w=600&q=80'}
               alt="Event"
               className="w-full h-full object-cover"
             />

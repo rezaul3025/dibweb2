@@ -52,7 +52,7 @@ const ImageSliderV2 = ({
             <div className="relative h-64 sm:h-86 md:h-96 lg:h-[32rem]">
                 {/* Slides */}
                 {events.map((event, index) => (
-                    <div
+                     event.enabled && <div
                         key={index}
                         className={`absolute inset-0 transition-opacity duration-700 flex items-center ${
                             index === currentIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
