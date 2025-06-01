@@ -74,11 +74,11 @@ const NotificationOverlayV2 = ({notification}) => {
                 </div>
 
                 {/* Optional: Clickable Overlay */}
-                <a
-                    href="/special-offer"
+                {/*<a
+                    href="/event-details"
                     className="absolute inset-0 z-0"
                     aria-label="View special offer"
-                />
+                />*/}
             </div>
         </div>
     );
