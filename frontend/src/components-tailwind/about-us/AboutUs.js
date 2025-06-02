@@ -8,7 +8,7 @@ const AboutUs = () => {
   const teamMembers = [
     {
       id: 1,
-      name: 'Dr. Nasir Uddin',
+      name: 'Dr. Sabbir Ahmed Osmany',
       position: 'President',
       bio: '',
       twitter: '#',
@@ -16,7 +16,7 @@ const AboutUs = () => {
     },
     {
       id: 2,
-      name: 'Dr. Sabbir Ahmed Osmany ',
+      name: 'Dr. Nasir Uddin',
       position: 'Vice President',
       bio: '',
       twitter: '#',
