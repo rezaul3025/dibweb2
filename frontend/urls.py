@@ -27,4 +27,5 @@ urlpatterns = [
     path('download/', index),
     path('academy/', index),
     path('prayer-time-tld/', index),
+    path('academy-admin/', index),
 ]

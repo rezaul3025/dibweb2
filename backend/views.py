@@ -7,6 +7,8 @@ from http.client import HTTPException
 import requests
 from bs4 import BeautifulSoup
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, logout
+from rest_framework.authtoken.models import Token
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -255,3 +257,19 @@ def notification(request):
     notifications = Notification.objects.all()
     serializer = NotificationSerializer(notifications, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def login_user(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    print(username)
+    user = authenticate(request, username=username, password=password)
+    print(user)
+    if user is not None:
+        login(request, user)
+        token = Token.generate_key()
+        return Response({
+            'token': token
+        })
+    return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)

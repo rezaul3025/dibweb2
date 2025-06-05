@@ -11,9 +11,8 @@ import DownloadPage from "./download/DownloadPage";
 import AcademyPage from "./academy/AcademyPage";
 import NotificationOverlayV2 from "./NotificationOverlayV2";
 import '../i18n-v2'
-import StickyHeaderV3 from "./header/StickyHeaderV3";
-import FooterV3 from "./FooterV3";
 import MonthlyPrayerTimetablePage from "./prayer-time/MonthlyPrayerTimetablePage";
+import AcademyAdminPage from "./academy/AcademyAdminPage";
 
 export default function () {
     const [notification, setNotification] = useState(null);
@@ -23,6 +22,7 @@ export default function () {
               const response = await fetch('/api/v1/notification/');
               const data = await response.json();
               setNotification(data);
+              console.log(location.pathname)
           } catch (error) {
               console.error("Error fetching notification data:", error);
           }
@@ -30,9 +30,12 @@ export default function () {
       fetchData();
     }, []);
 
-   return (
+    const pageUrl = ["/academy-admin/"];
+
+    return (
        <BrowserRouter>
-           {notification && <NotificationOverlayV2 notification={notification[0]}/>}
+           {notification && !pageUrl.includes(location.pathname) &&
+               <NotificationOverlayV2 notification={notification[0]}/>}
            <ScrollToTop/>
                <Routes>
                    <Route exact path='/' element={<HomePage/>}/>
@@ -43,7 +46,8 @@ export default function () {
                    <Route exact path='/donation-tailwind' element={<DonationPage/>}/>
                    <Route exact path='/download' element={<DownloadPage/>}/>
                    <Route exact path='/academy' element={<AcademyPage/>}/>
-                    <Route exact path='/prayer-time-tld' element={<MonthlyPrayerTimetablePage/>}/>
+                   <Route exact path='/prayer-time-tld' element={<MonthlyPrayerTimetablePage/>}/>
+                   <Route exact path='/academy-admin' element={<AcademyAdminPage/>}/>
                </Routes>
        </BrowserRouter>
    );

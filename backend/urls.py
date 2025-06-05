@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
+
 from backend import views
 
 # from api.views import public_events
@@ -29,6 +30,7 @@ urlpatterns = [
    path('v1/notice-board/', views.noticeBoard),
    path('v1/download-items/<str:department>/', views.downloadItems),
    path('v1/notification/', views.notification),
+   path('v1/login/', views.login_user),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
