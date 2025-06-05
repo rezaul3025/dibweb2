@@ -20,4 +20,11 @@ urlpatterns = [
     path('terms-condition/', index),
     path('verify/<int:num>/<str:paymentRef>/', index),
     path('cash-sale/', index),
+    path('activity-details/<int:eventId>/', index),
+    path('donation-tailwind/', index),
+    path('vision/', index),
+    path('membership/', index),
+    path('download/', index),
+    path('academy/', index),
+    path('prayer-time-tld/', index),
 ]

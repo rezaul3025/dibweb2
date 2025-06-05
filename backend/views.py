@@ -12,8 +12,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee, Toggle
-from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer
+from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift, AcademyNoticeBoard, \
+    DownloadItem, NoticeBoardItem, Notification
+from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
+    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, AcademyNoticeBoardSerializer, \
+    DownloadItemSerializer, NoticeBoardItemSerializer, NotificationSerializer
 
 
 @api_view(['POST'])
@@ -145,6 +148,7 @@ def prayer_times(request, mosque_id):
                 conf_data = json.loads(conf_data_json)
                 return JsonResponse(conf_data, status=status.HTTP_200_OK)
             else:
+                print("Failed to extract confData JSON")
                 raise HTTPException(status_code=500, detail=f"Failed to extract confData JSON for {mosque_id}")
         else:
             print("Script containing confData not found.")
@@ -184,3 +188,70 @@ def is_recaptcha_valid(request_data):
     result = json.loads(response.read().decode())
     ''' End reCAPTCHA validation '''
     return result['success'];
+
+@api_view(['GET'])
+def allStudents(request):
+    students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allStudentBySearch(request, search_params):
+    students = Student.objects.filter(Q(first_name__icontains=search_params) | Q(last_name__icontains=search_params))
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByClass(request, class_id):
+    students = Student.objects.filter(classes__id=class_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByTeacher(request, teacher_id):
+    classes = StudentClass.objects.filter(teachers__id=teacher_id)
+    students = Student.objects.filter(classes__in=classes)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def studentsByShift(request, shift_id):
+    students = Student.objects.filter(shift__id=shift_id)
+    serializer = StudentSerializer(students, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allClasses(request):
+    classes = StudentClass.objects.all()
+    serializer = StudentClassSerializer(classes, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allTeachers(request):
+    teaches = Teacher.objects.all()
+    serializer = TeacherSerializer(teaches, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def allShifts(request):
+    shifts = Shift.objects.all()
+    serializer = ShiftSerializer(shifts, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def noticeBoard(request):
+    notice_board_items= NoticeBoardItem.objects.all()
+    serializer = NoticeBoardItemSerializer(notice_board_items, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def downloadItems(request, department):
+    downloads = DownloadItem.objects.filter(department=department)
+    serializer = DownloadItemSerializer(downloads, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def notification(request):
+    notifications = Notification.objects.all()
+    serializer = NotificationSerializer(notifications, many=True)
+    return Response(serializer.data)

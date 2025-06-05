@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from backend.SendEmail import SendEmail
-from backend.models import Attendee, Event, ContactUs, Toggle
+from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -14,7 +15,7 @@ class AttendeeAdmin(admin.ModelAdmin):
 admin.site.register(Attendee, AttendeeAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'poster_image', 'address','map_location','enabled','place','event_datetime','attendee_limit',"attendee_count",)
+    list_display = ('title', 'description', 'poster_image', 'address','map_location','enabled','place','event_datetime','attendee_limit',"attendee_count","event_datetime_text", "event_type",)
     fields = list_display
 
 admin.site.register(Event, EventAdmin)
@@ -28,3 +29,48 @@ class ToggleAdmin(admin.ModelAdmin):
     list_display = ('name', 'enabled')
     fields = list_display
 admin.site.register(Toggle, ToggleAdmin)
+
+class ShiftAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    fields = list_display
+admin.site.register(Shift, ShiftAdmin)
+
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description')
+    fields = list_display
+admin.site.register(Teacher, TeacherAdmin)
+
+class StudentClassAdmin(admin.ModelAdmin):
+    filter_horizontal = ('teachers',)
+    list_display = ('name', 'description', 'day')
+    fields = list_display+filter_horizontal
+admin.site.register(StudentClass, StudentClassAdmin)
+
+
+class StudentAdmin(admin.ModelAdmin):
+    filter_horizontal = ('classes',)
+    list_display = ('first_name', 'last_name', 'address', 'contact_details', 'shift', 'siblings', 'get_classes')
+    readonly_fields = ('get_classes',)
+    fields = list_display+filter_horizontal
+admin.site.register(Student, StudentAdmin)
+
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ('headline','image', 'enabled')
+    fields = list_display
+admin.site.register(Notification, NotificationAdmin)
+
+class NoticeBoardDocumentAdmin(admin.StackedInline):
+    model = NoticeBoardItem
+
+@admin.register(AcademyNoticeBoard)
+class AcademyNoticeBoardAdmin(admin.ModelAdmin):
+    inlines = [NoticeBoardDocumentAdmin]
+
+@admin.register(NoticeBoardItem)
+class NoticeBoardDocumentAdmin(admin.ModelAdmin):
+    pass
+
+class DownloadItemAdmin(admin.ModelAdmin):
+    list_display = ('filename', 'document', 'filesize', 'date', 'department')
+    readonly_fields = ('filesize', 'date')
+admin.site.register(DownloadItem, DownloadItemAdmin)

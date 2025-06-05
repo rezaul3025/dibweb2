@@ -21,3 +21,4 @@ django-cors-headers==4.0.0
 requests==2.32.0
 httpx==0.23.0
 bs4==0.0.1
+django-modeltranslation

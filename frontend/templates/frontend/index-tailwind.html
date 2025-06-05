@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+ <html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darul Ihsan Berlin e.V</title>
+
+    <!-- Meta SEO -->
+    <meta name="title" content="Darul Ihsan Berlin e.V">
+    <meta name="description" content="Darul Ihsan Berlin e.V website">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+
+    <!-- Favicon -->
+    <meta name="theme-color" content="#ffffff">
+    <link href="{% static '/assets/css/output.css' %}" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        {% csrf_token %}
+        <div id="root"></div>
+        <script src="{% static '/frontend/main.js' %}" type="application/javascript"></script>
+    </body>
+</html>

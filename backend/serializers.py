@@ -1,7 +1,8 @@
 # core/user/serializers.py
 from rest_framework import serializers
 
-from backend.models import Attendee, Event, ContactUs, Toggle
+from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
+    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification
 
 
 class AttendeeSerializer(serializers.ModelSerializer):
@@ -13,7 +14,7 @@ class AttendeeSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
-        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime","attendee_limit","attendee_count"]
+        fields = ['id','title', 'description', 'poster_image', 'address', "map_location", "enabled","place","event_datetime","attendee_limit","attendee_count", "event_datetime_text", "event_type"]
 
 class ContactUsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,3 +25,50 @@ class ToggleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Toggle
         fields = ['name', 'enabled']
+
+class ShiftSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shift
+        fields = ['id', 'name', 'description']
+
+
+class TeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Teacher
+        fields = ['id', 'name', 'description']
+
+
+class StudentClassSerializer(serializers.ModelSerializer):
+    teachers = TeacherSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = StudentClass
+        fields = ['id', 'name', 'day','description','teachers']
+
+class StudentSerializer(serializers.ModelSerializer):
+    classes = StudentClassSerializer(read_only=True, many=True)
+    shift = ShiftSerializer(read_only=True)
+    class Meta:
+        model = Student
+        fields = ['id','first_name', 'last_name','address', 'contact_details','shift','classes','siblings','shift']
+
+class NoticeBoardItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NoticeBoardItem
+        fields = ['title','description','date','document','document_name','document_size']
+
+class AcademyNoticeBoardSerializer(serializers.ModelSerializer):
+    documents = NoticeBoardItemSerializer(source='noticeboarddocument_set', many=True)
+    class Meta:
+        model = AcademyNoticeBoard
+        fields = ['documents']
+
+class DownloadItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DownloadItem
+        fields = ['document', 'filename', 'filesize', 'date','department']
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ['headline','image','enabled']

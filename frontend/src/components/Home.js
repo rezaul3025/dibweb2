@@ -12,7 +12,6 @@ export default function Home(){
         <Fragment>
             <div className="container-fluid position-relative p-0">
                 <Navbar />
-                <Carousel/>
             </div>
             <OurHistory/>
             <Donation/>

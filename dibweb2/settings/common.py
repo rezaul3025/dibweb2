@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'frontend',
     'ckeditor',
     'corsheaders',
+    'modeltranslation',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,12 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('bn', gettext('Bengali')),
+)
 
 USE_TZ = True
 

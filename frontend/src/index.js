@@ -1,9 +1,14 @@
 import React from 'react'
 import {render} from 'react-dom'
-import App from './components/App';
 import  './i18n';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import App from "./components-tailwind/App";
+import './tailwind.css';
+import 'preline/preline'
+import 'preline/variants.css'
+import './i18n-v2'
+import {createRoot} from "react-dom/client";
 
-render((
-    <App/>
-), document.getElementById('app'));
+const root = createRoot(document.getElementById('root'));
+
+root.render(<App />);
