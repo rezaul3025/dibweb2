@@ -36,7 +36,7 @@ const DownloadItem = ({
         </div>
       </div>
       <a
-        href={url}
+        href={`/static/assets${url}`}
         target="_blank"
         className="ml-4 flex-shrink-0 p-2 text-gray-400 hover:text-green-500 hover:bg-indigo-50 rounded-full transition-colors duration-150"
         aria-label={`Download ${name}`}
