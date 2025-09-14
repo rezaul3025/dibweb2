@@ -154,11 +154,6 @@ const FooterV3 = () => {
                                         <DocumentDuplicateIcon className="h-3 w-3 mr-1"/>
                                         {t('Footer.CopyAll')}
                                     </button>
-                                    <button
-                                        className="text-xs bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded flex items-center">
-                                        <GlobeAltIcon className="h-3 w-3 mr-1"/>
-                                        {t('download')} QR
-                                    </button>
                                 </div>
                             </div>
                         </div>
