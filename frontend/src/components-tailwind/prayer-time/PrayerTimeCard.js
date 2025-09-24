@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import Clock from "react-live-clock";
 import moment from "moment/moment";
 import LoadingIcon from "../LoadingIcon";
@@ -6,11 +6,10 @@ import LoadingIcon from "../LoadingIcon";
 const PrayerTimeCard = () => {
     const [prayerTimes, setPrayerTimes] = useState([]);
     const [loading, setLoading] = useState(true);
-
-    const [currentPrayer, setCurrentPrayer] = useState('Dhuhr');
+    const [nextPrayer, setNextPrayer] = useState()
 
     function getPrayerTimesObj(data) {
-        return [
+        const prayerTimes = [
             {name: "Fajr", time: data.times[0], iqama: data.iqamaCalendar[0]["1"][0], active: false, icon: "🌄"},
             {name: "Sunrise", time: data.shuruq, iqama: "", active: false, icon: "☀️"},
             {name: "Dhuhr", time: data.times[1], iqama: data.iqamaCalendar[0]["1"][1], active: false, icon: "🕌"},
@@ -18,6 +17,50 @@ const PrayerTimeCard = () => {
             {name: "Maghrib", time: data.times[3], iqama: data.iqamaCalendar[0]["1"][3], active: false, icon: "🌇"},
             {name: "Isha", time: data.times[4], iqama: data.iqamaCalendar[0]["1"][4], active: false, icon: "🌃"}
         ];
+
+        let [h, m] = data.times[0].split(":").map(Number);
+        const fajrTime = new Date().setMinutes(h * 60 + m);
+
+        setNextPrayer(getClosestTime(prayerTimes, fajrTime));
+
+        return prayerTimes;
+    }
+
+
+    function getClosestTime(timesObj, fajrTime) {
+        const now = new Date();
+        const nowMinutes = now.getHours() * 60 + now.getMinutes(); // convert to minutes since midnight
+
+        let closest = {};
+        let minDiff = fajrTime - now;
+
+        timesObj.forEach(timeObj => {
+            if (timeObj.name === 'Sunrise') {
+                return;
+            }
+            // convert "HH:MM" to minutes
+            let [h, m] = timeObj.time.split(":").map(Number);
+            let totalMinutes = h * 60 + m;
+
+            const dateOfPrayer = new Date();
+            dateOfPrayer.setMinutes(m);
+            dateOfPrayer.setHours(h);
+            if(timeObj.name === 'Fajr' && now.getHours() > h){
+                dateOfPrayer.setDate(dateOfPrayer.getDate() + 1);
+            }
+            const diffDate = Math.floor(dateOfPrayer.getTime() / 60000) - Math.floor(now.getTime() / 60000);
+
+            // find absolute difference
+            let diff = Math.abs(totalMinutes - nowMinutes);
+
+            if (diffDate> 0 && diffDate <= minDiff) {
+                minDiff = diffDate;
+                closest['name'] = timeObj.name;
+                closest['time'] = timeObj.time;
+            }
+        });
+
+        return closest;
     }
 
     useEffect(() => {
@@ -73,6 +116,23 @@ const PrayerTimeCard = () => {
                     </svg>
                     <span className="font-medium">{location.city}, {location.country}</span>
                 </div>
+                <div className="flex items-center">
+                     {nextPrayer &&
+                         <Fragment>
+                             <span className="mr-1 text-2xl font-bold">
+                                 {nextPrayer.name}
+                             </span>
+                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                             </svg>
+                             <span className="ml-1 text-2xl font-bold">
+                               {nextPrayer.time}
+                             </span>
+
+                         </Fragment>
+                     }
+                </div>
 
                 <div className="flex items-center">
                     <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -108,14 +168,14 @@ const PrayerTimeCard = () => {
                             <span className="text-xl mb-1">{prayer.icon}</span>
                             <span className="text-xs font-medium">{prayer.name}</span>
                             <span className={`mt-1 font-bold ${
-                                prayer.active ? 'text-white' : 'text-gray-600'
+                                nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-600'
                             }`}>
                             {prayer.time}
                         </span>
                             <span className="text-sm">{prayer.iqama}</span>
-                            {prayer.active && (
-                                <span className="mt-1 text-xs bg-white text-green-600 px-2 py-0.5 rounded-full">
-                  Current
+                            { nextPrayer && nextPrayer.name === prayer.name && (
+                                <span className="mt-1 text-xs bg-white text-green-600 px-2 py-0.5 rounded-full mb-2">
+                  Next
                 </span>
                             )}
                         </div>
@@ -133,6 +193,7 @@ const PrayerTimeCard = () => {
                     <span className="font-medium">
                     <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
                     </span>
+
                 </div>
                 <div className="flex items-center">
                     <svg

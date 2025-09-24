@@ -22,15 +22,6 @@ const HomePage = () => {
                           author={t('Home.sub_heading')}
                           size="sm"
                       />
-                      {/*<figure className="p-2">
-                    <blockquote className="italic text-gray-700">"By Al-’Asr (the time).
-                      Verily, man is [deep] in loss, except for those who believe and do good deeds,
-                        urge one another to the truth and urge one another to patience."
-                    </blockquote>
-                    <figcaption className="mt-2 text-sm text-gray-500">
-                        — <cite>Al-Quran 103</cite>
-                    </figcaption>
-                </figure>*/}
                   </div>
               </section>
               {/* Hero Prayer Section */}
