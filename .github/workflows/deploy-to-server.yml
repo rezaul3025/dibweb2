@@ -27,7 +27,7 @@ jobs:
       - name: Deploy app
         run: |
           ssh -i ~/.ssh/id_ed25519 root@static.21.135.99.91.clients.your-server.de <<'EOF'
-          cd /project/dibweb2
+          cd /root/projects/dibweb2
           git pull origin convert-to-docker
           ./dibweb2.sh build
           docker compose down
