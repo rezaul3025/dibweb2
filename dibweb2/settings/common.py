@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 CORS_ORIGIN_ALLOW_ALL = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com','darulihsan-berlin.com', 'master', 'http://0.0.0.0:8089/']
+ALLOWED_HOSTS = ['static.21.135.99.91.clients.your-server.de','127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com','darulihsan-berlin.com', 'master', 'http://0.0.0.0:8089/']
 
 # Application definition
 
