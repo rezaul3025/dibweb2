@@ -114,7 +114,7 @@ const PrayerTimeCard = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
-                    <span className="font-medium">{location.city}, {location.country}.</span>
+                    <span className="font-medium">{location.city}, {location.country} test</span>
                 </div>
                 <div className="flex items-center">
                      {nextPrayer &&
