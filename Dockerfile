@@ -39,6 +39,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxcb1-dev \
   && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates curl gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && corepack enable \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install deps first for better caching
+COPY frontend/package.json frontend/package-lock.json* frontend/yarn.lock* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn install --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  else yarn install || npm install; fi
+
+# Build the app
+COPY frontend/ ./
+RUN \
+  if [ -f package.json ]; then \
+    if npm run | grep -q "build"; then npm run build; else yarn build; fi; \
+  fi
+
+
 # Python deps
 COPY requirements.txt .
 

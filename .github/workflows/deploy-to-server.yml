@@ -30,7 +30,7 @@ jobs:
           cd /root/projects/dibweb2
           git pull origin convert-to-docker
           docker rmi dibweb2:latest
-          ./dibweb2.sh build
+          docker build -t dibweb2:latest .
           docker compose down
-          ./dibweb2.sh compose-up
+          docker compose up -d
           EOF
