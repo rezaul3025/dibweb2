@@ -29,6 +29,7 @@ jobs:
           ssh -i ~/.ssh/id_ed25519 root@static.21.135.99.91.clients.your-server.de <<'EOF'
           cd /root/projects/dibweb2
           git pull origin convert-to-docker
+          docker rmi dibweb2:latest
           ./dibweb2.sh build
           docker compose down
           ./dibweb2.sh compose-up
