@@ -1,24 +1,26 @@
-import re
-
 import json
+import re
 import urllib
 from http.client import HTTPException
 
 import requests
 from bs4 import BeautifulSoup
+from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
-from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
+from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
-from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
-from backend.models import Event, Attendee, Toggle, Student, StudentClass, Teacher, Shift, AcademyNoticeBoard, \
-    DownloadItem, NoticeBoardItem, Notification
+from backend.models import Event, Attendee, Toggle, StudentClass, Teacher, Shift, DownloadItem, NoticeBoardItem, \
+    Notification
 from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
-    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, AcademyNoticeBoardSerializer, \
-    DownloadItemSerializer, NoticeBoardItemSerializer, NotificationSerializer
+    StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, DownloadItemSerializer, \
+    NoticeBoardItemSerializer, NotificationSerializer
+from .models import Payment, Student
+from .serializers import PaymentSerializer
 
 
 @api_view(['POST'])
@@ -273,3 +275,58 @@ def login_user(request):
             'token': token
         })
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.AllowAny])  # or IsAuthenticated for secure endpoints
+def record_student_payment(request):
+    """
+    Create or update a student's payment record for a specific month/year.
+    """
+    student_id = request.data.get('student')
+    year = int(request.data.get('year', timezone.now().year))
+    month = int(request.data.get('month', timezone.now().month))
+
+    try:
+        student = Student.objects.get(id=student_id)
+    except Student.DoesNotExist:
+        return Response({"error": "Student not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    payment_data = {
+        "student": student.id,
+        "year": year,
+        "month": month,
+        "expected_amount": request.data.get("expected_amount", "0.00"),
+        "paid_amount": request.data.get("paid_amount", "0.00"),
+        "payment_date": request.data.get("payment_date", timezone.now().date()),
+        "payment_method": request.data.get("payment_method", "cash"),
+        "notes": request.data.get("notes", "")
+    }
+
+    # Check if payment record already exists
+    payment, created = Payment.objects.get_or_create(
+        student=student, year=year, month=month,
+        defaults=payment_data
+    )
+
+    # If existing, update it
+    if not created:
+        serializer = PaymentSerializer(payment, data=payment_data, partial=True)
+    else:
+        serializer = PaymentSerializer(payment)
+
+    # If updating, validate and save
+    if not created:
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Re-fetch to return updated values
+    serializer = PaymentSerializer(payment)
+    message = "Payment created." if created else "Payment updated."
+
+    return Response(
+        {"message": message, "payment": serializer.data},
+        status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
+    )
