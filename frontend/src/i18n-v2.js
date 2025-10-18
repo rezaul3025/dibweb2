@@ -462,7 +462,7 @@ i18n
                         CopyAll: 'Copy All'
                     },
                     MemberAnnouncement: {
-                        heading: 'Become a patron of Darul Insan Vision.',
+                        heading: 'Become a part of Darul Insan Vision.',
                         sub_heading: 'Join as an associate member',
                         description: 'Darul Ihsan Berlin works in the way of Allah and runs a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
                             'We encourage those who want to support the cause of faith to join as members. May Allah reward us all, InshaAllah.'
