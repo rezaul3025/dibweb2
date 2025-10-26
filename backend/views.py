@@ -140,9 +140,9 @@ def prayer_times(request, mosque_id):
     r = requests.get(f"https://mawaqit.net/en/{mosque_id}")
     if r.status_code == 200:
         soup = BeautifulSoup(r.text, 'html.parser')
-        script = soup.find('script', string=re.compile(r'var confData = (.*?);', re.DOTALL))
+        script = soup.find('script', string=re.compile(r'let confData = (.*?);', re.DOTALL))
         if script:
-            mawaqit = re.search(r'var confData = (.*?);', script.string, re.DOTALL)
+            mawaqit = re.search(r'let confData = (.*?);', script.string, re.DOTALL)
             if mawaqit:
                 conf_data_json = mawaqit.group(1)
                 conf_data = json.loads(conf_data_json)
