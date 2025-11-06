@@ -1,7 +1,6 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
-
 from backend import views
 
 # from api.views import public_events
@@ -25,7 +24,8 @@ urlpatterns = [
    path('v1/students/search/<str:search_params>/', views.allStudentBySearch),
    path('v1/students/', views.allStudents),
    path("v1/students/payments/record/", views.record_student_payment, name="record_student_payment"),
-   path('v1/classes/', views.allClasses),
+    path("v1/students/add", views.add_student, name="add_student"),
+    path('v1/classes/', views.allClasses),
    path('v1/shifts/', views.allShifts),
    path('v1/teachers/', views.allTeachers),
    path('v1/notice-board/', views.noticeBoard),

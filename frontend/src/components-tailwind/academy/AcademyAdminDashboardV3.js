@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 import {HiCash, HiMenu, HiSearch, HiUserAdd} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
+import Dropdown from "./Dropdown";
 
 const AcademyAdminDashboardV3 = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,59 +28,16 @@ const AcademyAdminDashboardV3 = () => {
         first_name: '',
         last_name: '',
         address: '',
-        contact_details: '',
+        email: '',
+        phone_number: '',
         shift: '',
-        class: '',
+        classes: '',
+        monthly_fee : 50,
         sibling: false
     });
 
     // Sample data
-    const [students, setStudents] = useState([
-        {
-            id: 1,
-            name: 'John Doe',
-            email: 'john@example.com',
-            phone: '555-123-4567',
-            class: '10-A',
-            rollNumber: '1001',
-            address: '123 Main St, City',
-            feesPaid: 250,
-            totalFees: 300,
-            status: 'Partially Paid',
-            paymentHistory: [
-                {id: 1, amount: 100, date: '2023-04-15', method: 'Cash'},
-                {id: 2, amount: 150, date: '2023-05-10', method: 'Bank Transfer'}
-            ]
-        },
-        {
-            id: 2,
-            name: 'Jane Smith',
-            email: 'jane@example.com',
-            phone: '555-987-6543',
-            class: '9-B',
-            rollNumber: '1002',
-            address: '456 Oak Ave, Town',
-            feesPaid: 300,
-            totalFees: 300,
-            status: 'Paid',
-            paymentHistory: [
-                {id: 1, amount: 300, date: '2023-05-01', method: 'Online Payment'}
-            ]
-        },
-        {
-            id: 3,
-            name: 'Mike Johnson',
-            email: 'mike@example.com',
-            phone: '555-456-7890',
-            class: '11-C',
-            rollNumber: '1003',
-            address: '789 Pine Rd, Village',
-            feesPaid: 0,
-            totalFees: 300,
-            status: 'Unpaid',
-            paymentHistory: []
-        }
-    ]);
+    const [students, setStudents] = useState([]);
 
     const [notifications, setNotifications] = useState([
         {id: 1, type: 'payment', message: 'Payment received from John Doe', date: '2023-05-15', read: false},
@@ -87,6 +45,37 @@ const AcademyAdminDashboardV3 = () => {
     ]);
 
     useEffect(() => {
+        const fetchStudents = async () => {
+          try {
+            const response = await fetch('/api/v1/students/');
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // 🔄 Adapt backend response to your state shape
+            const formattedStudents = data.map((student) => ({
+              id: student.id,
+              first_name: student.first_name,
+              last_name: student.last_name,
+              email: student.email,
+              phone_number: student.phone_number,
+              classes: student.classes[0]?.name,
+              shift: student.shift?.name || student.shift || '', // adapt based on API
+              address: student.address,
+              siblings: student.siblings ? 'true' : 'false',
+              paymentHistory : student.payments
+            }));
+
+            setStudents(formattedStudents);
+          } catch (error) {
+            console.error('Error fetching students:', error);
+          }
+        };
+
+        fetchStudents().then(r => {});
+
         // Set the first student as active by default when viewing details
         if (students.length > 0 && !activeStudent && (currentView === 'details' || currentView === 'payments')) {
             setActiveStudent(students[0]);
@@ -170,23 +159,70 @@ const AcademyAdminDashboardV3 = () => {
         setStudents([...students, studentToAdd]);
         setShowAddStudentModal(false);
         setNewStudent({
-            name: '',
-            email: '',
-            phone: '',
-            class: '',
-            rollNumber: '',
-            address: '',
-            totalFees: 300
-        });
+        first_name: '',
+        last_name: '',
+        address: '',
+        email: '',
+        phone_number: '',
+        shift: '',
+        class: '',
+        monthly_fee : '',
+        sibling: false
+    });
 
         alert('Student added successfully!');
     };
 
     const filteredStudents = students.filter(student =>
-        student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.rollNumber.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleDropdownChange = (field, selectedValue) => {
+    setNewStudent(prev => ({ ...prev, [field]: selectedValue }));
+  };
+
+    const handleSubmit = async (e) => {
+        alert(newStudent);
+        e.preventDefault();
+
+        const payload = {
+          first_name: newStudent.first_name,
+          last_name: newStudent.last_name,
+          address: newStudent.address,
+          email: newStudent.email,
+          phone_number: newStudent.phone_number,
+          shift: parseInt(newStudent.shift), // match Django field
+          classes: [parseInt(newStudent.classes)], // expects a list of IDs
+          monthly_fee: parseInt(newStudent.monthly_fee || 0),
+          siblings: newStudent.sibling
+        };
+
+        try {
+          const response = await fetch('/api/v1/students/add', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            console.log('Student added:', data);
+            alert('Student added successfully!');
+          } else {
+            const errorData = await response.json();
+            console.error('Error:', errorData);
+            alert('Error adding student: ' + JSON.stringify(errorData));
+          }
+        } catch (error) {
+          console.error('Network error:', error);
+          alert('Network error occurred.');
+        }
+  };
 
     return (
         <div className="flex h-screen bg-gray-50">
@@ -293,13 +329,7 @@ const AcademyAdminDashboardV3 = () => {
                                     <tr>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                             First Name: '',
-        last_name: '',
-        address: '',
-        contact_details: '',
-        shift: '',
-        class: '',
-        sibling: false
+                                             Name
                                         </th>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -307,7 +337,11 @@ const AcademyAdminDashboardV3 = () => {
                                         </th>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Contact Details
+                                            Email
+                                        </th>
+                                         <th scope="col"
+                                            className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Phone
                                         </th>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -315,7 +349,7 @@ const AcademyAdminDashboardV3 = () => {
                                         </th>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Class
+                                            Classes
                                         </th>
                                         <th scope="col"
                                             className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -341,16 +375,19 @@ const AcademyAdminDashboardV3 = () => {
                                                 {student.address}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {student.contact_details}
+                                                {student.email}
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap">
-                          <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                              student.status === 'Paid' ? 'bg-green-100 text-green-800' :
-                                  student.status === 'Unpaid' ? 'bg-red-100 text-red-800' :
-                                      'bg-yellow-100 text-yellow-800'
-                          }`}>
-                            {student.status} (${student.feesPaid}/${student.totalFees})
-                          </span>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {student.phone_number}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {student.shift}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {student.classes}
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {student.siblings==='true'?'Yes':'No'}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                 <button
@@ -595,7 +632,9 @@ const AcademyAdminDashboardV3 = () => {
                                                     <thead className="bg-gray-50">
                                                     <tr>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expected Amount</th>
+                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paid Amount</th>
+                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Amount</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Receipt</th>
                                                     </tr>
@@ -603,9 +642,11 @@ const AcademyAdminDashboardV3 = () => {
                                                     <tbody className="bg-white divide-y divide-gray-200">
                                                     {activeStudent.paymentHistory.map((payment) => (
                                                         <tr key={payment.id}>
-                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.date}</td>
-                                                            <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.amount}</td>
-                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.method}</td>
+                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_date}</td>
+                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.expected_amount}</td>
+                                                            <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.paid_amount}</td>
+                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.due_amount}</td>
+                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_method_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                                                 <button className="text-green-500 hover:text-green-700">
                                                                     <DocumentTextIcon className="h-5 w-5"/>
@@ -686,18 +727,32 @@ const AcademyAdminDashboardV3 = () => {
                                 <div className="mt-3 text-center sm:mt-5">
                                     <h3 className="text-lg leading-6 font-medium text-gray-900">Add New Student</h3>
                                     <div className="mt-2">
-                                        <form onSubmit={handleAddStudent}>
+                                        <form onSubmit={handleSubmit}>
                                             <div className="grid grid-cols-1 gap-y-4">
                                                 <div>
-                                                    <label className="block text-sm font-medium text-gray-700">Full
+                                                    <label className="block text-sm font-medium text-gray-700">First
                                                         Name</label>
                                                     <input
                                                         type="text"
                                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 "
-                                                        value={newStudent.name}
+                                                        value={newStudent.first_name}
                                                         onChange={(e) => setNewStudent({
                                                             ...newStudent,
-                                                            name: e.target.value
+                                                            first_name: e.target.value
+                                                        })}
+                                                        required
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-gray-700">Last
+                                                        Name</label>
+                                                    <input
+                                                        type="text"
+                                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 "
+                                                        value={newStudent.last_name}
+                                                        onChange={(e) => setNewStudent({
+                                                            ...newStudent,
+                                                            last_name: e.target.value
                                                         })}
                                                         required
                                                     />
@@ -722,42 +777,30 @@ const AcademyAdminDashboardV3 = () => {
                                                     <input
                                                         type="tel"
                                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                        value={newStudent.phone}
+                                                        value={newStudent.phone_number}
                                                         onChange={(e) => setNewStudent({
                                                             ...newStudent,
-                                                            phone: e.target.value
+                                                            phone_number: e.target.value
                                                         })}
                                                         required
                                                     />
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4">
                                                     <div>
-                                                        <label
-                                                            className="block text-sm font-medium text-gray-700">Class</label>
-                                                        <input
-                                                            type="text"
-                                                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                            value={newStudent.class}
-                                                            onChange={(e) => setNewStudent({
-                                                                ...newStudent,
-                                                                class: e.target.value
-                                                            })}
-                                                            required
-                                                        />
+                                                        <Dropdown
+                                                            label="Class"
+                                                            endpoint="/api/v1/classes/"
+                                                            value={newStudent.classes}
+                                                            onChange={(val) => handleDropdownChange('classes', val)}
+                                                          />
                                                     </div>
                                                     <div>
-                                                        <label className="block text-sm font-medium text-gray-700">Roll
-                                                            Number</label>
-                                                        <input
-                                                            type="text"
-                                                            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                            value={newStudent.rollNumber}
-                                                            onChange={(e) => setNewStudent({
-                                                                ...newStudent,
-                                                                rollNumber: e.target.value
-                                                            })}
-                                                            required
-                                                        />
+                                                        <Dropdown
+                                                            label="Shift"
+                                                            endpoint="/api/v1/shifts/"
+                                                            value={newStudent.shift}
+                                                            onChange={(val) => handleDropdownChange('shift', val)}
+                                                          />
                                                     </div>
                                                 </div>
                                                 <div>
@@ -780,10 +823,10 @@ const AcademyAdminDashboardV3 = () => {
                                                     <input
                                                         type="number"
                                                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3  focus:ring-green-500 focus:border-green-500"
-                                                        value={newStudent.totalFees}
+                                                        value={newStudent.monthly_fee}
                                                         onChange={(e) => setNewStudent({
                                                             ...newStudent,
-                                                            totalFees: parseFloat(e.target.value) || 0
+                                                            monthly_fee: parseFloat(e.target.value) || 0
                                                         })}
                                                         required
                                                     />

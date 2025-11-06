@@ -48,13 +48,6 @@ class StudentClassSerializer(serializers.ModelSerializer):
         model = StudentClass
         fields = ['id', 'name', 'day','description','teachers']
 
-class StudentSerializer(serializers.ModelSerializer):
-    classes = StudentClassSerializer(read_only=True, many=True)
-    shift = ShiftSerializer(read_only=True)
-    class Meta:
-        model = Student
-        fields = ['id','first_name', 'last_name','address', 'contact_details','shift','classes','siblings','shift']
-
 class NoticeBoardItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = NoticeBoardItem
@@ -163,3 +156,11 @@ class PaymentSerializer(serializers.ModelSerializer):
         instance = super().update(instance, validated_data)
         self._sync_status(instance)
         return instance
+
+class StudentSerializer(serializers.ModelSerializer):
+    classes = StudentClassSerializer(read_only=True, many=True)
+    shift = ShiftSerializer(read_only=True)
+    payments = PaymentSerializer(many=True, read_only=True)
+    class Meta:
+        model = Student
+        fields = ['id','first_name', 'last_name','address', 'email','phone_number','shift','classes','siblings','shift','monthly_fee','payments']

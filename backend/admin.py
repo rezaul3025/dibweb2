@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from backend.SendEmail import SendEmail
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
-    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -49,7 +49,7 @@ admin.site.register(StudentClass, StudentClassAdmin)
 
 class StudentAdmin(admin.ModelAdmin):
     filter_horizontal = ('classes',)
-    list_display = ('first_name', 'last_name', 'address', 'contact_details', 'shift', 'siblings', 'get_classes')
+    list_display = ('first_name', 'last_name', 'address', 'email','phone_number', 'shift', 'siblings', 'monthly_fee','get_classes')
     readonly_fields = ('get_classes',)
     fields = list_display+filter_horizontal
 admin.site.register(Student, StudentAdmin)
@@ -74,3 +74,9 @@ class DownloadItemAdmin(admin.ModelAdmin):
     list_display = ('filename', 'document', 'filesize', 'date', 'department')
     readonly_fields = ('filesize', 'date')
 admin.site.register(DownloadItem, DownloadItemAdmin)
+
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('student','year', 'month','expected_amount','paid_amount','payment_date','payment_method', 'notes','due_amount')
+    readonly_fields = ('due_amount',)
+    fields = list_display
+admin.site.register(Payment, PaymentAdmin)

@@ -12,6 +12,9 @@ from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+from django.db import transaction
+from django.core.exceptions import ValidationError
 
 from backend.SendEmail import SendEmail
 from backend.models import Event, Attendee, Toggle, StudentClass, Teacher, Shift, DownloadItem, NoticeBoardItem, \
@@ -330,3 +333,60 @@ def record_student_payment(request):
         {"message": message, "payment": serializer.data},
         status=status.HTTP_201_CREATED if created else status.HTTP_200_OK
     )
+
+@api_view(['POST'])
+def add_student(request):
+    # Expect application/json
+    if request.content_type != "application/json":
+        return JsonResponse(
+            {"error": "Content-Type must be application/json"},
+            status=415
+        )
+
+    payload = request.data  # ✅ DRF-parsed data (JSON, form, multipart)
+
+    # Required fields
+    missing = [f for f in ["first_name", "last_name", "shift"]
+               if not payload.get(f)]
+    if missing:
+        return Response({"error": f"Missing: {', '.join(missing)}"},
+                        status=status.HTTP_400_BAD_REQUEST)
+
+    # Related objects
+    shift = get_object_or_404(Shift, pk=payload["shift"])
+    class_ids = payload.get("classes", [])
+    if class_ids and not isinstance(class_ids, list):
+        return Response({"error": "class_ids must be a list of IDs"},
+                        status=status.HTTP_400_BAD_REQUEST)
+    classes_qs = StudentClass.objects.filter(pk__in=class_ids)
+    if class_ids and classes_qs.count() != len(set(class_ids)):
+        return Response({"error": "One or more class_ids are invalid"},
+                        status=status.HTTP_400_BAD_REQUEST)
+
+    # Create
+    with transaction.atomic():
+        student = Student.objects.create(
+            first_name=payload.get("first_name", ""),
+            last_name=payload.get("last_name", ""),
+            address=payload.get("address", ""),
+            email=payload.get("email", ""),
+            phone_number=payload.get("phone_number", ""),
+            shift=shift,
+            siblings=bool(payload.get("siblings", False)),  # note: "siblings"
+            monthly_fee=int(payload.get("monthly_fee", 0)),
+        )
+        if class_ids:
+            student.classes.set(classes_qs)
+
+    return Response({
+        "id": student.id,
+        "first_name": student.first_name,
+        "last_name": student.last_name,
+        "address": student.address,
+        "email": student.email,
+        "phone_number": student.phone_number,
+        "shift": student.shift.id,
+        "classes": list(student.classes.values_list("id", flat=True)),
+        "siblings": student.siblings,
+        "monthly_fee": student.monthly_fee,
+    }, status=status.HTTP_201_CREATED)

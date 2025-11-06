@@ -92,10 +92,12 @@ class Student(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     address = models.CharField(max_length=255, blank=True)
-    contact_details = models.CharField(max_length=255, blank=True)
+    email = models.CharField(max_length=255, blank=True)
+    phone_number = models.CharField(max_length=255, blank=True)
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     classes = models.ManyToManyField(StudentClass)
     siblings = models.BooleanField(default=False)
+    monthly_fee = models.IntegerField(default=0)
     class Meta:
         ordering = ["first_name"]
 
@@ -125,15 +127,15 @@ class Payment(models.Model):
         related_name='payments'
     )
     year = models.PositiveIntegerField(default=timezone.now().year)
-    month = models.PositiveIntegerField(
+    month = models.PositiveIntegerField(default=timezone.now().month,
         choices=[(i, timezone.datetime(2000, i, 1).strftime('%B')) for i in range(1, 13)]
     )
 
     # Financial details
-    expected_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    expected_amount = models.DecimalField(max_digits=10, decimal_places=2, default=50.00)
+    paid_amount = models.DecimalField(max_digits=10, decimal_places=2, default=50.00)
     payment_date = models.DateField(blank=True, null=True)
-    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHODS, blank=True, null=True)
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHODS, blank=True, null=True, default='cash')
     status = models.CharField(max_length=10, choices=PAYMENT_STATUS, default='unpaid')
     notes = models.TextField(blank=True, null=True)
 
