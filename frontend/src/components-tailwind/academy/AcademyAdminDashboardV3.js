@@ -11,6 +11,9 @@ import {
 import {HiCash, HiMenu, HiSearch, HiUserAdd} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
 import Dropdown from "./Dropdown";
+import PaymentReceiptModal from "./PaymentReceiptModal";
+import A4FeeReceipt from "./A4FeeReceipt";
+import Popup from "../utils/Popup";
 
 const AcademyAdminDashboardV3 = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -38,6 +41,12 @@ const AcademyAdminDashboardV3 = () => {
 
     // Sample data
     const [students, setStudents] = useState([]);
+
+    const [showReceipt, setShowReceipt] = useState(false);
+
+      const handleShowReceiptClick = () => {
+        setShowReceipt(true);  // show component
+      };
 
     const [notifications, setNotifications] = useState([
         {id: 1, type: 'payment', message: 'Payment received from John Doe', date: '2023-05-15', read: false},
@@ -222,6 +231,15 @@ const AcademyAdminDashboardV3 = () => {
           console.error('Network error:', error);
           alert('Network error occurred.');
         }
+  };
+
+    const receiptData = {
+    receiptNo: 'INV-2025-00123',
+    date: '2025-11-07',
+    studentName: 'Aisha Rahman',
+    amount: '€120.00',
+    method: 'Card',
+    note: 'Monthly fee - November'
   };
 
     return (
@@ -648,9 +666,23 @@ const AcademyAdminDashboardV3 = () => {
                                                              <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.due_amount}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_method_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                                                                <button className="text-green-500 hover:text-green-700">
+                                                                <button className="text-green-500 hover:text-green-700" onClick={()=>setShowReceipt(true)}>
                                                                     <DocumentTextIcon className="h-5 w-5"/>
                                                                 </button>
+
+
+
+                                                                { showReceipt &&
+                                                                    <Popup
+                                                                            isOpen={showReceipt}
+                                                                            onClose={() => setShowReceipt(false)}
+                                                                            title="Reusable Popup"
+                                                                          >
+                                                                        <A4FeeReceipt />
+                                                                    </Popup>
+
+                                                                }
+
                                                             </td>
                                                         </tr>
                                                     ))}
