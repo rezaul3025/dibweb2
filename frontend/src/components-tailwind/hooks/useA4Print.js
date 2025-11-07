@@ -23,6 +23,12 @@ export const useA4Print = () => {
         box-sizing: border-box;
         background: white;
       }
+      .no-print { display: none !important; }
+      .print-only { display: block !important; }
+      .header-info { display: none !important; }
+      .url-display { display: none !important; }
+      .datetime-display { display: none !important; }
+      .page-title-display { display: none !important; }
     }
     
     @media screen {
@@ -36,7 +42,6 @@ export const useA4Print = () => {
         box-sizing: border-box;
       }
     }
-    
     .no-print { display: none; }
     body { font-family: Arial, sans-serif; }
   `;
@@ -51,7 +56,7 @@ export const useA4Print = () => {
       <!DOCTYPE html>
       <html>
         <head>
-          <title>Print A4 Document</title>
+           <title>Payment Receipt</title>
           <style>${a4PrintStyles}${customStyles}</style>
         </head>
         <body>

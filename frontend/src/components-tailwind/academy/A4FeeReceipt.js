@@ -1,24 +1,9 @@
 import React from 'react';
 import { useA4Print } from '../hooks/useA4Print';
+import moment from "moment";
 
-const A4FeeReceipt = () => {
+const A4FeeReceipt = ({student, payment}) => {
   const { printRef, printA4 } = useA4Print();
-
-  const receiptData = {
-    receiptNo: 'RCPT-2024-001',
-    date: new Date().toLocaleDateString(),
-    studentName: 'John Doe',
-    studentId: 'STU2024001',
-    course: 'Computer Science',
-    semester: 'Fall 2024',
-    items: [
-      { description: 'Tuition Fee', amount: 1200.00 },
-      { description: 'Library Fee', amount: 50.00 },
-      { description: 'Lab Fee', amount: 150.00 },
-      { description: 'Sports Fee', amount: 100.00 }
-    ],
-    total: 1500.00
-  };
 
   const customPrintStyles = `
     .receipt-header {
@@ -72,54 +57,50 @@ const A4FeeReceipt = () => {
           onClick={() => printA4(customPrintStyles)}
           className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md"
         >
-          Print A4 Receipt
+          Print Receipt
         </button>
       </div>
 
       <div ref={printRef}>
         <div className="receipt-header">
           <h1 style={{ fontSize: '28px', margin: '0 0 10px 0', color: '#2d3748' }}>
-            UNIVERSITY OF TECHNOLOGY
+            Darul Ihsan Berlin Academy
           </h1>
           <h2 style={{ fontSize: '20px', margin: '0 0 20px 0', color: '#4a5568' }}>
             FEE PAYMENT RECEIPT
           </h2>
           <p style={{ margin: '5px 0', color: '#718096' }}>
-            123 Education Street, Knowledge City
+            Brunnenstraße 122, 13355 Berlin
           </p>
           <p style={{ margin: '5px 0', color: '#718096' }}>
-            Phone: (555) 123-4567 | Email: accounts@university.edu
+            Phone: +49 176 5779 1221  | Web: www.darulihsan-berlin.com
           </p>
         </div>
 
         <div className="receipt-details">
           <div className="detail-row">
-            <strong>Receipt Number:</strong>
-            <span>{receiptData.receiptNo}</span>
+            <strong>Receipt Number: </strong>
+            <span>{payment.id+'_'+ moment(payment.created_date).format('MM_YYYY')}</span>
           </div>
           <div className="detail-row">
-            <strong>Date:</strong>
-            <span>{receiptData.date}</span>
+            <strong>Date: </strong>
+            <span>{moment(payment.created_date).format('DD-MM-YYYY')}</span>
           </div>
           <div className="detail-row">
-            <strong>Student Name:</strong>
-            <span>{receiptData.studentName}</span>
+            <strong>Student Name: </strong>
+            <span>{student.first_name+' '+student.last_name}</span>
           </div>
           <div className="detail-row">
-            <strong>Student ID:</strong>
-            <span>{receiptData.studentId}</span>
+            <strong>Student ID: </strong>
+            <span>{student.classes+'_'+student.id}</span>
           </div>
           <div className="detail-row">
-            <strong>Course:</strong>
-            <span>{receiptData.course}</span>
-          </div>
-          <div className="detail-row">
-            <strong>Semester:</strong>
-            <span>{receiptData.semester}</span>
+            <strong>Class: </strong>
+            <span>{student.classes}</span>
           </div>
         </div>
 
-        <table className="items-table">
+        <table className="items-table min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
               <th>Description</th>
@@ -127,11 +108,11 @@ const A4FeeReceipt = () => {
             </tr>
           </thead>
           <tbody>
-            {receiptData.items.map((item, index) => (
+            {payment.payment_lines.map((item, index) => (
               <tr key={index}>
-                <td>{item.description}</td>
+                <td>{item.title}</td>
                 <td style={{ textAlign: 'right' }}>
-                  {item.amount.toFixed(2)}
+                  {item.paid_amount}
                 </td>
               </tr>
             ))}
@@ -140,13 +121,13 @@ const A4FeeReceipt = () => {
 
         <div className="total-section">
           <div style={{ fontSize: '1.3em', color: '#2d3748' }}>
-            Total Amount: ${receiptData.total.toFixed(2)}
+            Total Amount: {payment.total_paid_amount}
           </div>
         </div>
 
         <div className="footer">
           <p style={{ margin: '10px 0' }}>
-            <strong>Payment Status:</strong> PAID
+            <strong>Payment Status:</strong> {payment.status_display}
           </p>
           <p style={{ margin: '10px 0', color: '#718096' }}>
             This is a computer generated receipt. No signature required.

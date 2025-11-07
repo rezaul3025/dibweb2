@@ -14,6 +14,7 @@ import Dropdown from "./Dropdown";
 import PaymentReceiptModal from "./PaymentReceiptModal";
 import A4FeeReceipt from "./A4FeeReceipt";
 import Popup from "../utils/Popup";
+import moment from "moment";
 
 const AcademyAdminDashboardV3 = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -537,7 +538,7 @@ const AcademyAdminDashboardV3 = () => {
                         <div>
                             <div className="flex items-center justify-between mb-6">
                                 <h1 className="text-2xl font-bold text-gray-800">Fee Payments
-                                    for {activeStudent.name}</h1>
+                                    for {activeStudent.first_name+' '+activeStudent.last_name}</h1>
                                 <button
                                     onClick={() => setCurrentView('students')}
                                     className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
@@ -548,7 +549,7 @@ const AcademyAdminDashboardV3 = () => {
 
                             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                                 {/* Fee Status Card */}
-                                <div className="bg-white overflow-hidden shadow rounded-lg">
+                                {/*<div className="bg-white overflow-hidden shadow rounded-lg">
                                     <div className="px-4 py-5 sm:px-6 bg-green-500">
                                         <h3 className="text-lg font-medium text-white">Fee Status</h3>
                                     </div>
@@ -574,15 +575,15 @@ const AcademyAdminDashboardV3 = () => {
                                                             activeStudent.status === 'Unpaid' ? 'bg-red-100 text-red-800' :
                                                                 'bg-yellow-100 text-yellow-800'
                                                     }`}>
-                          {activeStudent.status}
-                        </span>
+                                                  {activeStudent.status}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>*/}
 
                                 {/* Record Payment Card */}
-                                <div className="bg-white overflow-hidden shadow rounded-lg">
+                                {/*<div className="bg-white overflow-hidden shadow rounded-lg">
                                     <div className="px-4 py-5 sm:px-6 bg-green-500">
                                         <h3 className="text-lg font-medium text-white">Record Payment</h3>
                                     </div>
@@ -636,7 +637,7 @@ const AcademyAdminDashboardV3 = () => {
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                </div>*/}
 
                                 {/* Payment History Card */}
                                 <div className="bg-white overflow-hidden shadow rounded-lg lg:col-span-3">
@@ -652,7 +653,7 @@ const AcademyAdminDashboardV3 = () => {
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expected Amount</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paid Amount</th>
-                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Due Amount</th>
+                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Receipt</th>
                                                     </tr>
@@ -660,10 +661,10 @@ const AcademyAdminDashboardV3 = () => {
                                                     <tbody className="bg-white divide-y divide-gray-200">
                                                     {activeStudent.paymentHistory.map((payment) => (
                                                         <tr key={payment.id}>
-                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_date}</td>
-                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.expected_amount}</td>
-                                                            <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.paid_amount}</td>
-                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.due_amount}</td>
+                                                            <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{moment(payment.created_date).format('DD-MM-YYYY')}</td>
+                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.total_expected_amount}</td>
+                                                            <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.total_paid_amount}</td>
+                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{payment.status_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_method_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
                                                                 <button className="text-green-500 hover:text-green-700" onClick={()=>setShowReceipt(true)}>
@@ -678,7 +679,7 @@ const AcademyAdminDashboardV3 = () => {
                                                                             onClose={() => setShowReceipt(false)}
                                                                             title="Reusable Popup"
                                                                           >
-                                                                        <A4FeeReceipt />
+                                                                        <A4FeeReceipt payment={payment} student={activeStudent}/>
                                                                     </Popup>
 
                                                                 }
