@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {
-  BellIcon,
-  CogIcon,
-  DocumentTextIcon,
-  ExclamationCircleIcon,
-  UserCircleIcon,
-  UsersIcon,
-  XMarkIcon
+    BellIcon,
+    CogIcon,
+    DocumentTextIcon,
+    ExclamationCircleIcon,
+    UserCircleIcon,
+    UsersIcon,
+    XMarkIcon
 } from '@heroicons/react/24/outline';
 import {HiCash, HiMenu, HiSearch, HiUserAdd} from "react-icons/hi";
 import {BiLogOut} from "react-icons/bi";
 import Dropdown from "./Dropdown";
-import PaymentReceiptModal from "./PaymentReceiptModal";
 import A4FeeReceipt from "./A4FeeReceipt";
 import Popup from "../utils/Popup";
 import moment from "moment";
+import {useA4Print} from "../hooks/useA4Print";
 
 const AcademyAdminDashboardV3 = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,6 +26,53 @@ const AcademyAdminDashboardV3 = () => {
     const [paymentDate, setPaymentDate] = useState(new Date().toISOString().split('T')[0]);
     const [searchTerm, setSearchTerm] = useState('');
     const [showAddStudentModal, setShowAddStudentModal] = useState(false);
+    const [printablePayment, setPrintablePayment] = useState()
+    const {printRef, printA4} = useA4Print();
+
+    const customPrintStyles = `
+    .receipt-header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px double #333;
+      padding-bottom: 20px;
+    }
+    .receipt-details {
+      margin: 20px 0;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .items-table th,
+    .items-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    .items-table th {
+      background-color: #f8f9fa;
+    }
+    .total-section {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+    }
+  `;
 
     // Form state for new student
     const [newStudent, setNewStudent] = useState({
@@ -342,7 +389,7 @@ const AcademyAdminDashboardV3 = () => {
                             </div>
 
                             {/* Students Table */}
-                            <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+                            <div className="overflow-x-auto bg-white shadow sm:rounded-lg">
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-gray-50">
                                     <tr>
@@ -651,6 +698,7 @@ const AcademyAdminDashboardV3 = () => {
                                                     <thead className="bg-gray-50">
                                                     <tr>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment For</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Expected Amount</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paid Amount</th>
                                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -662,25 +710,71 @@ const AcademyAdminDashboardV3 = () => {
                                                     {activeStudent.paymentHistory.map((payment) => (
                                                         <tr key={payment.id}>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{moment(payment.created_date).format('DD-MM-YYYY')}</td>
+                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{}</td>
                                                              <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.total_expected_amount}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${payment.total_paid_amount}</td>
                                                              <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">{payment.status_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{payment.payment_method_display}</td>
                                                             <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                                                                <button className="text-green-500 hover:text-green-700" onClick={()=>setShowReceipt(true)}>
+                                                                <button className="text-green-500 hover:text-green-700"
+                                                                        onClick={() => {
+                                                                            setShowReceipt(true);
+                                                                            setPrintablePayment(payment)
+                                                                        }}>
                                                                     <DocumentTextIcon className="h-5 w-5"/>
                                                                 </button>
 
-
-
                                                                 { showReceipt &&
-                                                                    <Popup
+                                                                    <div>
+                                                                        <Popup
                                                                             isOpen={showReceipt}
                                                                             onClose={() => setShowReceipt(false)}
-                                                                            title="Reusable Popup"
-                                                                          >
-                                                                        <A4FeeReceipt payment={payment} student={activeStudent}/>
-                                                                    </Popup>
+                                                                            title={activeStudent.first_name+' '+activeStudent.last_name+', '+activeStudent.classes+'_'+activeStudent.id}
+                                                                        >
+
+                                                                            <div
+                                                                                className="bg-white transition-shadow">
+                                                                                <div className="p-5">
+                                                                                    <div className="flex items-start justify-between mb-4">
+                                                                                        <span
+                                                                                            className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                                                                            {printablePayment.status_display}
+                                                                                         </span>
+                                                                                    </div>
+                                                                                    <div className="space-y-2">
+
+                                                                                         {printablePayment.payment_lines.map((item, index) => (<div
+                                                                                            className="flex justify-between text-sm">
+                                                                                            <span className="text-gray-600">{item.title}</span>
+                                                                                            <span
+                                                                                                className="font-medium text-gray-900">{item.paid_amount}</span>
+                                                                                        </div>))}
+                                                                                        <div
+                                                                                            className="border-t border-gray-200 pt-2 mt-2">
+                                                                                            <div
+                                                                                                className="flex justify-between font-semibold">
+                                                                                                <span
+                                                                                                    className="text-gray-700">Total</span>
+                                                                                                <span
+                                                                                                    className="text-blue-600">{printablePayment.total_paid_amount}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="no-print mb-2 text-center">
+                                                                                <button
+                                                                                    onClick={() => printA4(customPrintStyles)}
+                                                                                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md"
+                                                                                >
+                                                                                    Print Receipt
+                                                                                </button>
+                                                                            </div>
+                                                                        </Popup>
+                                                                        <A4FeeReceipt payment={printablePayment}
+                                                                                      student={activeStudent}
+                                                                                      printRef={printRef}/>
+                                                                    </div>
 
                                                                 }
 

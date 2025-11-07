@@ -150,6 +150,7 @@ class PaymentSerializer(serializers.ModelSerializer):
             'created_date',
             'payment_method',
             'payment_method_display',
+            'payment_for',
             'status',
             'status_display',
             'notes',

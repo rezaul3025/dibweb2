@@ -2,65 +2,10 @@ import React from 'react';
 import { useA4Print } from '../hooks/useA4Print';
 import moment from "moment";
 
-const A4FeeReceipt = ({student, payment}) => {
-  const { printRef, printA4 } = useA4Print();
-
-  const customPrintStyles = `
-    .receipt-header {
-      text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 3px double #333;
-      padding-bottom: 20px;
-    }
-    .receipt-details {
-      margin: 20px 0;
-    }
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      margin: 8px 0;
-      padding: 5px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .items-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-    }
-    .items-table th,
-    .items-table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    .items-table th {
-      background-color: #f8f9fa;
-    }
-    .total-section {
-      text-align: right;
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-    .footer {
-      margin-top: 50px;
-      text-align: center;
-      border-top: 1px solid #333;
-      padding-top: 20px;
-    }
-  `;
+const A4FeeReceipt = ({student, payment, printRef}) => {
 
   return (
     <div className="p-4">
-      <div className="no-print mb-4 text-center">
-        <button
-          onClick={() => printA4(customPrintStyles)}
-          className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg shadow-md"
-        >
-          Print Receipt
-        </button>
-      </div>
-
       <div ref={printRef}>
         <div className="receipt-header">
           <h1 style={{ fontSize: '28px', margin: '0 0 10px 0', color: '#2d3748' }}>
@@ -100,7 +45,7 @@ const A4FeeReceipt = ({student, payment}) => {
           </div>
         </div>
 
-        <table className="items-table min-w-full bg-white border border-gray-200">
+        <table className="items-table">
           <thead>
             <tr>
               <th>Description</th>

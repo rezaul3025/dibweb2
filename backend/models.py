@@ -229,6 +229,16 @@ class Payment(models.Model):
             self.status = 'PENDING'
             self.save()
 
+    @property
+    def payment_for(self):
+        payment_for = ''
+        try:
+            for line in self.payment_lines.all():
+                  payment_for += line.get_display_month()+' '+line.year
+        except (AttributeError, TypeError):
+            return payment_for
+
+
 
 class PaymentLine(models.Model):
     TYPE_CHOICES = [
