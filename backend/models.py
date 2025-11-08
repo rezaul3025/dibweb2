@@ -1,3 +1,5 @@
+import random
+import string
 from datetime import datetime
 from pathlib import Path
 
@@ -118,6 +120,14 @@ class Student(models.Model):
     def student_id(self):
         return f"{self.get_classes}_{self.id}"
 
+    @property
+    def total_payments_count(self):
+        return self.payments.count()
+
+    @property
+    def total_amount_paid(self):
+        return sum(payment.total_paid_amount for payment in self.payments.all())
+
 
 
 
@@ -226,7 +236,7 @@ class Payment(models.Model):
 
     @property
     def receipt_number(self):
-        return f"{self.id}_{self.created_date.strftime('%m_%Y')}"
+        return f"{self.id}_{self.created_date.strftime('%m_%Y')}_{''.join(random.choices(string.ascii_uppercase+string.digits, k=10))}"
 
     def update_status(self):
         """Update payment status based on payment lines"""
@@ -250,14 +260,7 @@ class Payment(models.Model):
 
     @property
     def payment_for(self):
-        payment_for = ''
-        try:
-            for line in self.payment_lines.all():
-                print(line)
-                payment_for += line.get_display_month()+' '+line.year
-        except (AttributeError, TypeError):
-            pass
-        return payment_for
+        return " ".join([line.title for line in self.payment_lines.all()])
 
 
 
