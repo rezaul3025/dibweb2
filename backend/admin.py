@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.http.response import HttpResponse
+from django.urls.conf import path
 from django.utils.html import format_html
 from .models import Payment, PaymentLine
 
@@ -6,6 +8,7 @@ from .models import Payment, PaymentLine
 from backend.SendEmail import SendEmail
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
     NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment
+from .utils.pdf_generator import generate_payment_receipt
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -47,14 +50,6 @@ class StudentClassAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'day')
     fields = list_display+filter_horizontal
 admin.site.register(StudentClass, StudentClassAdmin)
-
-
-class StudentAdmin(admin.ModelAdmin):
-    filter_horizontal = ('classes',)
-    list_display = ('first_name', 'last_name', 'address', 'email','phone_number', 'shift', 'siblings', 'monthly_fee','get_classes')
-    readonly_fields = ('get_classes',)
-    fields = list_display+filter_horizontal
-admin.site.register(Student, StudentAdmin)
 
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('headline','image', 'enabled')
@@ -100,10 +95,10 @@ class PaymentAdmin(admin.ModelAdmin):
         'student',
         'created_date',
         'payment_method_display',
-        'status_display',
         'total_paid_amount',
         'total_expected_amount',
-        'is_fully_paid_display'
+        'is_fully_paid_display',
+        'receipt_actions'
     ]
     list_filter = [
         'status',
@@ -111,9 +106,11 @@ class PaymentAdmin(admin.ModelAdmin):
         'created_date'
     ]
     search_fields = [
-        'student__name',
-        'student__student_id',
-        'notes'
+        'student__first_name',
+        'student__last_name',
+        'student__address',
+        'student__email',
+        'student__phone_number',
     ]
     readonly_fields = [
         'created_date',
@@ -160,6 +157,63 @@ class PaymentAdmin(admin.ModelAdmin):
         else:
             return format_html('<span style="color: orange;">Partial Payment</span>')
     is_fully_paid_display.short_description = 'Payment Status'
+
+    def student_info(self, obj):
+        return f"{obj.student.full_name} ({obj.student.classes})"
+
+    student_info.short_description = 'Student'
+
+    def receipt_actions(self, obj):
+        return format_html(
+            '<a class="button" href="{}" style="background-color: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold;">Download Receipt</a>',
+            f'generate-receipt/{obj.id}/'
+        )
+
+    receipt_actions.short_description = 'Receipt'
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('generate-receipt/<int:payment_id>/',
+                 self.admin_site.admin_view(self.generate_receipt),
+                 name='generate-receipt'),
+        ]
+        return custom_urls + urls
+
+    def generate_receipt(self, request, payment_id):
+        try:
+            payment = Payment.objects.get(id=payment_id)
+            buffer = generate_payment_receipt(payment)
+
+            filename = f"receipt_{payment.receipt_number}.pdf"
+            response = HttpResponse(buffer, content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            return response
+
+        except Payment.DoesNotExist:
+            from django.contrib import messages
+            messages.error(request, "Payment not found.")
+            from django.shortcuts import redirect
+            return redirect('admin:index')
+
+    def get_urls(self):
+        from django.urls import path
+        urls = super().get_urls()
+        custom_urls = [
+            path('generate-receipt/<int:payment_id>/',
+                 self.admin_site.admin_view(self.generate_receipt),
+                 name='generate-receipt'),
+        ]
+        return custom_urls + urls
+
+    def generate_receipt(self, request, payment_id):
+        payment = Payment.objects.get(id=payment_id)
+        buffer = generate_payment_receipt(payment)
+
+        response = HttpResponse(buffer, content_type='application/pdf')
+        response[
+            'Content-Disposition'] = f'attachment; filename="receipt_{payment.id}_{payment.student.student_id}.pdf"'
+        return response
 
 
 @admin.register(PaymentLine)
@@ -224,3 +278,83 @@ class PaymentLineAdmin(admin.ModelAdmin):
         # Update parent payment status when payment line is saved
         if obj.payment_ref:
             obj.payment_ref.update_status()
+
+
+class PaymentLineInline(admin.TabularInline):
+    model = PaymentLine
+    extra = 0
+    fields = ['title', 'paid_amount']
+    readonly_fields = ['title', 'paid_amount']
+    can_delete = False
+    max_num = 0  # Remove add functionality
+    verbose_name = "Payment Line"
+    verbose_name_plural = "Payment Lines"
+
+    def has_add_permission(self, request, obj):
+        return False
+
+
+class PaymentInline(admin.TabularInline):
+    model = Payment
+    extra = 0
+    fields = ['receipt_number', 'created_date',  'status_display', 'total_paid_amount',
+              'receipt_actions']
+    readonly_fields = ['receipt_number', 'created_date',  'status_display', 'total_paid_amount',
+                       'receipt_actions']
+    can_delete = False
+    max_num = 0
+    verbose_name = "Payment"
+    verbose_name_plural = "All Payments"
+    classes = ['collapse']  # Can be collapsed to save space
+
+    def get_receipt_number(self, obj):
+        return f"#{obj.receipt_number}"
+
+    get_receipt_number.short_description = 'Receipt No.'
+
+    def status_display(self, obj):
+        color_map = {
+            'PAID': 'green',
+            'PENDING': 'orange',
+            'FAILED': 'red',
+            'PARTIAL': 'blue'
+        }
+        color = color_map.get(obj.status, 'black')
+        return format_html(
+            '<span style="color: {}; font-weight: bold;">{}</span>',
+            color,
+            obj.get_status_display()
+        )
+
+    status_display.short_description = 'Status'
+
+    def receipt_actions(self, obj):
+        return format_html(
+            '<a class="button" href="{}" style="background-color: #28a745; color: white; padding: 4px 8px; text-decoration: none; border-radius: 3px; font-size: 11px;">Download</a>',
+            f'/admin-dj/backend/payment/generate-receipt/{obj.id}/'
+        )
+    receipt_actions.short_description = 'Receipt'
+
+    def get_urls(self):
+        from django.urls import path
+        urls = super().get_urls()
+        custom_urls = [
+            path('generate-receipt/<int:payment_id>/',
+                 self.admin_site.admin_view(self.generate_receipt),
+                 name='generate-receipt'),
+        ]
+        return custom_urls + urls
+
+    def has_add_permission(self, request, obj):
+        return False
+
+class StudentAdmin(admin.ModelAdmin):
+    filter_horizontal = ('classes',)
+    list_display = ('first_name', 'last_name', 'address', 'email','phone_number', 'shift', 'siblings', 'monthly_fee','get_classes')
+    readonly_fields = ('get_classes',)
+    search_fields = [
+        'first_name', 'last_name', 'address', 'email','phone_number',
+    ]
+    fields = list_display+filter_horizontal
+    inlines = [PaymentInline]
+admin.site.register(Student, StudentAdmin)

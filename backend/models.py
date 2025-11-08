@@ -103,11 +103,22 @@ class Student(models.Model):
     class Meta:
         ordering = ["first_name"]
 
+    @property
     def get_classes(self):
-        return ",".join([str(c) for c in self.classes.all()])
+        return ",".join([str(c.name) for c in self.classes.all()])
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} {self.address}"
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    @property
+    def student_id(self):
+        return f"{self.get_classes}_{self.id}"
+
+
 
 
 class Payment(models.Model):
@@ -209,6 +220,14 @@ class Payment(models.Model):
         except (AttributeError, TypeError):
             return False
 
+    @property
+    def status_display(self):
+        return dict(self.STATUS_CHOICES).get(self.status, self.status)
+
+    @property
+    def receipt_number(self):
+        return f"{self.id}_{self.created_date.strftime('%m_%Y')}"
+
     def update_status(self):
         """Update payment status based on payment lines"""
         try:
@@ -234,9 +253,11 @@ class Payment(models.Model):
         payment_for = ''
         try:
             for line in self.payment_lines.all():
-                  payment_for += line.get_display_month()+' '+line.year
+                print(line)
+                payment_for += line.get_display_month()+' '+line.year
         except (AttributeError, TypeError):
-            return payment_for
+            pass
+        return payment_for
 
 
 
