@@ -393,7 +393,7 @@ class PaymentAdmin(admin.ModelAdmin):
             payment = Payment.objects.get(id=payment_id)
             buffer = generate_payment_receipt(payment)
 
-            filename = f"receipt_{payment.receipt_number}.pdf"
+            filename = f"receipt_{payment.student.first_name}_{payment.receipt_number}.pdf"
             response = HttpResponse(buffer, content_type='application/pdf')
             response['Content-Disposition'] = f'attachment; filename="{filename}"'
             return response

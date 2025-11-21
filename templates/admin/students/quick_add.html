@@ -1,0 +1,169 @@
+<!-- templates/admin/students/quick_add.html -->
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+<script src="{% static 'admin/js/jquery.init.js' %}"></script>
+<style>
+    .form-section {
+        background: #f8f9fa;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+        border-left: 4px solid #007cba;
+    }
+    .form-section h2 {
+        margin-top: 0;
+        color: #007cba;
+    }
+    .payment-lines {
+        margin: 15px 0;
+    }
+    .payment-line {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .form-row {
+        margin-bottom: 15px;
+    }
+    .form-row label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .helptext {
+        color: #666;
+        font-size: 12px;
+        font-style: italic;
+    }
+    .actions {
+        background: #f8f9fa;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        margin-top: 20px;
+        text-align: right;
+    }
+    .errorlist {
+        color: #dc3545;
+        font-size: 12px;
+    }
+</style>
+<script>
+function togglePaymentSection() {
+    const createPayment = document.getElementById('id_create_payment');
+    const paymentSection = document.getElementById('payment-section');
+    if (paymentSection) {
+        paymentSection.style.display = createPayment.checked ? 'block' : 'none';
+    }
+}
+
+function updateTitle() {
+    // This would need to be implemented based on your title generation logic
+    console.log('Update title logic here');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    togglePaymentSection();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>{% if existing_student %}Add Payment for {{ existing_student.full_name }}{% else %}Quick Add Student & Payment{% endif %}</h1>
+
+    <form method="post" id="quick-add-form">
+        {% csrf_token %}
+
+        {% if not existing_student %}
+        <div class="form-section">
+            <h2>Student Information</h2>
+            {% for field in student_form %}
+                {% if field.name != 'create_payment' %}
+                <div class="form-row">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <div class="helptext">{{ field.help_text }}</div>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="errorlist">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="form-section">
+            <h2>Payment Options</h2>
+            <div class="form-row">
+                {{ student_form.create_payment.label_tag }}
+                {{ student_form.create_payment }}
+                <div class="helptext">Create a payment record for this student</div>
+            </div>
+        </div>
+
+        <div id="payment-section" style="display: none;">
+            <div class="form-section">
+                <h2>Payment Information</h2>
+                {% for field in payment_form %}
+                <div class="form-row">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.help_text %}
+                        <div class="helptext">{{ field.help_text }}</div>
+                    {% endif %}
+                    {% if field.errors %}
+                        <div class="errorlist">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-section">
+                <h2>Payment Lines</h2>
+                <div class="payment-lines">
+                    {{ payment_line_formset.management_form }}
+                    {% for form in payment_line_formset %}
+                    <div class="payment-line">
+                        <h4>Payment Line {{ forloop.counter }}</h4>
+                        {% for field in form %}
+                            {% if field.name != 'DELETE' and field.name != 'id' %}
+                            <div class="form-row">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <div class="helptext">{{ field.help_text }}</div>
+                                {% endif %}
+                                {% if field.errors %}
+                                    <div class="errorlist">{{ field.errors }}</div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        {% if form.DELETE %}
+                        <div class="form-row">
+                            {{ form.DELETE.label_tag }}
+                            {{ form.DELETE }}
+                        </div>
+                        {% endif %}
+                        {{ form.id }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <input type="submit" value="Save" class="default" name="_save">
+            <a href="../" style="margin-left: 10px;">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

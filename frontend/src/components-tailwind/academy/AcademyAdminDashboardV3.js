@@ -15,6 +15,7 @@ import A4FeeReceipt from "./A4FeeReceipt";
 import Popup from "../utils/Popup";
 import moment from "moment";
 import {useA4Print} from "../hooks/useA4Print";
+import AddPayment from "./payment/AddPayment";
 
 const AcademyAdminDashboardV3 = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -91,6 +92,7 @@ const AcademyAdminDashboardV3 = () => {
     const [students, setStudents] = useState([]);
 
     const [showReceipt, setShowReceipt] = useState(false);
+    const [recordPayment, setRecordPayment] = useState(false);
 
       const handleShowReceiptClick = () => {
         setShowReceipt(true);  // show component
@@ -289,6 +291,10 @@ const AcademyAdminDashboardV3 = () => {
     method: 'Card',
     note: 'Monthly fee - November'
   };
+
+    const handlePaymentCancel = () => {
+        setRecordPayment(false);
+    };
 
     return (
         <div className="flex h-screen bg-gray-50">
@@ -630,61 +636,22 @@ const AcademyAdminDashboardV3 = () => {
                                 </div>*/}
 
                                 {/* Record Payment Card */}
-                                {/*<div className="bg-white overflow-hidden shadow rounded-lg">
+                                <div className="bg-white overflow-hidden shadow rounded-lg">
                                     <div className="px-4 py-5 sm:px-6 bg-green-500">
                                         <h3 className="text-lg font-medium text-white">Record Payment</h3>
                                     </div>
                                     <div className="px-4 py-5 sm:p-6">
-                                        <form onSubmit={handlePaymentSubmit}>
-                                            <div className="grid grid-cols-1 gap-4">
-                                                <div>
-                                                    <label
-                                                        className="block text-sm font-medium text-gray-700">Amount</label>
-                                                    <input
-                                                        type="number"
-                                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                        value={paymentAmount}
-                                                        onChange={(e) => setPaymentAmount(e.target.value)}
-                                                        required
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <label className="block text-sm font-medium text-gray-700">Payment
-                                                        Method</label>
-                                                    <select
-                                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                        value={paymentMethod}
-                                                        onChange={(e) => setPaymentMethod(e.target.value)}
-                                                    >
-                                                        <option value="cash">Cash</option>
-                                                        <option value="bank">Bank Transfer</option>
-                                                        <option value="online">Online Payment</option>
-                                                        <option value="card">Credit/Debit Card</option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label
-                                                        className="block text-sm font-medium text-gray-700">Date</label>
-                                                    <input
-                                                        type="date"
-                                                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"
-                                                        value={paymentDate}
-                                                        onChange={(e) => setPaymentDate(e.target.value)}
-                                                        required
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="mt-4">
-                                                <button
-                                                    type="submit"
-                                                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                                                >
-                                                    Record Payment
-                                                </button>
-                                            </div>
-                                        </form>
+                                        <button className="text-green-500 hover:text-green-700"
+                                                onClick={() => {
+                                                    setRecordPayment(true);
+                                                }}>
+                                          <DocumentTextIcon className="h-5 w-5"/> Record Payment
+                                        </button>
                                     </div>
-                                </div>*/}
+                                    {recordPayment &&
+                                        <AddPayment onCancel={handlePaymentCancel}/>
+                                    }
+                                </div>
 
                                 {/* Payment History Card */}
                                 <div className="bg-white overflow-hidden shadow rounded-lg lg:col-span-3">
@@ -821,8 +788,8 @@ const AcademyAdminDashboardV3 = () => {
                                                         {!notification.read && (
                                                             <span
                                                                 className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                New
-                              </span>
+                                                            New
+                                                          </span>
                                                         )}
                                                     </div>
                                                 </div>
