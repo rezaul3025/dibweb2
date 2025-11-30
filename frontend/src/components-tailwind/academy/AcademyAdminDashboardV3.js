@@ -592,6 +592,16 @@ const AcademyAdminDashboardV3 = () => {
                             <div className="flex items-center justify-between mb-6">
                                 <h1 className="text-2xl font-bold text-gray-800">Fee Payments
                                     for {activeStudent.first_name+' '+activeStudent.last_name}</h1>
+
+                                <button
+                                            onClick={() =>  setRecordPayment(true)}
+                                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+                                            >
+                                            Record Payment
+                                </button>
+                                {recordPayment &&
+                                    <AddPayment onCancel={handlePaymentCancel}/>
+                                }
                                 <button
                                     onClick={() => setCurrentView('students')}
                                     className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
@@ -600,9 +610,8 @@ const AcademyAdminDashboardV3 = () => {
                                 </button>
                             </div>
 
-                            <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                                 {/* Fee Status Card */}
-                                {/*<div className="bg-white overflow-hidden shadow rounded-lg">
+                                <div className="bg-white overflow-hidden shadow rounded-lg">
                                     <div className="px-4 py-5 sm:px-6 bg-green-500">
                                         <h3 className="text-lg font-medium text-white">Fee Status</h3>
                                     </div>
@@ -633,10 +642,10 @@ const AcademyAdminDashboardV3 = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>*/}
+                                </div>
 
                                 {/* Record Payment Card */}
-                                <div className="bg-white overflow-hidden shadow rounded-lg">
+                                {/*<div className="bg-white overflow-hidden shadow rounded-lg">
                                     <div className="px-4 py-5 sm:px-6 bg-green-500">
                                         <h3 className="text-lg font-medium text-white">Record Payment</h3>
                                     </div>
@@ -651,7 +660,7 @@ const AcademyAdminDashboardV3 = () => {
                                     {recordPayment &&
                                         <AddPayment onCancel={handlePaymentCancel}/>
                                     }
-                                </div>
+                                </div>*/}
 
                                 {/* Payment History Card */}
                                 <div className="bg-white overflow-hidden shadow rounded-lg lg:col-span-3">
@@ -659,6 +668,7 @@ const AcademyAdminDashboardV3 = () => {
                                         <h3 className="text-lg font-medium text-white">Payment History</h3>
                                     </div>
                                     <div className="px-4 py-5 sm:p-6">
+
                                         {activeStudent.paymentHistory.length > 0 ? (
                                             <div className="overflow-x-auto">
                                                 <table className="min-w-full divide-y divide-gray-200">
@@ -756,7 +766,6 @@ const AcademyAdminDashboardV3 = () => {
                                         )}
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     )}
 

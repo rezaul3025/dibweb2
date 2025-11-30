@@ -191,7 +191,7 @@ const AddPayment = ({studentId, onSuccess, onCancel}) => {
                                 <select
                                     value={formData.student_id}
                                     onChange={(e) => setFormData(prev => ({...prev, student_id: e.target.value}))}
-                                    className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                     required
                                     disabled={!!studentId}
                                 >
