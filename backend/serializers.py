@@ -167,4 +167,5 @@ class StudentSerializer(serializers.ModelSerializer):
     payments = PaymentSerializer(many=True, read_only=True)
     class Meta:
         model = Student
-        fields = ['id','first_name', 'last_name','address', 'email','phone_number','shift','classes','siblings','shift','monthly_fee','payments']
+        fields = ['id','first_name', 'last_name','guardian_name','address', 'email','phone_number',
+                  'shift','classes','has_siblings','shift','monthly_fee','status','date_of_birth','payment_status','payments']

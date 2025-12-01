@@ -1,5 +1,7 @@
 from dibweb2.settings.common import *
 
+ALLOWED_HOSTS = ['192.168.188.41','localhost','127.0.0.1','0.0.0.0']
+
 DEBUG = True
 
 DATABASES = {

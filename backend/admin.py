@@ -173,7 +173,7 @@ class StudentAdmin(admin.ModelAdmin):
     form = StudentForm
     list_display = ['student_id', 'full_name', 'get_classes', 'shift', 'monthly_fee', 'total_payments_count',
                     'total_amount_paid_display', 'student_actions']
-    list_filter = ['shift', 'classes', 'siblings']
+    list_filter = ['shift', 'classes', 'has_siblings','status', 'monthly_fee']
     search_fields = ['first_name', 'last_name', 'email', 'phone_number', 'address']
     readonly_fields = ['student_id', 'total_payments_count', 'total_amount_paid_display', 'payment_history']
     inlines = [PaymentInline]
