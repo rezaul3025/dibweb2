@@ -6,7 +6,7 @@ from django.urls import path
 from django.utils.html import format_html
 # Register your models here.
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
-    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment, LabelCategory
 from .models import PaymentLine
 from .utils.pdf_generator import generate_payment_receipt
 
@@ -52,6 +52,11 @@ class StudentClassAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'day')
     fields = list_display+filter_horizontal
 admin.site.register(StudentClass, StudentClassAdmin)
+
+class LabelCategoryAdmin(admin.ModelAdmin):
+    list_display = ('label', 'category')
+    fields = list_display
+admin.site.register(LabelCategory, LabelCategoryAdmin)
 
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('headline','image', 'enabled')
@@ -171,7 +176,7 @@ class StudentForm(forms.ModelForm):
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     form = StudentForm
-    list_display = ['student_id', 'full_name', 'get_classes', 'shift', 'monthly_fee', 'total_payments_count',
+    list_display = ['student_id', 'full_name', 'get_classes', 'label_category', 'shift', 'monthly_fee', 'total_payments_count',
                     'total_amount_paid_display', 'student_actions']
     list_filter = ['shift', 'classes', 'has_siblings','status', 'monthly_fee']
     search_fields = ['first_name', 'last_name', 'email', 'phone_number', 'address']

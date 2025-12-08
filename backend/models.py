@@ -92,20 +92,25 @@ class StudentClass(models.Model):
     def __str__(self):
         return f"{self.name} {self.description}"
 
+class LabelCategory(models.Model):
+    label = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+
 class Student(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    guardian_name = models.CharField(max_length=255)
+    guardian_name = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     email = models.CharField(max_length=255, blank=True)
     phone_number = models.CharField(max_length=255, blank=True)
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     classes = models.ManyToManyField(StudentClass)
+    label_category = models.OneToOneField(LabelCategory, on_delete=models.SET_NULL, null=True, blank=True)
     has_siblings = models.BooleanField(default=False)
     monthly_fee = models.IntegerField(default=0)
     status = models.CharField(default="active", max_length=50)
     date_of_birth = models.DateField(null=True, blank=True)
-    payment_status = models.CharField(max_length=50)
+    payment_status = models.CharField(max_length=50, blank=True)
     class Meta:
         ordering = ["first_name"]
 
