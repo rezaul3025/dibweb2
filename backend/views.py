@@ -400,6 +400,6 @@ def add_student(request):
         "phone_number": student.phone_number,
         "shift": student.shift.id,
         "classes": list(student.classes.values_list("id", flat=True)),
-        "siblings": student.siblings,
+        "siblings": student.has_siblings,
         "monthly_fee": student.monthly_fee,
     }, status=status.HTTP_201_CREATED)
