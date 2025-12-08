@@ -350,6 +350,7 @@ def add_student(request):
         )
 
     payload = request.data  # ✅ DRF-parsed data (JSON, form, multipart)
+    print(payload)
 
     # Required fields
     missing = [f for f in ["first_name", "last_name", "shift"]
@@ -360,6 +361,7 @@ def add_student(request):
 
     # Related objects
     shift = get_object_or_404(Shift, pk=payload["shift"])
+    label_category = get_object_or_404(LabelCategory, pk=payload["labelCategory"])
     class_ids = payload.get("classes", [])
     if class_ids and not isinstance(class_ids, list):
         return Response({"error": "class_ids must be a list of IDs"},
@@ -374,12 +376,17 @@ def add_student(request):
         student = Student.objects.create(
             first_name=payload.get("first_name", ""),
             last_name=payload.get("last_name", ""),
+            guardian_name=payload.get("guardian_name", ""),
             address=payload.get("address", ""),
             email=payload.get("email", ""),
+            date_of_birth=payload.get("date_of_birth", ""),
             phone_number=payload.get("phone_number", ""),
             shift=shift,
-            siblings=bool(payload.get("siblings", False)),  # note: "siblings"
+            label_category = label_category,
+            has_siblings=bool(payload.get("has_siblings", False)),  # note: "siblings"
             monthly_fee=int(payload.get("monthly_fee", 0)),
+            status=payload.get("status", ""),
+            payment_status=payload.get("payment_status", "pending"),
         )
         if class_ids:
             student.classes.set(classes_qs)
