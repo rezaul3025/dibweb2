@@ -27,6 +27,7 @@ urlpatterns = [
     path("v1/students/add", views.add_student, name="add_student"),
     path('v1/classes/', views.allClasses),
    path('v1/shifts/', views.allShifts),
+   path('v1/labelgategories/', views.labelCategories),
    path('v1/teachers/', views.allTeachers),
    path('v1/notice-board/', views.noticeBoard),
    path('v1/download-items/<str:department>/', views.downloadItems),

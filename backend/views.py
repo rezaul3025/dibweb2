@@ -17,10 +17,10 @@ from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
 from backend.models import Event, Attendee, Toggle, StudentClass, Teacher, Shift, DownloadItem, NoticeBoardItem, \
-    Notification
+    Notification, LabelCategory
 from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
     StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, DownloadItemSerializer, \
-    NoticeBoardItemSerializer, NotificationSerializer
+    NoticeBoardItemSerializer, NotificationSerializer, LabelCategorySerializer
 from .models import Payment, Student
 from .serializers import PaymentSerializer
 
@@ -243,6 +243,12 @@ def allTeachers(request):
 def allShifts(request):
     shifts = Shift.objects.all()
     serializer = ShiftSerializer(shifts, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def labelCategories(request):
+    labelCategories = LabelCategory.objects.all()
+    serializer = LabelCategorySerializer(labelCategories, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])

@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
-    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification
+    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification, LabelCategory
 from .models import Payment, PaymentLine
 
 
@@ -32,6 +32,10 @@ class ShiftSerializer(serializers.ModelSerializer):
         model = Shift
         fields = ['id', 'name', 'description']
 
+class LabelCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LabelCategory
+        fields = ['id', 'label', 'category']
 
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
