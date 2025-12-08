@@ -197,7 +197,7 @@ class StudentAdmin(admin.ModelAdmin):
             'fields': (
                 'shift',
                 'classes',
-                'siblings',
+                'has_siblings',
                 'monthly_fee'
             )
         }),
