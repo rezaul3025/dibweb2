@@ -361,7 +361,7 @@ def add_student(request):
 
     # Related objects
     shift = get_object_or_404(Shift, pk=payload["shift"])
-    label_category = get_object_or_404(LabelCategory, pk=payload["labelCategory"])
+    label_category = get_object_or_404(LabelCategory, pk=payload["label_category"])
     class_ids = payload.get("classes", [])
     if class_ids and not isinstance(class_ids, list):
         return Response({"error": "class_ids must be a list of IDs"},
