@@ -197,6 +197,7 @@ class StudentAdmin(admin.ModelAdmin):
             'fields': (
                 'shift',
                 'classes',
+                'label_category',
                 'has_siblings',
                 'monthly_fee'
             )
