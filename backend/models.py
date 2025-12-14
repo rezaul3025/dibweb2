@@ -107,7 +107,7 @@ class Student(models.Model):
     phone_number = models.CharField(max_length=255, blank=True)
     shift = models.ForeignKey(Shift, on_delete=models.CASCADE)
     classes = models.ManyToManyField(StudentClass)
-    label_category = models.OneToOneField(LabelCategory, on_delete=models.SET_NULL, null=True, blank=True)
+    label_category = models.ForeignKey(LabelCategory, on_delete=models.SET_NULL, null=True, blank=True)
     has_siblings = models.BooleanField(default=False)
     monthly_fee = models.IntegerField(default=0)
     status = models.CharField(default="active", max_length=50)
