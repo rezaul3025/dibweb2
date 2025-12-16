@@ -463,7 +463,7 @@ def add_payment(request):
             'details': str(e)
         }, status=500)
 
-def validate_request_data(self, data):
+def validate_request_data(data):
     """Validate the incoming request data"""
     errors = {}
 
@@ -492,13 +492,13 @@ def validate_request_data(self, data):
         errors['payment_lines'] = 'At least one payment line is required'
     else:
         for i, line in enumerate(payment_lines):
-            line_errors = self.validate_payment_line(line)
+            line_errors = validate_payment_line(line)
             if line_errors:
                 errors[f'payment_lines.{i}'] = line_errors
 
     return errors
 
-def validate_payment_line(self, line_data):
+def validate_payment_line(line_data):
     """Validate a single payment line"""
     errors = {}
 
@@ -548,7 +548,7 @@ def validate_payment_line(self, line_data):
 
     return errors
 
-def create_payment(self, data):
+def create_payment(data):
     """Create a Payment instance"""
     student = Student.objects.get(id=data['student_id'])
 
@@ -561,7 +561,7 @@ def create_payment(self, data):
 
     return payment
 
-def create_payment_lines(self, payment, payment_lines_data):
+def create_payment_lines(payment, payment_lines_data):
     """Create PaymentLine instances"""
     payment_lines = []
 
@@ -578,7 +578,7 @@ def create_payment_lines(self, payment, payment_lines_data):
 
     return payment_lines
 
-def prepare_response_data(self, payment, payment_lines):
+def prepare_response_data(payment, payment_lines):
     """Prepare response data structure"""
     return {
         'id': payment.id,
