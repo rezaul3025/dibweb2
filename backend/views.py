@@ -13,6 +13,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
@@ -409,6 +410,7 @@ def add_student(request):
     }, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
+@csrf_exempt
 def add_payment(request):
     try:
         # Parse request data
