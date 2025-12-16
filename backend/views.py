@@ -416,6 +416,7 @@ def add_payment(request):
         # Parse request data
         try:
             data = json.loads(request.body)
+            print(data)
         except json.JSONDecodeError:
             return JsonResponse({
                 'error': 'Invalid JSON format'
