@@ -614,3 +614,15 @@ def prepare_response_data(payment, payment_lines):
             for line in payment_lines
         ]
     }
+
+def findStudentById(request, student_id):
+    """Find student by id"""
+    try:
+        student = Student.objects.get(id=student_id)
+        serializer = StudentSerializer(student)
+        return JsonResponse(serializer.data)
+    except Student.DoesNotExist:
+        return JsonResponse(
+            {"error": "Student not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )

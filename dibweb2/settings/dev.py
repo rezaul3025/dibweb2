@@ -1,6 +1,6 @@
 from dibweb2.settings.common import *
 
-ALLOWED_HOSTS = ['192.168.188.61','localhost','127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = [ 'http://0.0.0.0:8089/','192.168.188.41','192.168.188.57','0.0.0.0','172.26.17.17','192.168.188.32']
 
 DEBUG = True
 

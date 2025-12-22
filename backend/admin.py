@@ -188,6 +188,7 @@ class StudentAdmin(admin.ModelAdmin):
             'fields': (
                 'first_name',
                 'last_name',
+                'guardian_name',
                 'address',
                 'email',
                 'phone_number'
@@ -281,7 +282,7 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
     form = PaymentForm
-    list_display = ['id', 'student_info', 'receipt_number', 'payment_method_display', 'status_display',
+    list_display = ['id','notes', 'student_info', 'receipt_number', 'payment_method_display', 'status_display',
                     'total_paid_amount_display', 'created_date', 'payment_actions']
     list_filter = ['status', 'payment_method', 'created_date', 'student__shift']
     search_fields = ['student__first_name', 'student__last_name', 'student__email']
