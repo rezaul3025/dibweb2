@@ -1,4 +1,6 @@
 # core/user/serializers.py
+from datetime import date
+
 from rest_framework import serializers
 
 from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
@@ -169,7 +171,9 @@ class StudentSerializer(serializers.ModelSerializer):
     classes = StudentClassSerializer(read_only=True, many=True)
     shift = ShiftSerializer(read_only=True)
     payments = PaymentSerializer(many=True, read_only=True)
+
     class Meta:
         model = Student
         fields = ['id','first_name', 'last_name','guardian_name','address', 'email','phone_number',
-                  'shift','classes','label_category','has_siblings','shift','monthly_fee','status','date_of_birth','payment_status','payments']
+                  'shift','classes','label_category','has_siblings','shift','monthly_fee','status',
+                  'date_of_birth','payment_status','payments', 'age', 'formatted_join_date']

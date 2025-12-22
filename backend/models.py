@@ -1,6 +1,6 @@
 import random
 import string
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 
 from ckeditor.fields import RichTextField
@@ -113,6 +113,7 @@ class Student(models.Model):
     status = models.CharField(default="active", max_length=50)
     date_of_birth = models.DateField(null=True, blank=True)
     payment_status = models.CharField(max_length=50, blank=True)
+    join_date = models.DateTimeField(default=datetime.now)
     class Meta:
         ordering = ["first_name"]
 
@@ -132,12 +133,33 @@ class Student(models.Model):
         return f"{self.get_classes}_{self.id}"
 
     @property
+    def age(self):
+        """Calculate age from date of birth"""
+        if not self.date_of_birth:
+            return None
+
+        today = date.today()
+
+        # Calculate years difference
+        age = today.year - self.date_of_birth.year
+
+        # Adjust if birthday hasn't occurred this year
+        if (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day):
+            age -= 1
+
+        return age
+
+    @property
     def total_payments_count(self):
         return self.payments.count()
 
     @property
     def total_amount_paid(self):
         return sum(payment.total_paid_amount for payment in self.payments.all())
+
+    @property
+    def formatted_join_date(self):
+        return f"{self.join_date.strftime('%d-%m-%Y')}"
 
 
 

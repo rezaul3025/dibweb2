@@ -176,7 +176,7 @@ class StudentForm(forms.ModelForm):
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     form = StudentForm
-    list_display = ['student_id', 'full_name', 'get_classes', 'label_category', 'shift', 'monthly_fee', 'total_payments_count',
+    list_display = ['student_id', 'full_name','age','get_classes', 'label_category', 'shift', 'monthly_fee', 'total_payments_count',
                     'total_amount_paid_display', 'student_actions']
     list_filter = ['shift', 'classes', 'has_siblings','status', 'monthly_fee']
     search_fields = ['first_name', 'last_name', 'email', 'phone_number', 'address']
@@ -191,7 +191,8 @@ class StudentAdmin(admin.ModelAdmin):
                 'guardian_name',
                 'address',
                 'email',
-                'phone_number'
+                'phone_number',
+                'date_of_birth',
             )
         }),
         ('Academic Information', {
