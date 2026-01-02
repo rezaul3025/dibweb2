@@ -8,7 +8,7 @@ from http.client import HTTPException
 import requests
 from bs4 import BeautifulSoup
 from django.contrib.auth import authenticate, login
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -366,7 +366,7 @@ def add_student(request):
 
     # Related objects
     shift = get_object_or_404(Shift, pk=payload["shift"])
-    label_category = get_object_or_404(LabelCategory, pk=payload["label_category"])
+    label_category = getLabelCategory(payload["label_category"])
     class_ids = payload.get("classes", [])
     if class_ids and not isinstance(class_ids, list):
         return Response({"error": "class_ids must be a list of IDs"},
@@ -408,6 +408,12 @@ def add_student(request):
         "siblings": student.has_siblings,
         "monthly_fee": student.monthly_fee,
     }, status=status.HTTP_201_CREATED)
+
+def getLabelCategory(id):
+    try:
+        return LabelCategory.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return None
 
 @api_view(['POST'])
 @csrf_exempt
