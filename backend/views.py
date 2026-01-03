@@ -27,6 +27,7 @@ from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSe
     NoticeBoardItemSerializer, NotificationSerializer, LabelCategorySerializer
 from .models import Payment, Student
 from .serializers import PaymentSerializer
+from .utils.require_header import require_header
 
 logger = logging.getLogger(__name__)
 
@@ -417,6 +418,7 @@ def getLabelCategory(id):
 
 @api_view(['POST'])
 @csrf_exempt
+@require_header()
 def add_payment(request):
     try:
         # Parse request data
@@ -621,6 +623,7 @@ def prepare_response_data(payment, payment_lines):
         ]
     }
 
+@require_header()
 def findStudentById(request, student_id):
     """Find student by id"""
     try:
