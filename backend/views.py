@@ -7,10 +7,11 @@ from http.client import HTTPException
 
 import requests
 from bs4 import BeautifulSoup
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import transaction
 from django.http import JsonResponse
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
@@ -27,6 +28,7 @@ from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSe
     NoticeBoardItemSerializer, NotificationSerializer, LabelCategorySerializer
 from .models import Payment, Student
 from .serializers import PaymentSerializer
+from .utils.pdf_generator import generate_payment_receipt
 from .utils.require_header import require_header
 
 logger = logging.getLogger(__name__)
@@ -234,6 +236,7 @@ def studentsByShift(request, shift_id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@require_header()
 def allClasses(request):
     classes = StudentClass.objects.all()
     serializer = StudentClassSerializer(classes, many=True)
@@ -246,15 +249,17 @@ def allTeachers(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+@require_header()
 def allShifts(request):
     shifts = Shift.objects.all()
     serializer = ShiftSerializer(shifts, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
+@require_header()
 def labelCategories(request):
-    labelCategories = LabelCategory.objects.all()
-    serializer = LabelCategorySerializer(labelCategories, many=True)
+    labelCategoryData = LabelCategory.objects.all()
+    serializer = LabelCategorySerializer(labelCategoryData, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -277,20 +282,31 @@ def notification(request):
 
 
 @api_view(['POST'])
+@require_header()
+#@csrf_exempt
 def login_user(request):
     username = request.data.get('username')
     password = request.data.get('password')
-    print(username)
+    #print(username)
     user = authenticate(request, username=username, password=password)
     print(user)
     if user is not None:
         login(request, user)
         token = Token.generate_key()
-        return Response({
+        print(token)
+        #return JsonResponse({'token': token})
+        return JsonResponse(data={
             'token': token
-        })
+        }, status=200)
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
+#@api_view(['POST'])
+@require_header()
+@csrf_exempt
+def logout_user(request):
+    print('test logout')
+    logout(request)
+    return JsonResponse({'message': 'Logged out'}, status=200)
 
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])  # or IsAuthenticated for secure endpoints
@@ -347,6 +363,7 @@ def record_student_payment(request):
     )
 
 @api_view(['POST'])
+@require_header()
 def add_student(request):
     # Expect application/json
     if request.content_type != "application/json":
@@ -635,3 +652,19 @@ def findStudentById(request, student_id):
             {"error": "Student not found"},
             status=status.HTTP_404_NOT_FOUND
         )
+
+@api_view(['GET'])
+@require_header()
+def payment_receipt(request, payment_id):
+    try:
+        """Generate payment receipt"""
+        payment = Payment.objects.get(id=payment_id)
+        buffer = generate_payment_receipt(payment)
+
+        filename = f"receipt_{payment.student.first_name}_{payment.receipt_number}.pdf"
+        response = HttpResponse(buffer, content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+        return response
+    except Payment.DoesNotExist:
+        return JsonResponse({"error": "Payment not found"},
+            status=status.HTTP_404_NOT_FOUND)
