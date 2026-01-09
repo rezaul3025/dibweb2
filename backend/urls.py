@@ -25,7 +25,7 @@ urlpatterns = [
    path('v1/students/', views.allStudents),
    path('v1/students/<int:student_id>/', views.findStudentById),
    path("v1/students/payments/record/", views.record_student_payment, name="record_student_payment"),
-   path("v1/students/add", views.add_student, name="add_student"),
+   path("v1/students/add/", views.add_student, name="add_student"),
    path("v1/payments/", views.add_payment, name='add-payment'),
    path('v1/classes/', views.allClasses),
    path('v1/shifts/', views.allShifts),
@@ -37,7 +37,7 @@ urlpatterns = [
    path('v1/login/', views.login_user),
    path('v1/logout/', views.logout_user),
    path('v1/generate_payment_receipt/<int:payment_id>/', views.payment_receipt),
-   path('/v1/check-academy-id/', views.check_academy_id_duplicate),
+   path('v1/check-academy-id/', views.check_academy_id_duplicate),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

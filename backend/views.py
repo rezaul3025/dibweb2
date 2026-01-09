@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import transaction
+from django.db.models.query_utils import Q
 from django.http import JsonResponse
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -18,6 +19,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
@@ -364,7 +366,9 @@ def record_student_payment(request):
 
 @api_view(['POST'])
 @require_header()
+@permission_classes([AllowAny])
 def add_student(request):
+    print(request.data)
     # Expect application/json
     if request.content_type != "application/json":
         return JsonResponse(
@@ -397,6 +401,7 @@ def add_student(request):
     # Create
     with transaction.atomic():
         student = Student.objects.create(
+            academy_id=payload.get("academy_id", ""),
             first_name=payload.get("first_name", ""),
             last_name=payload.get("last_name", ""),
             guardian_name=payload.get("guardian_name", ""),
@@ -416,6 +421,7 @@ def add_student(request):
 
     return Response({
         "id": student.id,
+        "academy_id": student.academy_id,
         "first_name": student.first_name,
         "last_name": student.last_name,
         "address": student.address,
