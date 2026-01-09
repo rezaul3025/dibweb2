@@ -668,3 +668,41 @@ def payment_receipt(request, payment_id):
     except Payment.DoesNotExist:
         return JsonResponse({"error": "Payment not found"},
             status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+def check_academy_id_duplicate(request):
+    """
+    Check if academy_id already exists
+    Example: GET /api/v1/check-academy-id/?academy_id=ACD202412345
+    """
+    academy_id = request.GET.get('academy_id', '').strip()
+
+    if not academy_id:
+        return Response({
+            'success': False,
+            'message': 'academy_id parameter is required',
+            'is_duplicate': False,
+            'suggestions': []
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    # Check for exact match
+    exists = Student.objects.filter(academy_id__iexact=academy_id).exists()
+
+    # Find similar IDs for suggestions
+    similar_ids = []
+    if not exists:
+        # Find IDs with similar patterns
+        similar_ids = Student.objects.filter(
+            Q(academy_id__icontains=academy_id[:4]) |  # First 4 chars
+            Q(academy_id__iregex=r'^{}\d+$'.format(re.escape(academy_id.rstrip('0123456789'))))  # Same prefix
+        ).values_list('academy_id', flat=True)[:5]
+
+    return Response({
+        'success': True,
+        'message': 'Duplicate check completed',
+        'is_duplicate': exists,
+        'academy_id': academy_id,
+        'similar_existing_ids': list(similar_ids),
+        'count': Student.objects.filter(academy_id__iexact=academy_id).count()
+    }, status=status.HTTP_200_OK)

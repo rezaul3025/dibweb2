@@ -174,6 +174,6 @@ class StudentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = ['id','first_name', 'last_name','guardian_name','address', 'email','phone_number',
+        fields = ['id','academy_id', 'first_name', 'last_name','guardian_name','address', 'email','phone_number',
                   'shift','classes','label_category','has_siblings','shift','monthly_fee','status',
                   'date_of_birth','payment_status','payments', 'age', 'formatted_join_date']

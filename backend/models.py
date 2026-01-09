@@ -99,6 +99,7 @@ class LabelCategory(models.Model):
         return f"{self.label} {self.category}"
 
 class Student(models.Model):
+    academy_id = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     guardian_name = models.CharField(max_length=255, blank=True)
