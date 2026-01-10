@@ -99,7 +99,7 @@ class LabelCategory(models.Model):
         return f"{self.label} {self.category}"
 
 class Student(models.Model):
-    academy_id = models.CharField(max_length=255)
+    student_id = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     guardian_name = models.CharField(max_length=255, blank=True)
@@ -128,10 +128,6 @@ class Student(models.Model):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
-    @property
-    def student_id(self):
-        return f"{self.get_classes}_{self.id}"
 
     @property
     def age(self):

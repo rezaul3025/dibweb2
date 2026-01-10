@@ -37,7 +37,7 @@ urlpatterns = [
    path('v1/login/', views.login_user),
    path('v1/logout/', views.logout_user),
    path('v1/generate_payment_receipt/<int:payment_id>/', views.payment_receipt),
-   path('v1/check-academy-id/', views.check_academy_id_duplicate),
+   path('v1/check-student_id/', views.check_student_id_duplicate),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

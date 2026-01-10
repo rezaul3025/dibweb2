@@ -18,7 +18,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status, permissions
 from rest_framework.authtoken.models import Token
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
@@ -366,7 +366,8 @@ def record_student_payment(request):
 
 @api_view(['POST'])
 @require_header()
-@permission_classes([AllowAny])
+@authentication_classes([])
+@permission_classes([])
 def add_student(request):
     print(request.data)
     # Expect application/json
@@ -401,7 +402,7 @@ def add_student(request):
     # Create
     with transaction.atomic():
         student = Student.objects.create(
-            academy_id=payload.get("academy_id", ""),
+            student_id=payload.get("student_id", ""),
             first_name=payload.get("first_name", ""),
             last_name=payload.get("last_name", ""),
             guardian_name=payload.get("guardian_name", ""),
@@ -421,7 +422,7 @@ def add_student(request):
 
     return Response({
         "id": student.id,
-        "academy_id": student.academy_id,
+        "student_id": student.student_id,
         "first_name": student.first_name,
         "last_name": student.last_name,
         "address": student.address,
@@ -442,6 +443,8 @@ def getLabelCategory(id):
 @api_view(['POST'])
 @csrf_exempt
 @require_header()
+@authentication_classes([])
+@permission_classes([])
 def add_payment(request):
     try:
         # Parse request data
@@ -677,38 +680,38 @@ def payment_receipt(request, payment_id):
 
 
 @api_view(['GET'])
-def check_academy_id_duplicate(request):
+def check_student_id_duplicate(request):
     """
-    Check if academy_id already exists
-    Example: GET /api/v1/check-academy-id/?academy_id=ACD202412345
+    Check if student_id already exists
+    Example: GET /api/v1/check-academy-id/?student_id=ACD202412345
     """
-    academy_id = request.GET.get('academy_id', '').strip()
+    student_id = request.GET.get('student_id', '').strip()
 
-    if not academy_id:
+    if not student_id:
         return Response({
             'success': False,
-            'message': 'academy_id parameter is required',
+            'message': 'student_id parameter is required',
             'is_duplicate': False,
             'suggestions': []
         }, status=status.HTTP_400_BAD_REQUEST)
 
     # Check for exact match
-    exists = Student.objects.filter(academy_id__iexact=academy_id).exists()
+    exists = Student.objects.filter(student_id__iexact=student_id).exists()
 
     # Find similar IDs for suggestions
     similar_ids = []
     if not exists:
         # Find IDs with similar patterns
         similar_ids = Student.objects.filter(
-            Q(academy_id__icontains=academy_id[:4]) |  # First 4 chars
-            Q(academy_id__iregex=r'^{}\d+$'.format(re.escape(academy_id.rstrip('0123456789'))))  # Same prefix
-        ).values_list('academy_id', flat=True)[:5]
+            Q(student_id__icontains=student_id[:4]) |  # First 4 chars
+            Q(student_id__iregex=r'^{}\d+$'.format(re.escape(student_id.rstrip('0123456789'))))  # Same prefix
+        ).values_list('student_id', flat=True)[:5]
 
     return Response({
         'success': True,
         'message': 'Duplicate check completed',
         'is_duplicate': exists,
-        'academy_id': academy_id,
+        'student_id': student_id,
         'similar_existing_ids': list(similar_ids),
-        'count': Student.objects.filter(academy_id__iexact=academy_id).count()
+        'count': Student.objects.filter(student_id__iexact=student_id).count()
     }, status=status.HTTP_200_OK)
