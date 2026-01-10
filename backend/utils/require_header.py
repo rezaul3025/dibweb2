@@ -17,9 +17,6 @@ def require_header():
         @wraps(view_func)
         def _wrapped(request, *args, **kwargs):
             actual = request.headers.get(SEC_HEADER)  # Django 2.2+; case-insensitive
-            print(actual)
-            print(SEC_HEADER_VALUE)
-
             if actual is None:
                 return JsonResponse(
                     {"detail": f"Unauthorized header access"},
