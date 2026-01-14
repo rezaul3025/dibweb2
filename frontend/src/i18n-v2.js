@@ -153,7 +153,7 @@ i18n
                         CopyAll: 'Copy All'
                     },
                     MemberAnnouncement: {
-                        heading: 'দারুল ইনসান ভিশনের একজন পৃষ্ঠপোষক হোন।',
+                        heading: 'দারুল ইহসান ভিশনের একজন পৃষ্ঠপোষক হোন।',
                         sub_heading: 'সহযোগী সদস্য হিসেবে যোগদান করুন',
                         description: 'দারুল ইহসান বার্লিন আল্লাহর পথে কাজ করছে এবং একটি মসজিদ পরিচালনা করছে। এর লক্ষ্যকে এগিয়ে নিতে, দারুল ইহসান বার্লিন e.V. দাতা সদস্যদের স্বাগত জানানোর জন্য একটি প্রোগ্রাম চালু করেছে। ' +
                             'যারা দ্বীনের (ঈমানের) পক্ষে সমর্থন করতে চান তাদের আমরা সদস্য হিসেবে যোগদানের জন্য উৎসাহিত করি। আল্লাহ আমাদের সকলকে পুরস্কৃত করুন, ইনশাআল্লাহ।'
@@ -462,7 +462,7 @@ i18n
                         CopyAll: 'Copy All'
                     },
                     MemberAnnouncement: {
-                        heading: 'Become a patron of Darul Insan Vision.',
+                        heading: 'Become a part of Darul Insan Vision.',
                         sub_heading: 'Join as an associate member',
                         description: 'Darul Ihsan Berlin works in the way of Allah and runs a mosque. To further its mission, Darul Ihsan Berlin e.V. has launched a program to welcome donor members. ' +
                             'We encourage those who want to support the cause of faith to join as members. May Allah reward us all, InshaAllah.'

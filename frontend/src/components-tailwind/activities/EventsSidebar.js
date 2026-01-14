@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 const EventSidebar = ({events}) => {
+    function HtmlRenderer({htmlContent}) {
+        return <div dangerouslySetInnerHTML={{__html: htmlContent}}/>;
+    }
+
   events = events.filter(function (event) {
     return event.event_type === 'FUTURE';
     });
@@ -89,7 +93,7 @@ const EventSidebar = ({events}) => {
                   {event.title}
                 </h4>
                 <p className="text-xs text-gray-600 line-clamp-1 mt-1">
-                  {event.description}
+                    <HtmlRenderer htmlContent={event.description}/>
                 </p>
                   <div className="flex items-center gap-1 mt-1.5">
                       <svg
