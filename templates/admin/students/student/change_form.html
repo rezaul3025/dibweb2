@@ -1,0 +1,38 @@
+<!-- templates/admin/students/student/change_form.html -->
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block after_field_sets %}
+{% if show_receipt_actions and recent_payment %}
+<div class="module aligned">
+    <h2>Recent Payment Actions</h2>
+    <div class="form-row">
+        <div style="background: #d4edda; padding: 15px; border-radius: 5px; border: 1px solid #c3e6cb;">
+            <h3 style="margin-top: 0; color: #155724;">Payment #{{ recent_payment.id }} Created Successfully!</h3>
+            <p><strong>Amount:</strong> €{{ recent_payment.total_paid_amount|floatformat:2 }}</p>
+            <p><strong>Status:</strong> {{ recent_payment.get_status_display }}</p>
+            <p><strong>Receipt Number:</strong> {{ recent_payment.receipt_number }}</p>
+
+            <div style="margin-top: 15px;">
+                <a href="{% url 'admin:download_receipt' recent_payment.id %}"
+                   class="button"
+                   style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; margin-right: 10px;">
+                   📄 Download Receipt
+                </a>
+
+                {% if original.email %}
+                <a href="{% url 'admin:send_receipt' recent_payment.id %}"
+                   class="button"
+                   style="background-color: #17a2b8; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px;">
+                   📧 Email Receipt
+                </a>
+                {% else %}
+                <span style="color: #6c757d; padding: 10px 15px;">No email address for student</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{{ block.super }}
+{% endblock %}

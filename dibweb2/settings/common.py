@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 CORS_ORIGIN_ALLOW_ALL = True
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com','darulihsan-berlin.com', 'master', 'http://0.0.0.0:8089/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'prayer.darulihsan-berlin.com','darulihsan-berlin.com', 'master']
 
 # Application definition
 
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'backend',
     'frontend',
     'ckeditor',
@@ -68,7 +70,10 @@ ROOT_URLCONF = 'dibweb2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # Project-level templates directory
+            'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,6 +87,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'dibweb2.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

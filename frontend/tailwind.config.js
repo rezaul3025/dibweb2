@@ -26,6 +26,8 @@ module.exports = {
           900: "#472300",
         },
       },
-    plugins: [],
+    plugins: [
+        require('tailwind-scrollbar')({ nocompatible: true }),
+    ],
   }
 }

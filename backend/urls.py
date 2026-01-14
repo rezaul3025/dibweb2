@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from backend import views
+from backend import views, PaymentCreateView
 
 # from api.views import public_events
 
@@ -23,12 +23,21 @@ urlpatterns = [
    path('v1/students/shifts/<int:shift_id>/', views.studentsByShift),
    path('v1/students/search/<str:search_params>/', views.allStudentBySearch),
    path('v1/students/', views.allStudents),
+   path('v1/students/<int:student_id>/', views.findStudentById),
+   path("v1/students/payments/record/", views.record_student_payment, name="record_student_payment"),
+   path("v1/students/add/", views.add_student, name="add_student"),
+   path("v1/payments/", views.add_payment, name='add-payment'),
    path('v1/classes/', views.allClasses),
    path('v1/shifts/', views.allShifts),
+   path('v1/labelgategories/', views.labelCategories),
    path('v1/teachers/', views.allTeachers),
    path('v1/notice-board/', views.noticeBoard),
    path('v1/download-items/<str:department>/', views.downloadItems),
    path('v1/notification/', views.notification),
+   path('v1/login/', views.login_user),
+   path('v1/logout/', views.logout_user),
+   path('v1/generate_payment_receipt/<int:payment_id>/', views.payment_receipt),
+   path('v1/check-student_id/', views.check_student_id_duplicate),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

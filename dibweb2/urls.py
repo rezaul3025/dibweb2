@@ -19,6 +19,7 @@ Including another URLconf
 from django.conf import settings
 
 from django.contrib import admin
+from dj_rest_auth.views import LoginView, LogoutView
 from django.urls import path, include
 from django.conf.urls.static import static
 
@@ -28,5 +29,16 @@ urlpatterns = [
     path('', include('frontend.urls'))
 ]
 
+auth_urlpatterns = [
+   path('api/auth/login/', LoginView.as_view(), name='rest_login'),
+   path('api/auth/logout/', LogoutView.as_view(), name='rest_logout'),
+]
+
+urlpatterns +=auth_urlpatterns
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Update admin site titles
+admin.site.site_header = "Darul Ihsan Berlin Academy Admin"
+admin.site.site_title = "Academy Admin"
+admin.site.index_title = "Welcome to Academy Administration"
