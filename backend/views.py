@@ -678,6 +678,31 @@ def studentStatusChange(request, student_id):
             status=status.HTTP_404_NOT_FOUND
         )
 
+@require_header()
+def updateStudentPaymentStatus(request, student_id):
+    try:
+        student = Student.objects.get(id=student_id)
+        student.payment_status = getPaymentStatus(student.payments)
+        student.save()
+        serializer = StudentSerializer(student)
+        return JsonResponse(serializer.data)
+    except Student.DoesNotExist:
+        return JsonResponse(
+            {"error": "Can't update status, student not found"},
+            status=status.HTTP_404_NOT_FOUND
+        )
+
+def getPaymentStatus(payments):
+    total = payments.count()
+    paid = payments.filter(status="PAID").count()
+    if total > 0 and total == paid:
+        return "PAID"
+    elif paid > 0:
+        return "PARTIAL"
+    else:
+        return "UNPAID"
+
+
 @api_view(['GET'])
 @require_header()
 def payment_receipt(request, payment_id):
