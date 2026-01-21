@@ -665,11 +665,12 @@ def findStudentById(request, student_id):
 @require_header()
 def studentStatusChange(request, student_id):
     """Student status update by id"""
-    status = request.GET.get('status', '').strip()
+    student_status = request.GET.get('status', '').strip()
     try:
         student = Student.objects.get(id=student_id)
-        student.status = status
+        student.status = student_status
         student.save()
+        print(student.status)
         serializer = StudentSerializer(student)
         return JsonResponse(serializer.data)
     except Student.DoesNotExist:
