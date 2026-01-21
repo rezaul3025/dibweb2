@@ -667,12 +667,17 @@ def studentStatusChange(request, student_id):
     """Student status update by id"""
     student_status = request.GET.get('status', '').strip()
     try:
-        student = Student.objects.get(id=student_id)
-        student.status = student_status
-        student.save()
-        print(student.status)
-        serializer = StudentSerializer(student)
-        return JsonResponse(serializer.data)
+        ops_status = Student.objects.filter(id=student_id).update(status=student_status)
+        if ops_status == 1:
+            return JsonResponse(
+                {"message": "Student status updated"},
+                status=status.HTTP_200_OK
+            )
+        else:
+            return JsonResponse(
+                {"message": "Student status not updated"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
     except Student.DoesNotExist:
         return JsonResponse(
             {"error": "Can't update status, student not found"},
