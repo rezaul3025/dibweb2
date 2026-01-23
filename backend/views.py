@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import re
 import urllib
 from decimal import Decimal
@@ -7,6 +8,7 @@ from http.client import HTTPException
 
 import requests
 from bs4 import BeautifulSoup
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.db import transaction
@@ -668,6 +670,7 @@ def studentStatusChange(request, student_id):
     student_status = request.GET.get('status', '').strip()
     try:
         ops_status = Student.objects.filter(id=student_id).update(status=student_status)
+        print(Student.objects.get(id=student_id).status)
         if ops_status == 1:
             return JsonResponse(
                 {"message": "Student status updated"},
@@ -713,9 +716,11 @@ def getPaymentStatus(payments):
 @require_header()
 def payment_receipt(request, payment_id):
     try:
+        ogo_filename = "dib-logo.png"
+        logo_path = os.path.join(settings.MEDIA_ROOT, 'logo', ogo_filename)
         """Generate payment receipt"""
         payment = Payment.objects.get(id=payment_id)
-        buffer = generate_payment_receipt(payment)
+        buffer = generate_payment_receipt(payment, logo_path)
 
         filename = f"receipt_{payment.student.first_name}_{payment.receipt_number}.pdf"
         response = HttpResponse(buffer, content_type='application/pdf')

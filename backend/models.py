@@ -267,7 +267,7 @@ class Payment(models.Model):
 
     @property
     def receipt_number(self):
-        return f"{self.id}_{self.created_date.strftime('%m_%Y')}_{''.join(random.choices(string.ascii_uppercase+string.digits, k=10))}"
+        return f"{self.student.student_id}_{self.created_date.strftime('%m_%Y')}_{''.join(random.choices(string.ascii_uppercase+string.digits, k=5))}"
 
     def update_status(self):
         """Update payment status based on payment lines"""

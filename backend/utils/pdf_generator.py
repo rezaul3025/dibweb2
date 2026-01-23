@@ -8,7 +8,38 @@ from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
 
 
-def generate_payment_receipt(payment):
+def add_logo_header(canvas, logo_path="logo.png"):
+    """Add logo to the top center of every page"""
+    canvas.saveState()
+
+    # Logo dimensions (adjust as needed)
+    logo_width = 1.8 * inch
+    logo_height = 0.8 * inch
+
+    # Calculate center position
+    page_width, page_height = A4
+    x_position = (page_width - logo_width) / 2
+    y_position = page_height - 1.5 * inch  # Position from top
+
+    try:
+        canvas.drawImage(logo_path, x_position, y_position,
+                         width=logo_width, height=logo_height,
+                         preserveAspectRatio=True, mask='auto')
+    except:
+        # If logo not found, you could add a placeholder text
+        canvas.setFont('Helvetica-Bold', 12)
+        canvas.drawCentredString(page_width / 2, y_position + logo_height / 2,
+                                 "[LOGO PLACEHOLDER]")
+
+    # Add a line separator below logo
+    canvas.setStrokeColor(colors.HexColor('#e2e8f0'))
+    canvas.setLineWidth(1)
+    #canvas.line(0.5 * inch, y_position - 0.2 * inch,
+    #            page_width - 0.5 * inch, y_position - 0.2 * inch)
+
+    canvas.restoreState()
+
+def generate_payment_receipt(payment, logo_path="logo.png"):
     """Generate PDF receipt matching the HTML structure"""
     buffer = BytesIO()
     doc = SimpleDocTemplate(
@@ -76,6 +107,7 @@ def generate_payment_receipt(payment):
     )
 
     # Header Section
+    elements.append(Spacer(1, 80))
     elements.append(Paragraph("Darul Ihsan Berlin Academy", header_style))
     elements.append(Paragraph("FEE PAYMENT RECEIPT", subheader_style))
     elements.append(Paragraph("Brunnenstraße 122, 13355 Berlin", address_style))
@@ -86,12 +118,14 @@ def generate_payment_receipt(payment):
     details_data = [
         [Paragraph('<b>Receipt Number:</b>', detail_label_style),
          Paragraph(payment.receipt_number, detail_value_style)],
+        [Paragraph('<b>Student ID:</b>', detail_label_style),
+         Paragraph(payment.student.student_id, detail_value_style)],
         [Paragraph('<b>Date:</b>', detail_label_style),
          Paragraph(payment.created_date.strftime('%d-%m-%Y'), detail_value_style)],
         [Paragraph('<b>Student Name:</b>', detail_label_style),
          Paragraph(payment.student.full_name, detail_value_style)],
-        [Paragraph('<b>Student ID:</b>', detail_label_style),
-         Paragraph(payment.student.student_id, detail_value_style)],
+        [Paragraph('<b>Guardian Name:</b>', detail_label_style),
+         Paragraph(payment.student.guardian_name, detail_value_style)],
         [Paragraph('<b>Class:</b>', detail_label_style),
          Paragraph(payment.student.get_classes, detail_value_style)],
         [Paragraph('<b>Payment For:</b>', detail_label_style),
@@ -174,6 +208,6 @@ def generate_payment_receipt(payment):
     elements.append(Paragraph("This is a computer generated receipt. No signature required.", footer_style))
     elements.append(Paragraph("Thank you for your payment!", footer_style))
 
-    doc.build(elements)
+    doc.build(elements, onFirstPage=lambda canvas, doc: add_logo_header(canvas, logo_path))
     buffer.seek(0)
     return buffer

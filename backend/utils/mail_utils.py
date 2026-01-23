@@ -16,7 +16,7 @@ def send_payment_receipt_email(payment):
             return False, "Student has no email address"
 
         # Generate PDF
-        pdf_buffer = generate_payment_receipt(payment)
+        pdf_buffer = generate_payment_receipt(payment, 'dib-logo.png')
 
         # Create email
         subject = f"Payment Receipt - {payment.receipt_number}"

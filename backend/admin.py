@@ -399,7 +399,7 @@ class PaymentAdmin(admin.ModelAdmin):
     def generate_receipt(self, request, payment_id):
         try:
             payment = Payment.objects.get(id=payment_id)
-            buffer = generate_payment_receipt(payment)
+            buffer = generate_payment_receipt(payment, 'dib-logo.png')
 
             filename = f"receipt_{payment.student.first_name}_{payment.receipt_number}.pdf"
             response = HttpResponse(buffer, content_type='application/pdf')
