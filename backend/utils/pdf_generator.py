@@ -116,12 +116,12 @@ def generate_payment_receipt(payment, logo_path="logo.png"):
 
     # Receipt Details Section
     details_data = [
+        [Paragraph('<b>Date:</b>', detail_label_style),
+         Paragraph(payment.created_date.strftime('%d-%m-%Y'), detail_value_style)],
         [Paragraph('<b>Receipt Number:</b>', detail_label_style),
          Paragraph(payment.receipt_number, detail_value_style)],
         [Paragraph('<b>Student ID:</b>', detail_label_style),
          Paragraph(payment.student.student_id, detail_value_style)],
-        [Paragraph('<b>Date:</b>', detail_label_style),
-         Paragraph(payment.created_date.strftime('%d-%m-%Y'), detail_value_style)],
         [Paragraph('<b>Student Name:</b>', detail_label_style),
          Paragraph(payment.student.full_name, detail_value_style)],
         [Paragraph('<b>Guardian Name:</b>', detail_label_style),
