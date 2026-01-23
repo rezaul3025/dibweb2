@@ -189,6 +189,7 @@ class Payment(models.Model):
     )
     created_date = models.DateTimeField(
         default=timezone.now,
+        null=True,
         verbose_name=_('Created Date')
     )
     payment_method = models.CharField(
