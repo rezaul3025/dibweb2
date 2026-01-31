@@ -99,6 +99,11 @@ class LabelCategory(models.Model):
         return f"{self.label} {self.category}"
 
 class Student(models.Model):
+    GENDER_CHOICES = [
+        ('M', 'Male'),
+        ('F', 'Female'),
+    ]
+
     student_id = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -115,6 +120,14 @@ class Student(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     payment_status = models.CharField(max_length=50, blank=True)
     join_date = models.DateTimeField(default=datetime.now)
+    gender = models.CharField(
+        max_length=1,
+        choices=GENDER_CHOICES,
+        default='M',  # Optional: you can set a default if needed
+        blank=True,  # Optional: if you want to allow blank/null values
+        null=True  # Optional: if you want to allow null values in database
+    )
+
     class Meta:
         ordering = ["first_name"]
 
@@ -123,7 +136,7 @@ class Student(models.Model):
         return ",".join([str(c.name) for c in self.classes.all()])
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} {self.address}"
+        return f"{self.first_name} {self.last_name} {self.address} ({self.student_id})"
 
     @property
     def full_name(self):
@@ -157,6 +170,11 @@ class Student(models.Model):
     @property
     def formatted_join_date(self):
         return f"{self.join_date.strftime('%d-%m-%Y')}"
+
+    @property
+    def get_gender_display(self):
+        """Helper property to get display value of gender"""
+        return dict(self.GENDER_CHOICES).get(self.gender, '')
 
 
 
