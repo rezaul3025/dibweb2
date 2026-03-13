@@ -3,10 +3,47 @@ import Clock from "react-live-clock";
 import moment from "moment/moment";
 import LoadingIcon from "../LoadingIcon";
 
+// Add custom CSS animations
+const styles = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .animate-fadeIn {
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    .animate-slideIn {
+        animation: slideIn 0.5s ease-out;
+    }
+`;
+
 const PrayerTimeCard = () => {
     const [prayerTimes, setPrayerTimes] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [nextPrayer, setNextPrayer] = useState()
+    const [nextPrayer, setNextPrayer] = useState();
+    const [countdown, setCountdown] = useState({ hours: 0, minutes: 0, seconds: 0 });
+    const [progress, setProgress] = useState(0);
+    const [expandedPrayer, setExpandedPrayer] = useState(null);
+    const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
     function getPrayerTimesObj(data) {
         const prayerTimes = [
@@ -63,6 +100,36 @@ const PrayerTimeCard = () => {
         return closest;
     }
 
+    // Calculate countdown to next prayer
+    const calculateCountdown = (nextPrayerTime) => {
+        if (!nextPrayerTime) return;
+
+        const now = new Date();
+        let [h, m] = nextPrayerTime.split(":").map(Number);
+        const prayerDate = new Date();
+        prayerDate.setHours(h);
+        prayerDate.setMinutes(m);
+        prayerDate.setSeconds(0);
+
+        // If prayer time has passed today, set it for tomorrow
+        if (prayerDate < now) {
+            prayerDate.setDate(prayerDate.getDate() + 1);
+        }
+
+        const diff = prayerDate - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        setCountdown({ hours, minutes, seconds });
+
+        // Calculate progress (percentage of time passed between current and next prayer)
+        const totalDayMinutes = 24 * 60;
+        const minutesUntilPrayer = hours * 60 + minutes;
+        const progressPercent = ((totalDayMinutes - minutesUntilPrayer) / totalDayMinutes) * 100;
+        setProgress(Math.min(progressPercent, 100));
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -85,6 +152,30 @@ const PrayerTimeCard = () => {
         fetchData();
     }, []);
 
+    // Update countdown every second
+    useEffect(() => {
+        if (nextPrayer && nextPrayer.time) {
+            calculateCountdown(nextPrayer.time);
+            const interval = setInterval(() => {
+                calculateCountdown(nextPrayer.time);
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [nextPrayer]);
+
+    // Handle notification permission
+    const toggleNotifications = () => {
+        if (!notificationsEnabled && 'Notification' in window) {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    setNotificationsEnabled(true);
+                }
+            });
+        } else {
+            setNotificationsEnabled(false);
+        }
+    };
+
     // Sample data - replace with API calls
     /*const prayerTimes = [
       { name: 'Fajr', time: '5:30 AM', icon: '🌙' },
@@ -103,30 +194,32 @@ const PrayerTimeCard = () => {
 
 
     return (
-        <div className="bg-green-50 text-gray-500 rounded-lg overflow-hidden">
+        <>
+            <style>{styles}</style>
+            <div className="bg-green-100 text-gray-500 rounded-xl overflow-hidden shadow-lg w-full mx-auto">
             {/* Top Section - Location & Date */}
             <div
-                className="px-4 py-3 bg-green-50 text-sm flex flex-col sm:flex-row justify-between items-center border-b border-gray-100">
+                className="px-4 py-3 bg-green-100 text-sm flex flex-col sm:flex-row justify-between items-center border-b border-gray-100">
                 <div className="flex items-center mb-2 sm:mb-0">
-                    <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
-                    <span className="font-medium">{location.city}, {location.country}</span>
+                    <span className="font-medium text-gray-700">{location.city}, {location.country}</span>
                 </div>
                 <div className="flex items-center">
                      {nextPrayer &&
                          <Fragment>
-                             <span className="mr-1 text-2xl font-bold">
+                             <span className="mr-1 text-2xl font-bold text-green-700">
                                  {nextPrayer.name}
                              </span>
-                             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                             <svg className="h-6 w-6 text-green-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                              </svg>
-                             <span className="ml-1 text-2xl font-bold">
+                             <span className="ml-1 text-2xl font-bold text-green-700">
                                {nextPrayer.time}
                              </span>
 
@@ -135,67 +228,147 @@ const PrayerTimeCard = () => {
                 </div>
 
                 <div className="flex items-center">
-                    <svg className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-5 w-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    <div className="md:font-medium flex items-center sm:font-normal">
+                    <div className="md:font-medium flex items-center sm:font-normal text-gray-700">
                         <div className="px-1">{moment(new Date()).format('dddd, MMM D YYYY')}</div>
-                        {/*<div className="px-1">
-                            {new Intl.DateTimeFormat('en-TN-u-ca-islamic', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
-                            }).format(Date.now())}
-                        </div>*/}
                     </div>
                 </div>
             </div>
 
-            {/* Prayer Times - Horizontal Scroll on Mobile */}
-            <div className="px-4 py-3 overflow-x-auto">
-                <div className="flex space-x-4 min-w-max justify-center md:gap-12">
-                    {loading && <div className="w-full px-4">
-                        <LoadingIcon type="spinner" size="sm" color="green-500"/>
-                    </div>}
-                    {!loading && prayerTimes.map((prayer, index) => (
-                        <div
-                            key={index}
-                            className={`flex flex-col items-center rounded-lg min-w-[80px] ${
-                                prayer.active ? 'bg-green-400 shadow-md' : 'bg-green-300'
-                            }`}
-                        >
-                            <span className="text-xl mb-1">{prayer.icon}</span>
-                            <span className="text-xs font-medium">{prayer.name}</span>
-                            <span className={`mt-1 font-bold ${
-                                nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-600'
-                            }`}>
-                            {prayer.time}
-                        </span>
-                            <span className="text-sm">{prayer.iqama}</span>
-                            { nextPrayer && nextPrayer.name === prayer.name && (
-                                <span className="mt-1 text-xs bg-white text-green-600 px-2 py-0.5 rounded-full mb-2">
-                  Next
-                </span>
-                            )}
+            {/* 2-Column Layout for Desktop: Timer and Prayer Times */}
+            <div className="flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200">
+                {/* Countdown Timer Section - Left Column on Desktop */}
+                {nextPrayer && (
+                    <div className="px-4 py-4 bg-green-100 border-b lg:border-b-0 border-gray-200 flex items-center justify-center lg:w-1/3">
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="text-sm font-medium text-gray-600 mb-2">Time Until {nextPrayer.name}</div>
+                            <div className="flex gap-3">
+                                <div className="bg-white rounded-lg px-4 py-2 shadow-md">
+                                    <div className="text-3xl font-bold text-green-700">{String(countdown.hours).padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-500 text-center">Hours</div>
+                                </div>
+                                <div className="bg-white rounded-lg px-4 py-2 shadow-md">
+                                    <div className="text-3xl font-bold text-green-700">{String(countdown.minutes).padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-500 text-center">Minutes</div>
+                                </div>
+                                <div className="bg-white rounded-lg px-4 py-2 shadow-md">
+                                    <div className="text-3xl font-bold text-green-700">{String(countdown.seconds).padStart(2, '0')}</div>
+                                    <div className="text-xs text-gray-500 text-center">Seconds</div>
+                                </div>
+                            </div>
+                            {/* Progress Bar */}
+                            <div className="w-full mt-4">
+                                <div className="h-2 bg-gray-300 rounded-full overflow-hidden">
+                                    <div
+                                        className="h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-1000 ease-linear"
+                                        style={{ width: `${progress}%` }}
+                                    ></div>
+                                </div>
+                            </div>
                         </div>
-                    ))}
+                    </div>
+                )}
+
+                {/* Prayer Times - Right Column on Desktop */}
+                <div className="py-4 bg-green-100 overflow-x-auto lg:overflow-visible lg:flex-1 lg:flex lg:items-center lg:justify-center scroll-smooth">
+                    <div className="flex space-x-4 min-w-max md:gap-6 lg:flex-wrap lg:min-w-0 lg:justify-center px-4 pr-8 lg:px-0">
+                        {loading && <div className="w-full px-4">
+                            <LoadingIcon type="spinner" size="sm" color="green-500"/>
+                        </div>}
+                        {!loading && prayerTimes.map((prayer, index) => (
+                            <div
+                                key={index}
+                                onClick={() => setExpandedPrayer(expandedPrayer === index ? null : index)}
+                                className={`
+                                    flex flex-col items-center rounded-xl min-w-[100px] p-3
+                                    transition-all duration-300 ease-in-out cursor-pointer
+                                    transform hover:scale-105 hover:shadow-xl
+                                    ${nextPrayer && nextPrayer.name === prayer.name
+                                        ? 'bg-green-400 text-white shadow-xl ring-2 lg:ring-4 ring-green-500 ring-offset-1 lg:ring-offset-2 lg:scale-110'
+                                        : 'bg-green-300 hover:bg-green-400 shadow-md'
+                                    }
+                                    ${expandedPrayer === index ? 'scale-105 shadow-2xl' : ''}
+                                `}
+                            >
+                                <span className={`text-3xl mb-2 transition-transform duration-300 ${expandedPrayer === index ? 'scale-125' : ''}`}>
+                                    {prayer.icon}
+                                </span>
+                                <span className={`text-sm font-semibold ${
+                                    nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
+                                }`}>
+                                    {prayer.name}
+                                </span>
+                                <span className={`mt-2 text-lg font-bold ${
+                                    nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-green-700'
+                                }`}>
+                                    {prayer.time}
+                                </span>
+
+                                {/* Expanded Details */}
+                                {expandedPrayer === index && prayer.iqama && (
+                                    <div className="mt-2 pt-2 border-t border-gray-200 w-full text-center animate-fadeIn">
+                                        <div className={`text-xs ${
+                                            nextPrayer && nextPrayer.name === prayer.name ? 'text-white/90' : 'text-gray-500'
+                                        }`}>
+                                            Iqama
+                                        </div>
+                                        <div className={`text-sm font-semibold ${
+                                            nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
+                                        }`}>
+                                            {prayer.iqama}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {nextPrayer && nextPrayer.name === prayer.name && (
+                                    <span className="mt-2 text-xs bg-white text-green-600 px-3 py-1 rounded-full font-medium shadow-md animate-pulse">
+                                        Next
+                                    </span>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* Current Time Footer */}
-            <div className="px-4 py-2 bg-green-50 text-sm flex justify-between items-center border-t border-gray-100">
-                <div className="flex items-center">
-                    <svg className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="px-4 py-3 bg-green-100 text-sm flex flex-wrap justify-between items-center border-t border-gray-200 gap-2">
+                <div className="flex items-center text-gray-700">
+                    <svg className="h-5 w-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <span className="font-medium">
-                    <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
+                    <span className="font-semibold text-lg text-green-700">
+                        <Clock format="HH:mm:ss" interval={1000} ticking={true}/>
                     </span>
-
                 </div>
-                <div className="flex items-center">
+
+                {/* Notification Toggle Button */}
+                <button
+                    onClick={toggleNotifications}
+                    className={`
+                        flex items-center gap-2 px-4 py-2 rounded-lg font-medium
+                        transition-all duration-300 transform hover:scale-105
+                        ${notificationsEnabled
+                            ? 'bg-green-600 text-white shadow-md hover:bg-green-700'
+                            : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                        }
+                    `}
+                    title={notificationsEnabled ? 'Notifications enabled' : 'Enable notifications'}
+                >
+                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                    <span className="hidden sm:inline">
+                        {notificationsEnabled ? 'Notifications On' : 'Notify Me'}
+                    </span>
+                </button>
+
+                <div className="flex items-center text-gray-600">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -204,17 +377,23 @@ const PrayerTimeCard = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="w-4 h-4"
+                        className="w-4 h-4 mr-1"
                     >
                         <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
                         <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
                     </svg>
-
-                    <a className="text-green-600 hover:text-green-800 px-2" href="https://mawaqit.net/en/darul-ihsan-berlin/"
-                       target="_blank">www.mawaqit.net</a>
+                    <a
+                        className="text-green-600 hover:text-green-800 font-medium transition-colors duration-200"
+                        href="https://mawaqit.net/en/darul-ihsan-berlin/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        www.mawaqit.net
+                    </a>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
