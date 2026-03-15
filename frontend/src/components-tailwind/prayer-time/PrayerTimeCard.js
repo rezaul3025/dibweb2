@@ -42,7 +42,6 @@ const PrayerTimeCard = () => {
     const [nextPrayer, setNextPrayer] = useState();
     const [countdown, setCountdown] = useState({ hours: 0, minutes: 0, seconds: 0 });
     const [progress, setProgress] = useState(0);
-    const [expandedPrayer, setExpandedPrayer] = useState(null);
     const [notificationsEnabled, setNotificationsEnabled] = useState(false);
     const [announcements, setAnnouncements] = useState([]);
     const [announcementsLoading, setAnnouncementsLoading] = useState(true);
@@ -298,19 +297,17 @@ const PrayerTimeCard = () => {
                         {!loading && prayerTimes.map((prayer, index) => (
                             <div
                                 key={index}
-                                onClick={() => setExpandedPrayer(expandedPrayer === index ? null : index)}
                                 className={`
                                     flex flex-col items-center rounded-xl min-w-[85px] lg:min-w-0 lg:flex-1 p-2 lg:p-2
-                                    transition-all duration-300 ease-in-out cursor-pointer
+                                    transition-all duration-300 ease-in-out
                                     transform hover:scale-105 hover:shadow-xl
                                     ${nextPrayer && nextPrayer.name === prayer.name
                                         ? 'bg-green-400 text-white shadow-xl ring-2 lg:ring-3 ring-green-500 ring-offset-1 lg:scale-105'
                                         : 'bg-green-300 hover:bg-green-400 shadow-md'
                                     }
-                                    ${expandedPrayer === index ? 'scale-105 shadow-2xl' : ''}
                                 `}
                             >
-                                <span className={`mb-1 transition-transform duration-300 text-xl lg:text-2xl ${expandedPrayer === index ? 'scale-125' : ''}`}>
+                                <span className="mb-1 transition-transform duration-300 text-xl lg:text-2xl">
                                     {prayer.icon}
                                 </span>
                                 <span className={`font-semibold text-xs lg:text-sm ${
@@ -324,9 +321,9 @@ const PrayerTimeCard = () => {
                                     {prayer.time}
                                 </span>
 
-                                {/* Expanded Details */}
-                                {expandedPrayer === index && prayer.iqama && (
-                                    <div className="mt-1 pt-1 border-t border-gray-200 w-full text-center animate-fadeIn">
+                                {/* Iqama Details */}
+                                {prayer.iqama && (
+                                    <div className="mt-1 pt-1 border-t border-gray-200 w-full text-center">
                                         <div className={`text-xs ${
                                             nextPrayer && nextPrayer.name === prayer.name ? 'text-white/90' : 'text-gray-500'
                                         }`}>
