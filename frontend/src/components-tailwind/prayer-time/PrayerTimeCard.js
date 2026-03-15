@@ -256,10 +256,10 @@ const PrayerTimeCard = () => {
             </div>
 
             {/* 3-Column Layout for Desktop: Timer, Prayer Times, and Announcements */}
-            <div className={`flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200 ${!announcementsLoading && announcements.length > 0 ? 'lg:justify-center' : 'lg:justify-around'}`}>
+            <div className="flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200">
                 {/* Countdown Timer Section - Left Column on Desktop */}
                 {nextPrayer && (
-                    <div className={`px-4 py-4 bg-green-100 border-b lg:border-b-0 border-gray-200 flex items-center justify-center ${!announcementsLoading && announcements.length === 0 ? 'lg:flex-1 lg:max-w-md' : 'lg:w-1/3'}`}>
+                    <div className="px-4 py-4 bg-green-100 border-b lg:border-b-0 border-gray-200 flex items-center justify-center lg:flex-shrink-0">
                         <div className="flex flex-col items-center justify-center">
                             <div className="text-sm font-medium text-gray-600 mb-2">Time Until {nextPrayer.name}</div>
                             <div className="flex gap-3">
@@ -290,8 +290,8 @@ const PrayerTimeCard = () => {
                 )}
 
                 {/* Prayer Times - Middle Column on Desktop */}
-                <div className={`py-4 bg-green-100 overflow-x-auto lg:overflow-x-hidden scroll-smooth border-b lg:border-b-0 border-gray-200 ${!announcementsLoading && announcements.length === 0 ? 'lg:flex-1 lg:max-w-3xl' : 'lg:w-1/3'}`}>
-                    <div className={`flex min-w-max px-4 pr-8 space-x-3 ${!announcementsLoading && announcements.length === 0 ? 'lg:min-w-0 lg:w-full lg:gap-3 lg:space-x-0 lg:px-4' : 'lg:min-w-0 lg:w-full lg:gap-2 lg:space-x-0 lg:px-2'}`}>
+                <div className="py-4 bg-green-100 overflow-x-auto lg:overflow-x-hidden scroll-smooth border-b lg:border-b-0 border-gray-200 lg:flex-1">
+                    <div className="flex min-w-max px-4 pr-8 space-x-3 lg:min-w-0 lg:w-full lg:h-full lg:gap-2 lg:space-x-0 lg:px-3">
                         {loading && <div className="w-full px-4">
                             <LoadingIcon type="spinner" size="sm" color="green-500"/>
                         </div>}
@@ -300,10 +300,9 @@ const PrayerTimeCard = () => {
                                 key={index}
                                 onClick={() => setExpandedPrayer(expandedPrayer === index ? null : index)}
                                 className={`
-                                    flex flex-col items-center rounded-xl min-w-[85px] lg:min-w-0 lg:flex-1 p-2
+                                    flex flex-col items-center rounded-xl min-w-[85px] lg:min-w-0 lg:flex-1 p-2 lg:p-2
                                     transition-all duration-300 ease-in-out cursor-pointer
                                     transform hover:scale-105 hover:shadow-xl
-                                    ${!announcementsLoading && announcements.length === 0 ? 'lg:p-3' : 'lg:p-1.5'}
                                     ${nextPrayer && nextPrayer.name === prayer.name
                                         ? 'bg-green-400 text-white shadow-xl ring-2 lg:ring-3 ring-green-500 ring-offset-1 lg:scale-105'
                                         : 'bg-green-300 hover:bg-green-400 shadow-md'
@@ -311,15 +310,15 @@ const PrayerTimeCard = () => {
                                     ${expandedPrayer === index ? 'scale-105 shadow-2xl' : ''}
                                 `}
                             >
-                                <span className={`mb-1 transition-transform duration-300 ${expandedPrayer === index ? 'scale-125' : ''} ${!announcementsLoading && announcements.length === 0 ? 'text-3xl' : 'text-xl lg:text-2xl'}`}>
+                                <span className={`mb-1 transition-transform duration-300 text-xl lg:text-2xl ${expandedPrayer === index ? 'scale-125' : ''}`}>
                                     {prayer.icon}
                                 </span>
-                                <span className={`font-semibold ${!announcementsLoading && announcements.length === 0 ? 'text-sm' : 'text-xs'} ${
+                                <span className={`font-semibold text-xs lg:text-sm ${
                                     nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
                                 }`}>
                                     {prayer.name}
                                 </span>
-                                <span className={`mt-1 font-bold ${!announcementsLoading && announcements.length === 0 ? 'text-base' : 'text-xs lg:text-sm'} ${
+                                <span className={`mt-1 font-bold text-xs lg:text-sm ${
                                     nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-green-700'
                                 }`}>
                                     {prayer.time}
@@ -333,7 +332,7 @@ const PrayerTimeCard = () => {
                                         }`}>
                                             Iqama
                                         </div>
-                                        <div className={`text-xs lg:text-sm font-semibold ${
+                                        <div className={`text-xs font-semibold ${
                                             nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
                                         }`}>
                                             {prayer.iqama}
@@ -353,7 +352,7 @@ const PrayerTimeCard = () => {
 
                 {/* Announcements Feed - Right Column on Desktop - Only show if there are announcements */}
                 {!announcementsLoading && announcements.length > 0 && (
-                    <div className="px-4 py-4 bg-green-100 lg:w-1/3 flex flex-col">
+                    <div className="px-4 py-4 bg-green-100 lg:flex-shrink-0 lg:w-auto lg:min-w-[320px] lg:max-w-[400px] flex flex-col">
                         <div
                             className="space-y-3 pr-2"
                             style={announcements.length > 2 ? {
