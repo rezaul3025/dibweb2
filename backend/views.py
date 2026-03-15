@@ -26,10 +26,10 @@ from rest_framework.response import Response
 
 from backend.SendEmail import SendEmail
 from backend.models import Event, Attendee, Toggle, StudentClass, Teacher, Shift, DownloadItem, NoticeBoardItem, \
-    Notification, LabelCategory, PaymentLine
+    Notification, LabelCategory, PaymentLine, Announcement
 from backend.serializers import AttendeeSerializer, EventSerializer, ContactUsSerializer, ToggleSerializer, \
     StudentSerializer, StudentClassSerializer, TeacherSerializer, ShiftSerializer, DownloadItemSerializer, \
-    NoticeBoardItemSerializer, NotificationSerializer, LabelCategorySerializer
+    NoticeBoardItemSerializer, NotificationSerializer, LabelCategorySerializer, AnnouncementSerializer
 from .models import Payment, Student
 from .serializers import PaymentSerializer
 from .utils.pdf_generator import generate_payment_receipt
@@ -282,6 +282,12 @@ def downloadItems(request, department):
 def notification(request):
     notifications = Notification.objects.all()
     serializer = NotificationSerializer(notifications, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def announcements(request):
+    announcements = Announcement.objects.filter(enabled=True)
+    serializer = AnnouncementSerializer(announcements, many=True)
     return Response(serializer.data)
 
 

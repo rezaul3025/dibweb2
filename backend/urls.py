@@ -36,6 +36,7 @@ urlpatterns = [
    path('v1/notice-board/', views.noticeBoard),
    path('v1/download-items/<str:department>/', views.downloadItems),
    path('v1/notification/', views.notification),
+   path('v1/announcements/', views.announcements),
    path('v1/login/', views.login_user),
    path('v1/logout/', views.logout_user),
    path('v1/generate_payment_receipt/<int:payment_id>/', views.payment_receipt),

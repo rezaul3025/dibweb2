@@ -95,3 +95,8 @@ Steps to install Python on Windows and macOS
    ```bash
     python manage.py runserver
    ````
+
+## Generate tailwind file
+```bash
+npx @tailwindcss/cli -i ./src/input.css -o .static/assets/css/output.css
+```

@@ -544,6 +544,23 @@ class Notification(models.Model):
     image = models.FileField(upload_to='notification_images', null = True, blank = True)
     enabled = models.BooleanField(default=False)
 
+class Announcement(models.Model):
+    title = models.CharField(max_length=255)
+    sub_title = models.CharField(max_length=255)
+    description = RichTextField()
+    date = models.DateField(default=date.today, null=True, blank=True)
+    enabled = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-date', '-created_at']
+        verbose_name = 'Announcement'
+        verbose_name_plural = 'Announcements'
+
+    def __str__(self):
+        return f"{self.title} - {self.date}"
+
 def getDocumentSize(document):
     if document:
         size = document.size

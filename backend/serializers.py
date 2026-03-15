@@ -4,7 +4,7 @@ from datetime import date
 from rest_framework import serializers
 
 from backend.models import Attendee, Event, ContactUs, Toggle, NoticeBoardItem, Student, StudentClass, \
-    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification, LabelCategory
+    AcademyNoticeBoard, Teacher, Shift, DownloadItem, Notification, LabelCategory, Announcement
 from .models import Payment, PaymentLine
 
 
@@ -72,6 +72,12 @@ class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
         fields = ['headline','image','enabled']
+
+class AnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Announcement
+        fields = ['id', 'title', 'sub_title', 'description', 'date', 'enabled', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'created_at', 'updated_at']
 
 class PaymentLineSerializer(serializers.ModelSerializer):
     type_display = serializers.CharField(source='get_type_display', read_only=True)

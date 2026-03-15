@@ -44,6 +44,8 @@ const PrayerTimeCard = () => {
     const [progress, setProgress] = useState(0);
     const [expandedPrayer, setExpandedPrayer] = useState(null);
     const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+    const [announcements, setAnnouncements] = useState([]);
+    const [announcementsLoading, setAnnouncementsLoading] = useState(true);
 
     function getPrayerTimesObj(data) {
         const prayerTimes = [
@@ -152,6 +154,21 @@ const PrayerTimeCard = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        const fetchAnnouncements = async () => {
+            try {
+                const response = await fetch('/api/v1/announcements/');
+                const data = await response.json();
+                setAnnouncements(data);
+                setAnnouncementsLoading(false);
+            } catch (error) {
+                console.error("Error fetching announcements:", error);
+                setAnnouncementsLoading(false);
+            }
+        };
+        fetchAnnouncements();
+    }, []);
+
     // Update countdown every second
     useEffect(() => {
         if (nextPrayer && nextPrayer.time) {
@@ -238,11 +255,11 @@ const PrayerTimeCard = () => {
                 </div>
             </div>
 
-            {/* 2-Column Layout for Desktop: Timer and Prayer Times */}
-            <div className="flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200">
+            {/* 3-Column Layout for Desktop: Timer, Prayer Times, and Announcements */}
+            <div className={`flex flex-col lg:flex-row lg:divide-x lg:divide-gray-200 ${!announcementsLoading && announcements.length > 0 ? 'lg:justify-center' : 'lg:justify-around'}`}>
                 {/* Countdown Timer Section - Left Column on Desktop */}
                 {nextPrayer && (
-                    <div className="px-4 py-4 bg-green-100 border-b lg:border-b-0 border-gray-200 flex items-center justify-center lg:w-1/3">
+                    <div className={`px-4 py-4 bg-green-100 border-b lg:border-b-0 border-gray-200 flex items-center justify-center ${!announcementsLoading && announcements.length === 0 ? 'lg:flex-1 lg:max-w-md' : 'lg:w-1/3'}`}>
                         <div className="flex flex-col items-center justify-center">
                             <div className="text-sm font-medium text-gray-600 mb-2">Time Until {nextPrayer.name}</div>
                             <div className="flex gap-3">
@@ -272,9 +289,9 @@ const PrayerTimeCard = () => {
                     </div>
                 )}
 
-                {/* Prayer Times - Right Column on Desktop */}
-                <div className="py-4 bg-green-100 overflow-x-auto lg:overflow-visible lg:flex-1 lg:flex lg:items-center lg:justify-center scroll-smooth">
-                    <div className="flex space-x-4 min-w-max md:gap-6 lg:flex-wrap lg:min-w-0 lg:justify-center px-4 pr-8 lg:px-0">
+                {/* Prayer Times - Middle Column on Desktop */}
+                <div className={`py-4 bg-green-100 overflow-x-auto lg:overflow-x-hidden scroll-smooth border-b lg:border-b-0 border-gray-200 ${!announcementsLoading && announcements.length === 0 ? 'lg:flex-1 lg:max-w-3xl' : 'lg:w-1/3'}`}>
+                    <div className={`flex min-w-max px-4 pr-8 space-x-3 ${!announcementsLoading && announcements.length === 0 ? 'lg:min-w-0 lg:w-full lg:gap-3 lg:space-x-0 lg:px-4' : 'lg:min-w-0 lg:w-full lg:gap-2 lg:space-x-0 lg:px-2'}`}>
                         {loading && <div className="w-full px-4">
                             <LoadingIcon type="spinner" size="sm" color="green-500"/>
                         </div>}
@@ -283,25 +300,26 @@ const PrayerTimeCard = () => {
                                 key={index}
                                 onClick={() => setExpandedPrayer(expandedPrayer === index ? null : index)}
                                 className={`
-                                    flex flex-col items-center rounded-xl min-w-[100px] p-3
+                                    flex flex-col items-center rounded-xl min-w-[85px] lg:min-w-0 lg:flex-1 p-2
                                     transition-all duration-300 ease-in-out cursor-pointer
                                     transform hover:scale-105 hover:shadow-xl
+                                    ${!announcementsLoading && announcements.length === 0 ? 'lg:p-3' : 'lg:p-1.5'}
                                     ${nextPrayer && nextPrayer.name === prayer.name
-                                        ? 'bg-green-400 text-white shadow-xl ring-2 lg:ring-4 ring-green-500 ring-offset-1 lg:ring-offset-2 lg:scale-110'
+                                        ? 'bg-green-400 text-white shadow-xl ring-2 lg:ring-3 ring-green-500 ring-offset-1 lg:scale-105'
                                         : 'bg-green-300 hover:bg-green-400 shadow-md'
                                     }
                                     ${expandedPrayer === index ? 'scale-105 shadow-2xl' : ''}
                                 `}
                             >
-                                <span className={`text-3xl mb-2 transition-transform duration-300 ${expandedPrayer === index ? 'scale-125' : ''}`}>
+                                <span className={`mb-1 transition-transform duration-300 ${expandedPrayer === index ? 'scale-125' : ''} ${!announcementsLoading && announcements.length === 0 ? 'text-3xl' : 'text-xl lg:text-2xl'}`}>
                                     {prayer.icon}
                                 </span>
-                                <span className={`text-sm font-semibold ${
+                                <span className={`font-semibold ${!announcementsLoading && announcements.length === 0 ? 'text-sm' : 'text-xs'} ${
                                     nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
                                 }`}>
                                     {prayer.name}
                                 </span>
-                                <span className={`mt-2 text-lg font-bold ${
+                                <span className={`mt-1 font-bold ${!announcementsLoading && announcements.length === 0 ? 'text-base' : 'text-xs lg:text-sm'} ${
                                     nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-green-700'
                                 }`}>
                                     {prayer.time}
@@ -309,13 +327,13 @@ const PrayerTimeCard = () => {
 
                                 {/* Expanded Details */}
                                 {expandedPrayer === index && prayer.iqama && (
-                                    <div className="mt-2 pt-2 border-t border-gray-200 w-full text-center animate-fadeIn">
+                                    <div className="mt-1 pt-1 border-t border-gray-200 w-full text-center animate-fadeIn">
                                         <div className={`text-xs ${
                                             nextPrayer && nextPrayer.name === prayer.name ? 'text-white/90' : 'text-gray-500'
                                         }`}>
                                             Iqama
                                         </div>
-                                        <div className={`text-sm font-semibold ${
+                                        <div className={`text-xs lg:text-sm font-semibold ${
                                             nextPrayer && nextPrayer.name === prayer.name ? 'text-white' : 'text-gray-700'
                                         }`}>
                                             {prayer.iqama}
@@ -324,7 +342,7 @@ const PrayerTimeCard = () => {
                                 )}
 
                                 {nextPrayer && nextPrayer.name === prayer.name && (
-                                    <span className="mt-2 text-xs bg-white text-green-600 px-3 py-1 rounded-full font-medium shadow-md animate-pulse">
+                                    <span className="mt-1 text-xs bg-white text-green-600 px-2 py-0.5 rounded-full font-medium shadow-md animate-pulse">
                                         Next
                                     </span>
                                 )}
@@ -332,6 +350,49 @@ const PrayerTimeCard = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Announcements Feed - Right Column on Desktop - Only show if there are announcements */}
+                {!announcementsLoading && announcements.length > 0 && (
+                    <div className="px-4 py-4 bg-green-100 lg:w-1/3 flex flex-col">
+                        <div
+                            className="space-y-3 pr-2"
+                            style={announcements.length > 2 ? {
+                                maxHeight: '320px',
+                                overflowY: 'auto',
+                                scrollbarWidth: 'thin',
+                                scrollbarColor: '#10b981 #e5e7eb'
+                            } : {}}
+                        >
+                            {announcements.map((announcement) => (
+                                <div
+                                    key={announcement.id}
+                                    className="bg-white rounded-lg p-3 shadow-md hover:shadow-lg transition-shadow duration-300 animate-slideIn"
+                                >
+                                    <div className="flex gap-2">
+                                        <div className="flex-shrink-0">
+                                            <svg className="h-5 w-5 text-green-600 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                                      d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+                                            </svg>
+                                        </div>
+                                        <div className="flex-1">
+                                            <div className="flex justify-between items-start mb-1">
+                                                <h4 className="font-bold text-green-700 text-sm">{announcement.title}</h4>
+                                                {announcement.date && (
+                                                    <span className="text-xs text-gray-500 whitespace-nowrap ml-2">
+                                                        {moment(announcement.date).format('MMM D')}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <p className="text-xs font-semibold text-gray-600 mb-1">{announcement.sub_title}</p>
+                                            <div className="text-xs text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{__html: announcement.description}}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Current Time Footer */}

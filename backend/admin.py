@@ -6,7 +6,7 @@ from django.urls import path
 from django.utils.html import format_html
 # Register your models here.
 from backend.models import Attendee, Event, ContactUs, Toggle, Shift, Teacher, StudentClass, Student, \
-    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment, LabelCategory
+    NoticeBoardItem, AcademyNoticeBoard, DownloadItem, Notification, Payment, LabelCategory, Announcement
 from .models import PaymentLine
 from .utils.pdf_generator import generate_payment_receipt
 
@@ -62,6 +62,14 @@ class NotificationAdmin(admin.ModelAdmin):
     list_display = ('headline','image', 'enabled')
     fields = list_display
 admin.site.register(Notification, NotificationAdmin)
+
+class AnnouncementAdmin(admin.ModelAdmin):
+    list_display = ('title', 'sub_title', 'date', 'enabled', 'created_at')
+    list_filter = ('enabled', 'date', 'created_at')
+    search_fields = ('title', 'sub_title', 'description')
+    readonly_fields = ('created_at', 'updated_at')
+    fields = ('title', 'sub_title', 'description', 'date', 'enabled', 'created_at', 'updated_at')
+admin.site.register(Announcement, AnnouncementAdmin)
 
 class NoticeBoardDocumentAdmin(admin.StackedInline):
     model = NoticeBoardItem
